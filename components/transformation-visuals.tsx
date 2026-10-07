@@ -22,9 +22,35 @@ export function VisionHero() {
         <span className="photo-badge">
           <ScanLine size={16} /> COMPUTER VISION AT WORK
         </span>
-        <div className="vision-target" aria-hidden="true">
-          <span>Detect · Count · Check</span>
-        </div>
+        {/* Share the photograph's coordinates and crop to keep one bottle framed. */}
+        <svg
+          className="vision-target"
+          viewBox="0 0 1672 941"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          <rect
+            x="945"
+            y="383"
+            width="103"
+            height="200"
+            rx="5"
+            fill="none"
+            stroke="#d4f2ab"
+            strokeWidth="1.5"
+            vectorEffect="non-scaling-stroke"
+          />
+          <rect x="945" y="343" width="249" height="33" rx="3" fill="#dbeec3" />
+          <text
+            x="958"
+            y="365"
+            fill="#263a21"
+            fontSize="20"
+            fontFamily="Arial, sans-serif"
+          >
+            Detect · Count · Check
+          </text>
+        </svg>
         <div className="vision-photo-caption">
           <p>FROM WATCHING THE LINE</p>
           <h2>

@@ -34,26 +34,21 @@ export default function Home() {
           <div className="shell hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">
-                <span className="orange-line" /> AI & MACHINE LEARNING FOR YOUR
-                BUSINESS
+                <span className="orange-line" /> FOR MANUFACTURING, LOGISTICS &
+                INDUSTRIAL SERVICES
               </p>
               <h1>
-                Less manual work.
-                <span className="orange">
-                  More business
-                  <br />
-                  possibility.
-                </span>
+                Simpler processes.
+                <span className="orange">Smoother operations.</span>
               </h1>
               <p className="hero-lead">
-                Transform the way work gets done.
-                <br />
-                With practical AI and machine learning.
+                We help you turn digital transformation into practical
+                improvements—reducing manual work, connecting systems and
+                streamlining everyday operations.
               </p>
               <p className="hero-description">
-                From counting products on a conveyor to reading paper forms, we
-                turn repetitive work into connected, intelligent processes. More
-                capacity. Fewer manual checks. More time for your people.
+                From the factory floor to the back office, we design and build
+                solutions around your people, your processes and your business.
               </p>
               <div className="hero-actions">
                 <Button asChild className="button-primary">
