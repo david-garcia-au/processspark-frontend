@@ -42,6 +42,9 @@ export default function Home() {
                 <span className="orange">Smoother operations.</span>
               </h1>
               <p className="hero-lead">
+                <strong>Transform the way work gets done.</strong>
+              </p>
+              <p className="hero-description hero-introduction">
                 We help you turn digital transformation into practical
                 improvements—reducing manual work, connecting systems and
                 streamlining everyday operations.
