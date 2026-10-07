@@ -16,7 +16,10 @@ import {
 import { Header, Brand } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { ProcessExplorer } from "@/components/process-explorer";
-import { InspectionVisual } from "@/components/inspection-visual";
+import {
+  TransformationVisuals,
+  VisionHero,
+} from "@/components/transformation-visuals";
 import { ProcessBrief } from "@/components/process-brief";
 import { pains, useCases } from "@/lib/content";
 export default function Home() {
@@ -31,21 +34,26 @@ export default function Home() {
           <div className="shell hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">
-                <span className="orange-line" /> PRACTICAL AI. REAL-WORLD
-                OPERATIONS.
+                <span className="orange-line" /> AI & MACHINE LEARNING FOR YOUR
+                BUSINESS
               </p>
               <h1>
-                Good people. <br />
-                Better things to do.
-                <span className="orange">Less manual work.</span>
+                Less manual work.
+                <span className="orange">
+                  More business
+                  <br />
+                  possibility.
+                </span>
               </h1>
               <p className="hero-lead">
-                AI for the work your people shouldn’t be doing manually.
+                Transform the way work gets done.
+                <br />
+                With practical AI and machine learning.
               </p>
               <p className="hero-description">
-                We design and build practical AI solutions for manufacturing,
-                logistics and industrial services. Start with the process that’s
-                slowing you down.
+                From counting products on a conveyor to reading paper forms, we
+                turn repetitive work into connected, intelligent processes. More
+                capacity. Fewer manual checks. More time for your people.
               </p>
               <div className="hero-actions">
                 <Button asChild className="button-primary">
@@ -66,7 +74,7 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <InspectionVisual />
+            <VisionHero />
           </div>
           <div className="shell hero-foot">
             <span>LESS CHECKING. LESS COPYING. MORE GETTING THINGS DONE.</span>
@@ -101,6 +109,7 @@ export default function Home() {
             </span>
           </div>
         </section>
+        <TransformationVisuals />
         <section className="section shell" id="problems">
           <div className="section-heading">
             <div>

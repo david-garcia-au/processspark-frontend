@@ -15,7 +15,7 @@ npm run build
 
 Reference: `david-garcia-au/industrialbutterflyvalves-frontend`, Next.js 16, React 19, Tailwind 4, shadcn new-york components and Lucide icons. Reuses its shadcn Button and class-name utility; the new app has an independent package manifest and lockfile. The Button uses the explicitly installed `radix-ui` Slot export rather than relying on a transitive dependency.
 
-The reference's clear industrial hierarchy, spacious sections, sector groupings and direct enquiry paths informed the design. ProcessSpark uses graphite green, warm white and restrained safety orange, an original SVG inspection illustration and Today → After process comparisons. There are no borrowed manufacturer credentials, customer logos, fabricated results, AWS services, analytics or external image dependencies.
+The reference's clear industrial hierarchy, spacious sections, sector groupings and direct enquiry paths informed the design. ProcessSpark uses graphite green, warm white and restrained safety orange, realistic illustrative photography and Today → After process comparisons. The refreshed desktop reading scale uses 16–18px body copy, larger controls and clearer AI/ML transformation messaging. There are no borrowed manufacturer credentials, customer logos, fabricated results, AWS services, analytics or external image dependencies.
 
 ## Structure
 
@@ -24,9 +24,12 @@ The reference's clear industrial hierarchy, spacious sections, sector groupings 
 - `components/process-explorer.tsx`: Radix accessible tabs, with automatic keyboard navigation.
 - `components/header.tsx`: responsive navigation.
 - `components/process-brief.tsx`: validated email draft and local brief download.
-- `components/inspection-visual.tsx`: original illustrative visual, not actual inspection results.
+- `components/transformation-visuals.tsx`: conveyor inspection hero and document-processing story, using optimised local images.
+- `docs/visual-assets.md`: image provenance, generation prompts and saved asset paths.
+- `components/inspection-visual.tsx`: preserved original SVG illustration, no longer displayed on the homepage.
 - `components/ui/button.tsx`: shadcn Button.
 - `app/globals.css`: responsive design tokens and styles, reduced-motion support.
+- `app/transformation.css`: typography refresh and responsive photographic sections.
 
 ## Enquiries and launch
 

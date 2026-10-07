@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./transformation.css";
 export const metadata: Metadata = {
   title: "ProcessSpark — Less manual work. More possibility.",
   description:
