@@ -1,4 +1,112 @@
 /* Image-led stories and an accessible reading scale for the refreshed landing page. */
+.business-band {
+  background: #20352a;
+  color: #fafbf5;
+  padding: 26px 0 24px;
+}
+.business-promise {
+  font-size: clamp(29px, 3.4vw, 46px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+}
+.business-promise > span {
+  display: block;
+  color: #ff9c68;
+  margin-top: 5px;
+}
+.business-audience {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ffffff30;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.business-intro > span {
+  display: block;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  color: #c4d2bd;
+  margin-bottom: 10px;
+}
+.business-intro strong {
+  display: block;
+  white-space: nowrap;
+  font-size: clamp(25px, 2.5vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  font-weight: 600;
+}
+.business-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.business-sectors li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  border: 1px solid #ffffff26;
+  border-radius: 5px;
+  background: #ffffff06;
+  font-size: 17px;
+  font-weight: 500;
+}
+.business-sectors svg {
+  width: 24px;
+  height: 24px;
+  color: #c0d6ac;
+  flex-shrink: 0;
+  stroke-width: 1.6;
+}
+@media (min-width: 1000px) {
+  .business-audience {
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 20px;
+  }
+  .business-intro strong {
+    font-size: clamp(25px, 2.2vw, 30px);
+  }
+  .business-sectors {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .business-sectors li {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-width: 0;
+    min-height: 80px;
+    gap: 6px;
+    line-height: 1.4;
+    font-size: clamp(15px, 1.3vw, 17px);
+    padding: 10px 6px;
+  }
+}
+@media (max-width: 540px) {
+  .business-band {
+    padding: 26px 0;
+  }
+  .business-promise {
+    letter-spacing: -0.8px;
+  }
+  .business-sectors {
+    gap: 10px;
+  }
+  .business-sectors li {
+    font-size: 15px;
+    padding: 11px 12px;
+  }
+}
 .hero .hero-grid {
   grid-template-columns: 1fr 1.06fr;
   gap: 50px;

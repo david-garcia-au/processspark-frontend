@@ -74,37 +74,36 @@ export default function Home() {
             </div>
             <VisionHero />
           </div>
-          <div className="shell hero-foot">
-            <span>LESS CHECKING. LESS COPYING. MORE GETTING THINGS DONE.</span>
-            <span>
-              01 — THE OPPORTUNITY <ArrowDown size={14} />
-            </span>
-          </div>
         </section>
-        <section
-          className="industry-strip"
-          aria-label="Industries we work with"
-        >
-          <div className="shell industry-inner">
-            <p>
-              FOR BUSINESSES THAT <br />
-              <strong>make. move. maintain.</strong>
-            </p>
-            <span>
-              <Factory /> Manufacturing
-            </span>
-            <span>
-              <Layers3 /> Engineering
-            </span>
-            <span>
-              <Truck /> Logistics
-            </span>
-            <span>
-              <Boxes /> Warehousing
-            </span>
-            <span>
-              <Wrench /> Industrial services
-            </span>
+        <section className="business-band" aria-label="Industries we work with">
+          <div className="shell">
+            <h2 className="business-promise">
+              Less checking. Less copying.
+              <span>More getting things done.</span>
+            </h2>
+            <div className="business-audience">
+              <p className="business-intro">
+                <span>FOR BUSINESSES THAT</span>
+                <strong>make. move. maintain.</strong>
+              </p>
+              <ul className="business-sectors" aria-label="Business sectors">
+                <li>
+                  <Factory /> Manufacturing
+                </li>
+                <li>
+                  <Layers3 /> Engineering
+                </li>
+                <li>
+                  <Truck /> Logistics
+                </li>
+                <li>
+                  <Boxes /> Warehousing
+                </li>
+                <li>
+                  <Wrench /> Industrial services
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
         <TransformationVisuals />
