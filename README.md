@@ -37,6 +37,15 @@ The CTA opens a validated enquiry form. It prepares a `mailto:` draft addressed 
 
 For server-side delivery, connect an email/CRM endpoint and add server validation, abuse controls and appropriate privacy wording. Before launch, confirm the canonical domain for social URLs. No deployment or production integration is part of this implementation.
 
+## SEO and AI discoverability
+
+- `lib/site.ts`: canonical URL and shared SEO values. The canonical origin is `https://www.processspark.com`. Set `SITE_URL` in the deployment environment only to override it. Google Search Console is verified via DNS, so no verification tag is needed; the optional `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` variables emit tags if ever required.
+- `app/layout.tsx`: metadata (title, description, canonical, Open Graph, Twitter, robots) and viewport.
+- `components/structured-data.tsx`: JSON-LD (Organization, WebSite, WebPage) generated from `lib/content.ts`.
+- `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts`: sitemap.xml, robots.txt (search and AI crawlers allowed), web manifest.
+- `app/llms.txt/route.ts`: `/llms.txt` summary for AI assistants, generated from `lib/content.ts`.
+- `app/opengraph-image.tsx`, `app/twitter-image.tsx`, `app/apple-icon.tsx`: generated social and touch icons.
+
 ## Validation notes
 
 - Production build uses Webpack because Turbopack build workers cannot bind their internal port in this desktop sandbox. Development preview uses Turbopack.
