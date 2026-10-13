@@ -8,6 +8,7 @@ import {
   Files,
   FilePenLine,
   Keyboard,
+  Mail,
   MessagesSquare,
   ScanLine,
   Search,
@@ -19,12 +20,13 @@ const icons = {
   Files,
   FilePenLine,
   Keyboard,
+  Mail,
   MessagesSquare,
   ScanLine,
   Search,
 };
 export function ProcessExplorer() {
-  const [active, setActive] = useState("Looking");
+  const [active, setActive] = useState("Documents");
   return (
     <Tabs.Root value={active} onValueChange={setActive} className="explorer">
       <Tabs.List aria-label="Explore manual processes" className="process-tabs">

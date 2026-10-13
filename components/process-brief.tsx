@@ -31,7 +31,7 @@ export function ProcessBrief() {
       onChange={() => setReady(false)}
     >
       <div className="form-heading">
-        <span className="eyebrow">LET’S START WITH THE WORK</span>
+        <span className="eyebrow">LET’S START WITH YOUR CHALLENGE</span>
         <ArrowUpRight size={23} />
       </div>
       <div className="form-row">
@@ -69,17 +69,17 @@ export function ProcessBrief() {
           />
         </label>
         <label>
-          Where’s the manual work?
-          <select name="category" defaultValue="Not sure yet">
-            <option>Not sure yet</option>
+          What would you like to improve?
+          <select name="category" defaultValue="Other / Not sure yet">
             {[
-              "Looking",
-              "Reading",
-              "Typing",
-              "Searching",
-              "Writing",
-              "Talking",
-              "Monitoring",
+              "Document processing and data entry",
+              "Reporting and spreadsheets",
+              "Customer emails and requests",
+              "Finding information in documents",
+              "Quotations and proposals",
+              "Quality records and compliance",
+              "Service and maintenance reporting",
+              "Other / Not sure yet",
             ].map((x) => (
               <option key={x}>{x}</option>
             ))}
@@ -87,13 +87,13 @@ export function ProcessBrief() {
         </label>
       </div>
       <label>
-        What does your team do today?
+        Tell us what’s taking too much time or causing problems.
         <textarea
           name="process"
           required
           rows={4}
           maxLength={1200}
-          placeholder="For example: our quality team reads every supplier certificate and copies the results into a spreadsheet…"
+          placeholder="For example, we receive dozens of supplier documents every day and manually enter the details into our system."
         />
       </label>
       <Button
@@ -101,7 +101,7 @@ export function ProcessBrief() {
         className="button-primary form-submit"
         onClick={() => setAction("email")}
       >
-        Show us your process <ArrowUpRight size={17} />
+        Let&rsquo;s discuss your challenge <ArrowUpRight size={17} />
       </Button>
       <button
         type="submit"

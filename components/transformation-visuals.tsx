@@ -3,6 +3,7 @@ import {
   ArrowRight,
   Check,
   Files,
+  ImageIcon,
   ScanLine,
   Timer,
   TrendingUp,
@@ -12,71 +13,44 @@ export function VisionHero() {
   return (
     <figure className="vision-hero">
       <div className="vision-photo">
-        <Image
-          src="/images/bottle-inspection.webp"
-          alt="Illustrative bottling line with a vision camera above bottles moving along a conveyor"
-          fill
-          sizes="(max-width: 850px) 100vw, 50vw"
-          preload
-        />
-        <span className="photo-badge">
-          <ScanLine size={16} /> COMPUTER VISION AT WORK
-        </span>
-        {/* Share the photograph's coordinates and crop to keep one bottle framed. */}
-        <svg
-          className="vision-target"
-          viewBox="0 0 1672 941"
-          preserveAspectRatio="xMidYMid slice"
+        {/* Placeholder — awaiting a real document-processing asset. Fills the
+            existing container exactly, as the previous photo did. */}
+        <div
+          className="media-placeholder"
+          style={{ position: "absolute", inset: 0, borderRadius: 0 }}
           aria-hidden="true"
         >
-          <rect
-            className="target-box"
-            x="945"
-            y="383"
-            width="103"
-            height="200"
-            rx="5"
-            fill="none"
-            strokeWidth="1.5"
-            vectorEffect="non-scaling-stroke"
-          />
-          <rect
-            className="target-tag"
-            x="945"
-            y="343"
-            width="249"
-            height="33"
-            rx="3"
-          />
-          <text
-            className="target-text"
-            x="958"
-            y="365"
-            fontSize="20"
-            fontFamily="Arial, sans-serif"
-          >
-            Detect · Count · Check
-          </text>
-        </svg>
+          <span className="media-icon">
+            <ImageIcon size={22} />
+          </span>
+          <span className="media-label">
+            Supplier certificate or delivery note entering a digital workflow —
+            fields extracted, checked and ready for review
+          </span>
+          <span className="media-meta">IMAGE · PLACEHOLDER</span>
+        </div>
+        <span className="photo-badge">
+          <ScanLine size={16} /> LESS PAPERWORK. MORE PRODUCTIVITY.
+        </span>
         <div className="vision-photo-caption">
-          <p>FROM WATCHING THE LINE</p>
+          <p>FROM MANUAL DATA ENTRY</p>
           <h2>
-            To knowing what’s
+            To information ready
             <br />
-            moving through it.
+            when you need it.
           </h2>
         </div>
       </div>
       <figcaption className="vision-caption">
         <div className="vision-steps">
-          <span>Camera captures</span>
+          <span>Documents received</span>
           <ArrowRight size={16} />
-          <span>AI checks & counts</span>
+          <span>Information extracted</span>
           <ArrowRight size={16} />
           <span>People review</span>
         </div>
         <p>
-          <Check size={17} /> More visibility. Less repetitive checking.
+          <Check size={17} /> Less copying. Fewer errors. Faster processing.
         </p>
       </figcaption>
     </figure>
@@ -93,19 +67,19 @@ export function TransformationVisuals() {
       <div className="section-heading">
         <div>
           <p className="eyebrow">
-            THIS IS WHAT BUSINESS TRANSFORMATION LOOKS LIKE
+            SMALL CHANGES. MEASURABLE IMPROVEMENTS.
           </p>
           <h2 id="transformation-title">
-            Familiar work.
-            <br />A very different way to do it.
+            Same work.
+            <br />Less effort to get it done.
           </h2>
         </div>
         <p>
-          AI that sees, reads and understands.
+          Documents processed without endless copying.
           <br />
-          Machine learning that finds patterns.
+          Reports prepared without hours in spreadsheets.
           <br />
-          Connected to the work you do every day.
+          Information available when your team needs it.
         </p>
       </div>
       <article className="document-story">
@@ -117,33 +91,35 @@ export function TransformationVisuals() {
             sizes="(max-width: 850px) 100vw, 50vw"
           />
           <span className="photo-badge">
-            <Files size={16} /> DOCUMENT INTELLIGENCE
+            <Files size={16} /> DOCUMENT PROCESSING
           </span>
         </figure>
         <div className="document-copy">
           <p className="eyebrow">PAPERWORK IN. USEFUL INFORMATION OUT.</p>
           <h3>
-            That pile of forms?
+            Still copying information
             <br />
-            <span>It could process itself.</span>
+            <span>from documents by hand?</span>
           </h3>
           <p>
-            Supplier certificates, delivery notes, inspection records. AI reads
-            the information, checks what’s missing and prepares it for your
-            business systems.
+            Supplier certificates, delivery notes, inspection records and
+            purchase orders. Stop copying information between documents and
+            systems. Capture the details, identify missing information and let
+            your team focus on exceptions.
           </p>
           <div className="document-change">
             <div>
               <span className="change-label">TODAY</span>
               <p>
-                Read every page. Copy every field. Chase every missing detail.
+                Open every document. Copy the details. Check for mistakes. Enter
+                the same information again.
               </p>
             </div>
             <div>
               <span className="change-label">WITH AI</span>
               <p>
-                Scan or upload. Extract and validate. Your team reviews the
-                exceptions.
+                Upload the document. Capture and check the information. Review
+                only what needs attention.
               </p>
             </div>
           </div>
@@ -156,22 +132,31 @@ export function TransformationVisuals() {
         <div>
           <Timer size={24} />
           <p>
-            <strong>Give time back</strong>
-            <span>Move people from repetitive tasks to valuable work.</span>
+            <strong>Give your team time back</strong>
+            <span>
+              Reduce the repetitive administration that keeps people from more
+              valuable work.
+            </span>
           </p>
         </div>
         <div>
           <TrendingUp size={24} />
           <p>
-            <strong>Create room to grow</strong>
-            <span>Handle more work with the team you already have.</span>
+            <strong>Handle more work without adding complexity</strong>
+            <span>
+              Reduce bottlenecks and make better use of the people and systems
+              you already have.
+            </span>
           </p>
         </div>
         <div>
           <ScanLine size={24} />
           <p>
-            <strong>See what needs attention</strong>
-            <span>Turn images, documents and data into earlier action.</span>
+            <strong>Spot problems before they become delays</strong>
+            <span>
+              Identify missing information, inconsistencies and issues that need
+              someone’s attention.
+            </span>
           </p>
         </div>
       </div>

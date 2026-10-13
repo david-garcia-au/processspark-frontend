@@ -6,8 +6,12 @@ import {
   Boxes,
   Check,
   Factory,
+  FilePenLine,
+  Files,
   Layers3,
+  Mail,
   MoveUpRight,
+  Search,
   ShieldCheck,
   Truck,
   Wrench,
@@ -40,29 +44,31 @@ export default function Home() {
                 INDUSTRIAL SERVICES
               </p>
               <h1>
-                Simpler processes.
+                Less manual work.
                 <span className="orange">Smoother operations.</span>
               </h1>
               <p className="hero-lead">
-                <strong>Transform the way work gets done.</strong>
+                <strong>Make everyday work easier, faster and more reliable.</strong>
               </p>
               <p className="hero-description hero-introduction">
-                We help you turn digital transformation into practical
-                improvements—reducing manual work, connecting systems and
-                streamlining everyday operations.
+                Too much time spent on paperwork, spreadsheets and repetitive
+                tasks? We help manufacturing and operational businesses simplify
+                everyday work, reduce errors and get more done with the people
+                and systems they already have.
               </p>
               <p className="hero-description">
-                From the factory floor to the back office, we design and build
-                solutions around your people, your processes and your business.
+                From the factory floor to the back office, we find the work that
+                slows your team down and build practical solutions around your
+                existing processes and systems.
               </p>
               <div className="hero-actions">
                 <Button asChild className="button-primary">
                   <a href="#contact">
-                    Show us your process <ArrowUpRight size={18} />
+                    Show us what&rsquo;s slowing you down <ArrowUpRight size={18} />
                   </a>
                 </Button>
                 <a className="text-link" href="#capabilities">
-                  See what could change <ArrowDown size={16} />
+                  Explore the possibilities <ArrowDown size={16} />
                 </a>
               </div>
               <div className="hero-points">
@@ -80,8 +86,8 @@ export default function Home() {
         <section className="business-band" aria-label="Industries we work with">
           <div className="shell">
             <h2 className="business-promise">
-              Less checking. Less copying.
-              <span>More getting things done.</span>
+              Less repetitive work.
+              <span>More time for what matters.</span>
             </h2>
             <div className="business-audience">
               <p className="business-intro">
@@ -117,8 +123,8 @@ export default function Home() {
             </div>
             <p>
               Your people know their jobs. <br />
-              It’s the repetitive work around them
-              <br className="desktop-break" /> that’s holding things up.
+              It’s the paperwork, manual checks and repetitive administration
+              <br className="desktop-break" /> that slow them down.
             </p>
           </div>
           <div className="pain-grid">
@@ -143,8 +149,8 @@ export default function Home() {
             ))}
           </div>
           <div className="under-note">
-            <span>Not sure where AI fits?</span> Start with the work you wish
-            your people didn’t have to do.
+            <span>Not sure where to start?</span> Show us the repetitive work
+            your team would happily stop doing.
             <a href="#contact">
               Let’s find it together <ArrowRight size={15} />
             </a>
@@ -161,9 +167,9 @@ export default function Home() {
                 </h2>
               </div>
               <p>
-                Seven kinds of everyday work. <br />
-                Explore what could happen when <br />
-                the routine parts take care of themselves.
+                From paperwork and reporting to customer requests and quality
+                checks. Explore how everyday tasks could become simpler, faster
+                and more reliable.
               </p>
             </div>
             <ProcessExplorer />
@@ -191,17 +197,17 @@ export default function Home() {
                   <div className="case-top">
                     <span className="case-icon">
                       {i === 0 ? (
-                        <Factory />
+                        <Files />
                       ) : i === 1 ? (
                         <ShieldCheck />
                       ) : i === 2 ? (
-                        <Wrench />
-                      ) : i === 3 ? (
-                        <Truck />
-                      ) : i === 4 ? (
-                        <Layers3 />
-                      ) : (
                         <Activity />
+                      ) : i === 3 ? (
+                        <Mail />
+                      ) : i === 4 ? (
+                        <Search />
+                      ) : (
+                        <FilePenLine />
                       )}
                     </span>
                     <ArrowUpRight size={20} />
@@ -234,31 +240,32 @@ export default function Home() {
                 </h2>
               </div>
               <p>
-                We start on the operational side of the table. Then we prove the
-                value before making the investment bigger.
+                We start by understanding how your business works today. Then we
+                identify a practical improvement, test it with real information
+                and measure the results before committing to a larger solution.
               </p>
             </div>
             <div className="approach-grid">
               {[
                 [
                   "Show us the process",
-                  "Walk us through the work that consumes time, creates delays or limits capacity.",
+                  "Show us the repetitive tasks, paperwork or manual processes that consume your team’s time.",
                 ],
                 [
                   "Find the opportunity",
-                  "Map today’s process and identify where a change could make a measurable difference.",
+                  "Identify where time is being lost, where mistakes happen and which improvements could deliver the greatest value.",
                 ],
                 [
                   "Prove it works",
-                  "Build a focused proof of value with your real documents, images or data.",
+                  "Test a focused solution using real examples from your business, so you can see what works before making a bigger commitment.",
                 ],
                 [
                   "Measure the result",
-                  "Assess accuracy, time saved and operational impact together.",
+                  "Measure time saved, accuracy, reliability and the impact on your team’s everyday work.",
                 ],
                 [
                   "Put it to work",
-                  "When the numbers make sense, integrate the solution into everyday operations.",
+                  "When the results justify the investment, connect the solution to your existing systems and make it part of your everyday operations.",
                 ],
               ].map(([title, text], i) => (
                 <article key={title}>
@@ -276,12 +283,13 @@ export default function Home() {
             <div className="agnostic">
               <span>
                 <Zap size={22} />
-                <strong>The right tools for your process.</strong>
+                <strong>Solutions that work with what you already have.</strong>
               </span>
               <p>
-                Computer vision, machine learning, AI and conventional software.
-                Technology and hyperscaler agnostic. Integrated with the systems
-                you already use.
+                We work with your existing documents, spreadsheets, databases
+                and business systems. Whether the answer involves AI, software
+                integration or a simpler workflow, we choose the approach that
+                makes the most sense for your business.
               </p>
               <span className="agnostic-note">
                 If AI isn’t the right tool, <br />
@@ -298,27 +306,28 @@ export default function Home() {
               do with <span className="orange">that time back?</span>
             </h2>
             <p>
-              Show us the repetitive task, the spreadsheet, the pile of
-              documents. We’ll help you work out whether it’s a good candidate
-              for AI or automation.
+              Tell us about a task that takes too long, a spreadsheet that needs
+              constant updating or paperwork your team would rather not deal
+              with. We’ll help you identify whether there’s a practical way to
+              make the work easier.
             </p>
             <div className="contact-benefits">
               <span>
-                <Check size={18} /> A conversation about your operation
+                <Check size={18} /> A conversation about your challenges
               </span>
               <span>
-                <Check size={18} /> An honest view of what’s possible
+                <Check size={18} /> An honest assessment of the opportunity
               </span>
               <span>
-                <Check size={18} /> A practical next step
+                <Check size={18} /> A clear and practical next step
               </span>
             </div>
             <Media slot="contact-team" className="contact-media" />
             <div className="contact-signoff">
               <MoveUpRight size={33} />
               <span>
-                No AI use case required. <br />
-                <strong>Just tell us what happens today.</strong>
+                No technical knowledge required. <br />
+                <strong>Just tell us what’s slowing your team down.</strong>
               </span>
             </div>
           </div>
@@ -338,7 +347,7 @@ export default function Home() {
         </div>
         <div className="shell footer-bottom">
           <span>© {new Date().getFullYear()} ProcessSpark</span>
-          <span>Practical AI for real-world operations.</span>
+          <span>Practical solutions for real-world operations.</span>
           <a href="#main">Back to top ↑</a>
         </div>
       </footer>

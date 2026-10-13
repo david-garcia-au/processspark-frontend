@@ -65,15 +65,7 @@ export const media: Record<string, MediaItem> = {
   },
 
   // Process explorer (one per capability) -----------------------------------
-  "capability-looking": {
-    kind: "video",
-    ratio: R169,
-    label: "Camera inspecting products on a line",
-    brief:
-      "Short loop: products moving under a machine-vision camera, one flagged for review. Subtle, realistic.",
-    alt: "Camera inspecting products on a production line",
-  },
-  "capability-reading": {
+  "capability-documents": {
     kind: "image",
     ratio: R169,
     label: "Documents read and checked automatically",
@@ -81,13 +73,21 @@ export const media: Record<string, MediaItem> = {
       "Supplier certificate beside a structured on-screen table of extracted fields with one discrepancy highlighted.",
     alt: "Certificate being read with extracted fields shown on screen",
   },
-  "capability-typing": {
+  "capability-reporting": {
+    kind: "image",
+    ratio: R169,
+    label: "Information brought together into a report",
+    brief:
+      "Spreadsheets and business-system data brought together into a clear production or management report, with key changes highlighted.",
+    alt: "Information from several sources prepared into an operational report",
+  },
+  "capability-requests": {
     kind: "video",
     ratio: R169,
-    label: "Information entered once, used everywhere",
+    label: "Emails and requests sorted and routed",
     brief:
-      "Short loop: a job record captured once and appearing in connected systems. Screen capture style.",
-    alt: "A job record captured once and updating connected systems",
+      "Short loop: incoming customer emails and requests being read, classified and routed, with important details captured.",
+    alt: "Customer emails and requests being sorted, captured and routed",
   },
   "capability-searching": {
     kind: "image",
@@ -100,70 +100,70 @@ export const media: Record<string, MediaItem> = {
   "capability-writing": {
     kind: "image",
     ratio: R169,
-    label: "Photos and notes becoming a report",
+    label: "A draft quotation prepared for review",
     brief:
-      "Phone showing job photos and a voice note, next to a structured service report draft ready for approval.",
-    alt: "Job photos and notes turned into a structured service report",
+      "Customer enquiry or RFQ beside a draft quotation on screen, with product information and pricing drawn from approved sources, ready for review.",
+    alt: "A draft quotation prepared from a customer enquiry for review",
   },
   "capability-talking": {
     kind: "video",
     ratio: R169,
-    label: "A service request captured and routed",
+    label: "Voice notes and photos becoming a report",
     brief:
-      "Short loop: a customer request being captured with equipment context and handed to a person.",
-    alt: "A service request captured with context and handed to a person",
+      "Short loop: a technician's voice notes and job photos turned into a structured service report ready for approval.",
+    alt: "Voice notes and photos turned into a structured service report",
   },
-  "capability-monitoring": {
-    kind: "image",
+  "capability-inspecting": {
+    kind: "video",
     ratio: R169,
-    label: "Equipment data flagging unusual behaviour",
+    label: "Camera inspecting products on a line",
     brief:
-      "Plant equipment with a calm dashboard overlay showing a trend and a single early alert.",
-    alt: "Equipment monitoring dashboard flagging unusual behaviour early",
+      "Short loop: products moving under a machine-vision camera, one flagged for review. Subtle, realistic.",
+    alt: "Camera inspecting products on a production line",
   },
 
   // Use cases ---------------------------------------------------------------
-  "use-case-visual-quality-inspection": {
+  "use-case-document-processing": {
     kind: "image",
     ratio: R32,
-    label: "Product checked for defects",
-    brief: "Close view of a product on a line under inspection lighting.",
-    alt: "Product being checked for defects on a production line",
+    label: "Document details captured automatically",
+    brief: "Purchase order or delivery note beside a screen showing the captured details, ready for review.",
+    alt: "Information captured from a purchase order or delivery note",
   },
-  "use-case-quality-record-review": {
+  "use-case-quality-documentation": {
     kind: "image",
     ratio: R32,
     label: "Certificates reviewed for gaps",
     brief: "Stack of quality certificates with one flagged as incomplete.",
     alt: "Quality certificates being reviewed for incomplete information",
   },
-  "use-case-field-service-reporting": {
+  "use-case-operational-reporting": {
     kind: "image",
     ratio: R32,
-    label: "Photos and dictated notes on site",
-    brief: "Technician photographing equipment on site and dictating notes.",
-    alt: "Technician capturing photos and notes for a service report",
+    label: "Reports prepared from existing data",
+    brief: "Production, quality and management figures from spreadsheets and systems brought together into a clear report.",
+    alt: "Operational report prepared from spreadsheets and business systems",
   },
-  "use-case-shipment-document-processing": {
+  "use-case-email-and-request-processing": {
     kind: "image",
     ratio: R32,
-    label: "Delivery documents captured once",
-    brief: "Delivery notes and pallets at a dock, a scanner or phone capturing a document.",
-    alt: "Delivery documents being captured at a loading dock",
+    label: "Enquiries sorted and prepared for the team",
+    brief: "Incoming customer emails and requests being sorted, with key details captured and a response prepared for approval.",
+    alt: "Customer emails and requests sorted with responses prepared for approval",
   },
-  "use-case-technical-knowledge-assistant": {
+  "use-case-find-answers-in-your-technical-documents": {
     kind: "image",
     ratio: R32,
     label: "Answers from manuals and records",
     brief: "Maintenance engineer with a tablet next to a machine and a shelf of manuals.",
     alt: "Maintenance engineer finding answers across manuals and service records",
   },
-  "use-case-intelligent-service-intake": {
+  "use-case-quotation-preparation": {
     kind: "image",
     ratio: R32,
-    label: "Request captured before it reaches the team",
-    brief: "Service desk or phone intake with equipment details appearing on screen.",
-    alt: "Service request captured with equipment context at intake",
+    label: "RFQ turned into a draft quotation",
+    brief: "Customer enquiry or RFQ beside a draft quotation on screen, drawn from existing product information and pricing, ready for review.",
+    alt: "Customer enquiry turned into a draft quotation for review",
   },
 
   // Approach (dark section) -------------------------------------------------
