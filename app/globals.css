@@ -47,24 +47,6 @@
   --orange-ink: #c4421d;
   --orange-wash: #ffd2bd;
 
-  /* Cool accent — teal (sits beside forest, reads distinctly bluer/cooler) */
-  --teal: #0f766e;
-  --teal-ink: #0b5952;
-  --teal-wash: #d7ebe8;
-  --teal-line: #a9d5cf;
-  --teal-deep: #0c3b37;
-
-  /* Warm accent — amber / gold (partial family, no base) */
-  --amber-ink: #8a5a0f;
-  --amber-wash: #fbeccb;
-  --amber-line: #ecd49a;
-
-  /* Counterpoint accent — berry (the one true chroma contrast) */
-  --berry: #a63457;
-  --berry-ink: #822741;
-  --berry-wash: #f6dde7;
-  --berry-line: #e7bccc;
-
   --danger: #bb3025;
 }
 @theme inline {
@@ -536,6 +518,10 @@ h1 .orange {
   color: var(--muted);
   margin-bottom: 13px;
 }
+#problems .section-heading .eyebrow,
+#use-cases .section-heading .eyebrow {
+  color: var(--orange-ink);
+}
 h2 {
   font-size: 39px;
   line-height: 1.15;
@@ -553,9 +539,9 @@ h2 {
   gap: 17px;
 }
 .pain-card {
-  border: 1px solid var(--berry-line);
+  border: 1px solid var(--line);
   padding: 28px 26px 0;
-  background: var(--berry-wash);
+  background: var(--surface);
   border-radius: 5px;
 }
 .card-top {
@@ -567,7 +553,7 @@ h2 {
 .card-top .eyebrow {
   font-size: 8px;
   letter-spacing: 1.1px;
-  color: var(--berry-ink);
+  color: var(--orange-ink);
 }
 .card-index {
   font-family: monospace;
@@ -598,10 +584,10 @@ h2 {
   margin-top: 23px;
 }
 .pain-card > a svg {
-  color: var(--berry-ink);
+  color: var(--orange-ink);
 }
 .pain-card:hover {
-  border-color: var(--berry);
+  border-color: var(--orange);
 }
 .under-note {
   display: flex;
@@ -664,7 +650,7 @@ h2 {
 }
 .process-panel {
   background: var(--surface);
-  border: 1px solid var(--amber-line);
+  border: 1px solid var(--line);
   border-radius: 6px;
   padding: 34px;
 }
@@ -676,7 +662,7 @@ h2 {
 }
 .panel-heading .eyebrow {
   font-size: 8px;
-  color: var(--amber-ink);
+  color: var(--leaf-ink);
   margin-bottom: 11px;
 }
 .panel-heading h3 {
@@ -692,14 +678,14 @@ h2 {
 .panel-number {
   font-family: monospace;
   font-size: 20px;
-  color: var(--amber-ink);
+  color: var(--leaf-ink);
   white-space: nowrap;
-  background: var(--amber-wash);
+  background: var(--leaf-wash);
   padding: 5px 10px;
   border-radius: 5px;
 }
 .panel-number > span {
-  color: var(--amber-ink);
+  color: var(--leaf-ink);
   font-size: 12px;
 }
 .flow-comparison {
@@ -824,11 +810,11 @@ h2 {
   transition: background 0.15s;
 }
 .use-case:hover {
-  background: var(--teal-wash);
+  background: var(--tint);
 }
 .use-case:hover .case-icon {
   background: var(--surface);
-  color: var(--teal-ink);
+  color: var(--orange-ink);
 }
 .case-top {
   display: flex;
@@ -842,12 +828,12 @@ h2 {
 .case-icon {
   display: grid;
   place-items: center;
-  background: var(--tint);
+  background: var(--orange-wash);
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid var(--teal-line);
-  color: var(--teal);
+  border: 1px solid var(--orange-wash);
+  color: var(--orange-ink);
 }
 .case-icon svg {
   width: 20px;
@@ -877,7 +863,7 @@ h2 {
   align-items: center;
   gap: 7px;
   margin-top: 23px;
-  color: var(--teal-ink);
+  color: var(--orange-ink);
   font-weight: 600;
 }
 .section-note {
@@ -977,7 +963,7 @@ h2 {
   align-items: center;
 }
 .contact-copy .eyebrow {
-  color: var(--muted);
+  color: var(--orange-ink);
   margin-bottom: 20px;
 }
 .contact-copy h2 {
@@ -1039,7 +1025,7 @@ h2 {
   font-size: 8px;
 }
 .form-heading svg {
-  color: var(--leaf);
+  color: var(--orange-ink);
 }
 .form-row {
   display: grid;

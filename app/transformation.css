@@ -247,7 +247,7 @@
   fill: var(--forest);
 }
 .transformation-section {
-  background: var(--teal-wash);
+  background: var(--sage);
   border-bottom: 1px solid var(--line-strong);
 }
 .document-story {
@@ -271,7 +271,7 @@
   padding: 42px 38px;
 }
 .document-copy > .eyebrow {
-  color: var(--teal-ink);
+  color: var(--leaf-ink);
   font-size: 11px;
 }
 .document-copy h3 {
@@ -282,7 +282,7 @@
   line-height: 1.18;
 }
 .document-copy h3 span {
-  color: var(--teal-ink);
+  color: var(--orange-ink);
 }
 .document-copy > p:not(.eyebrow) {
   color: var(--muted);
@@ -299,7 +299,7 @@
   padding-left: 15px;
 }
 .document-change > div:last-child {
-  border-left-color: var(--teal);
+  border-left-color: var(--leaf);
 }
 .change-label {
   color: var(--muted);
@@ -317,14 +317,14 @@
   line-height: 1.5;
 }
 .document-copy .text-link:hover {
-  color: var(--teal-ink);
+  color: var(--orange-ink);
 }
 .transformation-outcomes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-top: 35px;
-  background: var(--teal-deep);
+  background: var(--forest);
   color: var(--on-dark);
   border-radius: 8px;
   padding: 34px 32px;

@@ -14,17 +14,4 @@ export const palette = {
   onDarkSoft: "#d5dfcc",
   lime: "#c3d9ae",
   orange: "#ed643b",
-  // Accent families (palette v2) — kept in sync with the :root block.
-  teal: "#0f766e",
-  tealInk: "#0b5952",
-  tealWash: "#d7ebe8",
-  tealLine: "#a9d5cf",
-  tealDeep: "#0c3b37",
-  amberInk: "#8a5a0f",
-  amberWash: "#fbeccb",
-  amberLine: "#ecd49a",
-  berry: "#a63457",
-  berryInk: "#822741",
-  berryWash: "#f6dde7",
-  berryLine: "#e7bccc",
 } as const;
