@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { BrandMark } from "@/lib/og";
 import { site } from "@/lib/site";
+import { palette } from "@/lib/theme";
 
 export const alt = `${site.name}: simpler processes, smoother operations`;
 export const size = { width: 1200, height: 630 };
@@ -17,8 +18,8 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "#20352a",
-          color: "#fafbf5",
+          background: palette.forest,
+          color: palette.onDark,
           fontFamily: "sans-serif",
         }}
       >
@@ -26,7 +27,7 @@ export default function OpenGraphImage() {
           <BrandMark size={64} />
           <div style={{ display: "flex", fontSize: 44, fontWeight: 700 }}>
             {site.name}
-            <span style={{ color: "#ed643b" }}>.</span>
+            <span style={{ color: palette.orange }}>.</span>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -48,7 +49,7 @@ export default function OpenGraphImage() {
               lineHeight: 1.08,
               fontWeight: 700,
               letterSpacing: -3,
-              color: "#ff9c68",
+              color: palette.orange,
             }}
           >
             Smoother operations.
@@ -58,7 +59,7 @@ export default function OpenGraphImage() {
               display: "flex",
               marginTop: 32,
               fontSize: 32,
-              color: "#c4d2bd",
+              color: palette.onDarkSoft,
             }}
           >
             Practical AI for manufacturing, logistics and industrial services.
@@ -69,7 +70,7 @@ export default function OpenGraphImage() {
             display: "flex",
             fontSize: 26,
             letterSpacing: 3,
-            color: "#c0d6ac",
+            color: palette.lime,
           }}
         >
           MAKE. MOVE. MAINTAIN.

@@ -1,6 +1,6 @@
 # ProcessSpark visual assets
 
-Generated with the built-in image-generation tool. These are illustrative scenes, not photographs of customer installations. The website labels them accordingly.
+Generated with the built-in image-generation tool. These are illustrative scenes, not photographs of customer installations. The site no longer carries an on-page "AI-generated" label.
 
 ## Saved assets
 

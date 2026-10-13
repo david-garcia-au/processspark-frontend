@@ -30,21 +30,28 @@ export function VisionHero() {
           aria-hidden="true"
         >
           <rect
+            className="target-box"
             x="945"
             y="383"
             width="103"
             height="200"
             rx="5"
             fill="none"
-            stroke="#d4f2ab"
             strokeWidth="1.5"
             vectorEffect="non-scaling-stroke"
           />
-          <rect x="945" y="343" width="249" height="33" rx="3" fill="#dbeec3" />
+          <rect
+            className="target-tag"
+            x="945"
+            y="343"
+            width="249"
+            height="33"
+            rx="3"
+          />
           <text
+            className="target-text"
             x="958"
             y="365"
-            fill="#263a21"
             fontSize="20"
             fontFamily="Arial, sans-serif"
           >
@@ -71,9 +78,6 @@ export function VisionHero() {
         <p>
           <Check size={17} /> More visibility. Less repetitive checking.
         </p>
-        <span className="image-disclosure">
-          Illustrative AI-generated scene · Workflow example
-        </span>
       </figcaption>
     </figure>
   );
@@ -82,9 +86,10 @@ export function VisionHero() {
 export function TransformationVisuals() {
   return (
     <section
-      className="transformation-section section shell"
+      className="transformation-section"
       aria-labelledby="transformation-title"
     >
+      <div className="section shell">
       <div className="section-heading">
         <div>
           <p className="eyebrow">
@@ -114,7 +119,6 @@ export function TransformationVisuals() {
           <span className="photo-badge">
             <Files size={16} /> DOCUMENT INTELLIGENCE
           </span>
-          <figcaption>Illustrative AI-generated scene</figcaption>
         </figure>
         <div className="document-copy">
           <p className="eyebrow">PAPERWORK IN. USEFUL INFORMATION OUT.</p>
@@ -170,6 +174,7 @@ export function TransformationVisuals() {
             <span>Turn images, documents and data into earlier action.</span>
           </p>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { StructuredData } from "@/components/structured-data";
 import { site, siteUrl } from "@/lib/site";
+import { palette } from "@/lib/theme";
 import "./globals.css";
 import "./transformation.css";
+import "./media.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#fafaf7",
+  themeColor: palette.paper,
   colorScheme: "light",
 };
 export default function RootLayout({

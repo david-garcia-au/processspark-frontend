@@ -1,0 +1,191 @@
+/* Media slots: placeholders now, real images and video later (lib/media.ts). */
+.media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--sage);
+  container-type: inline-size;
+}
+.media-asset {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  text-align: center;
+  color: var(--leaf-ink);
+  border: 1px dashed var(--line-strong);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--leaf) 12%, transparent),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 14px,
+      color-mix(in srgb, var(--leaf) 7%, transparent) 14px 15px
+    ),
+    var(--tint);
+}
+.media-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--leaf-line);
+  color: var(--leaf);
+}
+.media-label {
+  max-width: 30ch;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.media-meta {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+}
+.media-dark {
+  color: var(--lime);
+  border-color: var(--line-dark);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--lime) 10%, transparent),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 14px,
+      color-mix(in srgb, var(--on-dark) 5%, transparent) 14px 15px
+    ),
+    var(--forest-soft);
+}
+.media-dark .media-icon {
+  background: transparent;
+  border-color: var(--line-dark);
+  color: var(--lime);
+}
+.media-dark .media-label {
+  color: var(--on-dark);
+}
+.media-dark .media-meta {
+  color: var(--on-dark-muted);
+}
+/* Small slots (approach steps): tighten the placeholder to fit. */
+@container (max-width: 260px) {
+  .media-placeholder {
+    gap: 7px;
+    padding: 10px;
+  }
+  .media-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .media-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .media-label {
+    font-size: 13px;
+  }
+  .media-meta {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+}
+/* Edge-to-edge media at the top of a card. */
+.media-flush {
+  border-radius: 0;
+  border-width: 0 0 1px;
+  border-bottom-style: dashed;
+}
+
+/* Pain cards ---------------------------------------------------------- */
+.pain-card {
+  padding: 0;
+  overflow: hidden;
+  --card-pad: 26px;
+}
+.pain-card > :not(.media) {
+  margin-inline: var(--card-pad);
+}
+.pain-card > .card-top {
+  margin-top: 24px;
+}
+@media (max-width: 1100px) {
+  .pain-card {
+    --card-pad: 22px;
+  }
+}
+
+/* Process explorer ------------------------------------------------------ */
+.panel-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 34px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.panel-top .panel-heading {
+  margin-bottom: 0;
+}
+@media (max-width: 850px) {
+  .panel-top {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Use cases ------------------------------------------------------------- */
+.use-case {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+.use-case-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 30px 30px;
+}
+.use-case-body .case-top {
+  margin-bottom: 20px;
+}
+.use-case-body .case-link {
+  margin-top: auto;
+  padding-top: 23px;
+}
+@media (max-width: 540px) {
+  .use-case-body {
+    padding: 22px 25px 26px;
+  }
+}
+
+/* Approach steps (dark section) ---------------------------------------- */
+.approach-grid .media {
+  margin-bottom: 20px;
+}
+
+/* Contact --------------------------------------------------------------- */
+.contact-media {
+  margin-top: 32px;
+}

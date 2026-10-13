@@ -13,6 +13,7 @@ import {
   Search,
 } from "lucide-react";
 import { capabilities } from "@/lib/content";
+import { Media } from "@/components/media";
 const icons = {
   Activity,
   Files,
@@ -47,16 +48,22 @@ export function ProcessExplorer() {
           value={item.name}
           className="process-panel"
         >
-          <div className="panel-heading">
-            <div>
-              <p className="eyebrow">{item.example}</p>
-              <h3>{item.question}</h3>
-              <p>{item.detail}</p>
+          <div className="panel-top">
+            <div className="panel-heading">
+              <div>
+                <p className="eyebrow">{item.example}</p>
+                <h3>{item.question}</h3>
+                <p>{item.detail}</p>
+              </div>
+              <span className="panel-number">
+                0{capabilities.indexOf(item) + 1}
+                <span> / 07</span>
+              </span>
             </div>
-            <span className="panel-number">
-              0{capabilities.indexOf(item) + 1}
-              <span> / 07</span>
-            </span>
+            <Media
+              slot={`capability-${item.name.toLowerCase()}`}
+              sizes="(max-width: 850px) 100vw, 50vw"
+            />
           </div>
           <div className="flow-comparison">
             <div className="flow-before">
