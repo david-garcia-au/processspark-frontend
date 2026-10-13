@@ -1,7 +1,7 @@
 /* Image-led stories and an accessible reading scale for the refreshed landing page. */
 .business-band {
-  background: #20352a;
-  color: #fafbf5;
+  background: var(--forest);
+  color: var(--on-dark);
   padding: 26px 0 24px;
 }
 .business-promise {
@@ -12,13 +12,13 @@
 }
 .business-promise > span {
   display: block;
-  color: #ff9c68;
+  color: var(--lime);
   margin-top: 5px;
 }
 .business-audience {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid #ffffff30;
+  border-top: 1px solid var(--line-dark);
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -30,7 +30,7 @@
   line-height: 1.4;
   font-weight: 600;
   letter-spacing: 1.6px;
-  color: #c4d2bd;
+  color: var(--on-dark-soft);
   margin-bottom: 10px;
 }
 .business-intro strong {
@@ -54,16 +54,16 @@
   align-items: center;
   gap: 10px;
   padding: 13px 16px;
-  border: 1px solid #ffffff26;
+  border: 1px solid var(--line-dark);
   border-radius: 5px;
-  background: #ffffff06;
+  background: color-mix(in srgb, var(--on-dark) 3%, transparent);
   font-size: 17px;
   font-weight: 500;
 }
 .business-sectors svg {
   width: 24px;
   height: 24px;
-  color: #c0d6ac;
+  color: var(--lime);
   flex-shrink: 0;
   stroke-width: 1.6;
 }
@@ -147,10 +147,10 @@
 .vision-hero {
   margin: 0;
   overflow: hidden;
-  background: #20352a;
-  color: #fff;
+  background: var(--forest);
+  color: var(--on-dark);
   border-radius: 9px;
-  box-shadow: 0 20px 45px #20352a18;
+  box-shadow: 0 20px 45px color-mix(in srgb, var(--forest) 9%, transparent);
 }
 .vision-photo {
   position: relative;
@@ -165,7 +165,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #10201722, transparent 35%, #102017d9);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--forest-deep) 13%, transparent), transparent 35%, color-mix(in srgb, var(--forest-deep) 85%, transparent));
   z-index: 1;
 }
 .photo-badge {
@@ -177,10 +177,10 @@
   align-items: center;
   gap: 9px;
   padding: 11px 13px;
-  border: 1px solid #ffffff55;
+  border: 1px solid color-mix(in srgb, var(--on-dark) 33%, transparent);
   border-radius: 4px;
-  background: #16281fe6;
-  color: #f0f4e9;
+  background: color-mix(in srgb, var(--forest-deep) 90%, transparent);
+  color: var(--on-dark);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.1px;
@@ -195,14 +195,14 @@
 .vision-photo-caption p {
   font-size: 11px;
   letter-spacing: 1.7px;
-  color: #d7dfcc;
+  color: var(--on-dark-soft);
   margin-bottom: 10px;
 }
 .vision-photo-caption h2 {
   font-size: 32px;
   line-height: 1.14;
   letter-spacing: -0.9px;
-  color: #fff;
+  color: var(--on-dark);
 }
 .vision-target {
   position: absolute;
@@ -221,10 +221,10 @@
   justify-content: space-between;
   gap: 9px;
   font-size: 12px;
-  color: #e8eedf;
+  color: var(--on-dark-soft);
 }
 .vision-steps svg {
-  color: #9bba86;
+  color: var(--lime);
 }
 .vision-caption > p {
   display: flex;
@@ -235,24 +235,28 @@
   font-weight: 500;
 }
 .vision-caption > p svg {
-  color: #bfdb98;
+  color: var(--lime);
 }
-.image-disclosure {
-  display: block;
-  margin-top: 13px;
-  font-size: 10px;
-  color: #bdcabb;
+.vision-target .target-box {
+  stroke: var(--lime);
+}
+.vision-target .target-tag {
+  fill: var(--leaf-wash-strong);
+}
+.vision-target .target-text {
+  fill: var(--forest);
 }
 .transformation-section {
-  border-bottom: 1px solid var(--line);
+  background: var(--teal-wash);
+  border-bottom: 1px solid var(--line-strong);
 }
 .document-story {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid #d7dfd0;
+  border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
-  background: #f0f3e9;
+  background: var(--surface);
 }
 .document-photo {
   margin: 0;
@@ -263,21 +267,11 @@
   object-fit: cover;
   object-position: 38% center;
 }
-.document-photo figcaption {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  background: #17251ee0;
-  padding: 5px 8px;
-  color: #f0f2e8;
-  font-size: 10px;
-  border-radius: 3px;
-}
 .document-copy {
   padding: 42px 38px;
 }
 .document-copy > .eyebrow {
-  color: #5c704d;
+  color: var(--teal-ink);
   font-size: 11px;
 }
 .document-copy h3 {
@@ -288,10 +282,10 @@
   line-height: 1.18;
 }
 .document-copy h3 span {
-  color: #526a40;
+  color: var(--teal-ink);
 }
 .document-copy > p:not(.eyebrow) {
-  color: #5c6555;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -301,14 +295,14 @@
   gap: 17px;
 }
 .document-change > div {
-  border-left: 2px solid #bac3ae;
+  border-left: 2px solid var(--line-strong);
   padding-left: 15px;
 }
 .document-change > div:last-child {
-  border-left-color: #648b42;
+  border-left-color: var(--teal);
 }
 .change-label {
-  color: #6b735f;
+  color: var(--muted);
   font-size: 10px;
   letter-spacing: 1.2px;
   font-weight: 700;
@@ -322,11 +316,18 @@
   font-size: 14px;
   line-height: 1.5;
 }
+.document-copy .text-link:hover {
+  color: var(--teal-ink);
+}
 .transformation-outcomes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-top: 35px;
+  background: var(--teal-deep);
+  color: var(--on-dark);
+  border-radius: 8px;
+  padding: 34px 32px;
 }
 .transformation-outcomes > div {
   display: flex;
@@ -334,7 +335,7 @@
   gap: 15px;
 }
 .transformation-outcomes svg {
-  color: #687f52;
+  color: var(--lime);
   margin-top: 3px;
 }
 .transformation-outcomes p {
@@ -348,7 +349,7 @@
 .transformation-outcomes p span {
   font-size: 15px;
   line-height: 1.65;
-  color: var(--muted);
+  color: var(--on-dark-muted);
 }
 
 /* Specificity keeps the new type scale consistent across existing breakpoints. */
@@ -369,7 +370,7 @@ body .section-heading > p {
   line-height: 1.75;
 }
 body .pain-card > p,
-body .use-case > p:not(.eyebrow) {
+body .use-case-body > p:not(.eyebrow) {
   font-size: 16px;
   line-height: 1.7;
 }
