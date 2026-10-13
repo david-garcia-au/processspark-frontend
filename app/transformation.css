@@ -204,6 +204,82 @@
   letter-spacing: -0.9px;
   color: var(--on-dark);
 }
+.vision-extract {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  padding: 15px 17px 16px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--forest-deep) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--on-dark) 16%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px color-mix(in srgb, #000 35%, transparent);
+}
+.vision-extract-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--on-dark);
+  margin-bottom: 13px;
+}
+.vision-extract-tag {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--lime);
+}
+.vision-extract-rows {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  margin: 0;
+}
+.vision-extract-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.vision-extract-row dt {
+  font-size: 10px;
+  color: var(--on-dark-muted);
+}
+.vision-extract-row dd {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: color-mix(in srgb, var(--on-dark) 92%, transparent);
+  color: var(--forest-deep);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+.vision-extract-row dd svg {
+  color: var(--leaf);
+  flex-shrink: 0;
+}
+@media (max-width: 540px) {
+  .vision-extract {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 13px 14px;
+  }
+  .vision-extract-rows {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
 .vision-target {
   position: absolute;
   inset: 0;
@@ -219,12 +295,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 9px;
+  gap: 10px;
   font-size: 12px;
-  color: var(--on-dark-soft);
+  color: var(--on-dark);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-dark);
 }
-.vision-steps svg {
-  color: var(--lime);
+.vision-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.25;
+}
+.vision-step-ic {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--on-dark) 10%, transparent);
+  border: 1px solid var(--line-dark);
+  flex-shrink: 0;
+}
+.vision-step-ic svg {
+  color: var(--on-dark);
+}
+.vision-step-arrow {
+  color: var(--orange);
+  flex-shrink: 0;
 }
 .vision-caption > p {
   display: flex;

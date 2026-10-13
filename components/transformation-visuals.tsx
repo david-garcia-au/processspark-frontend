@@ -2,52 +2,100 @@ import Image from "next/image";
 import {
   ArrowRight,
   Check,
+  FileText,
   Files,
-  ImageIcon,
   ScanLine,
   Timer,
   TrendingUp,
+  User,
 } from "lucide-react";
 
 export function VisionHero() {
   return (
     <figure className="vision-hero">
       <div className="vision-photo">
-        {/* Placeholder — awaiting a real document-processing asset. Fills the
-            existing container exactly, as the previous photo did. */}
-        <div
-          className="media-placeholder"
-          style={{ position: "absolute", inset: 0, borderRadius: 0 }}
-          aria-hidden="true"
-        >
-          <span className="media-icon">
-            <ImageIcon size={22} />
-          </span>
-          <span className="media-label">
-            Supplier certificate or delivery note entering a digital workflow —
-            fields extracted, checked and ready for review
-          </span>
-          <span className="media-meta">IMAGE · PLACEHOLDER</span>
-        </div>
+        {/* Backdrop photo — replace src with the clean (overlay-free) hero
+            scene. The UI below is recreated in HTML so no text is baked in. */}
+        <Image
+          src="/images/hero.png"
+          alt="A worker reviewing information captured from a stack of supplier certificates on screen in a factory"
+          fill
+          sizes="(max-width: 850px) 100vw, 50vw"
+          priority
+        />
         <span className="photo-badge">
           <ScanLine size={16} /> LESS PAPERWORK. MORE PRODUCTIVITY.
         </span>
-        <div className="vision-photo-caption">
-          <p>FROM MANUAL DATA ENTRY</p>
-          <h2>
-            To information ready
-            <br />
-            when you need it.
-          </h2>
+        <div className="vision-extract">
+        <div className="vision-extract-head">
+          <FileText size={16} />
+          <span>Information extracted</span>
+          <span className="vision-extract-tag">
+            <Check size={12} /> All key information captured
+          </span>
+        </div>
+        <dl className="vision-extract-rows">
+          <div className="vision-extract-row">
+            <dt>Supplier</dt>
+            <dd>
+              ABC Components Ltd <Check size={12} />
+            </dd>
+          </div>
+          <div className="vision-extract-row">
+            <dt>Part number</dt>
+            <dd>
+              AC-3487 <Check size={12} />
+            </dd>
+          </div>
+          <div className="vision-extract-row">
+            <dt>Material</dt>
+            <dd>
+              SS316 <Check size={12} />
+            </dd>
+          </div>
+          <div className="vision-extract-row">
+            <dt>Batch number</dt>
+            <dd>
+              B-2407-15 <Check size={12} />
+            </dd>
+          </div>
+          <div className="vision-extract-row">
+            <dt>Date of manufacture</dt>
+            <dd>
+              12 JUL 2024 <Check size={12} />
+            </dd>
+          </div>
+          <div className="vision-extract-row">
+            <dt>Test result</dt>
+            <dd>
+              PASS <Check size={12} />
+            </dd>
+          </div>
+        </dl>
         </div>
       </div>
       <figcaption className="vision-caption">
         <div className="vision-steps">
-          <span>Documents received</span>
-          <ArrowRight size={16} />
-          <span>Information extracted</span>
-          <ArrowRight size={16} />
-          <span>People review</span>
+          <span className="vision-step">
+            <span className="vision-step-ic">
+              <FileText size={16} />
+            </span>
+            Documents received
+          </span>
+          <ArrowRight size={16} className="vision-step-arrow" />
+          <span className="vision-step">
+            <span className="vision-step-ic">
+              <ScanLine size={16} />
+            </span>
+            Information extracted
+          </span>
+          <ArrowRight size={16} className="vision-step-arrow" />
+          <span className="vision-step">
+            <span className="vision-step-ic">
+              <User size={16} />
+            </span>
+            People review
+          </span>
         </div>
         <p>
           <Check size={17} /> Less copying. Fewer errors. Faster processing.
