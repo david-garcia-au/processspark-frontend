@@ -83,15 +83,17 @@ export const media: Record<string, MediaItem> = {
     label: "Information brought together into a report",
     brief:
       "Spreadsheets and business-system data brought together into a clear production or management report, with key changes highlighted.",
-    alt: "Information from several sources prepared into an operational report",
+    alt: "A person at a desk in a factory reviewing a production overview dashboard with output, quality by line, recent orders and open issues",
+    src: "/images/dashboard.webp",
   },
   "capability-requests": {
-    kind: "video",
+    kind: "image",
     ratio: R169,
     label: "Emails and requests sorted and routed",
     brief:
       "Short loop: incoming customer emails and requests being read, classified and routed, with important details captured.",
-    alt: "Customer emails and requests being sorted, captured and routed",
+    src: "/images/email-manager-wide.webp",
+    alt: "Person reviewing a ProcessSpark inbox on a monitor, with an AI-drafted reply, extracted key details and an Approve and send button",
   },
   "capability-searching": {
     kind: "image",
@@ -99,7 +101,8 @@ export const media: Record<string, MediaItem> = {
     label: "A question answered from company manuals",
     brief:
       "Engineer asking a question on a tablet in front of equipment, answer shown with source references.",
-    alt: "Engineer asking a technical question and receiving a sourced answer",
+    alt: "A person at a desk asking an assistant to summarise a supply agreement, with the contract on one side and the key details listed on the other",
+    src: "/images/contract-summary.webp",
   },
   "capability-writing": {
     kind: "image",
@@ -118,12 +121,13 @@ export const media: Record<string, MediaItem> = {
     alt: "Voice notes and photos turned into a structured service report",
   },
   "capability-inspecting": {
-    kind: "video",
+    kind: "image",
     ratio: R169,
     label: "Camera inspecting products on a line",
     brief:
-      "Short loop: products moving under a machine-vision camera, one flagged for review. Subtle, realistic.",
-    alt: "Camera inspecting products on a production line",
+      "Products moving along a bottling line under a machine-vision camera. Could be replaced later by a short loop with one product flagged for review.",
+    alt: "A machine-vision camera mounted above amber glass bottles moving along a bottling line",
+    src: "/images/bottle-inspection.webp",
   },
 
   // Use cases ---------------------------------------------------------------
@@ -153,14 +157,16 @@ export const media: Record<string, MediaItem> = {
     ratio: R32,
     label: "Enquiries sorted and prepared for the team",
     brief: "Incoming customer emails and requests being sorted, with key details captured and a response prepared for approval.",
-    alt: "Customer emails and requests sorted with responses prepared for approval",
+    src: "/images/email-manager.webp",
+    alt: "Person reviewing a ProcessSpark inbox on a monitor, with an AI-drafted reply, extracted key details and an Approve and send button",
   },
   "use-case-find-answers-in-your-technical-documents": {
     kind: "image",
     ratio: R32,
     label: "Answers from manuals and records",
     brief: "Maintenance engineer with a tablet next to a machine and a shelf of manuals.",
-    alt: "Maintenance engineer finding answers across manuals and service records",
+    src: "/images/error-code-machine.webp",
+    alt: "Maintenance engineer asking the ProcessSpark Assistant about error code E-102 on a pump, with the answer and manual references on a tablet",
   },
   "use-case-quotation-preparation": {
     kind: "image",
