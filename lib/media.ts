@@ -45,7 +45,8 @@ export const media: Record<string, MediaItem> = {
     label: "Team under pressure on a busy floor",
     brief:
       "Operations lead on a busy warehouse or production floor, surrounded by work waiting to be done. Natural light, documentary feel.",
-    alt: "Operations team handling a busy shift on the factory floor",
+    alt: "Warehouse manager checking stock against a clipboard beside tall pallet racking",
+    src: "/images/warehouse-manager.webp",
   },
   "pain-quality-manufacturing": {
     kind: "image",
@@ -53,7 +54,8 @@ export const media: Record<string, MediaItem> = {
     label: "Inspector checking product and records",
     brief:
       "Quality inspector checking a product by eye with a paper record in hand. Close, tactile, shallow depth of field.",
-    alt: "Quality inspector checking a product against a paper record",
+    alt: "Quality inspector filling in a paper record beside machined parts on a production line",
+    src: "/images/manufacturing-traveller.webp",
   },
   "pain-service-maintenance": {
     kind: "image",
@@ -61,7 +63,8 @@ export const media: Record<string, MediaItem> = {
     label: "Technician writing up a job",
     brief:
       "Service technician beside equipment, writing notes after a job. Phone or tablet in hand, workshop or site setting.",
-    alt: "Service technician writing up notes after a maintenance job",
+    alt: "Service technician with a multimeter reviewing a job sheet beside a boiler",
+    src: "/images/boiler-room.webp",
   },
 
   // Process explorer (one per capability) -----------------------------------
@@ -71,7 +74,8 @@ export const media: Record<string, MediaItem> = {
     label: "Documents read and checked automatically",
     brief:
       "Supplier certificate beside a structured on-screen table of extracted fields with one discrepancy highlighted.",
-    alt: "Certificate being read with extracted fields shown on screen",
+    alt: "A paper inspection record with its handwritten fields highlighted, next to a panel listing the extracted information: part number, description, date, batch number, measurements, visual inspection result, inspector and time",
+    src: "/images/paper-form-fields.webp",
   },
   "capability-reporting": {
     kind: "image",

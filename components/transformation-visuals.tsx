@@ -17,7 +17,7 @@ export function VisionHero() {
         {/* Backdrop photo — replace src with the clean (overlay-free) hero
             scene. The UI below is recreated in HTML so no text is baked in. */}
         <Image
-          src="/images/hero.png"
+          src="/images/hero.webp"
           alt="A worker reviewing information captured from a stack of supplier certificates on screen in a factory"
           fill
           sizes="(max-width: 850px) 100vw, 50vw"
