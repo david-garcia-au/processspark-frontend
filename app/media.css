@@ -14,6 +14,28 @@
   height: 100%;
   object-fit: cover;
 }
+/* Colour grade: pull photos towards the site palette (forest, leaf, orange).
+   A light filter on the asset plus a soft-light tint over it. */
+.media:not(.media-placeholder) .media-asset {
+  filter: saturate(0.82) sepia(0.14) contrast(1.03);
+}
+.media:not(.media-placeholder)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--orange) 22%, transparent),
+      transparent 55%
+    ),
+    color-mix(in srgb, var(--forest-soft) 30%, transparent);
+  mix-blend-mode: soft-light;
+}
+.vision-photo img {
+  filter: saturate(0.82) sepia(0.14) contrast(1.03);
+}
 .media-placeholder {
   display: flex;
   flex-direction: column;
@@ -188,4 +210,32 @@
 /* Contact --------------------------------------------------------------- */
 .contact-media {
   margin-top: 32px;
+}
+/* Two-column layout: a fixed-height crop so the photo ends level with the
+   bottom of the form. The form wraps differently at each width, so the height
+   is stepped per range. !important overrides the aspect-ratio set inline by
+   <Media>. Re-check these if the form's fields or copy change. */
+@media (min-width: 851px) {
+  .contact-media {
+    aspect-ratio: auto !important;
+    height: 247px;
+  }
+  .contact-media .media-asset {
+    object-position: 50% 30%;
+  }
+}
+@media (min-width: 930px) {
+  .contact-media {
+    height: 349px;
+  }
+}
+@media (min-width: 1000px) {
+  .contact-media {
+    height: 307px;
+  }
+}
+@media (min-width: 1200px) {
+  .contact-media {
+    height: 291px;
+  }
 }

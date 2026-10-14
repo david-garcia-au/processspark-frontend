@@ -219,6 +219,7 @@ export const media: Record<string, MediaItem> = {
     ratio: R169,
     label: "People talking through a process",
     brief: "Two or three people at a workbench or desk talking through a process, warm and unposed.",
-    alt: "People talking through a process together",
+    src: "/images/workflow.webp",
+    alt: "A team in a meeting room while one person points to a whiteboard comparing the current email-handling process with an improved process using AI",
   },
 };
