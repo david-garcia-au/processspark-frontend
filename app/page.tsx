@@ -96,19 +96,24 @@ export default function Home() {
               </p>
               <ul className="business-sectors" aria-label="Business sectors">
                 <li>
-                  <Factory /> Manufacturing
+                  <Factory aria-hidden="true" />
+                  <span className="sector-label">Manufacturing</span>
                 </li>
                 <li>
-                  <Layers3 /> Engineering
+                  <Layers3 aria-hidden="true" />
+                  <span className="sector-label">Engineering</span>
                 </li>
                 <li>
-                  <Truck /> Logistics
+                  <Truck aria-hidden="true" />
+                  <span className="sector-label">Logistics</span>
                 </li>
                 <li>
-                  <Boxes /> Warehousing
+                  <Boxes aria-hidden="true" />
+                  <span className="sector-label">Warehousing</span>
                 </li>
                 <li>
-                  <Wrench /> Industrial services
+                  <Wrench aria-hidden="true" />
+                  <span className="sector-label">Industrial services</span>
                 </li>
               </ul>
             </div>

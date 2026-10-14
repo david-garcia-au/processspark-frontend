@@ -27,51 +27,83 @@ export function VisionHero() {
           <ScanLine size={16} /> LESS PAPERWORK. MORE PRODUCTIVITY.
         </span>
         <div className="vision-extract">
-        <div className="vision-extract-head">
-          <FileText size={16} />
-          <span>Information extracted</span>
-          <span className="vision-extract-tag">
-            <Check size={12} /> All key information captured
-          </span>
-        </div>
-        <dl className="vision-extract-rows">
-          <div className="vision-extract-row">
-            <dt>Supplier</dt>
-            <dd>
-              ABC Components Ltd <Check size={12} />
-            </dd>
+          <div className="vision-extract-head">
+            <span className="vision-extract-ic">
+              <FileText size={14} />
+            </span>
+            <span>Information extracted</span>
           </div>
-          <div className="vision-extract-row">
-            <dt>Part number</dt>
-            <dd>
-              AC-3487 <Check size={12} />
-            </dd>
+          <dl className="vision-extract-rows">
+            <div className="vision-extract-row">
+              <dt>Supplier</dt>
+              <dd>
+                <span>ABC Components Ltd</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+            <div className="vision-extract-row">
+              <dt>Part number</dt>
+              <dd>
+                <span>AC-3487</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+            <div className="vision-extract-row">
+              <dt>Description</dt>
+              <dd>
+                <span>Stainless Steel Fitting</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+            <div className="vision-extract-row">
+              <dt>Batch number</dt>
+              <dd>
+                <span>B-2407-15</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+            <div className="vision-extract-row">
+              <dt>Material</dt>
+              <dd>
+                <span>SS316</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+            <div className="vision-extract-row">
+              <dt>Date of manufacture</dt>
+              <dd>
+                <span>12 JUL 2024</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+            <div className="vision-extract-row">
+              <dt>Test result</dt>
+              <dd>
+                <span>PASS</span>
+                <span className="vcheck">
+                  <Check size={11} />
+                </span>
+              </dd>
+            </div>
+          </dl>
+          <div className="vision-extract-foot">
+            <span className="vcheck">
+              <Check size={11} />
+            </span>
+            All key information captured
           </div>
-          <div className="vision-extract-row">
-            <dt>Material</dt>
-            <dd>
-              SS316 <Check size={12} />
-            </dd>
-          </div>
-          <div className="vision-extract-row">
-            <dt>Batch number</dt>
-            <dd>
-              B-2407-15 <Check size={12} />
-            </dd>
-          </div>
-          <div className="vision-extract-row">
-            <dt>Date of manufacture</dt>
-            <dd>
-              12 JUL 2024 <Check size={12} />
-            </dd>
-          </div>
-          <div className="vision-extract-row">
-            <dt>Test result</dt>
-            <dd>
-              PASS <Check size={12} />
-            </dd>
-          </div>
-        </dl>
         </div>
       </div>
       <figcaption className="vision-caption">
@@ -97,9 +129,6 @@ export function VisionHero() {
             People review
           </span>
         </div>
-        <p>
-          <Check size={17} /> Less copying. Fewer errors. Faster processing.
-        </p>
       </figcaption>
     </figure>
   );
