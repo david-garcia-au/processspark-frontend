@@ -515,12 +515,8 @@ h1 .orange {
   margin-bottom: 39px;
 }
 .section-heading .eyebrow {
-  color: var(--muted);
-  margin-bottom: 13px;
-}
-#problems .section-heading .eyebrow,
-#use-cases .section-heading .eyebrow {
   color: var(--orange-ink);
+  margin-bottom: 13px;
 }
 h2 {
   font-size: 39px;

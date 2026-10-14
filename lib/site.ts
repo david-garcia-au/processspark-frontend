@@ -71,8 +71,8 @@ export const site = {
       alt: "Illustrative bottling line with a vision camera above bottles moving along a conveyor",
     },
     {
-      path: "/images/document-processing.webp",
-      alt: "Illustrative quality-control employee scanning paper inspection forms beside a laptop and a stack of records",
+      path: "/images/copy-by-hand.webp",
+      alt: "Illustrative worker copying details from a supplier certificate into a notebook, with the same details already entered in a spreadsheet on a laptop",
     },
   ],
 } as const;

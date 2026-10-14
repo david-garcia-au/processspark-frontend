@@ -36,6 +36,27 @@
 .vision-photo img {
   filter: saturate(0.82) sepia(0.14) contrast(1.03);
 }
+/* Document-processing photo: same grade and tint as the Media slots. */
+.document-photo {
+  isolation: isolate;
+}
+.document-photo img {
+  filter: saturate(0.82) sepia(0.14) contrast(1.03);
+}
+.document-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--orange) 22%, transparent),
+      transparent 55%
+    ),
+    color-mix(in srgb, var(--forest-soft) 30%, transparent);
+  mix-blend-mode: soft-light;
+}
 .media-placeholder {
   display: flex;
   flex-direction: column;
@@ -214,44 +235,47 @@
   /* Lets the overlay below scale with the photo width (cqw units). */
   container-type: inline-size;
 }
-/* The three promises sit centred on the photo as a glass panel, like the
-   hero. Everything is sized in cqw so it scales with the photo. */
+/* The three promises sit on the photo as separate glass pills, stacked on the
+   left and vertically centred. Everything is sized in cqw so it scales with
+   the photo. (Previously one centred panel with all three.) */
 .contact-photo-notes {
   position: absolute;
   z-index: 2;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: max-content;
-  max-width: calc(100% - 16px);
+  inset: 0;
   margin: 0;
-  padding: 3.6cqw 4.2cqw;
+  padding: 0 0 0 4cqw;
   list-style: none;
-  display: grid;
-  gap: 2.6cqw;
-  border-radius: 3.2cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.72cqw;
+  pointer-events: none;
   color: var(--on-dark);
-  font-size: 3.7cqw;
+  font-size: 3.2cqw;
   font-weight: 500;
   line-height: 1.3;
-  background: color-mix(in srgb, var(--forest) 74%, transparent);
-  border: 1px solid color-mix(in srgb, var(--on-dark) 24%, transparent);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 22px 48px color-mix(in srgb, #000 42%, transparent);
 }
 .contact-photo-notes li {
   display: flex;
   align-items: center;
-  gap: 2.6cqw;
+  gap: 2.4cqw;
+  max-width: calc(100% - 8cqw);
+  padding: 2.2cqw 3.4cqw 2.2cqw 2.6cqw;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--forest) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--on-dark) 24%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 14px 34px color-mix(in srgb, #000 38%, transparent);
 }
 .contact-photo-notes .vcheck {
-  width: 4.6cqw;
-  height: 4.6cqw;
+  width: 4.4cqw;
+  height: 4.4cqw;
 }
 .contact-photo-notes .vcheck svg {
-  width: 3cqw;
-  height: 3cqw;
+  width: 2.9cqw;
+  height: 2.9cqw;
 }
 
 /* Pain cards: crop 20% off the bottom of the 3:2 photos (15:8). */

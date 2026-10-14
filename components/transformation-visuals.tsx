@@ -162,8 +162,8 @@ export function TransformationVisuals() {
       <article className="document-story">
         <figure className="document-photo">
           <Image
-            src="/images/document-processing.webp"
-            alt="Illustrative quality-control employee scanning paper inspection forms beside a laptop and a stack of records"
+            src="/images/copy-by-hand.webp"
+            alt="Illustrative worker copying details from a supplier certificate into a notebook, with the same details already entered in a spreadsheet on a laptop"
             fill
             sizes="(max-width: 850px) 100vw, 50vw"
           />
