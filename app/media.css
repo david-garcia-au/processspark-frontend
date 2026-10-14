@@ -208,34 +208,73 @@
 }
 
 /* Contact --------------------------------------------------------------- */
+.contact-photo {
+  position: relative;
+  margin-top: 28px;
+  /* Lets the overlay below scale with the photo width (cqw units). */
+  container-type: inline-size;
+}
+/* The three promises sit centred on the photo as a glass panel, like the
+   hero. Everything is sized in cqw so it scales with the photo. */
+.contact-photo-notes {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: calc(100% - 16px);
+  margin: 0;
+  padding: 3.6cqw 4.2cqw;
+  list-style: none;
+  display: grid;
+  gap: 2.6cqw;
+  border-radius: 3.2cqw;
+  color: var(--on-dark);
+  font-size: 3.7cqw;
+  font-weight: 500;
+  line-height: 1.3;
+  background: color-mix(in srgb, var(--forest) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--on-dark) 24%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 22px 48px color-mix(in srgb, #000 42%, transparent);
+}
+.contact-photo-notes li {
+  display: flex;
+  align-items: center;
+  gap: 2.6cqw;
+}
+.contact-photo-notes .vcheck {
+  width: 4.6cqw;
+  height: 4.6cqw;
+}
+.contact-photo-notes .vcheck svg {
+  width: 3cqw;
+  height: 3cqw;
+}
+
+/* Pain cards: crop 20% off the bottom of the 3:2 photos (15:8). */
+.pain-card .media {
+  aspect-ratio: 15 / 8 !important;
+}
+.pain-card .media-asset {
+  object-position: 50% 0;
+}
+/* Contact photo crop. !important overrides the aspect-ratio set inline by
+   <Media>. Below 1200px it is 4:3 so the overlay has room and the photo is not
+   squeezed. From 1200px (two wide columns) it is a fixed height that ends level
+   with the bottom of the form. Re-check that height if the form's fields or the
+   copy above the photo change. */
 .contact-media {
-  margin-top: 32px;
+  aspect-ratio: 4 / 3 !important;
 }
-/* Two-column layout: a fixed-height crop so the photo ends level with the
-   bottom of the form. The form wraps differently at each width, so the height
-   is stepped per range. !important overrides the aspect-ratio set inline by
-   <Media>. Re-check these if the form's fields or copy change. */
-@media (min-width: 851px) {
-  .contact-media {
-    aspect-ratio: auto !important;
-    height: 247px;
-  }
-  .contact-media .media-asset {
-    object-position: 50% 30%;
-  }
-}
-@media (min-width: 930px) {
-  .contact-media {
-    height: 349px;
-  }
-}
-@media (min-width: 1000px) {
-  .contact-media {
-    height: 307px;
-  }
+.contact-media .media-asset {
+  object-position: 50% 30%;
 }
 @media (min-width: 1200px) {
   .contact-media {
-    height: 291px;
+    aspect-ratio: auto !important;
+    height: 421px;
   }
 }

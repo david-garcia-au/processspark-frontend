@@ -316,18 +316,29 @@ export default function Home() {
               with. We’ll help you identify whether there’s a practical way to
               make the work easier.
             </p>
-            <div className="contact-benefits">
-              <span>
-                <Check size={18} /> A conversation about your challenges
-              </span>
-              <span>
-                <Check size={18} /> An honest assessment of the opportunity
-              </span>
-              <span>
-                <Check size={18} /> A clear and practical next step
-              </span>
+            <div className="contact-photo">
+              <Media slot="contact-team" className="contact-media" />
+              <ul className="contact-photo-notes">
+                <li>
+                  <span className="vcheck">
+                    <Check strokeWidth={3} />
+                  </span>
+                  A conversation about your challenges
+                </li>
+                <li>
+                  <span className="vcheck">
+                    <Check strokeWidth={3} />
+                  </span>
+                  An honest assessment of the opportunity
+                </li>
+                <li>
+                  <span className="vcheck">
+                    <Check strokeWidth={3} />
+                  </span>
+                  A clear and practical next step
+                </li>
+              </ul>
             </div>
-            <Media slot="contact-team" className="contact-media" />
             <div className="contact-signoff">
               <MoveUpRight size={33} />
               <span>

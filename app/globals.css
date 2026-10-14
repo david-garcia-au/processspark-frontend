@@ -976,20 +976,6 @@ h2 {
   color: var(--muted);
   max-width: 375px;
 }
-.contact-benefits {
-  display: grid;
-  gap: 13px;
-  margin-top: 28px;
-  font-size: 12px;
-}
-.contact-benefits > span {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.contact-benefits svg {
-  color: var(--leaf);
-}
 .contact-signoff {
   display: flex;
   align-items: center;
