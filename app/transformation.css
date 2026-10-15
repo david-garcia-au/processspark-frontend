@@ -610,13 +610,6 @@ body .form-status {
 body .download-brief {
   font-size: 14px;
 }
-body .footer-main p,
-body .footer-main > a:last-child {
-  font-size: 15px;
-}
-body .footer-bottom {
-  font-size: 12px;
-}
 @media (min-width: 851px) {
   body .desktop-nav {
     font-size: 14px;
@@ -844,14 +837,5 @@ body .footer-bottom {
   }
   body .agnostic {
     grid-template-columns: 1fr;
-  }
-  body .footer-main {
-    gap: 25px;
-  }
-  body .footer-main > a:last-child {
-    margin-left: 0;
-  }
-  body .footer-bottom {
-    font-size: 11px;
   }
 }

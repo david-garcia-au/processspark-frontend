@@ -23,7 +23,7 @@ The reference's clear industrial hierarchy, spacious sections, sector groupings 
 - `lib/content.ts`: typed process, pain-point and use-case copy.
 - `components/process-explorer.tsx`: Radix accessible tabs, with automatic keyboard navigation.
 - `components/header.tsx`: responsive navigation.
-- `components/process-brief.tsx`: validated email draft and local brief download.
+- `components/process-brief.tsx`: contact form that posts to `/api/contact` (SES email) with a local brief download.
 - `components/transformation-visuals.tsx`: conveyor inspection hero and document-processing story, using optimised local images.
 - `docs/visual-assets.md`: image provenance, generation prompts and saved asset paths.
 - `components/inspection-visual.tsx`: preserved original SVG illustration, no longer displayed on the homepage.

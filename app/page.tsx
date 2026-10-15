@@ -11,7 +11,8 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
-import { Header, Brand } from "@/components/header";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { ProcessExplorer } from "@/components/process-explorer";
 import { UseCaseTiles } from "@/components/use-case-tiles";
@@ -309,23 +310,7 @@ export default function Home() {
           <ProcessBrief />
         </section>
       </main>
-      <footer>
-        <div className="shell footer-main">
-          <Brand />
-          <p>
-            Less manual work. <br />
-            More room for what matters.
-          </p>
-          <a href="#contact">
-            Let’s talk process <ArrowUpRight size={18} />
-          </a>
-        </div>
-        <div className="shell footer-bottom">
-          <span>© {new Date().getFullYear()} ProcessSpark</span>
-          <span>Practical solutions for real-world operations.</span>
-          <a href="#main">Back to top ↑</a>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

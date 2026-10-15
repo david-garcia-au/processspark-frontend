@@ -5,6 +5,7 @@ import { palette } from "@/lib/theme";
 import "./globals.css";
 import "./transformation.css";
 import "./media.css";
+import "./footer.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -68,7 +69,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body id="top">
         <StructuredData />
         {children}
       </body>

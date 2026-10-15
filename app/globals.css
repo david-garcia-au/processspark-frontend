@@ -1136,39 +1136,6 @@ h2 {
   margin-top: 12px;
   min-height: 16px;
 }
-footer {
-  border-top: 1px solid var(--line-strong);
-  background: var(--tint);
-}
-.footer-main {
-  display: flex;
-  align-items: center;
-  gap: 70px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-.footer-main p {
-  font-size: 11px;
-  line-height: 1.8;
-  color: var(--muted);
-}
-.footer-main > a:last-child {
-  margin-left: auto;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.footer-bottom {
-  border-top: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 22px;
-  padding-bottom: 22px;
-  font-size: 9px;
-  color: var(--muted);
-}
 @media (min-width: 1440px) {
   .shell {
     max-width: 1380px;
@@ -1383,9 +1350,6 @@ footer {
   .brief-form {
     max-width: 650px;
     width: 100%;
-  }
-  .footer-main {
-    gap: 35px;
   }
   h2 {
     font-size: 34px;
@@ -1670,26 +1634,6 @@ footer {
   }
   .form-note {
     font-size: 10px;
-  }
-  .footer-main {
-    flex-wrap: wrap;
-    gap: 22px;
-    padding-top: 32px;
-    padding-bottom: 32px;
-  }
-  .footer-main > .brand {
-    width: 100%;
-  }
-  .footer-main > a:last-child {
-    font-size: 10px;
-  }
-  .footer-bottom {
-    font-size: 8px;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-  .footer-bottom > span:nth-child(2) {
-    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

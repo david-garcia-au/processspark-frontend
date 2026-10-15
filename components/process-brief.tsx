@@ -1,8 +1,8 @@
 "use client";
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Check, Download, Mail } from "lucide-react";
+import { ArrowUpRight, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-type Status = "idle" | "sending" | "sent" | "error" | "draft" | "download";
+type Status = "idle" | "sending" | "sent" | "error" | "download";
 
 export function ProcessBrief() {
   const [status, setStatus] = useState<Status>("idle");
@@ -35,11 +35,6 @@ export function ProcessBrief() {
       } catch {
         setStatus("error");
       }
-      return;
-    }
-    if (action === "email") {
-      window.location.href = `mailto:Info@ProcessSpark.com?subject=${encodeURIComponent("ProcessSpark — Show us your process")}&body=${encodeURIComponent(brief)}`;
-      setStatus("draft");
       return;
     }
     const url = URL.createObjectURL(
@@ -153,16 +148,12 @@ export function ProcessBrief() {
         {status === "sending" ? "Sending..." : "Let’s discuss your challenge"}{" "}
         <ArrowUpRight size={17} />
       </Button>
-      <button type="submit" data-action="email" className="download-brief">
-        <Mail size={14} /> Open an email draft instead
-      </button>
       <button type="submit" data-action="download" className="download-brief">
         <Download size={14} /> Download a brief instead
       </button>
       <p className="form-note">
         Your brief is emailed to the ProcessSpark team, who will reply to the
-        address you give. Prefer to send it yourself? Open an email draft to
-        Info@ProcessSpark.com or download the brief instead.
+        address you give. You can also download the brief instead.
       </p>
       <p className="form-status" role="status" aria-live="polite">
         {status === "sending" && "Sending your brief..."}
@@ -178,12 +169,6 @@ export function ProcessBrief() {
             it to{" "}
             <a href="mailto:Info@ProcessSpark.com">Info@ProcessSpark.com</a>.
           </span>
-        )}
-        {status === "draft" && (
-          <>
-            <Check size={16} /> Email draft requested. Please send it from your
-            mail app, or download your brief if it did not open.
-          </>
         )}
         {status === "download" && (
           <>
