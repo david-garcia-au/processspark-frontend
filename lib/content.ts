@@ -1,5 +1,27 @@
 export const capabilities = [
   {
+    id: "tracking-work",
+    name: "Tracking work",
+    icon: "Activity",
+    question: "Still chasing people to find out where things stand?",
+    detail:
+      "Bring work from existing systems into a shared view, with owners, status and exceptions that need attention.",
+    outcome: "Less time preparing reports. More time acting on them.",
+    example: "Operational reporting",
+  },
+  {
+    id: "closing-jobs",
+    name: "Closing jobs",
+    icon: "ClipboardCheck",
+    question: "Job finished. Still not ready to invoice?",
+    detail:
+      "Check required records, flag missing information, route reports for approval and pass completed jobs to finance.",
+    outcome:
+      "Less paperwork. More time on the job. More consistent service records.",
+    example: "Closing jobs",
+  },
+  {
+    id: "documents",
     name: "Documents",
     icon: "Files",
     question: "Still entering information from documents by hand?",
@@ -9,25 +31,18 @@ export const capabilities = [
     example: "Document processing",
   },
   {
-    name: "Reporting",
-    icon: "Activity",
-    question: "Still spending hours preparing reports?",
-    detail:
-      "Production reports, quality summaries and operational updates often require information from multiple spreadsheets and systems. Bring the information together without repeating the same manual work every week.",
-    outcome: "Less time preparing reports. More time acting on them.",
-    example: "Operational reporting",
-  },
-  {
+    id: "requests",
     name: "Requests",
     icon: "Mail",
-    question: "Is your team spending too much time sorting emails and requests?",
+    question: "Still sorting and forwarding every incoming request?",
     detail:
-      "Customer enquiries, service requests and order updates arrive in different formats. Reduce the time spent reading, categorising and forwarding messages.",
+      "Capture requests, assign ownership and prepare the next action for review.",
     outcome: "Faster responses. Less administration. Fewer requests overlooked.",
     example: "Email & request processing",
   },
   {
-    name: "Searching",
+    id: "finding-answers",
+    name: "Finding answers",
     icon: "Search",
     question: "Does finding the right information take longer than it should?",
     detail:
@@ -36,29 +51,10 @@ export const capabilities = [
     example: "Technical knowledge assistant",
   },
   {
-    name: "Writing",
-    icon: "FilePenLine",
-    question: "Still preparing quotations and proposals from scratch?",
-    detail:
-      "Customer enquiries and RFQs can require hours of reviewing specifications, searching product information and preparing commercial documents.",
-    outcome:
-      "Faster quotation preparation. Less repetitive work. More time for customers.",
-    example: "Quotation preparation",
-  },
-  {
-    name: "Talking",
-    icon: "MessagesSquare",
-    question: "Are your technicians spending too much time writing reports?",
-    detail:
-      "Service technicians often finish the physical work only to spend more time documenting what happened. Make reporting part of the job rather than another task afterwards.",
-    outcome:
-      "Less paperwork. More time on the job. More consistent service records.",
-    example: "Service reporting",
-  },
-  {
+    id: "inspecting",
     name: "Inspecting",
     icon: "ScanLine",
-    question: "Could some of your repetitive visual checks be automated?",
+    question: "Still checking every product manually?",
     detail:
       "For suitable production processes, camera-based inspection can help identify visible defects, count products and check defined characteristics. We first assess whether the process is technically feasible and commercially worthwhile.",
     outcome:
@@ -70,38 +66,38 @@ export const capabilities = [
 export const pains = [
   {
     role: "OPERATIONS",
-    quote: "“We have more work coming in, but I can’t keep adding people.”",
+    quote: "“I don’t know what’s stuck until a customer calls.”",
     answer:
-      "Reduce the manual tasks and bottlenecks that limit how much work your team can handle.",
+      "Bring outstanding work, ownership and exceptions into view so your team can act before delays escalate.",
     tag: "More capacity",
-    capability: "Reporting",
+    capability: "Tracking work",
   },
   {
     role: "QUALITY & MANUFACTURING",
     quote:
       "“My team spends hours checking paperwork and chasing missing information.”",
     answer:
-      "Spend less time reviewing certificates, inspection records and quality documents. Focus on the issues that genuinely need attention.",
+      "Check records for missing or inconsistent information and focus your team on the exceptions.",
     tag: "Better consistency",
     capability: "Documents",
   },
   {
     role: "SERVICE & MAINTENANCE",
     quote:
-      "“My technicians spend too much time writing reports instead of doing their jobs.”",
+      "“The work is finished, but we’re still waiting for paperwork before we can invoice.”",
     answer:
-      "Turn voice notes, job details and photos into structured service reports that technicians can review and approve.",
+      "Bring job details, completion checks and approved reports together for a clear handover to finance.",
     tag: "Less administration",
-    capability: "Talking",
+    capability: "Closing jobs",
   },
 ];
 
 export const useCases = [
   {
-    title: "Document processing",
-    sector: "OPERATIONS & ADMINISTRATION",
-    capability: "Documents",
-    text: "Capture information from purchase orders, delivery notes and forms without manually entering the same details into multiple systems.",
+    title: "Outstanding work visibility",
+    sector: "OPERATIONS & MANAGEMENT",
+    capability: "Tracking work",
+    text: "Bring open orders, jobs and requests into a shared view. See what is waiting, who owns the next step and where intervention is needed.",
   },
   {
     title: "Quality documentation",
@@ -110,10 +106,10 @@ export const useCases = [
     text: "Spend less time checking supplier certificates, inspection records and compliance documents. Identify missing information and focus on exceptions.",
   },
   {
-    title: "Operational reporting",
-    sector: "OPERATIONS & MANAGEMENT",
-    capability: "Reporting",
-    text: "Bring information from spreadsheets and business systems together to prepare production, quality and management reports with less manual effort.",
+    title: "Job completion and invoicing handover",
+    sector: "SERVICE & MAINTENANCE",
+    capability: "Closing jobs",
+    text: "Check that required job records are complete, route reports for approval and prepare a reliable handover to finance.",
   },
   {
     title: "Email and request processing",
@@ -124,13 +120,13 @@ export const useCases = [
   {
     title: "Find answers in your technical documents",
     sector: "ENGINEERING & MAINTENANCE",
-    capability: "Searching",
+    capability: "Finding answers",
     text: "Help your team find information across manuals, procedures and maintenance records without searching through hundreds of files.",
   },
   {
     title: "Quotation preparation",
     sector: "ENGINEERING & SALES",
-    capability: "Writing",
+    capability: "Requests",
     text: "Turn customer enquiries and RFQs into draft quotations using your existing product information, pricing and technical documentation.",
   },
 ];

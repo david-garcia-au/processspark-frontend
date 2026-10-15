@@ -1,16 +1,23 @@
 import {
-  Activity,
   ArrowRight,
   FilePenLine,
-  Files,
+  LayoutDashboard,
   Mail,
+  ReceiptText,
   Search,
   ShieldCheck,
 } from "lucide-react";
 import { useCases } from "@/lib/content";
 
 // Icons follow the order of `useCases` in lib/content.ts.
-const icons = [Files, ShieldCheck, Activity, Mail, Search, FilePenLine];
+const icons = [
+  LayoutDashboard,
+  ShieldCheck,
+  ReceiptText,
+  Mail,
+  Search,
+  FilePenLine,
+];
 
 export function UseCaseTiles() {
   return (

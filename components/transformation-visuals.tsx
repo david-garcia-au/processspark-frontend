@@ -229,10 +229,10 @@ export function TransformationVisuals() {
         <div>
           <ScanLine size={24} />
           <p>
-            <strong>Spot problems before they become delays</strong>
+            <strong>Know what needs attention</strong>
             <span>
-              Identify missing information, inconsistencies and issues that need
-              someone’s attention.
+              See outstanding work, missing information and blocked handovers
+              before they become customer problems.
             </span>
           </p>
         </div>

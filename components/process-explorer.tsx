@@ -5,11 +5,9 @@ import {
   Activity,
   ArrowRight,
   Check,
+  ClipboardCheck,
   Files,
-  FilePenLine,
-  Keyboard,
   Mail,
-  MessagesSquare,
   ScanLine,
   Search,
 } from "lucide-react";
@@ -17,16 +15,14 @@ import { capabilities } from "@/lib/content";
 import { Media } from "@/components/media";
 const icons = {
   Activity,
+  ClipboardCheck,
   Files,
-  FilePenLine,
-  Keyboard,
   Mail,
-  MessagesSquare,
   ScanLine,
   Search,
 };
 export function ProcessExplorer() {
-  const [active, setActive] = useState("Documents");
+  const [active, setActive] = useState<string>(capabilities[0].id);
   return (
     <Tabs.Root value={active} onValueChange={setActive} className="explorer">
       <Tabs.List aria-label="Explore manual processes" className="process-tabs">
@@ -34,8 +30,8 @@ export function ProcessExplorer() {
           const Icon = icons[item.icon];
           return (
             <Tabs.Trigger
-              key={item.name}
-              value={item.name}
+              key={item.id}
+              value={item.id}
               className="process-tab"
             >
               <Icon size={19} />
@@ -46,8 +42,8 @@ export function ProcessExplorer() {
       </Tabs.List>
       {capabilities.map((item) => (
         <Tabs.Content
-          key={item.name}
-          value={item.name}
+          key={item.id}
+          value={item.id}
           className="process-panel"
         >
           <div className="panel-top">
@@ -58,12 +54,12 @@ export function ProcessExplorer() {
                 <p>{item.detail}</p>
               </div>
               <span className="panel-number">
-                0{capabilities.indexOf(item) + 1}
-                <span> / 07</span>
+                {String(capabilities.indexOf(item) + 1).padStart(2, "0")}
+                <span> / {String(capabilities.length).padStart(2, "0")}</span>
               </span>
             </div>
             <Media
-              slot={`capability-${item.name.toLowerCase()}`}
+              slot={`capability-${item.id}`}
               sizes="(max-width: 850px) 100vw, 50vw"
             />
           </div>

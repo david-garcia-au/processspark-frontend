@@ -77,7 +77,7 @@ export const media: Record<string, MediaItem> = {
     alt: "A paper inspection record with its handwritten fields highlighted, next to a panel listing the extracted information: part number, description, date, batch number, measurements, visual inspection result, inspector and time",
     src: "/images/paper-form-fields.webp",
   },
-  "capability-reporting": {
+  "capability-tracking-work": {
     kind: "image",
     ratio: R169,
     label: "Information brought together into a report",
@@ -95,7 +95,7 @@ export const media: Record<string, MediaItem> = {
     src: "/images/email-manager-wide.webp",
     alt: "Person reviewing a ProcessSpark inbox on a monitor, with an AI-drafted reply, extracted key details and an Approve and send button",
   },
-  "capability-searching": {
+  "capability-finding-answers": {
     kind: "image",
     ratio: R169,
     label: "A question answered from company manuals",
@@ -104,21 +104,14 @@ export const media: Record<string, MediaItem> = {
     alt: "A person at a desk asking an assistant to summarise a supply agreement, with the contract on one side and the key details listed on the other",
     src: "/images/contract-summary.webp",
   },
-  "capability-writing": {
+  "capability-closing-jobs": {
     kind: "image",
     ratio: R169,
-    label: "A draft quotation prepared for review",
+    label: "Job records checked and passed to finance",
     brief:
-      "Customer enquiry or RFQ beside a draft quotation on screen, with product information and pricing drawn from approved sources, ready for review.",
-    alt: "A draft quotation prepared from a customer enquiry for review",
-  },
-  "capability-talking": {
-    kind: "video",
-    ratio: R169,
-    label: "Voice notes and photos becoming a report",
-    brief:
-      "Short loop: a technician's voice notes and job photos turned into a structured service report ready for approval.",
-    alt: "Voice notes and photos turned into a structured service report",
+      "Completed job records checked for missing information and passed to finance, shown on an overview of open work.",
+    alt: "A person at a desk in a factory reviewing a production overview dashboard with output, quality by line, recent orders and open issues",
+    src: "/images/dashboard.webp",
   },
   "capability-inspecting": {
     kind: "image",

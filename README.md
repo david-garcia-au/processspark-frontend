@@ -55,4 +55,4 @@ For server-side delivery, connect an email/CRM endpoint and add server validatio
 
 ## Browser verification
 
-Checked the desktop preview at 1440 px and phone layout at 390 px: all seven tabs change panels, arrow keys select adjacent tabs, mobile navigation opens and closes after selection, and the document does not overflow horizontally. The form validates required fields and the download action reaches its explicit local-only confirmation state. Mail delivery is not claimed or tested: sending occurs in the visitor's mail app. No browser console warnings or errors were observed during tab testing.
+Checked the desktop preview at 1440 px and phone layout at 390 px: all six tabs change panels, arrow keys select adjacent tabs, mobile navigation opens and closes after selection, and the document does not overflow horizontally. The form validates required fields and the download action reaches its explicit local-only confirmation state. Mail delivery is not claimed or tested: sending occurs in the visitor's mail app. No browser console warnings or errors were observed during tab testing.

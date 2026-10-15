@@ -612,7 +612,7 @@ h2 {
 }
 .process-tabs {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   border: 1px solid var(--line-strong);
   padding: 5px;
   background: var(--sage-deep);
@@ -1333,7 +1333,7 @@ footer {
     margin-top: 8px;
   }
   .process-tabs {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .process-tab {
     padding: 14px;
