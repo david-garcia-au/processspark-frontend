@@ -19,8 +19,10 @@ The reference's clear industrial hierarchy, spacious sections, sector groupings 
 
 ## Structure
 
-- `app/page.tsx`: server-rendered landing page and section composition.
-- `lib/content.ts`: typed process, pain-point and use-case copy.
+- `app/[lang]/page.tsx`, `app/[lang]/layout.tsx`: server-rendered landing page (English at `/`, Spanish at `/es`) and its metadata.
+- `proxy.ts`, `lib/i18n/`: locale routing and the English and Spanish dictionaries. See `docs/i18n.md`.
+- `lib/content.ts`: language-independent structure (ids, icons, order). All copy is in `lib/i18n/en.ts` and `lib/i18n/es.ts`.
+- `components/language-switcher.tsx`: EN / ES switch.
 - `components/process-explorer.tsx`: Radix accessible tabs, with automatic keyboard navigation.
 - `components/header.tsx`: responsive navigation.
 - `components/process-brief.tsx`: contact form that posts to `/api/contact` (SES email) with a local brief download.
@@ -40,11 +42,11 @@ For server-side delivery, connect an email/CRM endpoint and add server validatio
 ## SEO and AI discoverability
 
 - `lib/site.ts`: canonical URL and shared SEO values. The canonical origin is `https://www.processspark.com`. Set `SITE_URL` in the deployment environment only to override it. Google Search Console is verified via DNS, so no verification tag is needed; the optional `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` variables emit tags if ever required.
-- `app/layout.tsx`: metadata (title, description, canonical, Open Graph, Twitter, robots) and viewport.
-- `components/structured-data.tsx`: JSON-LD (Organization, WebSite, WebPage) generated from `lib/content.ts`.
+- `app/[lang]/layout.tsx`: per-language metadata (title, description, canonical, hreflang alternates, Open Graph, Twitter, robots) and viewport.
+- `components/structured-data.tsx`: JSON-LD (Organization, WebSite, WebPage) generated per language from the dictionaries.
 - `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts`: sitemap.xml, robots.txt (search and AI crawlers allowed), web manifest.
-- `app/llms.txt/route.ts`: `/llms.txt` summary for AI assistants, generated from `lib/content.ts`.
-- `app/opengraph-image.tsx`, `app/twitter-image.tsx`, `app/apple-icon.tsx`: generated social and touch icons.
+- `app/llms.txt/route.ts`, `app/es/llms.txt/route.ts`: `/llms.txt` (English) and `/es/llms.txt` (Spanish) summaries for AI assistants, built by `lib/llms.ts`.
+- `app/opengraph-image.tsx`, `app/twitter-image.tsx`, `app/apple-icon.tsx`: generated social and touch icons. `app/[lang]/social-image/route.tsx` renders the Spanish social image.
 
 ## Validation notes
 

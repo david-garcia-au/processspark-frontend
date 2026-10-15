@@ -9,8 +9,23 @@ import {
   TrendingUp,
   User,
 } from "lucide-react";
+import type { Dictionary } from "@/lib/i18n";
 
-export function VisionHero() {
+const extractRows = [
+  "supplier",
+  "partNumber",
+  "description",
+  "batchNumber",
+  "material",
+  "dateOfManufacture",
+  "testResult",
+] as const;
+
+export function VisionHero({
+  copy,
+}: {
+  copy: Dictionary["transformation"]["hero"];
+}) {
   return (
     <figure className="vision-hero">
       <div className="vision-photo">
@@ -18,91 +33,39 @@ export function VisionHero() {
             scene. The UI below is recreated in HTML so no text is baked in. */}
         <Image
           src="/images/hero.webp"
-          alt="A worker reviewing information captured from a stack of supplier certificates on screen in a factory"
+          alt={copy.photoAlt}
           fill
           sizes="(max-width: 850px) 100vw, 50vw"
           priority
         />
         <span className="photo-badge">
-          <ScanLine size={16} /> LESS PAPERWORK. MORE PRODUCTIVITY.
+          <ScanLine size={16} /> {copy.badge}
         </span>
         <div className="vision-extract">
           <div className="vision-extract-head">
             <span className="vision-extract-ic">
               <FileText size={14} />
             </span>
-            <span>Information extracted</span>
+            <span>{copy.extractHeading}</span>
           </div>
           <dl className="vision-extract-rows">
-            <div className="vision-extract-row">
-              <dt>Supplier</dt>
-              <dd>
-                <span>ABC Components Ltd</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
-            <div className="vision-extract-row">
-              <dt>Part number</dt>
-              <dd>
-                <span>AC-3487</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
-            <div className="vision-extract-row">
-              <dt>Description</dt>
-              <dd>
-                <span>Stainless Steel Fitting</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
-            <div className="vision-extract-row">
-              <dt>Batch number</dt>
-              <dd>
-                <span>B-2407-15</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
-            <div className="vision-extract-row">
-              <dt>Material</dt>
-              <dd>
-                <span>SS316</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
-            <div className="vision-extract-row">
-              <dt>Date of manufacture</dt>
-              <dd>
-                <span>12 JUL 2024</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
-            <div className="vision-extract-row">
-              <dt>Test result</dt>
-              <dd>
-                <span>PASS</span>
-                <span className="vcheck">
-                  <Check size={11} />
-                </span>
-              </dd>
-            </div>
+            {extractRows.map((key) => (
+              <div className="vision-extract-row" key={key}>
+                <dt>{copy.extractRows[key].label}</dt>
+                <dd>
+                  <span>{copy.extractRows[key].value}</span>
+                  <span className="vcheck">
+                    <Check size={11} />
+                  </span>
+                </dd>
+              </div>
+            ))}
           </dl>
           <div className="vision-extract-foot">
             <span className="vcheck">
               <Check size={11} />
             </span>
-            All key information captured
+            {copy.extractFooter}
           </div>
         </div>
       </div>
@@ -112,21 +75,21 @@ export function VisionHero() {
             <span className="vision-step-ic">
               <FileText size={16} />
             </span>
-            Documents received
+            {copy.steps.received}
           </span>
           <ArrowRight size={16} className="vision-step-arrow" />
           <span className="vision-step">
             <span className="vision-step-ic">
               <ScanLine size={16} />
             </span>
-            Information extracted
+            {copy.steps.extracted}
           </span>
           <ArrowRight size={16} className="vision-step-arrow" />
           <span className="vision-step">
             <span className="vision-step-ic">
               <User size={16} />
             </span>
-            People review
+            {copy.steps.review}
           </span>
         </div>
       </figcaption>
@@ -134,7 +97,11 @@ export function VisionHero() {
   );
 }
 
-export function TransformationVisuals() {
+export function TransformationVisuals({
+  copy,
+}: {
+  copy: Dictionary["transformation"];
+}) {
   return (
     <section
       className="transformation-section"
@@ -143,65 +110,53 @@ export function TransformationVisuals() {
       <div className="section shell">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">
-            SMALL CHANGES. MEASURABLE IMPROVEMENTS.
-          </p>
+          <p className="eyebrow">{copy.eyebrow}</p>
           <h2 id="transformation-title">
-            Same work.
-            <br />Less effort to get it done.
+            {copy.title.line1}
+            <br />
+            {copy.title.line2}
           </h2>
         </div>
         <p>
-          Documents processed without endless copying.
+          {copy.lead.line1}
           <br />
-          Reports prepared without hours in spreadsheets.
+          {copy.lead.line2}
           <br />
-          Information available when your team needs it.
+          {copy.lead.line3}
         </p>
       </div>
       <article className="document-story">
         <figure className="document-photo">
           <Image
             src="/images/copy-by-hand.webp"
-            alt="Illustrative worker copying details from a supplier certificate into a notebook, with the same details already entered in a spreadsheet on a laptop"
+            alt={copy.story.photoAlt}
             fill
             sizes="(max-width: 850px) 100vw, 50vw"
           />
           <span className="photo-badge">
-            <Files size={16} /> DOCUMENT PROCESSING
+            <Files size={16} /> {copy.story.badge}
           </span>
         </figure>
         <div className="document-copy">
-          <p className="eyebrow">PAPERWORK IN. USEFUL INFORMATION OUT.</p>
+          <p className="eyebrow">{copy.story.eyebrow}</p>
           <h3>
-            Still copying information
+            {copy.story.title.line1}
             <br />
-            <span>from documents by hand?</span>
+            <span>{copy.story.title.accent}</span>
           </h3>
-          <p>
-            Supplier certificates, delivery notes, inspection records and
-            purchase orders. Stop copying information between documents and
-            systems. Capture the details, identify missing information and let
-            your team focus on exceptions.
-          </p>
+          <p>{copy.story.text}</p>
           <div className="document-change">
             <div>
-              <span className="change-label">TODAY</span>
-              <p>
-                Open every document. Copy the details. Check for mistakes. Enter
-                the same information again.
-              </p>
+              <span className="change-label">{copy.story.todayLabel}</span>
+              <p>{copy.story.todayText}</p>
             </div>
             <div>
-              <span className="change-label">WITH AI</span>
-              <p>
-                Upload the document. Capture and check the information. Review
-                only what needs attention.
-              </p>
+              <span className="change-label">{copy.story.withAiLabel}</span>
+              <p>{copy.story.withAiText}</p>
             </div>
           </div>
           <a href="#capabilities" className="text-link">
-            See how your process could change <ArrowRight size={18} />
+            {copy.story.link} <ArrowRight size={18} />
           </a>
         </div>
       </article>
@@ -209,31 +164,22 @@ export function TransformationVisuals() {
         <div>
           <Timer size={24} />
           <p>
-            <strong>Give your team time back</strong>
-            <span>
-              Reduce the repetitive administration that keeps people from more
-              valuable work.
-            </span>
+            <strong>{copy.outcomes.time.title}</strong>
+            <span>{copy.outcomes.time.text}</span>
           </p>
         </div>
         <div>
           <TrendingUp size={24} />
           <p>
-            <strong>Handle more work without adding complexity</strong>
-            <span>
-              Reduce bottlenecks and make better use of the people and systems
-              you already have.
-            </span>
+            <strong>{copy.outcomes.capacity.title}</strong>
+            <span>{copy.outcomes.capacity.text}</span>
           </p>
         </div>
         <div>
           <ScanLine size={24} />
           <p>
-            <strong>Know what needs attention</strong>
-            <span>
-              See outstanding work, missing information and blocked handovers
-              before they become customer problems.
-            </span>
+            <strong>{copy.outcomes.attention.title}</strong>
+            <span>{copy.outcomes.attention.text}</span>
           </p>
         </div>
       </div>

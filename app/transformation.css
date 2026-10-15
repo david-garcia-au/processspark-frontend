@@ -99,6 +99,10 @@
   .business-promise {
     letter-spacing: -0.8px;
   }
+  /* Longer translations may need to wrap on the narrowest phones. */
+  .business-intro strong {
+    white-space: normal;
+  }
   .business-sectors {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -837,5 +841,12 @@ body .download-brief {
   }
   body .agnostic {
     grid-template-columns: 1fr;
+  }
+}
+/* Spanish headings are longer: keep the heading column at its natural width
+   so the intro paragraph beside it wraps instead. English is unaffected. */
+@media (min-width: 851px) {
+  :lang(es) .section-heading > div {
+    flex-shrink: 0;
   }
 }

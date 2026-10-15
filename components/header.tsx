@@ -2,9 +2,13 @@
 import { useState } from "react";
 import { ArrowUpRight, Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-export function Brand() {
+import { LanguageSwitcher } from "@/components/language-switcher";
+import type { Dictionary } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/config";
+
+export function Brand({ label }: { label: string }) {
   return (
-    <a href="#" className="brand" aria-label="ProcessSpark home">
+    <a href="#" className="brand" aria-label={label}>
       <span className="brand-icon">
         <Zap size={21} fill="currentColor" />
       </span>
@@ -13,33 +17,43 @@ export function Brand() {
     </a>
   );
 }
-const links = [
-  ["What we solve", "#problems"],
-  ["What changes", "#capabilities"],
-  ["Use cases", "#use-cases"],
-  ["How we work", "#approach"],
-];
-export function Header() {
+
+const sectionLinks = [
+  ["problems", "#problems"],
+  ["capabilities", "#capabilities"],
+  ["useCases", "#use-cases"],
+  ["approach", "#approach"],
+] as const;
+
+type HeaderProps = {
+  lang: Locale;
+  copy: Dictionary["header"];
+  switcherCopy: Dictionary["languageSwitcher"];
+  brandLabel: string;
+};
+
+export function Header({ lang, copy, switcherCopy, brandLabel }: HeaderProps) {
   const [open, setOpen] = useState(false);
   return (
     <header className="header">
       <div className="shell nav">
-        <Brand />
-        <nav aria-label="Main navigation" className="desktop-nav">
-          {links.map(([label, href]) => (
+        <Brand label={brandLabel} />
+        <nav aria-label={copy.mainNavLabel} className="desktop-nav">
+          {sectionLinks.map(([key, href]) => (
             <a key={href} href={href}>
-              {label}
+              {copy.links[key]}
             </a>
           ))}
         </nav>
+        <LanguageSwitcher lang={lang} copy={switcherCopy} />
         <Button asChild className="nav-cta">
           <a href="#contact">
-            Show us your process <ArrowUpRight size={16} />
+            {copy.cta} <ArrowUpRight size={16} />
           </a>
         </Button>
         <button
           className="mobile-toggle"
-          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-label={open ? copy.closeNav : copy.openNav}
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen(!open)}
@@ -51,16 +65,20 @@ export function Header() {
         <nav
           id="mobile-nav"
           className="mobile-nav"
-          aria-label="Mobile navigation"
+          aria-label={copy.mobileNavLabel}
         >
-          {[...links, ["Show us your process", "#contact"]].map(
-            ([label, href]) => (
-              <a href={href} key={href} onClick={() => setOpen(false)}>
-                {label}
-                <ArrowUpRight size={16} />
-              </a>
+          {[
+            ...sectionLinks.map(
+              ([key, href]) => [copy.links[key], href] as const,
             ),
-          )}
+            [copy.cta, "#contact"] as const,
+          ].map(([label, href]) => (
+            <a href={href} key={href} onClick={() => setOpen(false)}>
+              {label}
+              <ArrowUpRight size={16} />
+            </a>
+          ))}
+          <LanguageSwitcher lang={lang} copy={switcherCopy} />
         </nav>
       )}
     </header>

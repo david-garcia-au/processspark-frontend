@@ -2,55 +2,47 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-type Status = "idle" | "sending" | "sent" | "error" | "download";
+import { categories, defaultCategoryValue } from "@/lib/content";
+import type { Dictionary } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/config";
+type Status = "idle" | "sending" | "sent" | "error";
 
-export function ProcessBrief() {
+type ProcessBriefProps = {
+  /** Locale of the page. Sent with the brief so the reply uses the same language. */
+  lang: Locale;
+  copy: Dictionary["contact"]["form"];
+  /** Address shown in the error message. */
+  email: string;
+};
+
+export function ProcessBrief({ lang, copy, email }: ProcessBriefProps) {
   const [status, setStatus] = useState<Status>("idle");
   async function submitBrief(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (status === "sending") return;
     const form = event.currentTarget;
-    const submitter = (event.nativeEvent as SubmitEvent).submitter;
-    const action = submitter?.getAttribute("data-action") ?? "send";
     const data = new FormData(form);
-    const brief = `PROCESSSPARK — PROCESS BRIEF\n\nName: ${data.get("name")}\nBusiness email: ${data.get("email")}\nBusiness: ${data.get("company")}\nProcess: ${data.get("category")}\n\nWhat happens today:\n${data.get("process")}\n`;
-    if (action === "send") {
-      setStatus("sending");
-      try {
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: data.get("name"),
-            email: data.get("email"),
-            company: data.get("company"),
-            category: data.get("category"),
-            process: data.get("process"),
-            website: data.get("website"),
-          }),
-        });
-        if (!response.ok) throw new Error(String(response.status));
-        form.reset();
-        setStatus("sent");
-      } catch {
-        setStatus("error");
-      }
-      return;
+    setStatus("sending");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company"),
+          category: data.get("category"),
+          process: data.get("process"),
+          website: data.get("website"),
+          lang,
+        }),
+      });
+      if (!response.ok) throw new Error(String(response.status));
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
     }
-    const url = URL.createObjectURL(
-      new Blob(
-        [
-          `${brief}\nPrepared locally. This brief has not been sent to ProcessSpark.\n`,
-        ],
-        { type: "text/plain;charset=utf-8" },
-      ),
-    );
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "processspark-process-brief.txt";
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setStatus("download");
   }
   return (
     <form
@@ -59,69 +51,62 @@ export function ProcessBrief() {
       onChange={() => setStatus((x) => (x === "sending" ? x : "idle"))}
     >
       <div className="form-heading">
-        <span className="eyebrow">LET’S START WITH YOUR CHALLENGE</span>
+        <span className="eyebrow">{copy.eyebrow}</span>
         <ArrowUpRight size={23} />
       </div>
       <div className="form-row">
         <label>
-          Your name
+          {copy.name.label}
           <input
             name="name"
             autoComplete="name"
             required
-            placeholder="Alex Taylor"
+            placeholder={copy.name.placeholder}
             maxLength={120}
           />
         </label>
         <label>
-          Work email
+          {copy.email.label}
           <input
             name="email"
             type="email"
             autoComplete="email"
             required
-            placeholder="alex@company.com"
+            placeholder={copy.email.placeholder}
             maxLength={254}
           />
         </label>
       </div>
       <div className="form-row">
         <label>
-          Company
+          {copy.company.label}
           <input
             name="company"
             autoComplete="organization"
             required
-            placeholder="Your business"
+            placeholder={copy.company.placeholder}
             maxLength={160}
           />
         </label>
         <label>
-          What would you like to improve?
-          <select name="category" defaultValue="Other / Not sure yet">
-            {[
-              "Document processing and data entry",
-              "Reporting and spreadsheets",
-              "Customer emails and requests",
-              "Finding information in documents",
-              "Quotations and proposals",
-              "Quality records and compliance",
-              "Service and maintenance reporting",
-              "Other / Not sure yet",
-            ].map((x) => (
-              <option key={x}>{x}</option>
+          {copy.category.label}
+          <select name="category" defaultValue={defaultCategoryValue}>
+            {categories.map(({ id, value }) => (
+              <option key={id} value={value}>
+                {copy.category.options[id]}
+              </option>
             ))}
           </select>
         </label>
       </div>
       <label>
-        Tell us what’s taking too much time or causing problems.
+        {copy.process.label}
         <textarea
           name="process"
           required
           rows={4}
           maxLength={1200}
-          placeholder="For example, we receive dozens of supplier documents every day and manually enter the details into our system."
+          placeholder={copy.process.placeholder}
         />
       </label>
       <div
@@ -135,7 +120,7 @@ export function ProcessBrief() {
         }}
       >
         <label>
-          Leave this field empty
+          {copy.honeypotLabel}
           <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
@@ -145,35 +130,30 @@ export function ProcessBrief() {
         disabled={status === "sending"}
         className="button-primary form-submit"
       >
-        {status === "sending" ? "Sending..." : "Let’s discuss your challenge"}{" "}
+        {status === "sending" ? copy.sending : copy.submit}{" "}
         <ArrowUpRight size={17} />
       </Button>
-      <button type="submit" data-action="download" className="download-brief">
-        <Download size={14} /> Download a brief instead
-      </button>
-      <p className="form-note">
-        Your brief is emailed to the ProcessSpark team, who will reply to the
-        address you give. You can also download the brief instead.
-      </p>
+      <a
+        href="/downloads/processspark-overview.pdf"
+        download="ProcessSpark-overview.pdf"
+        className="download-brief"
+      >
+        <Download size={14} /> {copy.pdf}
+      </a>
+      <p className="form-note">{copy.note}</p>
       <p className="form-status" role="status" aria-live="polite">
-        {status === "sending" && "Sending your brief..."}
+        {status === "sending" && copy.statusSending}
         {status === "sent" && (
           <>
-            <Check size={16} /> Thanks. We have received your brief and sent a
-            confirmation to your email.
+            <Check size={16} /> {copy.statusSent}
           </>
         )}
         {status === "error" && (
           <span>
-            We could not send your brief right now. Please try again, or email
-            it to{" "}
-            <a href="mailto:Info@ProcessSpark.com">Info@ProcessSpark.com</a>.
+            {copy.statusError.before}{" "}
+            <a href={`mailto:${email}`}>{email}</a>
+            {copy.statusError.after}
           </span>
-        )}
-        {status === "download" && (
-          <>
-            <Check size={16} /> Your brief is ready. Nothing has been sent.
-          </>
         )}
       </p>
     </form>

@@ -1,5 +1,11 @@
 import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { contactConfig } from "@/lib/contact-config";
+import {
+  defaultLocale,
+  getDictionary,
+  hasLocale,
+  type Locale,
+} from "@/lib/i18n";
 import { siteUrl } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -87,7 +93,7 @@ const FONT = "-apple-system,Segoe UI,Helvetica,Arial,sans-serif";
 const shell = (inner: string) =>
   `<!doctype html><html><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark"></head><body style="margin:0;padding:24px;background:#eef0e8;font-family:${FONT};"><div style="max-width:560px;margin:0 auto;background:#f9f8f3;color:#1f3a2d;border:1px solid #cfd5c6;border-radius:10px;padding:28px;">${inner}</div></body></html>`;
 
-function notificationEmail(b: Brief) {
+function notificationEmail(b: Brief, locale: Locale) {
   const subject = oneLine(
     `New process brief from ${b.name} (${b.company})`,
   ).slice(0, MAX_SUBJECT);
@@ -96,6 +102,7 @@ function notificationEmail(b: Brief) {
     ["Email", b.email],
     ["Company", b.company],
     ["Process category", b.category],
+    ["Language", locale],
   ];
   const text = [
     "New process brief",
@@ -122,14 +129,12 @@ function notificationEmail(b: Brief) {
   return { subject, text, html };
 }
 
-function confirmationEmail(name: string) {
+function confirmationEmail(name: string, locale: Locale) {
+  const copy = getDictionary(locale).emails.confirmation;
   const first = (name.split(/\s+/)[0] ?? "").slice(0, MAX_FIRST_NAME);
-  const greeting = first ? `Hello ${first},` : "Hello,";
-  const lines = [
-    "Thanks for sending your process brief. We have received it and will reply to you by email.",
-    "There is no need to send anything else for now.",
-  ];
-  const text = `${greeting}\n\n${lines.join("\n\n")}\n\nThe ProcessSpark team\n${siteUrl}\n`;
+  const greeting = first ? `${copy.greeting} ${first},` : `${copy.greeting},`;
+  const lines = copy.lines;
+  const text = `${greeting}\n\n${lines.join("\n\n")}\n\n${copy.signoff}\n${siteUrl}\n`;
   const html = shell(
     `<p style="margin:0 0 16px;font-size:16px;color:#1f3a2d;">${escapeHtml(greeting)}</p>` +
       lines
@@ -138,9 +143,9 @@ function confirmationEmail(name: string) {
             `<p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#1f3a2d;">${escapeHtml(l)}</p>`,
         )
         .join("") +
-      `<p style="margin:22px 0 0;font-size:15px;color:#1f3a2d;">The ProcessSpark team<br><a href="${escapeHtml(siteUrl)}" style="color:#c2571a;">${escapeHtml(siteUrl)}</a></p>`,
+      `<p style="margin:22px 0 0;font-size:15px;color:#1f3a2d;">${escapeHtml(copy.signoff)}<br><a href="${escapeHtml(siteUrl)}" style="color:#c2571a;">${escapeHtml(siteUrl)}</a></p>`,
   );
-  return { subject: "We received your process brief", text, html };
+  return { subject: copy.subject, text, html };
 }
 
 function send(
@@ -201,6 +206,12 @@ export async function POST(request: Request) {
     return json({ ok: true });
   }
 
+  // Language of the page the form was sent from. Anything unknown is English.
+  const locale: Locale =
+    typeof input.lang === "string" && hasLocale(input.lang)
+      ? input.lang
+      : defaultLocale;
+
   const brief = {} as Brief;
   for (const field of FIELDS) {
     const value = input[field];
@@ -217,7 +228,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    await send(contactConfig.to, brief.email, notificationEmail(brief));
+    await send(contactConfig.to, brief.email, notificationEmail(brief, locale));
   } catch (error) {
     logFailure("notification failed", error);
     return json({ ok: false, error: "send-failed" }, 502);
@@ -227,7 +238,7 @@ export async function POST(request: Request) {
     await send(
       [brief.email],
       contactConfig.replyTo,
-      confirmationEmail(brief.name),
+      confirmationEmail(brief.name, locale),
     );
   } catch (error) {
     // The team already has the brief, so the visitor still sees success.

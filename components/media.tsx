@@ -1,11 +1,19 @@
 import Image from "next/image";
 import { ImageIcon, Play } from "lucide-react";
-import { media } from "@/lib/media";
+import { media, type MediaItem, type MediaSlot } from "@/lib/media";
 import { cn } from "@/lib/utils";
+
+export type MediaText = { label: string; alt: string };
+
+const defaultKindLabels = { image: "IMAGE", video: "VIDEO" };
 
 type MediaProps = {
   /** Key in lib/media.ts. */
-  slot: string;
+  slot: MediaSlot;
+  /** Placeholder label and alt text, from the dictionary (`media[slot]`). */
+  text: MediaText;
+  /** Labels for the placeholder shown until an asset exists. */
+  kindLabels?: { image: string; video: string };
   /** "dark" for placeholders that sit on the forest green background. */
   tone?: "light" | "dark";
   className?: string;
@@ -19,11 +27,13 @@ type MediaProps = {
  */
 export function Media({
   slot,
+  text,
+  kindLabels = defaultKindLabels,
   tone = "light",
   className,
   sizes = "(max-width: 850px) 100vw, 50vw",
 }: MediaProps) {
-  const item = media[slot];
+  const item: MediaItem = media[slot];
   if (!item) {
     throw new Error(`Unknown media slot "${slot}". Add it to lib/media.ts.`);
   }
@@ -36,7 +46,7 @@ export function Media({
           className="media-asset"
           src={item.src}
           poster={item.poster}
-          aria-label={item.alt}
+          aria-label={text.alt}
           controls
           playsInline
           preload="metadata"
@@ -51,7 +61,7 @@ export function Media({
         <Image
           className="media-asset"
           src={item.src}
-          alt={item.alt}
+          alt={text.alt}
           fill
           sizes={sizes}
         />
@@ -74,9 +84,9 @@ export function Media({
       <span className="media-icon">
         <Icon size={22} />
       </span>
-      <span className="media-label">{item.label}</span>
+      <span className="media-label">{text.label}</span>
       <span className="media-meta">
-        {item.kind === "video" ? "VIDEO" : "IMAGE"} ·{" "}
+        {item.kind === "video" ? kindLabels.video : kindLabels.image} ·{" "}
         {item.ratio.replace(/\s*\/\s*/, ":")}
       </span>
     </div>

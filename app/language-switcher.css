@@ -1,0 +1,83 @@
+/* EN | ES language switch. Loaded last; every rule is scoped under .lang-switch. */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.lang-switch .lang-switch-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 44px;
+  padding: 0 10px;
+  border-radius: 3px;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+/* Thin divider between the two codes. */
+.lang-switch .lang-switch-item + .lang-switch-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 14px;
+  border-left: 1px solid var(--line-strong);
+  transform: translateY(-50%);
+}
+/* Current language: darker text and a short orange bar. */
+.lang-switch .lang-switch-item[aria-current] {
+  color: var(--ink);
+}
+.lang-switch .lang-switch-item[aria-current]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 9px;
+  height: 2px;
+  background: var(--orange);
+}
+.lang-switch a.lang-switch-item:hover {
+  color: var(--orange-ink);
+}
+/* Header: shown in the bar on wide screens, in the mobile menu otherwise. */
+.nav .lang-switch {
+  margin-left: -8px;
+}
+.mobile-nav .lang-switch {
+  justify-self: start;
+  margin-top: 6px;
+  margin-left: -10px;
+}
+.mobile-nav .lang-switch .lang-switch-item {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0 10px;
+  border-bottom: 0;
+}
+@media (max-width: 850px) {
+  .nav .lang-switch {
+    display: none;
+  }
+}
+/* Footer: light text on the deep green background. */
+.site-footer .lang-switch {
+  font-size: 13px;
+}
+.site-footer .lang-switch .lang-switch-item {
+  color: var(--on-dark-soft);
+}
+.site-footer .lang-switch .lang-switch-item + .lang-switch-item::before {
+  border-left-color: color-mix(in srgb, var(--on-dark) 25%, transparent);
+}
+.site-footer .lang-switch .lang-switch-item[aria-current] {
+  color: var(--on-dark);
+}
+.site-footer .lang-switch a.lang-switch-item:hover {
+  color: var(--orange-wash);
+}
