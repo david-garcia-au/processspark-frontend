@@ -1,18 +1,12 @@
 import {
-  Activity,
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Boxes,
   Check,
   Factory,
-  FilePenLine,
-  Files,
   Layers3,
-  Mail,
   MoveUpRight,
-  Search,
-  ShieldCheck,
   Truck,
   Wrench,
   Zap,
@@ -20,13 +14,14 @@ import {
 import { Header, Brand } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { ProcessExplorer } from "@/components/process-explorer";
+import { UseCaseTiles } from "@/components/use-case-tiles";
 import {
   TransformationVisuals,
   VisionHero,
 } from "@/components/transformation-visuals";
 import { ProcessBrief } from "@/components/process-brief";
 import { Media } from "@/components/media";
-import { pains, useCases } from "@/lib/content";
+import { pains } from "@/lib/content";
 import { slugify } from "@/lib/media";
 export default function Home() {
   return (
@@ -190,43 +185,7 @@ export default function Home() {
               Find your starting point <ArrowUpRight size={18} />
             </a>
           </div>
-          <div className="use-case-grid">
-            {useCases.map((item, i) => (
-              <a className="use-case" key={item.title} href="#contact">
-                <Media
-                  slot={`use-case-${slugify(item.title)}`}
-                  className="media-flush"
-                  sizes="(max-width: 540px) 100vw, (max-width: 850px) 50vw, 33vw"
-                />
-                <div className="use-case-body">
-                  <div className="case-top">
-                    <span className="case-icon">
-                      {i === 0 ? (
-                        <Files />
-                      ) : i === 1 ? (
-                        <ShieldCheck />
-                      ) : i === 2 ? (
-                        <Activity />
-                      ) : i === 3 ? (
-                        <Mail />
-                      ) : i === 4 ? (
-                        <Search />
-                      ) : (
-                        <FilePenLine />
-                      )}
-                    </span>
-                    <ArrowUpRight size={20} />
-                  </div>
-                  <p className="eyebrow">{item.sector}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                  <span className="case-link">
-                    Explore the opportunity <ArrowRight size={15} />
-                  </span>
-                </div>
-              </a>
-            ))}
-          </div>
+          <UseCaseTiles />
           <p className="section-note">
             Examples of what we can build. Each solution is validated against
             your data, processes and requirements.

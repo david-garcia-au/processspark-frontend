@@ -5,16 +5,6 @@ export const capabilities = [
     question: "Still entering information from documents by hand?",
     detail:
       "Supplier certificates, delivery notes, purchase orders and inspection records often contain information your team needs to enter into other systems. Reduce the copying, checking and retyping.",
-    today: [
-      "Open and read each document",
-      "Copy information into spreadsheets or business systems",
-      "Check for missing or incorrect details",
-    ],
-    after: [
-      "Upload or receive the document",
-      "Extract and validate the required information",
-      "Review exceptions and approve the result",
-    ],
     outcome: "Less data entry. Fewer mistakes. Faster document processing.",
     example: "Document processing",
   },
@@ -24,16 +14,6 @@ export const capabilities = [
     question: "Still spending hours preparing reports?",
     detail:
       "Production reports, quality summaries and operational updates often require information from multiple spreadsheets and systems. Bring the information together without repeating the same manual work every week.",
-    today: [
-      "Export information from different systems",
-      "Combine spreadsheets and calculate results",
-      "Prepare and distribute the report",
-    ],
-    after: [
-      "Collect information from existing sources",
-      "Prepare the report and highlight important changes",
-      "Review and share the results",
-    ],
     outcome: "Less time preparing reports. More time acting on them.",
     example: "Operational reporting",
   },
@@ -43,16 +23,6 @@ export const capabilities = [
     question: "Is your team spending too much time sorting emails and requests?",
     detail:
       "Customer enquiries, service requests and order updates arrive in different formats. Reduce the time spent reading, categorising and forwarding messages.",
-    today: [
-      "Read each incoming email or request",
-      "Identify what the customer needs",
-      "Forward the information or prepare a response",
-    ],
-    after: [
-      "Identify and classify the request",
-      "Capture the important information",
-      "Route it or prepare a response for approval",
-    ],
     outcome: "Faster responses. Less administration. Fewer requests overlooked.",
     example: "Email & request processing",
   },
@@ -62,16 +32,6 @@ export const capabilities = [
     question: "Does finding the right information take longer than it should?",
     detail:
       "Your business already has the answers in manuals, procedures, service records and technical documents. Make that information easier to find and use.",
-    today: [
-      "Search through folders and documents",
-      "Read multiple manuals or procedures",
-      "Ask colleagues when the answer cannot be found",
-    ],
-    after: [
-      "Ask a question in everyday language",
-      "Find relevant information across approved documents",
-      "Review the answer and its original sources",
-    ],
     outcome: "Less searching. Faster answers. Better use of existing knowledge.",
     example: "Technical knowledge assistant",
   },
@@ -81,16 +41,6 @@ export const capabilities = [
     question: "Still preparing quotations and proposals from scratch?",
     detail:
       "Customer enquiries and RFQs can require hours of reviewing specifications, searching product information and preparing commercial documents.",
-    today: [
-      "Review the customer's requirements",
-      "Search product information and pricing",
-      "Prepare and check the quotation",
-    ],
-    after: [
-      "Extract the customer's requirements",
-      "Match relevant information from approved sources",
-      "Prepare a draft quotation for review",
-    ],
     outcome:
       "Faster quotation preparation. Less repetitive work. More time for customers.",
     example: "Quotation preparation",
@@ -101,16 +51,6 @@ export const capabilities = [
     question: "Are your technicians spending too much time writing reports?",
     detail:
       "Service technicians often finish the physical work only to spend more time documenting what happened. Make reporting part of the job rather than another task afterwards.",
-    today: [
-      "Complete the service visit",
-      "Write notes and organise photographs",
-      "Prepare and submit the service report",
-    ],
-    after: [
-      "Record voice notes and capture photographs",
-      "Prepare a structured service report",
-      "Review, approve and submit",
-    ],
     outcome:
       "Less paperwork. More time on the job. More consistent service records.",
     example: "Service reporting",
@@ -121,16 +61,6 @@ export const capabilities = [
     question: "Could some of your repetitive visual checks be automated?",
     detail:
       "For suitable production processes, camera-based inspection can help identify visible defects, count products and check defined characteristics. We first assess whether the process is technically feasible and commercially worthwhile.",
-    today: [
-      "Inspect products manually",
-      "Identify potential defects or inconsistencies",
-      "Record inspection results",
-    ],
-    after: [
-      "Capture images under controlled conditions",
-      "Check defined product characteristics",
-      "Review exceptions and record the results",
-    ],
     outcome:
       "Reduce repetitive inspection where automated checks can be demonstrated to work reliably.",
     example: "Visual inspection",

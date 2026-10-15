@@ -197,32 +197,6 @@
   }
 }
 
-/* Use cases ------------------------------------------------------------- */
-.use-case {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  overflow: hidden;
-}
-.use-case-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 24px 30px 30px;
-}
-.use-case-body .case-top {
-  margin-bottom: 20px;
-}
-.use-case-body .case-link {
-  margin-top: auto;
-  padding-top: 23px;
-}
-@media (max-width: 540px) {
-  .use-case-body {
-    padding: 22px 25px 26px;
-  }
-}
-
 /* Approach steps (dark section) ---------------------------------------- */
 .approach-grid .media {
   margin-bottom: 20px;
@@ -300,5 +274,31 @@
   .contact-media {
     aspect-ratio: auto !important;
     height: 421px;
+  }
+}
+/* Phones: the photo is only ~350px wide, so the pills need a larger share of
+   it to stay readable. Slightly taller photo, bigger text, pills may wrap. */
+@media (max-width: 540px) {
+  .contact-media {
+    aspect-ratio: 5 / 4 !important;
+  }
+  .contact-photo-notes {
+    padding-left: 3cqw;
+    gap: 2.6cqw;
+    font-size: 4.2cqw;
+  }
+  .contact-photo-notes li {
+    gap: 2.4cqw;
+    max-width: calc(100% - 3cqw);
+    white-space: nowrap;
+    padding: 2.3cqw 3.6cqw 2.3cqw 2.6cqw;
+  }
+  .contact-photo-notes .vcheck {
+    width: 5.6cqw;
+    height: 5.6cqw;
+  }
+  .contact-photo-notes .vcheck svg {
+    width: 3.7cqw;
+    height: 3.7cqw;
   }
 }

@@ -1,34 +1,67 @@
 "use client";
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Check, Download } from "lucide-react";
+import { ArrowUpRight, Check, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+type Status = "idle" | "sending" | "sent" | "error" | "draft" | "download";
+
 export function ProcessBrief() {
-  const [ready, setReady] = useState(false);
-  const [action, setAction] = useState<"email" | "download">("email");
-  function downloadBrief(event: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<Status>("idle");
+  async function submitBrief(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const brief = `PROCESSSPARK — PROCESS BRIEF\n\nName: ${data.get("name")}\nBusiness email: ${data.get("email")}\nBusiness: ${data.get("company")}\nProcess: ${data.get("category")}\n\nWhat happens today:\n${data.get("process")}\n\nPrepared locally. This brief has not been sent to ProcessSpark.\n`;
+    if (status === "sending") return;
+    const form = event.currentTarget;
+    const submitter = (event.nativeEvent as SubmitEvent).submitter;
+    const action = submitter?.getAttribute("data-action") ?? "send";
+    const data = new FormData(form);
+    const brief = `PROCESSSPARK — PROCESS BRIEF\n\nName: ${data.get("name")}\nBusiness email: ${data.get("email")}\nBusiness: ${data.get("company")}\nProcess: ${data.get("category")}\n\nWhat happens today:\n${data.get("process")}\n`;
+    if (action === "send") {
+      setStatus("sending");
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.get("name"),
+            email: data.get("email"),
+            company: data.get("company"),
+            category: data.get("category"),
+            process: data.get("process"),
+            website: data.get("website"),
+          }),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        form.reset();
+        setStatus("sent");
+      } catch {
+        setStatus("error");
+      }
+      return;
+    }
     if (action === "email") {
-      window.location.href = `mailto:Info@ProcessSpark.com?subject=${encodeURIComponent("ProcessSpark — Show us your process")}&body=${encodeURIComponent(brief.replace("Prepared locally. This brief has not been sent to ProcessSpark.", ""))}`;
-      setReady(true);
+      window.location.href = `mailto:Info@ProcessSpark.com?subject=${encodeURIComponent("ProcessSpark — Show us your process")}&body=${encodeURIComponent(brief)}`;
+      setStatus("draft");
       return;
     }
     const url = URL.createObjectURL(
-      new Blob([brief], { type: "text/plain;charset=utf-8" }),
+      new Blob(
+        [
+          `${brief}\nPrepared locally. This brief has not been sent to ProcessSpark.\n`,
+        ],
+        { type: "text/plain;charset=utf-8" },
+      ),
     );
     const a = document.createElement("a");
     a.href = url;
     a.download = "processspark-process-brief.txt";
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setReady(true);
+    setStatus("download");
   }
   return (
     <form
       className="brief-form"
-      onSubmit={downloadBrief}
-      onChange={() => setReady(false)}
+      onSubmit={submitBrief}
+      onChange={() => setStatus((x) => (x === "sending" ? x : "idle"))}
     >
       <div className="form-heading">
         <span className="eyebrow">LET’S START WITH YOUR CHALLENGE</span>
@@ -96,31 +129,65 @@ export function ProcessBrief() {
           placeholder="For example, we receive dozens of supplier documents every day and manually enter the details into our system."
         />
       </label>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: -9999,
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+        }}
+      >
+        <label>
+          Leave this field empty
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <Button
         type="submit"
+        data-action="send"
+        disabled={status === "sending"}
         className="button-primary form-submit"
-        onClick={() => setAction("email")}
       >
-        Let&rsquo;s discuss your challenge <ArrowUpRight size={17} />
+        {status === "sending" ? "Sending..." : "Let’s discuss your challenge"}{" "}
+        <ArrowUpRight size={17} />
       </Button>
-      <button
-        type="submit"
-        className="download-brief"
-        onClick={() => setAction("download")}
-      >
+      <button type="submit" data-action="email" className="download-brief">
+        <Mail size={14} /> Open an email draft instead
+      </button>
+      <button type="submit" data-action="download" className="download-brief">
         <Download size={14} /> Download a brief instead
       </button>
       <p className="form-note">
-        Opens an email draft to Info@ProcessSpark.com in your mail app. Review
-        and send it there. This website does not store or submit your details.
+        Your brief is emailed to the ProcessSpark team, who will reply to the
+        address you give. Prefer to send it yourself? Open an email draft to
+        Info@ProcessSpark.com or download the brief instead.
       </p>
-      <p className="form-status" role="status">
-        {ready && (
+      <p className="form-status" role="status" aria-live="polite">
+        {status === "sending" && "Sending your brief..."}
+        {status === "sent" && (
           <>
-            <Check size={16} />{" "}
-            {action === "email"
-              ? "Email draft requested. Please send it from your mail app, or download your brief if it did not open."
-              : "Your brief is ready. Nothing has been sent."}
+            <Check size={16} /> Thanks. We have received your brief and sent a
+            confirmation to your email.
+          </>
+        )}
+        {status === "error" && (
+          <span>
+            We could not send your brief right now. Please try again, or email
+            it to{" "}
+            <a href="mailto:Info@ProcessSpark.com">Info@ProcessSpark.com</a>.
+          </span>
+        )}
+        {status === "draft" && (
+          <>
+            <Check size={16} /> Email draft requested. Please send it from your
+            mail app, or download your brief if it did not open.
+          </>
+        )}
+        {status === "download" && (
+          <>
+            <Check size={16} /> Your brief is ready. Nothing has been sent.
           </>
         )}
       </p>

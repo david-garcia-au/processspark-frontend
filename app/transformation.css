@@ -511,8 +511,7 @@ body .section-heading > p {
   font-size: 17px;
   line-height: 1.75;
 }
-body .pain-card > p,
-body .use-case-body > p:not(.eyebrow) {
+body .pain-card > p {
   font-size: 16px;
   line-height: 1.7;
 }
@@ -543,7 +542,6 @@ body .under-note a {
   font-size: 14px;
 }
 body .card-top .eyebrow,
-body .use-case .eyebrow,
 body .panel-heading .eyebrow {
   font-size: 11px;
 }
@@ -554,16 +552,6 @@ body .panel-heading p:last-child {
 body .process-tab {
   font-size: 15px;
 }
-body .flow-comparison li {
-  font-size: 15px;
-  line-height: 1.6;
-}
-body .flow-label {
-  font-size: 12px;
-}
-body .flow-label > span:last-child {
-  font-size: 13px;
-}
 body .flow-outcome p,
 body .flow-outcome a {
   font-size: 15px;
@@ -573,13 +561,6 @@ body .example-note,
 body .section-note {
   font-size: 12px;
   line-height: 1.7;
-}
-body .use-case h3 {
-  font-size: 26px;
-  line-height: 1.25;
-}
-body .case-link {
-  font-size: 14px;
 }
 body .approach-intro > p {
   font-size: 16px;
@@ -850,12 +831,6 @@ body .footer-bottom {
   }
   body .process-tab {
     font-size: 12px;
-  }
-  body .flow-label > span:last-child {
-    font-size: 11px;
-  }
-  body .flow-comparison li {
-    font-size: 14px;
   }
   body .panel-heading h3 {
     font-size: 25px;
