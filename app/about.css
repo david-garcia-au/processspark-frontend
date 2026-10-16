@@ -1,0 +1,207 @@
+/* About page. Loaded after transformation.css; rules use the `body` prefix so
+   the shared type scale there cannot override them. */
+body .about-page .about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+body .about-page .eyebrow {
+  color: var(--orange-ink);
+  margin-bottom: 16px;
+}
+body .about-page h1 {
+  font-size: clamp(34px, 8vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -1.6px;
+  font-weight: 550;
+  margin-bottom: 22px;
+  max-width: 13em;
+}
+body .about-page .about-lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 34em;
+}
+body .about-page .about-text {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 62ch;
+}
+.about-pillars {
+  padding-bottom: 64px;
+}
+.about-pillar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.about-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.about-pillar-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--orange-wash);
+  color: var(--orange-ink);
+}
+.about-pillar-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+}
+.about-pillar-title {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+@media (max-width: 360px) {
+  .about-pillar {
+    padding: 16px 12px;
+  }
+  .about-pillar-title {
+    font-size: 15px;
+  }
+}
+.about-cta {
+  background: var(--forest);
+  color: var(--on-dark);
+  padding: 56px 0;
+}
+.about-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+body .about-cta h2 {
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+  font-weight: 500;
+  color: var(--on-dark);
+  max-width: 20em;
+}
+body .about-cta h2 span {
+  color: var(--on-dark-muted);
+}
+@media (min-width: 541px) {
+  body .about-page h1 {
+    font-size: 44px;
+    letter-spacing: -2px;
+  }
+  .about-pillar-list {
+    gap: 14px;
+  }
+  .about-pillar {
+    padding: 22px 20px;
+  }
+  body .about-cta h2 {
+    font-size: 30px;
+  }
+}
+@media (min-width: 701px) {
+  .about-pillar-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .about-cta-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+}
+@media (min-width: 900px) {
+  body .about-page .about-intro {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 72px;
+    align-items: start;
+    padding-top: 88px;
+    padding-bottom: 56px;
+  }
+  body .about-page h1 {
+    font-size: 52px;
+    letter-spacing: -2.4px;
+  }
+  body .about-page .about-text {
+    padding-top: 30px;
+  }
+  .about-pillars {
+    padding-bottom: 88px;
+  }
+  .about-cta {
+    padding: 72px 0;
+  }
+  body .about-cta h2 {
+    font-size: 34px;
+  }
+}
+@media (min-width: 1440px) {
+  body .about-page h1 {
+    font-size: 56px;
+  }
+}
+/* The header nav has five links since the About link was added. Keep each on
+   one line, tighten the row, and fall back to the mobile menu where the links
+   no longer fit beside the switcher and button: below 920px in English and
+   below 1010px in Spanish (longer labels). */
+body .desktop-nav a {
+  white-space: nowrap;
+}
+@media (min-width: 921px) and (max-width: 1100px) {
+  body .desktop-nav {
+    gap: 12px;
+  }
+  body .nav {
+    gap: 16px;
+  }
+}
+@media (min-width: 851px) and (max-width: 920px) {
+  body .desktop-nav,
+  .nav .lang-switch {
+    display: none;
+  }
+  body .nav-cta {
+    margin-left: auto;
+  }
+  body .mobile-toggle {
+    display: block;
+  }
+  body .nav {
+    height: 73px;
+  }
+}
+@media (min-width: 921px) and (max-width: 1010px) {
+  html[lang="es"] body .desktop-nav,
+  html[lang="es"] .nav .lang-switch {
+    display: none;
+  }
+  html[lang="es"] body .nav-cta {
+    margin-left: auto;
+  }
+  html[lang="es"] body .mobile-toggle {
+    display: block;
+  }
+  html[lang="es"] body .nav {
+    height: 73px;
+  }
+}

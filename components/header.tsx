@@ -4,17 +4,18 @@ import { ArrowUpRight, Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import type { Dictionary } from "@/lib/i18n";
-import type { Locale } from "@/lib/i18n/config";
+import { SiteLink, sectionHref, type PageId } from "@/components/site-link";
+import { localePath, type Locale } from "@/lib/i18n/config";
 
-export function Brand({ label }: { label: string }) {
+export function Brand({ label, href = "#" }: { label: string; href?: string }) {
   return (
-    <a href="#" className="brand" aria-label={label}>
+    <SiteLink href={href} className="brand" aria-label={label}>
       <span className="brand-icon">
         <Zap size={21} fill="currentColor" />
       </span>
       Process<span className="brand-light">Spark</span>
       <span className="brand-dot">.</span>
-    </a>
+    </SiteLink>
   );
 }
 
@@ -30,26 +31,44 @@ type HeaderProps = {
   copy: Dictionary["header"];
   switcherCopy: Dictionary["languageSwitcher"];
   brandLabel: string;
+  /** Page being rendered. Defaults to the landing page. */
+  page?: PageId;
 };
 
-export function Header({ lang, copy, switcherCopy, brandLabel }: HeaderProps) {
+export function Header({
+  lang,
+  copy,
+  switcherCopy,
+  brandLabel,
+  page = "home",
+}: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const aboutHref = localePath(lang, "/about");
+  const aboutCurrent = page === "about" ? ("page" as const) : undefined;
+  const switchPath = page === "about" ? "/about" : "/";
+  const contactHref = sectionHref(lang, page, "#contact");
   return (
     <header className="header">
       <div className="shell nav">
-        <Brand label={brandLabel} />
+        <Brand
+          label={brandLabel}
+          href={page === "home" ? "#" : localePath(lang)}
+        />
         <nav aria-label={copy.mainNavLabel} className="desktop-nav">
-          {sectionLinks.map(([key, href]) => (
-            <a key={href} href={href}>
+          {sectionLinks.map(([key, hash]) => (
+            <SiteLink key={hash} href={sectionHref(lang, page, hash)}>
               {copy.links[key]}
-            </a>
+            </SiteLink>
           ))}
+          <SiteLink href={aboutHref} aria-current={aboutCurrent}>
+            {copy.links.about}
+          </SiteLink>
         </nav>
-        <LanguageSwitcher lang={lang} copy={switcherCopy} />
+        <LanguageSwitcher lang={lang} copy={switcherCopy} path={switchPath} />
         <Button asChild className="nav-cta">
-          <a href="#contact">
+          <SiteLink href={contactHref}>
             {copy.cta} <ArrowUpRight size={16} />
-          </a>
+          </SiteLink>
         </Button>
         <button
           className="mobile-toggle"
@@ -69,16 +88,23 @@ export function Header({ lang, copy, switcherCopy, brandLabel }: HeaderProps) {
         >
           {[
             ...sectionLinks.map(
-              ([key, href]) => [copy.links[key], href] as const,
+              ([key, hash]) =>
+                [copy.links[key], sectionHref(lang, page, hash)] as const,
             ),
-            [copy.cta, "#contact"] as const,
+            [copy.links.about, aboutHref] as const,
+            [copy.cta, contactHref] as const,
           ].map(([label, href]) => (
-            <a href={href} key={href} onClick={() => setOpen(false)}>
+            <SiteLink
+              href={href}
+              key={href}
+              aria-current={href === aboutHref ? aboutCurrent : undefined}
+              onClick={() => setOpen(false)}
+            >
               {label}
               <ArrowUpRight size={16} />
-            </a>
+            </SiteLink>
           ))}
-          <LanguageSwitcher lang={lang} copy={switcherCopy} />
+          <LanguageSwitcher lang={lang} copy={switcherCopy} path={switchPath} />
         </nav>
       )}
     </header>

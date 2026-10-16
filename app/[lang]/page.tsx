@@ -22,6 +22,7 @@ import {
   VisionHero,
 } from "@/components/transformation-visuals";
 import { ProcessBrief } from "@/components/process-brief";
+import { StructuredData } from "@/components/structured-data";
 import { Media, type MediaText } from "@/components/media";
 import {
   approachSteps,
@@ -48,6 +49,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   ) as Record<CapabilityId, MediaText>;
   return (
     <>
+      <StructuredData lang={lang} dict={dict} />
       <a className="skip-link" href="#main">
         {dict.common.skipLink}
       </a>

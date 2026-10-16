@@ -1,28 +1,27 @@
 import type { MetadataRoute } from "next";
-import { defaultLocale, hreflang, localePath, locales } from "@/lib/i18n";
+import { languageAlternates } from "@/lib/alternates";
+import { localePath, locales } from "@/lib/i18n";
 import { absoluteUrl, site } from "@/lib/site";
 
 // Evaluated at build time, so lastModified is the date of the latest deploy.
 const lastModified = new Date();
 
 // Every page is listed once per locale, each entry pointing at all versions.
-const languages = {
-  ...Object.fromEntries(
-    locales.map((locale) => [
-      hreflang[locale],
-      absoluteUrl(localePath(locale)),
-    ]),
-  ),
-  "x-default": absoluteUrl(localePath(defaultLocale)),
-};
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  return locales.map((locale) => ({
+  const home = locales.map((locale) => ({
     url: absoluteUrl(localePath(locale)),
     lastModified,
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 1,
-    alternates: { languages },
+    alternates: { languages: languageAlternates("/") },
     images: site.images.map((image) => absoluteUrl(image.path)),
   }));
+  const about = locales.map((locale) => ({
+    url: absoluteUrl(localePath(locale, "/about")),
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+    alternates: { languages: languageAlternates("/about") },
+  }));
+  return [...home, ...about];
 }

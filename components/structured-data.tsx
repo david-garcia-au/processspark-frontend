@@ -103,6 +103,38 @@ function buildGraph(lang: Locale, dict: Dictionary) {
   };
 }
 
+/** The About page only; the organisation node lives in the home page graph. */
+function buildAboutGraph(lang: Locale, dict: Dictionary) {
+  const aboutUrl = absoluteUrl(localePath(lang, "/about"));
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": `${aboutUrl}#webpage`,
+        url: aboutUrl,
+        name: dict.aboutPage.title,
+        description: dict.footer.lead,
+        inLanguage: hreflang[lang],
+        isPartOf: { "@id": absoluteUrl(`${localePath(lang)}#website`) },
+        about: { "@id": organizationId },
+      },
+    ],
+  };
+}
+
+function JsonLd({ graph }: { graph: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        // Escape "<" so content can never close the script tag.
+        __html: JSON.stringify(graph).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
+
 export function StructuredData({
   lang,
   dict,
@@ -110,13 +142,15 @@ export function StructuredData({
   lang: Locale;
   dict: Dictionary;
 }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        // Escape "<" so content can never close the script tag.
-        __html: JSON.stringify(buildGraph(lang, dict)).replace(/</g, "\\u003c"),
-      }}
-    />
-  );
+  return <JsonLd graph={buildGraph(lang, dict)} />;
+}
+
+export function AboutStructuredData({
+  lang,
+  dict,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+}) {
+  return <JsonLd graph={buildAboutGraph(lang, dict)} />;
 }

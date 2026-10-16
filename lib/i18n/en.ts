@@ -104,6 +104,7 @@ export const en = {
       capabilities: "What changes",
       useCases: "Use cases",
       approach: "How we work",
+      about: "About",
     },
     cta: "Show us your process",
   },
@@ -484,11 +485,27 @@ export const en = {
       capabilities: "What changes",
       useCases: "Practical applications",
       approach: "How we work",
+      about: "About",
     },
     talkHeading: "Let’s talk",
     cta: "Show us your process",
     copyright: "© 2026 ProcessSpark",
     backToTop: "Back to top",
+  },
+  // Copy for the About page (app/[lang]/about). Its lead and description reuse
+  // `footer.lead`, and its closing band reuses `header.cta` and `contact.signoff`.
+  aboutPage: {
+    title: "About ProcessSpark",
+    eyebrow: "ABOUT PROCESSSPARK",
+    heading: "Built on real operations experience.",
+    text: "Our approach is grounded in experience across manufacturing operations, industrial engineering, enterprise systems and cloud technologies. We understand the challenges of connecting new solutions to established processes without disrupting the work that keeps your business running.",
+    pillarsLabel: "Areas of experience",
+    pillars: {
+      manufacturing: "Manufacturing operations",
+      engineering: "Industrial engineering",
+      systems: "Enterprise systems",
+      cloud: "Cloud technologies",
+    },
   },
   notFound: {
     title: "404",

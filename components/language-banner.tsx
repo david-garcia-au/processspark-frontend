@@ -1,6 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { hreflang, localePath, type Locale } from "@/lib/i18n/config";
 import {
@@ -9,6 +10,11 @@ import {
   prefersSpanish,
   rememberLanguageChoice,
 } from "@/lib/i18n/language-suggestion";
+
+/** Locale-less path of the current page ("/en/about" or "/about/" -> "/about"). */
+function localeLessPath(pathname: string): string {
+  return pathname.replace(/^\/en(?=\/|$)/, "").replace(/\/+$/, "") || "/";
+}
 
 /**
  * Offers the Spanish version to visitors whose browser prefers Spanish.
@@ -23,6 +29,8 @@ const onServer = () => false;
 export function LanguageBanner({ lang }: { lang: Locale }) {
   // The server snapshot is always false, so the server HTML never has the
   // banner. After hydration React re-renders with the browser's answer.
+  // Offer the same page in Spanish: /about links to /es/about, / to /es.
+  const pathname = usePathname();
   const suggest = useSyncExternalStore(subscribe, shouldSuggest, onServer);
   const [dismissed, setDismissed] = useState(false);
 
@@ -40,7 +48,7 @@ export function LanguageBanner({ lang }: { lang: Locale }) {
       </p>
       <a
         className="lang-banner-link"
-        href={localePath("es")}
+        href={localePath("es", localeLessPath(pathname))}
         lang={hreflang.es}
         hrefLang={hreflang.es}
         onClick={rememberLanguageChoice}

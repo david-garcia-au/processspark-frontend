@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { LanguageBanner } from "@/components/language-banner";
-import { StructuredData } from "@/components/structured-data";
 import {
   defaultLocale,
   getDictionary,
@@ -20,6 +19,7 @@ import "../transformation.css";
 import "../media.css";
 import "../footer.css";
 import "../language-switcher.css";
+import "../about.css";
 
 export const dynamicParams = false;
 
@@ -156,9 +156,8 @@ export default async function RootLayout({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   return (
-    <html lang={htmlLang[lang]}>
+    <html lang={htmlLang[lang]} data-scroll-behavior="smooth">
       <body id="top">
-        <StructuredData lang={lang} dict={getDictionary(lang)} />
         {children}
         <LanguageBanner lang={lang} />
       </body>
