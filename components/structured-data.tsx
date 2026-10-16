@@ -1,7 +1,7 @@
 import { capabilities, useCases } from "@/lib/content";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { hreflang, localePath, socialImagePath } from "@/lib/i18n";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, defaultPhone, readyPhones, site } from "@/lib/site";
 
 const organizationId = absoluteUrl("/#organization");
 
@@ -27,6 +27,7 @@ function buildGraph(lang: Locale, dict: Dictionary) {
         description: seo.description,
         slogan: seo.tagline,
         email: site.email,
+        telephone: defaultPhone().e164Dashed,
         logo: {
           "@type": "ImageObject",
           url: absoluteUrl("/icon.svg"),
@@ -37,12 +38,15 @@ function buildGraph(lang: Locale, dict: Dictionary) {
           "@type": "BusinessAudience",
           audienceType: seo.sectors.join(", "),
         },
-        contactPoint: {
+        // One per ready number. areaServed only for region-specific numbers.
+        contactPoint: readyPhones().map((phone) => ({
           "@type": "ContactPoint",
-          contactType: "sales",
+          contactType: "customer service",
           email: site.email,
+          telephone: phone.e164Dashed,
+          ...(phone.default ? {} : { areaServed: phone.region }),
           availableLanguage: ["en", "es"],
-        },
+        })),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: seo.jsonLd.offerCatalogName,

@@ -1,6 +1,6 @@
 import { capabilities, useCases } from "@/lib/content";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, readyPhones, site } from "@/lib/site";
 
 /**
  * Plain-text summary for AI assistants and answer engines (llms.txt
@@ -44,6 +44,10 @@ export function buildLlmsTxt(locale: Locale): string {
     `## ${seo.llms.contact}`,
     "",
     `- ${seo.llms.email}: ${site.email}`,
+    ...readyPhones().map(
+      (phone) =>
+        `- ${seo.llms.phone} (${phone.label[locale]}): ${phone.display}`,
+    ),
     "",
   ];
   return lines.join("\n");

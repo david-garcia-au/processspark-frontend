@@ -150,3 +150,7 @@ body .site-footer .site-footer-title {
     flex-wrap: wrap;
   }
 }
+/* Phone cards: the ring is drawn on the card (a::after), not on the link. */
+.site-footer .phone-card-number:focus-visible {
+  outline: none;
+}

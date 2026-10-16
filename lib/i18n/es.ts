@@ -98,6 +98,7 @@ export const es: Dictionary = {
       sitemap: "Mapa del sitio",
       contact: "Contacto",
       email: "Correo electrónico",
+      phone: "Teléfono",
     },
   },
   common: {
@@ -447,6 +448,7 @@ export const es: Dictionary = {
       line1: "No hace falta ningún conocimiento técnico.",
       strong: "Solo cuéntanos qué frena a tu equipo.",
     },
+    phonePrompt: "¿Prefieres llamar?",
     form: {
       eyebrow: "EMPECEMOS POR TU RETO",
       name: {

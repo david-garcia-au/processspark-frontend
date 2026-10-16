@@ -21,6 +21,7 @@ import {
   TransformationVisuals,
   VisionHero,
 } from "@/components/transformation-visuals";
+import { PhoneCards } from "@/components/phone-cards";
 import { ProcessBrief } from "@/components/process-brief";
 import { StructuredData } from "@/components/structured-data";
 import { Media, type MediaText } from "@/components/media";
@@ -296,6 +297,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 {contact.signoff.line1} <br />
                 <strong>{contact.signoff.strong}</strong>
               </span>
+            </div>
+            <div className="contact-call">
+              <p className="contact-call-label">{contact.phonePrompt}</p>
+              <PhoneCards lang={lang} variant="light" />
             </div>
           </div>
           <ProcessBrief lang={lang} copy={contact.form} email={site.email} />

@@ -1663,3 +1663,127 @@ h2 {
 .download-brief:hover {
   text-decoration: underline;
 }
+
+/* Phone country cards (components/phone-cards.tsx). One card per ready number.
+   The link's ::after covers the whole card, so the tap target is the card. */
+.phone-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 260px);
+  gap: 12px;
+}
+.phone-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+.phone-flag {
+  display: block;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.phone-flag svg {
+  display: block;
+}
+.phone-card-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.phone-card-country {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.phone-card-number {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+.phone-card-number::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+}
+.phone-card-number:hover {
+  color: var(--orange-ink);
+  text-decoration-color: var(--orange-ink);
+}
+.phone-card-number:focus-visible {
+  outline: none;
+}
+.phone-card-number:focus-visible::after {
+  outline: 3px solid var(--orange-ink);
+  outline-offset: 2px;
+}
+.phone-cards-dark .phone-card {
+  border-color: color-mix(in srgb, var(--on-dark) 14%, transparent);
+  background: color-mix(in srgb, var(--on-dark) 7%, transparent);
+  color: var(--on-dark);
+}
+.phone-cards-dark .phone-card-number:hover {
+  color: var(--orange-wash);
+  text-decoration-color: var(--orange);
+}
+.phone-cards-dark .phone-card-number:focus-visible::after {
+  outline-color: var(--orange-wash);
+}
+.contact-call {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin-top: 16px;
+}
+.contact-call-label {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.phone-cards-dark {
+  margin-top: 16px;
+}
+/* Two numbers sit side by side in the contact section from 700px up. The
+   footer column is narrow, so its cards always stack. */
+@media (min-width: 700px) {
+  .phone-cards-light[data-count="2"] {
+    grid-template-columns: repeat(2, minmax(0, 260px));
+  }
+}
+/* Two-column contact section: the photo height in media.css is tuned to end
+   level with the form. The call row adds height to the copy column, so the
+   spacing around the sign-off is tightened to keep that alignment close. */
+@media (min-width: 1200px) {
+  .contact-copy .contact-signoff {
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+  .contact-call {
+    margin-top: 12px;
+  }
+  .contact-call .phone-card {
+    min-height: 56px;
+    padding: 8px 16px;
+  }
+}

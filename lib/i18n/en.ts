@@ -83,6 +83,7 @@ export const en = {
       sitemap: "Sitemap",
       contact: "Contact",
       email: "Email",
+      phone: "Phone",
     },
   },
   common: {
@@ -428,6 +429,7 @@ export const en = {
       line1: "No technical knowledge required.",
       strong: "Just tell us what’s slowing your team down.",
     },
+    phonePrompt: "Prefer to call?",
     form: {
       eyebrow: "LET’S START WITH YOUR CHALLENGE",
       name: {

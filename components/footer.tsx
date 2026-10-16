@@ -4,6 +4,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteLink, sectionHref, type PageId } from "@/components/site-link";
 import type { Dictionary } from "@/lib/i18n";
 import { localePath, type Locale } from "@/lib/i18n/config";
+import { PhoneCards } from "@/components/phone-cards";
 import { site } from "@/lib/site";
 
 const exploreLinks = [
@@ -74,6 +75,7 @@ export function Footer({
           <a className="site-footer-email" href={`mailto:${site.email}`}>
             {site.email}
           </a>
+          <PhoneCards lang={lang} variant="dark" />
         </div>
       </div>
       <div className="shell">
