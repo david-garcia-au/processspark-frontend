@@ -1,3 +1,5 @@
+"use client";
+
 import {
   hreflang,
   localeCodes,
@@ -6,6 +8,7 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n";
+import { rememberLanguageChoice } from "@/lib/i18n/language-suggestion";
 import { cn } from "@/lib/utils";
 
 type LanguageSwitcherProps = {
@@ -19,8 +22,9 @@ type LanguageSwitcherProps = {
 
 /**
  * EN | ES switch. Each link points at the same page in the other locale.
- * Hook-free on purpose, so it works in server and client trees. Imports the
- * locale config only, never the dictionaries.
+ * Hook-free on purpose. Imports the locale config only, never the
+ * dictionaries. Client component only so a click can remember the choice,
+ * which stops the language suggestion banner from showing again.
  */
 export function LanguageSwitcher({
   lang,
@@ -53,6 +57,7 @@ export function LanguageSwitcher({
             lang={hreflang[locale]}
             hrefLang={hreflang[locale]}
             aria-label={copy[locale]}
+            onClick={rememberLanguageChoice}
           >
             {localeCodes[locale]}
           </a>

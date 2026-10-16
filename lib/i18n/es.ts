@@ -394,8 +394,8 @@ export const es: Dictionary = {
   approach: {
     eyebrow: "DEL PROCESO MANUAL A UNA SOLUCIÓN QUE FUNCIONA",
     heading: {
-      line1: "No necesitas un proyecto de IA.",
-      accent: "Necesitas un problema que merezca la pena resolver.",
+      line1: "Empieza por un proceso.",
+      accent: "Marca una diferencia medible.",
     },
     lead: "Empezamos por entender cómo funciona hoy tu empresa. Después identificamos una mejora práctica, la probamos con información real y medimos los resultados antes de comprometernos con una solución mayor.",
     steps: {

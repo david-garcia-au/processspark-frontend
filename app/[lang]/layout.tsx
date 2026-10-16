@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
+import { LanguageBanner } from "@/components/language-banner";
 import { StructuredData } from "@/components/structured-data";
 import {
   defaultLocale,
@@ -159,6 +160,7 @@ export default async function RootLayout({
       <body id="top">
         <StructuredData lang={lang} dict={getDictionary(lang)} />
         {children}
+        <LanguageBanner lang={lang} />
       </body>
     </html>
   );

@@ -375,8 +375,8 @@ export const en = {
   approach: {
     eyebrow: "FROM MANUAL PROCESS TO WORKING SOLUTION",
     heading: {
-      line1: "You don’t need an AI project.",
-      accent: "You need a problem worth solving.",
+      line1: "Start with one process.",
+      accent: "Make a measurable difference.",
     },
     lead: "We start by understanding how your business works today. Then we identify a practical improvement, test it with real information and measure the results before committing to a larger solution.",
     steps: {

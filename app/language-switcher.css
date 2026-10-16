@@ -81,3 +81,117 @@
 .site-footer .lang-switch a.lang-switch-item:hover {
   color: var(--orange-wash);
 }
+
+/* Language suggestion banner. Fixed, so it never takes space in the flow.
+   Below the sticky header (z-index 40), which holds the open mobile menu. */
+.lang-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  z-index: 30;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px 14px;
+  width: calc(100% - 32px);
+  max-width: 560px;
+  padding: 8px 8px 8px 20px;
+  border-radius: 10px;
+  background: var(--forest);
+  color: var(--on-dark);
+  box-shadow: 0 10px 30px rgb(22 37 29 / 28%);
+  animation: lang-banner-in 0.3s ease-out both;
+}
+.lang-banner .lang-banner-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.35;
+}
+.lang-banner .lang-banner-link {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 4px;
+  background: var(--orange);
+  color: var(--forest-deep);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+.lang-banner .lang-banner-link:hover {
+  background: var(--orange-hover);
+}
+.lang-banner .lang-banner-close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--on-dark-soft);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.lang-banner .lang-banner-close:hover {
+  color: var(--on-dark);
+}
+.lang-banner .lang-banner-link:focus-visible,
+.lang-banner .lang-banner-close:focus-visible {
+  outline: 3px solid var(--orange-wash);
+  outline-offset: 2px;
+}
+@keyframes lang-banner-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-banner {
+    animation: none;
+  }
+}
+@media (max-width: 600px) {
+  .lang-banner {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    padding: 6px 4px 6px 14px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    border-radius: 10px 10px 0 0;
+    gap: 6px 8px;
+    animation-name: lang-banner-in-mobile;
+  }
+  .lang-banner .lang-banner-text {
+    font-size: 13px;
+    line-height: 1.25;
+  }
+  .lang-banner .lang-banner-link {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+  @keyframes lang-banner-in-mobile {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

@@ -843,10 +843,10 @@ body .download-brief {
     grid-template-columns: 1fr;
   }
 }
-/* Spanish headings are longer: keep the heading column at its natural width
-   so the intro paragraph beside it wraps instead. English is unaffected. */
+/* Keep the heading column at its natural width so the intro paragraph beside
+   it wraps instead of squeezing the heading onto many short lines. */
 @media (min-width: 851px) {
-  :lang(es) .section-heading > div {
+  .section-heading > div {
     flex-shrink: 0;
   }
 }
