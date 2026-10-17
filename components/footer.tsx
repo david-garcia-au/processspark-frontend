@@ -61,6 +61,9 @@ export function Footer({
                   {copy.links.about}
                 </SiteLink>
               </li>
+              <li>
+                <a href={site.demoUrl}>{copy.links.demo}</a>
+              </li>
             </ul>
           </nav>
         </div>

@@ -25,6 +25,8 @@ export const site = {
   name: "ProcessSpark",
   url: siteUrl,
   email: "Info@ProcessSpark.com",
+  /** Invite-only demo platform (a separate app on its own subdomain). */
+  demoUrl: "https://demo.processspark.com",
   images: [
     { id: "bottle-inspection", path: "/images/bottle-inspection.webp" },
     { id: "copy-by-hand", path: "/images/copy-by-hand.webp" },

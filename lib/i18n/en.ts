@@ -488,6 +488,7 @@ export const en = {
       useCases: "Practical applications",
       approach: "How we work",
       about: "About",
+      demo: "Demo",
     },
     talkHeading: "Let’s talk",
     cta: "Show us your process",

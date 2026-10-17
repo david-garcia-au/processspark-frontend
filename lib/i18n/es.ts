@@ -507,6 +507,7 @@ export const es: Dictionary = {
       useCases: "Aplicaciones prácticas",
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
+      demo: "Demo",
     },
     talkHeading: "Hablemos",
     cta: "Muéstranos tu proceso",
