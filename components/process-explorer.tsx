@@ -7,8 +7,7 @@ import {
   Check,
   ClipboardCheck,
   Files,
-  Mail,
-  ScanLine,
+  Network,
   Search,
 } from "lucide-react";
 import { capabilities, type CapabilityId } from "@/lib/content";
@@ -18,8 +17,8 @@ const icons = {
   Activity,
   ClipboardCheck,
   Files,
-  Mail,
-  ScanLine,
+  Network,
+
   Search,
 };
 
@@ -37,11 +36,7 @@ export function ProcessExplorer({ copy, mediaText }: ProcessExplorerProps) {
         {capabilities.map((item) => {
           const Icon = icons[item.icon];
           return (
-            <Tabs.Trigger
-              key={item.id}
-              value={item.id}
-              className="process-tab"
-            >
+            <Tabs.Trigger key={item.id} value={item.id} className="process-tab">
               <Icon size={19} />
               {copy.items[item.id].name}
             </Tabs.Trigger>
@@ -51,11 +46,7 @@ export function ProcessExplorer({ copy, mediaText }: ProcessExplorerProps) {
       {capabilities.map((item, index) => {
         const text = copy.items[item.id];
         return (
-          <Tabs.Content
-            key={item.id}
-            value={item.id}
-            className="process-panel"
-          >
+          <Tabs.Content key={item.id} value={item.id} className="process-panel">
             <div className="panel-top">
               <div className="panel-heading">
                 <div>
@@ -68,11 +59,47 @@ export function ProcessExplorer({ copy, mediaText }: ProcessExplorerProps) {
                   <span> / {String(capabilities.length).padStart(2, "0")}</span>
                 </span>
               </div>
-              <Media
-                slot={`capability-${item.id}`}
-                text={mediaText[item.id]}
-                sizes="(max-width: 850px) 100vw, 50vw"
-              />
+              {item.id === "integrations" ? (
+                <div className="integration-diagram">
+                  <div className="integration-sources">
+                    {copy.integration.sources.map((source) => (
+                      <div key={source}>
+                        <Network size={22} aria-hidden="true" />
+                        {source}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="integration-connector" aria-hidden="true">
+                    ↓
+                  </div>
+                  <div className="integration-hub">
+                    {copy.integration.connection}
+                  </div>
+                  <div className="integration-connector" aria-hidden="true">
+                    ↓
+                  </div>
+                  <div className="integration-result">
+                    <strong>{copy.integration.view}</strong>
+                    <span>{copy.integration.details}</span>
+                  </div>
+                </div>
+              ) : (
+                <Media
+                  slot={`capability-${item.id}`}
+                  text={mediaText[item.id]}
+                  sizes="(max-width: 850px) 100vw, 50vw"
+                />
+              )}
+            </div>
+            <div className="process-comparison">
+              <div>
+                <strong>{copy.todayLabel}</strong>
+                <p>{text.today}</p>
+              </div>
+              <div>
+                <strong>{copy.afterLabel}</strong>
+                <p>{text.after}</p>
+              </div>
             </div>
             <div className="flow-outcome">
               <p>

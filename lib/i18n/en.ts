@@ -110,28 +110,24 @@ export const en = {
     cta: "Show us your process",
   },
   hero: {
-    eyebrow: "FOR MANUFACTURING, LOGISTICS & INDUSTRIAL SERVICES",
+    eyebrow: "FOR MANUFACTURING, LOGISTICS & SERVICE BUSINESSES",
     title: {
-      line1: "Less manual work.",
-      accent: "Smoother operations.",
+      line1: "Digitise your paperwork.",
+      line2: "Connect your data silos.",
+      accent: "Gain full operational visibility.",
     },
-    lead: "Make everyday work easier, faster and more reliable.",
-    intro:
-      "Too much time spent on paperwork, spreadsheets and repetitive tasks? We help manufacturing and operational businesses simplify everyday work, reduce errors and get more done with the people and systems they already have.",
     description:
-      "From the factory floor to the back office, we find the work that slows your team down and build practical solutions around your existing processes and systems.",
-    ctaPrimary: "Show us what’s slowing you down",
-    ctaSecondary: "Explore the possibilities",
-    points: {
-      built: "Built around your business",
-      connected: "Connected to your systems",
-    },
+      "We digitise paper-based work, connect your existing data sources and make documents searchable with AI—so you can see progress, spot bottlenecks and act on what needs attention.",
+    ctaPrimary: "Show us your process",
+    ctaSecondary: "See practical demos",
+    reassurance:
+      "Built around your existing systems. Implemented with minimal disruption.",
   },
   band: {
     ariaLabel: "Industries we work with",
     promise: {
-      line1: "Less repetitive work.",
-      line2: "More time for what matters.",
+      line1: "Less paper. Connected\u00a0information.",
+      line2: "Clearer operations.",
     },
     introLabel: "FOR BUSINESSES THAT",
     introStrong: "make. move. maintain.",
@@ -187,46 +183,45 @@ export const en = {
         review: "People review",
       },
     },
-    eyebrow: "SMALL CHANGES. MEASURABLE IMPROVEMENTS.",
+    eyebrow: "PRACTICAL AI. USEFUL ANSWERS.",
     title: {
-      line1: "Same work.",
-      line2: "Less effort to get it done.",
+      line1: "Your documents hold answers.",
+      line2: "Put them to work.",
     },
     lead: {
-      line1: "Documents processed without endless copying.",
-      line2: "Reports prepared without hours in spreadsheets.",
-      line3: "Information available when your team needs it.",
+      line1: "Use AI to read documents, extract useful details",
+      line2: "and find answers across your business information—",
+      line3: "with your team reviewing what needs judgement.",
     },
     story: {
       photoAlt:
         "Illustrative worker copying details from a supplier certificate into a notebook, with the same details already entered in a spreadsheet on a laptop",
-      badge: "DOCUMENT PROCESSING",
-      eyebrow: "PAPERWORK IN. USEFUL INFORMATION OUT.",
+      badge: "AI-ASSISTED DOCUMENT PROCESSING",
+      eyebrow: "READ. FIND. CHECK.",
       title: {
-        line1: "Still copying information",
-        accent: "from documents by hand?",
+        line1: "From reading every page",
+        accent: "to reviewing what matters.",
       },
-      text: "Supplier certificates, delivery notes, inspection records and purchase orders. Stop copying information between documents and systems. Capture the details, identify missing information and let your team focus on exceptions.",
-      todayLabel: "TODAY",
-      todayText:
-        "Open every document. Copy the details. Check for mistakes. Enter the same information again.",
-      withAiLabel: "WITH AI",
+      text: "Capture details from invoices, job sheets and supplier certificates. Flag missing information for review. Ask questions across technical manuals, procedures and records, with answers linked to their sources.",
+      todayLabel: "A SUPPLIER CERTIFICATE ARRIVES",
+      todayText: "AI extracts the supplier, part and batch details.",
+      withAiLabel: "CHECKS AND HUMAN REVIEW",
       withAiText:
-        "Upload the document. Capture and check the information. Review only what needs attention.",
-      link: "See how your process could change",
+        "Defined checks flag missing information, and your team reviews exceptions before the record moves forward.",
+      link: "See practical demos",
     },
     outcomes: {
       time: {
-        title: "Give your team time back",
-        text: "Reduce the repetitive administration that keeps people from more valuable work.",
+        title: "Read and extract",
+        text: "Capture useful information from documents and scanned records.",
       },
       capacity: {
-        title: "Handle more work without adding complexity",
-        text: "Reduce bottlenecks and make better use of the people and systems you already have.",
+        title: "Find answers",
+        text: "Ask questions across your documents using AI-assisted search with source references.",
       },
       attention: {
-        title: "Know what needs attention",
-        text: "See outstanding work, missing information and blocked handovers before they become customer problems.",
+        title: "Check and flag",
+        text: "Identify missing details and inconsistencies for your team to review.",
       },
     },
   },
@@ -272,68 +267,83 @@ export const en = {
   capabilities: {
     eyebrow: "SAME BUSINESS. BETTER PROCESS.",
     heading: {
-      line1: "What is your team",
-      line2: "still doing manually?",
+      line1: "Where does your work",
+      line2: "get stuck?",
     },
-    lead: "From paperwork and reporting to customer requests and quality checks. Explore how everyday tasks could become simpler, faster and more reliable.",
-    tablistLabel: "Explore manual processes",
+    lead: "Paper forms, disconnected systems, hard-to-find information or unclear progress? Explore how we help your team move work forward.",
+    tablistLabel: "Explore operational problems",
+    todayLabel: "Today",
+    afterLabel: "With ProcessSpark",
     items: {
-      "tracking-work": {
-        name: "Tracking work",
-        question: "Still chasing people to find out where things stand?",
-        detail:
-          "Bring work from existing systems into a shared view, with owners, status and exceptions that need attention.",
-        outcome: "Less time preparing reports. More time acting on them.",
-        example: "Operational reporting",
-      },
-      "closing-jobs": {
-        name: "Closing jobs",
-        question: "Job finished. Still not ready to invoice?",
-        detail:
-          "Check required records, flag missing information, route reports for approval and pass completed jobs to finance.",
-        outcome:
-          "Less paperwork. More time on the job. More consistent service records.",
-        example: "Closing jobs",
-      },
       documents: {
-        name: "Documents",
-        question: "Still entering information from documents by hand?",
+        name: "Paperwork",
+        question: "Still writing it down, then typing it in again?",
         detail:
-          "Supplier certificates, delivery notes, purchase orders and inspection records often contain information your team needs to enter into other systems. Reduce the copying, checking and retyping.",
-        outcome: "Less data entry. Fewer mistakes. Faster document processing.",
-        example: "Document processing",
+          "Digitise retained records and replace everyday paper forms with digital capture. Link the information to the relevant job, asset or order.",
+        today:
+          "Fill out a paper form. Retype the details. File the scan. Chase missing information.",
+        after:
+          "Capture information digitally or extract it from existing records. Check required details and link them to the work.",
+        outcome: "Capture once. Reduce repeated entry.",
+        example: "Digital records and forms",
       },
-      requests: {
-        name: "Requests",
-        question: "Still sorting and forwarding every incoming request?",
+      integrations: {
+        name: "Disconnected systems",
+        question: "Does your team connect the dots between systems by hand?",
         detail:
-          "Capture requests, assign ownership and prepare the next action for review.",
-        outcome:
-          "Faster responses. Less administration. Fewer requests overlooked.",
-        example: "Email & request processing",
+          "Integrate relevant data from existing systems, spreadsheets and databases. Reduce copying and give teams a consistent view of the information they need.",
+        today:
+          "Export a spreadsheet. Copy the details. Reconcile different versions. Ask someone for an update.",
+        after:
+          "Connect the relevant sources. Apply agreed checks. Keep shared information updated and flag exceptions.",
+        outcome: "Connected sources. A consistent view.",
+        example: "Data integration",
       },
       "finding-answers": {
         name: "Finding answers",
-        question:
-          "Does finding the right information take longer than it should?",
+        question: "Know the answer exists, but can’t find it?",
         detail:
-          "Your business already has the answers in manuals, procedures, service records and technical documents. Make that information easier to find and use.",
-        outcome:
-          "Less searching. Faster answers. Better use of existing knowledge.",
-        example: "Technical knowledge assistant",
+          "Search manuals, procedures and records with AI-assisted document search. Find relevant answers with references to the source.",
+        today:
+          "Search folders. Open documents. Read through pages. Ask a colleague.",
+        after:
+          "Ask a question. Find the relevant answer and its source. Review the supporting information.",
+        outcome: "Less searching. Answers you can check.",
+        example: "AI-assisted document search",
       },
-      inspecting: {
-        name: "Inspecting",
-        question: "Still checking every product manually?",
+      "closing-jobs": {
+        name: "Approvals & handovers",
+        question: "Is completed work still waiting on paperwork or approval?",
         detail:
-          "For suitable production processes, camera-based inspection can help identify visible defects, count products and check defined characteristics. We first assess whether the process is technically feasible and commercially worthwhile.",
-        outcome:
-          "Reduce repetitive inspection where automated checks can be demonstrated to work reliably.",
-        example: "Visual inspection",
+          "Check required information, assign the next action and route work for approval—including the handover from completed jobs to finance.",
+        today:
+          "Finish the job. Email the report. Chase missing details and approval. Finance waits.",
+        after:
+          "Check completeness. Assign the reviewer. Make outstanding actions visible and prepare the finance handover.",
+        outcome: "Clear ownership. Fewer stalled handovers.",
+        example: "Connected workflows",
+      },
+      "tracking-work": {
+        name: "Operational visibility",
+        question: "Still chasing people to find out where things stand?",
+        detail:
+          "Bring status, ownership and exceptions into a shared view. See what is progressing, what is blocked and who needs to act.",
+        today:
+          "Collect updates from inboxes and spreadsheets. Ask who owns the next step. Discover delays late.",
+        after:
+          "See progress, owners and outstanding actions together. Identify blocked work and act on exceptions.",
+        outcome: "Know what’s moving and what needs attention.",
+        example: "Operational visibility",
       },
     },
+    integration: {
+      sources: ["Business systems", "Spreadsheets", "Databases"],
+      connection: "Connect and check",
+      view: "Shared operational view",
+      details: "Progress · Owners · Exceptions",
+    },
     cta: "Explore your process",
-    note: "Illustrative workflow. Checks, thresholds and human review are defined around your operation.",
+    note: "Illustrative workflow. Connections, checks and update frequency are defined around your operation.",
   },
   useCases: {
     eyebrow: "PRACTICAL POSSIBILITIES",
@@ -415,11 +425,11 @@ export const en = {
   contact: {
     eyebrow: "START WITH ONE PROCESS",
     heading: {
-      line1: "What would your team",
-      line2: "do with",
-      accent: "that time back?",
+      line1: "Where is missing information",
+      line2: "holding",
+      accent: "your business back?",
     },
-    lead: "Tell us about a task that takes too long, a spreadsheet that needs constant updating or paperwork your team would rather not deal with. We’ll help you identify whether there’s a practical way to make the work easier.",
+    lead: "Tell us where paperwork, disconnected systems or limited visibility are holding your team back. We’ll help you identify a practical first step to connect your information and see where work stands.",
     notes: {
       conversation: "A conversation about your challenges",
       assessment: "An honest assessment of the opportunity",
@@ -479,8 +489,8 @@ export const en = {
   },
   footer: {
     navLabel: "Footer",
-    lead: "We help manufacturing, logistics and service businesses simplify processes, connect systems and reduce repetitive work.",
-    tagline: "Less manual work. Smoother operations.",
+    lead: "We help manufacturing, logistics and service businesses digitise paper-based work, connect data across existing systems and gain operational visibility.",
+    tagline: "Less paper. Connected information. Clearer operations.",
     exploreHeading: "Explore",
     links: {
       problems: "What we solve",
@@ -537,6 +547,10 @@ export const en = {
     "pain-service-maintenance": {
       label: "Technician writing up a job",
       alt: "Service technician with a multimeter reviewing a job sheet beside a boiler",
+    },
+    "capability-integrations": {
+      label: "Connected data sources",
+      alt: "Existing systems, spreadsheets and databases connected to a shared operational view",
     },
     "capability-documents": {
       label: "Documents read and checked automatically",

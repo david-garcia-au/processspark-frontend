@@ -125,28 +125,24 @@ export const es: Dictionary = {
     cta: "Muéstranos tu proceso",
   },
   hero: {
-    eyebrow: "PARA FABRICACIÓN, LOGÍSTICA Y SERVICIOS INDUSTRIALES",
+    eyebrow: "PARA FABRICACIÓN, LOGÍSTICA Y EMPRESAS DE SERVICIOS",
     title: {
-      line1: "Menos trabajo manual.",
-      accent: "Operaciones más fluidas.",
+      line1: "Digitaliza tu papeleo.",
+      line2: "Conecta tus silos de datos.",
+      accent: "Gana visibilidad operativa total.",
     },
-    lead: "Haz el trabajo diario más fácil, rápido y fiable.",
-    intro:
-      "¿Demasiado tiempo en papeleo, hojas de cálculo y tareas repetitivas? Ayudamos a las empresas de fabricación y operaciones a simplificar el trabajo diario, reducir errores y sacar más trabajo adelante con las personas y los sistemas que ya tienen.",
     description:
-      "De la planta de producción a la oficina, encontramos el trabajo que frena a tu equipo y creamos soluciones prácticas alrededor de tus procesos y sistemas actuales.",
-    ctaPrimary: "Muéstranos qué te frena",
-    ctaSecondary: "Descubre las posibilidades",
-    points: {
-      built: "Pensado para tu empresa",
-      connected: "Conectado a tus sistemas",
-    },
+      "Digitalizamos el trabajo en papel, conectamos tus fuentes de datos actuales y facilitamos la búsqueda en documentos con IA, para que puedas ver el progreso, detectar cuellos de botella y actuar sobre lo que necesita atención.",
+    ctaPrimary: "Muéstranos tu proceso",
+    ctaSecondary: "Ver demos prácticas",
+    reassurance:
+      "Pensado para tus sistemas actuales. Implementado con una interrupción mínima.",
   },
   band: {
     ariaLabel: "Sectores con los que trabajamos",
     promise: {
-      line1: "Menos trabajo repetitivo.",
-      line2: "Más tiempo para lo que importa.",
+      line1: "Menos papel. Información conectada.",
+      line2: "Operaciones más claras.",
     },
     introLabel: "PARA EMPRESAS QUE",
     introStrong: "fabrican. mueven. mantienen.",
@@ -202,46 +198,45 @@ export const es: Dictionary = {
         review: "Revisión de personas",
       },
     },
-    eyebrow: "PEQUEÑOS CAMBIOS. MEJORAS MEDIBLES.",
+    eyebrow: "IA PRÁCTICA. RESPUESTAS ÚTILES.",
     title: {
-      line1: "El mismo trabajo.",
-      line2: "Menos esfuerzo para hacerlo.",
+      line1: "Tus documentos tienen respuestas.",
+      line2: "Ponlas a trabajar.",
     },
     lead: {
-      line1: "Documentos procesados sin copiar a mano una y otra vez.",
-      line2: "Informes preparados sin horas en hojas de cálculo.",
-      line3: "Información disponible cuando tu equipo la necesita.",
+      line1: "Usa IA para leer documentos, extraer datos útiles",
+      line2: "y encontrar respuestas en la información de tu negocio,",
+      line3: "con tu equipo revisando lo que requiere criterio.",
     },
     story: {
       photoAlt:
         "Ilustración de una persona que copia en un cuaderno los datos de un certificado de proveedor, mientras esos mismos datos ya están introducidos en una hoja de cálculo en el portátil",
-      badge: "PROCESAMIENTO DE DOCUMENTOS",
-      eyebrow: "PAPELEO DE ENTRADA. INFORMACIÓN ÚTIL DE SALIDA.",
+      badge: "PROCESAMIENTO DOCUMENTAL CON IA",
+      eyebrow: "LEER. ENCONTRAR. COMPROBAR.",
       title: {
-        line1: "¿Sigues copiando la información",
-        accent: "de los documentos a mano?",
+        line1: "De leer cada página",
+        accent: "a revisar lo que importa.",
       },
-      text: "Certificados de proveedor, albaranes, registros de inspección y pedidos de compra. Deja de copiar información entre documentos y sistemas. Captura los datos, detecta la información que falta y deja que tu equipo se centre en las excepciones.",
-      todayLabel: "HOY",
-      todayText:
-        "Abre cada documento. Copia los datos. Busca errores. Introduce otra vez la misma información.",
-      withAiLabel: "CON IA",
+      text: "Captura datos de facturas, partes de trabajo y certificados de proveedor. Señala la información que falta para su revisión. Haz preguntas sobre manuales técnicos, procedimientos y registros, con respuestas vinculadas a sus fuentes.",
+      todayLabel: "LLEGA UN CERTIFICADO DE PROVEEDOR",
+      todayText: "La IA extrae los datos del proveedor, la pieza y el lote.",
+      withAiLabel: "COMPROBACIONES Y REVISIÓN HUMANA",
       withAiText:
-        "Sube el documento. Captura y comprueba la información. Revisa solo lo que necesita atención.",
-      link: "Descubre cómo podría cambiar tu proceso",
+        "Las comprobaciones definidas señalan la información que falta y tu equipo revisa las excepciones antes de que el registro avance.",
+      link: "Ver demos prácticas",
     },
     outcomes: {
       time: {
-        title: "Devuelve tiempo a tu equipo",
-        text: "Reduce la administración repetitiva que aleja a las personas de un trabajo de más valor.",
+        title: "Leer y extraer",
+        text: "Captura información útil de documentos y registros escaneados.",
       },
       capacity: {
-        title: "Gestiona más trabajo sin añadir complejidad",
-        text: "Reduce los cuellos de botella y aprovecha mejor a las personas y los sistemas que ya tienes.",
+        title: "Encontrar respuestas",
+        text: "Haz preguntas sobre tus documentos con búsqueda asistida por IA y referencias a las fuentes.",
       },
       attention: {
-        title: "Detecta qué necesita atención",
-        text: "Ve el trabajo pendiente, la información que falta y los traspasos bloqueados antes de que se conviertan en un problema para el cliente.",
+        title: "Comprobar y señalar",
+        text: "Identifica datos ausentes e inconsistencias para que tu equipo los revise.",
       },
     },
   },
@@ -285,74 +280,87 @@ export const es: Dictionary = {
     },
   },
   capabilities: {
-    eyebrow: "EL MISMO NEGOCIO. UN MEJOR PROCESO.",
+    eyebrow: "MISMO NEGOCIO. MEJORES PROCESOS.",
     heading: {
-      line1: "¿Qué sigue haciendo",
-      line2: "tu equipo a mano?",
+      line1: "¿Dónde se atasca",
+      line2: "tu trabajo?",
     },
-    lead: "Del papeleo y los informes a las solicitudes de clientes y los controles de calidad. Descubre cómo las tareas diarias podrían ser más sencillas, rápidas y fiables.",
-    tablistLabel: "Explora los procesos manuales",
+    lead: "¿Formularios en papel, sistemas desconectados, información difícil de encontrar o progreso poco claro? Descubre cómo ayudamos a tu equipo a avanzar.",
+    tablistLabel: "Explora problemas operativos",
+    todayLabel: "Hoy",
+    afterLabel: "Con ProcessSpark",
     items: {
-      "tracking-work": {
-        name: "Seguimiento",
-        question:
-          "¿Sigues persiguiendo a la gente para saber en qué punto está todo?",
-        detail:
-          "Reúne el trabajo de tus sistemas actuales en una vista compartida, con responsables, estado y las excepciones que requieren atención.",
-        outcome:
-          "Menos tiempo preparando informes. Más tiempo actuando sobre ellos.",
-        example: "Informes operativos",
-      },
-      "closing-jobs": {
-        name: "Cierre de trabajos",
-        question: "¿Trabajo terminado y todavía no se puede facturar?",
-        detail:
-          "Comprueba los registros necesarios, señala la información que falta, envía los informes a aprobación y pasa los trabajos completados a finanzas.",
-        outcome:
-          "Menos papeleo. Más tiempo en el trabajo. Registros de servicio más consistentes.",
-        example: "Cierre de trabajos",
-      },
       documents: {
-        name: "Documentos",
-        question:
-          "¿Sigues introduciendo a mano la información de los documentos?",
+        name: "Papeleo",
+        question: "¿Sigues escribiéndolo a mano y después tecleándolo?",
         detail:
-          "Los certificados de proveedor, albaranes, pedidos de compra y registros de inspección suelen contener datos que tu equipo tiene que introducir en otros sistemas. Reduce el copiado, la comprobación y el tener que volver a teclear.",
-        outcome:
-          "Menos introducción de datos. Menos errores. Procesamiento de documentos más rápido.",
-        example: "Procesamiento de documentos",
+          "Digitaliza los registros conservados y sustituye los formularios en papel por captura digital. Vincula la información al trabajo, activo o pedido correspondiente.",
+        today:
+          "Rellena un formulario en papel. Vuelve a teclear los datos. Archiva el escaneo. Persigue la información que falta.",
+        after:
+          "Captura información digitalmente o extráela de registros existentes. Comprueba los datos obligatorios y vincúlalos al trabajo.",
+        outcome: "Captura una vez. Reduce la entrada repetida.",
+        example: "Registros y formularios digitales",
       },
-      requests: {
-        name: "Solicitudes",
-        question: "¿Sigues clasificando y reenviando cada solicitud que llega?",
+      integrations: {
+        name: "Sistemas desconectados",
+        question: "¿Tu equipo une a mano la información de distintos sistemas?",
         detail:
-          "Captura las solicitudes, asigna responsables y prepara la siguiente acción para su revisión.",
-        outcome:
-          "Respuestas más rápidas. Menos administración. Menos solicitudes olvidadas.",
-        example: "Procesamiento de correos y solicitudes",
+          "Integra datos relevantes de tus sistemas, hojas de cálculo y bases de datos. Reduce las copias y ofrece una vista coherente de la información necesaria.",
+        today:
+          "Exporta una hoja de cálculo. Copia los datos. Concilia versiones. Pide una actualización.",
+        after:
+          "Conecta las fuentes relevantes. Aplica las comprobaciones acordadas. Mantén actualizada la información compartida y señala excepciones.",
+        outcome: "Fuentes conectadas. Una vista coherente.",
+        example: "Integración de datos",
       },
       "finding-answers": {
-        name: "Respuestas",
-        question:
-          "¿Encontrar la información adecuada lleva más tiempo del que debería?",
+        name: "Encontrar respuestas",
+        question: "¿Sabes que la respuesta existe, pero no la encuentras?",
         detail:
-          "Tu empresa ya tiene las respuestas en manuales, procedimientos, registros de servicio y documentación técnica. Haz que esa información sea más fácil de encontrar y de usar.",
-        outcome:
-          "Menos búsquedas. Respuestas más rápidas. Mejor uso del conocimiento que ya tienes.",
-        example: "Asistente de conocimiento técnico",
+          "Busca en manuales, procedimientos y registros con búsqueda documental asistida por IA. Encuentra respuestas relevantes con referencias a las fuentes.",
+        today:
+          "Busca en carpetas. Abre documentos. Lee páginas. Pregunta a un compañero.",
+        after:
+          "Haz una pregunta. Encuentra la respuesta y su fuente. Revisa la información que la respalda.",
+        outcome: "Menos búsquedas. Respuestas comprobables.",
+        example: "Búsqueda documental asistida por IA",
       },
-      inspecting: {
-        name: "Inspección",
-        question: "¿Sigues revisando cada producto a mano?",
+      "closing-jobs": {
+        name: "Aprobaciones y traspasos",
+        question:
+          "¿El trabajo terminado sigue esperando documentación o aprobación?",
         detail:
-          "En procesos de producción adecuados, la inspección con cámaras puede ayudar a identificar defectos visibles, contar productos y comprobar características definidas. Primero evaluamos si el proceso es técnicamente viable y si merece la pena desde el punto de vista comercial.",
-        outcome:
-          "Reduce la inspección repetitiva cuando se pueda demostrar que las comprobaciones automáticas funcionan de forma fiable.",
-        example: "Inspección visual",
+          "Comprueba la información necesaria, asigna la siguiente acción y envía el trabajo a aprobación, incluido el traspaso de trabajos terminados a administración.",
+        today:
+          "Termina el trabajo. Envía el informe. Persigue datos y aprobaciones. Administración espera.",
+        after:
+          "Comprueba que esté completo. Asigna al revisor. Haz visibles las acciones pendientes y prepara el traspaso a administración.",
+        outcome: "Responsables claros. Menos traspasos bloqueados.",
+        example: "Flujos de trabajo conectados",
+      },
+      "tracking-work": {
+        name: "Visibilidad operativa",
+        question:
+          "¿Sigues persiguiendo a la gente para saber cómo va el trabajo?",
+        detail:
+          "Reúne estados, responsables y excepciones en una vista compartida. Ve qué avanza, qué está bloqueado y quién debe actuar.",
+        today:
+          "Recoge actualizaciones de correos y hojas de cálculo. Pregunta quién debe actuar. Descubre los retrasos tarde.",
+        after:
+          "Ve el progreso, los responsables y las acciones pendientes juntos. Identifica bloqueos y actúa sobre las excepciones.",
+        outcome: "Ve qué avanza y qué necesita atención.",
+        example: "Visibilidad operativa",
       },
     },
-    cta: "Explora tu proceso",
-    note: "Flujo ilustrativo. Las comprobaciones, los umbrales y la revisión humana se definen en función de tu operación.",
+    integration: {
+      sources: ["Sistemas empresariales", "Hojas de cálculo", "Bases de datos"],
+      connection: "Conectar y comprobar",
+      view: "Vista operativa compartida",
+      details: "Progreso · Responsables · Excepciones",
+    },
+    cta: "Exploremos tu proceso",
+    note: "Flujo ilustrativo. Las conexiones, comprobaciones y frecuencia de actualización se definen según tu operación.",
   },
   useCases: {
     eyebrow: "POSIBILIDADES PRÁCTICAS",
@@ -434,11 +442,11 @@ export const es: Dictionary = {
   contact: {
     eyebrow: "EMPIEZA POR UN PROCESO",
     heading: {
-      line1: "¿Qué haría tu equipo",
-      line2: "con",
-      accent: "ese tiempo recuperado?",
+      line1: "¿Dónde está la falta de información",
+      line2: "frenando",
+      accent: "tu negocio?",
     },
-    lead: "Cuéntanos una tarea que lleva demasiado tiempo, una hoja de cálculo que hay que actualizar sin parar o un papeleo que tu equipo preferiría no tener. Te ayudaremos a ver si hay una forma práctica de hacer el trabajo más fácil.",
+    lead: "Cuéntanos dónde el papeleo, los sistemas desconectados o la falta de visibilidad frenan a tu equipo. Te ayudaremos a identificar un primer paso práctico para conectar tu información y ver el estado del trabajo.",
     notes: {
       conversation: "Una conversación sobre tus retos",
       assessment: "Una valoración sincera de la oportunidad",
@@ -498,8 +506,8 @@ export const es: Dictionary = {
   },
   footer: {
     navLabel: "Pie de página",
-    lead: "Ayudamos a las empresas de fabricación, logística y servicios a simplificar procesos, conectar sistemas y reducir el trabajo repetitivo.",
-    tagline: "Menos trabajo manual. Operaciones más fluidas.",
+    lead: "Ayudamos a las empresas de fabricación, logística y servicios a digitalizar el trabajo en papel, conectar los datos de sus sistemas actuales y ganar visibilidad operativa.",
+    tagline: "Menos papel. Información conectada. Operaciones más claras.",
     exploreHeading: "Explorar",
     links: {
       problems: "Qué resolvemos",
@@ -554,6 +562,10 @@ export const es: Dictionary = {
     "pain-service-maintenance": {
       label: "Técnico redactando el parte de un trabajo",
       alt: "Técnico de servicio con un polímetro revisando un parte de trabajo junto a una caldera",
+    },
+    "capability-integrations": {
+      label: "Fuentes de datos conectadas",
+      alt: "Sistemas, hojas de cálculo y bases de datos conectados a una vista operativa compartida",
     },
     "capability-documents": {
       label: "Documentos leídos y comprobados automáticamente",

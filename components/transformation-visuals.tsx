@@ -155,7 +155,7 @@ export function TransformationVisuals({
               <p>{copy.story.withAiText}</p>
             </div>
           </div>
-          <a href="#capabilities" className="text-link">
+          <a href="https://demo.processspark.com/" className="text-link">
             {copy.story.link} <ArrowRight size={18} />
           </a>
         </div>

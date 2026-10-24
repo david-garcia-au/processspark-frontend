@@ -129,41 +129,16 @@
   }
 }
 .hero .hero-grid {
-  grid-template-columns: 1fr 1.06fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 50px;
   padding-top: 68px;
   padding-bottom: 68px;
 }
-.hero .hero-copy > .eyebrow {
-  font-size: 11px;
-  letter-spacing: 1.2px;
-}
-.hero h1 {
-  font-size: clamp(44px, 4vw, 56px);
-  line-height: 1.08;
-  letter-spacing: -2.8px;
-}
-.hero .hero-lead {
-  font-size: 23px;
-  line-height: 1.45;
-  max-width: 520px;
-}
-.hero .hero-description {
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 510px;
-}
-.hero .hero-introduction {
-  margin-bottom: 14px;
-}
+/* Hero type and spacing are defined in globals.css. Only layout tweaks
+   that do not conflict with the responsive scale stay here. */
 .hero .hero-actions {
   flex-wrap: wrap;
   gap: 22px;
-}
-.hero .hero-points {
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  font-size: 13px;
 }
 .vision-hero {
   margin: 0;
@@ -655,15 +630,6 @@ body .download-brief {
   .hero .hero-grid {
     gap: 30px;
   }
-  .hero h1 {
-    font-size: 46px;
-  }
-  .hero .hero-lead {
-    font-size: 20px;
-  }
-  .hero .hero-description {
-    font-size: 16px;
-  }
   .vision-photo {
     height: 430px;
   }
@@ -696,12 +662,6 @@ body .download-brief {
   }
   .hero .hero-copy {
     max-width: none;
-  }
-  .hero h1 {
-    font-size: 58px;
-  }
-  .hero .hero-lead {
-    font-size: 22px;
   }
   .vision-photo {
     height: 420px;
@@ -754,22 +714,7 @@ body .download-brief {
 }
 @media (max-width: 540px) {
   .hero .hero-copy > .eyebrow {
-    font-size: 10px;
-    letter-spacing: 1px;
-    line-height: 1.7;
-  }
-  .hero h1 {
-    font-size: clamp(37px, 10.5vw, 51px);
-    letter-spacing: -1.7px;
-  }
-  .hero .hero-lead {
-    font-size: 20px;
-  }
-  .hero .hero-description {
-    font-size: 16px;
-  }
-  .hero .hero-points {
-    font-size: 12px;
+    line-height: 1.5;
   }
   body .button-primary {
     max-width: 100%;

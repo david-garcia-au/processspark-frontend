@@ -3,12 +3,26 @@
  * lib/i18n (keyed by these ids), so adding a locale never touches this file.
  */
 export const capabilities = [
-  { id: "tracking-work", icon: "Activity" },
-  { id: "closing-jobs", icon: "ClipboardCheck" },
-  { id: "documents", icon: "Files" },
-  { id: "requests", icon: "Mail" },
-  { id: "finding-answers", icon: "Search" },
-  { id: "inspecting", icon: "ScanLine" },
+  {
+    id: "documents",
+    icon: "Files",
+  },
+  {
+    id: "integrations",
+    icon: "Network",
+  },
+  {
+    id: "finding-answers",
+    icon: "Search",
+  },
+  {
+    id: "closing-jobs",
+    icon: "ClipboardCheck",
+  },
+  {
+    id: "tracking-work",
+    icon: "Activity",
+  },
 ] as const;
 
 export type CapabilityId = (typeof capabilities)[number]["id"];
@@ -25,9 +39,9 @@ export const useCases = [
   { id: "outstanding-work-visibility", capability: "tracking-work" },
   { id: "quality-documentation", capability: "documents" },
   { id: "job-completion-and-invoicing", capability: "closing-jobs" },
-  { id: "email-and-request-processing", capability: "requests" },
+  { id: "email-and-request-processing", capability: "closing-jobs" },
   { id: "find-answers-in-technical-documents", capability: "finding-answers" },
-  { id: "quotation-preparation", capability: "requests" },
+  { id: "quotation-preparation", capability: "documents" },
 ] as const;
 
 export type UseCaseId = (typeof useCases)[number]["id"];

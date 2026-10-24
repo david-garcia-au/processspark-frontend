@@ -68,13 +68,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <span className="orange-line" /> {hero.eyebrow}
               </p>
               <h1>
-                {hero.title.line1}
+                <span>{hero.title.line1}</span>
+                <span>{hero.title.line2}</span>
                 <span className="orange">{hero.title.accent}</span>
               </h1>
-              <p className="hero-lead">
-                <strong>{hero.lead}</strong>
-              </p>
-              <p className="hero-description hero-introduction">{hero.intro}</p>
               <p className="hero-description">{hero.description}</p>
               <div className="hero-actions">
                 <Button asChild className="button-primary">
@@ -82,18 +79,11 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                     {hero.ctaPrimary} <ArrowUpRight size={18} />
                   </a>
                 </Button>
-                <a className="text-link" href="#capabilities">
+                <a className="text-link" href="https://demo.processspark.com/">
                   {hero.ctaSecondary} <ArrowDown size={16} />
                 </a>
               </div>
-              <div className="hero-points">
-                <span>
-                  <Check /> {hero.points.built}
-                </span>
-                <span>
-                  <Check /> {hero.points.connected}
-                </span>
-              </div>
+              <p className="hero-reassurance">{hero.reassurance}</p>
             </div>
             <VisionHero copy={dict.transformation.hero} />
           </div>

@@ -30,6 +30,11 @@ const R32 = "3 / 2";
 const R43 = "4 / 3";
 
 export const media = {
+  "capability-integrations": {
+    kind: "image",
+    ratio: R32,
+    brief: "Connected operational data diagram",
+  },
   // Pain points ------------------------------------------------------------
   "pain-operations": {
     kind: "image",
@@ -101,7 +106,8 @@ export const media = {
   "use-case-document-processing": {
     kind: "image",
     ratio: R32,
-    brief: "Purchase order or delivery note beside a screen showing the captured details, ready for review.",
+    brief:
+      "Purchase order or delivery note beside a screen showing the captured details, ready for review.",
   },
   "use-case-quality-documentation": {
     kind: "image",
@@ -111,31 +117,36 @@ export const media = {
   "use-case-operational-reporting": {
     kind: "image",
     ratio: R32,
-    brief: "Production, quality and management figures from spreadsheets and systems brought together into a clear report.",
+    brief:
+      "Production, quality and management figures from spreadsheets and systems brought together into a clear report.",
   },
   "use-case-email-and-request-processing": {
     kind: "image",
     ratio: R32,
-    brief: "Incoming customer emails and requests being sorted, with key details captured and a response prepared for approval.",
+    brief:
+      "Incoming customer emails and requests being sorted, with key details captured and a response prepared for approval.",
     src: "/images/email-manager.webp",
   },
   "use-case-find-answers-in-your-technical-documents": {
     kind: "image",
     ratio: R32,
-    brief: "Maintenance engineer with a tablet next to a machine and a shelf of manuals.",
+    brief:
+      "Maintenance engineer with a tablet next to a machine and a shelf of manuals.",
     src: "/images/error-code-machine.webp",
   },
   "use-case-quotation-preparation": {
     kind: "image",
     ratio: R32,
-    brief: "Customer enquiry or RFQ beside a draft quotation on screen, drawn from existing product information and pricing, ready for review.",
+    brief:
+      "Customer enquiry or RFQ beside a draft quotation on screen, drawn from existing product information and pricing, ready for review.",
   },
 
   // Approach (dark section) -------------------------------------------------
   "approach-show-us-the-process": {
     kind: "image",
     ratio: R43,
-    brief: "Two people on a factory floor, one explaining a process, one taking notes.",
+    brief:
+      "Two people on a factory floor, one explaining a process, one taking notes.",
     src: "/images/work-order.webp",
   },
   "approach-find-the-opportunity": {
@@ -147,13 +158,15 @@ export const media = {
   "approach-prove-it-works": {
     kind: "image",
     ratio: R43,
-    brief: "Laptop showing a working prototype next to real documents or parts.",
+    brief:
+      "Laptop showing a working prototype next to real documents or parts.",
     src: "/images/proof-value.webp",
   },
   "approach-measure-the-result": {
     kind: "image",
     ratio: R43,
-    brief: "Team reviewing accuracy and time-saved results on a screen together.",
+    brief:
+      "Team reviewing accuracy and time-saved results on a screen together.",
     src: "/images/measure-results.webp",
   },
   "approach-put-it-to-work": {
@@ -167,7 +180,8 @@ export const media = {
   "contact-team": {
     kind: "image",
     ratio: R169,
-    brief: "Two or three people at a workbench or desk talking through a process, warm and unposed.",
+    brief:
+      "Two or three people at a workbench or desk talking through a process, warm and unposed.",
     src: "/images/workflow.webp",
   },
 } as const satisfies Record<string, MediaItem>;
