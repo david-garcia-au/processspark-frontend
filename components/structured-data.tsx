@@ -86,8 +86,8 @@ function buildGraph(lang: Locale, dict: Dictionary) {
         about: { "@id": organizationId },
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: absoluteUrl(site.images[0].path),
-          caption: seo.imageAlts[site.images[0].id],
+          url: absoluteUrl("/images/hero.webp"),
+          caption: dict.transformation.hero.photoAlt,
         },
         mainEntity: {
           "@type": "ItemList",

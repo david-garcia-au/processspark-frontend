@@ -23,31 +23,28 @@ import type { Dictionary } from "./en";
  */
 export const es: Dictionary = {
   seo: {
-    title: "ProcessSpark: menos trabajo manual. Más posibilidades.",
+    title: "ProcessSpark | Digitaliza el papeleo. Conecta tus datos.",
     description:
-      "IA práctica para fabricación, logística y servicios industriales. Convierte la inspección, el papeleo y los informes repetitivos en mejores procesos.",
-    tagline: "Menos trabajo manual. Más posibilidades.",
+      "Digitaliza el papeleo, conecta silos de datos y gana visibilidad operativa. Soluciones prácticas para empresas de fabricación, logística y servicios.",
+    tagline:
+      "Digitaliza el papeleo. Conecta tus datos. Gana visibilidad operativa.",
     socialTitle:
-      "ProcessSpark: IA para el trabajo que tu equipo no debería hacer a mano.",
+      "Digitaliza tu papeleo. Conecta tus datos. Visualiza toda tu operación.",
     socialDescription:
-      "Empieza por un proceso. Crea una solución práctica. Mide lo que cambia.",
+      "Digitaliza el papeleo, conecta silos de datos y gana visibilidad operativa. Soluciones prácticas para empresas de fabricación, logística y servicios.",
     keywords: [
-      "IA práctica para fabricación",
-      "IA industrial",
-      "IA para logística",
-      "transformación digital",
-      "automatización de procesos",
-      "inspección visual con visión artificial",
-      "inspección visual de calidad",
-      "procesamiento de documentos con IA",
-      "procesamiento inteligente de documentos",
-      "aprendizaje automático",
-      "informes de servicio técnico",
-      "asistente de conocimiento técnico",
-      "monitorización predictiva",
-      "servicios industriales",
-      "automatización de almacenes",
-      "reducir el trabajo manual",
+      "digitalizar papeleo en fabricación",
+      "formularios digitales para fabricación",
+      "integración de datos industriales",
+      "integración de API para empresas",
+      "búsqueda documental asistida por IA",
+      "visibilidad operativa",
+      "automatización de flujos y aprobaciones",
+      "operaciones de fabricación",
+      "operaciones logísticas",
+      "operaciones de empresas de servicios",
+      "digitalización de documentos",
+      "integración de sistemas empresariales",
     ],
     sectors: [
       "Fabricación",
@@ -57,14 +54,11 @@ export const es: Dictionary = {
       "Servicios industriales",
     ],
     knowsAbout: [
-      "Visión artificial",
-      "Aprendizaje automático",
-      "Inteligencia artificial",
-      "Procesamiento de documentos",
-      "Automatización de procesos",
-      "Transformación digital",
-      "Inspección visual de calidad",
-      "Monitorización de equipos y procesos",
+      "Digitalización de documentos y formularios digitales",
+      "Integración de datos y API",
+      "Búsqueda documental asistida por IA",
+      "Automatización de flujos y aprobaciones",
+      "Informes y visibilidad operativa",
     ],
     imageAlts: {
       "bottle-inspection":
@@ -73,20 +67,19 @@ export const es: Dictionary = {
         "Ilustración de una persona que copia en un cuaderno los datos de un certificado de proveedor, mientras esos mismos datos ya están introducidos en una hoja de cálculo en el portátil",
     },
     socialImage: {
-      alt: "ProcessSpark: procesos más simples, operaciones más fluidas",
-      line1: "Procesos más simples.",
-      line2: "Operaciones más fluidas.",
-      sub: "IA práctica para fabricación, logística y servicios industriales.",
+      alt: "Digitaliza tu papeleo. Conecta tus datos. Visualiza toda tu operación.",
+      line1: "Digitaliza tu papeleo.",
+      line2: "Conecta tus datos.",
+      sub: "Visualiza toda tu operación.",
       tagline: "FABRICAR. MOVER. MANTENER.",
     },
     jsonLd: {
-      offerCatalogName: "Casos de uso prácticos de IA",
-      itemListName:
-        "Tipos de trabajo manual que ProcessSpark ayuda a automatizar",
+      offerCatalogName: "Soluciones para procesos operativos",
+      itemListName: "Problemas operativos que ayuda a resolver ProcessSpark",
     },
     llms: {
       intro:
-        "ProcessSpark ayuda a las empresas de fabricación, logística y servicios industriales a convertir la transformación digital en mejoras prácticas: reducir el trabajo manual, conectar sistemas y simplificar las operaciones del día a día. Usamos visión artificial, aprendizaje automático, IA y software convencional, y somos independientes de la tecnología y del proveedor de nube. Si la IA no es la herramienta adecuada, te lo decimos.",
+        "ProcessSpark ayuda a las empresas de fabricación, logística y servicios a resolver procesos basados en papel, datos desconectados y falta de visibilidad operativa. Digitalizamos los registros que necesitas conservar, implantamos formularios digitales, integramos los sistemas actuales y ofrecemos búsqueda documental asistida por IA con referencias a las fuentes. Implementamos mejoras prácticas sobre las operaciones existentes, proceso a proceso y con una interrupción mínima.",
       whoFor: "Para quién es",
       kinds: "Tipos de trabajo manual en los que ayudamos",
       useCases: "Casos de uso prácticos",
