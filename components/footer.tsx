@@ -62,6 +62,14 @@ export function Footer({
                 </SiteLink>
               </li>
               <li>
+                <SiteLink
+                  href={localePath(lang, "/resources")}
+                  aria-current={page === "resources" ? "page" : undefined}
+                >
+                  {copy.links.resources}
+                </SiteLink>
+              </li>
+              <li>
                 <a href={site.demoUrl}>{copy.links.demo}</a>
               </li>
             </ul>
@@ -87,7 +95,13 @@ export function Footer({
           <LanguageSwitcher
             lang={lang}
             copy={switcherCopy}
-            path={page === "about" ? "/about" : "/"}
+            path={
+              page === "about"
+                ? "/about"
+                : page === "resources"
+                  ? "/resources"
+                  : "/"
+            }
           />
           <a href="#top">
             {copy.backToTop} <ArrowUp size={15} aria-hidden="true" />

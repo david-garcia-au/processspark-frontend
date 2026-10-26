@@ -100,6 +100,7 @@ export const en = {
       approach: "How we work",
       about: "About",
     },
+    resources: "Resources",
     cta: "Show us your process",
   },
   hero: {
@@ -469,6 +470,7 @@ export const en = {
       useCases: "Practical applications",
       approach: "How we work",
       about: "About",
+      resources: "Resources",
       demo: "Demo",
     },
     talkHeading: "Let’s talk",
@@ -490,6 +492,64 @@ export const en = {
       systems: "Enterprise systems",
       cloud: "Cloud technologies",
     },
+  },
+  resourcesPage: {
+    title: "Resources",
+    description:
+      "PDF guides and practical resources for ProcessSpark customers.",
+    intro:
+      "Explore common problems caused by paper-heavy work, scattered information and limited visibility—and practical ways to improve them.",
+    overviewLabel: "GUIDE OVERVIEW",
+    readOverview: "Read the overview",
+    downloadGuide: "Download the two-page guide",
+    closeOverview: "Close overview",
+    guides: [
+      {
+        title: "Shopfloor visibility",
+        description:
+          "Find out how delayed updates and scattered shift records make it harder to spot problems in time.",
+        overviewTitle: "The shopfloor rear-view problem",
+        overview:
+          "Paper shift logs, delayed spreadsheets and updates spread across different systems can leave supervisors piecing together what happened after work has moved on. That makes it harder to spot recurring stoppages, understand open issues and know who needs to act next. This guide explores how teams can capture useful updates during the work, connect them to the relevant line, job or shift, and make status and exceptions easier to see. It also suggests practical measures for understanding how quickly information is noticed and acted on.",
+        file: "processspark-brief-shopfloor-visibility.pdf",
+      },
+      {
+        title: "Shopfloor know-how",
+        description:
+          "Make useful procedures and experienced staff’s knowledge easier for the team to find.",
+        overviewTitle: "When know-how lives with one person",
+        overview:
+          "Experienced operators and supervisors often carry valuable knowledge about machine settings, checks, recurring faults and the small adjustments that keep work moving. When that knowledge lives mainly in someone’s memory, a notebook or an old file, other team members may have to wait, search or ask around—especially across shifts. This guide looks at how to capture practical knowledge with the people who do the work, validate it against approved sources, and make it easier to find when needed. It also explains why digitising information is only useful when the guidance is kept accurate and current.",
+        file: "processspark-brief-shopfloor-knowhow.pdf",
+      },
+      {
+        title: "Paperwork and data entry",
+        description:
+          "Reduce repeat handling by capturing information once and connecting it to the right workflow.",
+        overviewTitle: "Capture it once. Stop typing it twice.",
+        overview:
+          "Delivery dockets, inspection forms and shift records can pass through several hands: someone completes a paper form, another person checks it, and someone else enters the same details into a spreadsheet or business system. Repeated handling takes time and can make missing fields, unclear handwriting or mismatched references harder to resolve. This guide outlines how digital forms and document capture can reduce unnecessary re-entry, with checks for required information and human review for uncertain details. It also covers linking approved records to the relevant job, order, asset or supplier so the information is easier to use later.",
+        file: "processspark-brief-paperwork-and-data-entry.pdf",
+      },
+      {
+        title: "Connected handoffs",
+        description:
+          "Help teams see the status and ownership of work across existing systems.",
+        overviewTitle: "Connect the operational handoffs",
+        overview:
+          "A single order or batch can involve production, procurement, warehousing and quality, with each team maintaining its own records. When status, ownership and updates are spread across separate tools, people may need to reconcile information manually to understand where work stands or why it has slowed down. This guide describes a practical way to start with one process, agree which sources are trusted for key information, and connect the updates that help teams follow the work. The aim is to make handovers, open actions and exceptions clearer while continuing to use relevant existing systems.",
+        file: "processspark-brief-connected-handoffs.pdf",
+      },
+      {
+        title: "Traceability and records",
+        description:
+          "Make it easier to connect operational events with the records needed to understand them later.",
+        overviewTitle: "Traceability without the paper search",
+        overview:
+          "When a customer or auditor asks about a batch, answering may require records from receiving, production, inspection and dispatch. Those details can be held in different forms, folders and systems, using identifiers that do not always line up. This guide explains how to begin with the questions the process needs to answer, identify the records and checks to retain, and link them to the relevant batch, order, material or asset. It also suggests ways to make records easier to retrieve and review, while recognising that traceability requirements depend on the product, customer and applicable rules.",
+        file: "processspark-brief-traceability-records.pdf",
+      },
+    ],
   },
   notFound: {
     title: "404",

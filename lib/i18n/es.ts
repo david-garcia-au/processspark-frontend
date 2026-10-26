@@ -115,6 +115,7 @@ export const es: Dictionary = {
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
     },
+    resources: "Recursos",
     cta: "Muéstranos tu proceso",
   },
   hero: {
@@ -306,12 +307,12 @@ export const es: Dictionary = {
         example: "Búsqueda documental asistida por IA",
       },
       "closing-jobs": {
-        name: "Aprobaciones y traspasos",
+        name: "Aprobaciones",
         question:
           "¿El trabajo terminado sigue esperando documentación o aprobación?",
         detail:
           "Comprueba la información necesaria, asigna la siguiente acción y envía el trabajo a aprobación, incluido el traspaso de trabajos terminados a administración.",
-        outcome: "Responsables claros. Menos traspasos bloqueados.",
+        outcome: "Responsables claros. Menos aprobaciones.",
         example: "Flujos de trabajo conectados",
       },
       "tracking-work": {
@@ -486,6 +487,7 @@ export const es: Dictionary = {
       useCases: "Aplicaciones prácticas",
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
+      resources: "Recursos",
       demo: "Demo",
     },
     talkHeading: "Hablemos",
@@ -505,6 +507,64 @@ export const es: Dictionary = {
       systems: "Sistemas empresariales",
       cloud: "Tecnologías cloud",
     },
+  },
+  resourcesPage: {
+    title: "Recursos",
+    description:
+      "Guías PDF y recursos prácticos para clientes de ProcessSpark.",
+    intro:
+      "Descubre problemas habituales causados por el exceso de papeleo, la información dispersa y la falta de visibilidad, y formas prácticas de mejorarlos.",
+    overviewLabel: "RESUMEN DE LA GUÍA",
+    readOverview: "Leer el resumen",
+    downloadGuide: "Descargar la guía de dos páginas",
+    closeOverview: "Cerrar el resumen",
+    guides: [
+      {
+        title: "Visibilidad en planta",
+        description:
+          "Descubre cómo las actualizaciones tardías y los registros de turno dispersos dificultan detectar los problemas a tiempo.",
+        overviewTitle: "El problema de mirar por el retrovisor en planta",
+        overview:
+          "Los registros de turno en papel, las hojas de cálculo que se actualizan tarde y la información repartida entre distintos sistemas pueden obligar a los responsables a reconstruir lo ocurrido cuando el trabajo ya ha avanzado. Así resulta más difícil detectar paradas recurrentes, entender qué incidencias siguen abiertas y saber quién debe actuar a continuación. Esta guía explica cómo los equipos pueden registrar información útil mientras se realiza el trabajo, vincularla con la línea, el trabajo o el turno correspondiente y consultar mejor el estado y las excepciones. También propone medidas prácticas para saber con qué rapidez se detecta la información y se actúa en consecuencia.",
+        file: "es/processspark-guia-visibilidad-en-planta.pdf",
+      },
+      {
+        title: "Conocimiento en planta",
+        description:
+          "Facilita que el equipo encuentre procedimientos útiles y los conocimientos del personal con experiencia.",
+        overviewTitle: "Cuando el conocimiento depende de una sola persona",
+        overview:
+          "Los operarios y supervisores con experiencia suelen atesorar conocimientos valiosos sobre ajustes de máquinas, comprobaciones, fallos recurrentes y pequeños cambios que ayudan a mantener el trabajo en marcha. Cuando ese conocimiento reside principalmente en la memoria de alguien, en una libreta o en un archivo antiguo, el resto del equipo puede tener que esperar, buscar o preguntar, sobre todo al cambiar de turno. Esta guía aborda cómo recoger conocimientos prácticos junto con las personas que realizan el trabajo, contrastarlos con fuentes aprobadas y facilitar su consulta cuando se necesitan. También explica por qué digitalizar la información solo resulta útil si las instrucciones se mantienen correctas y actualizadas.",
+        file: "es/processspark-guia-conocimiento-en-planta.pdf",
+      },
+      {
+        title: "Papeleo y entrada de datos",
+        description:
+          "Reduce el trabajo repetido registrando la información una sola vez y conectándola con el flujo adecuado.",
+        overviewTitle: "Regístralo una vez. No vuelvas a teclearlo.",
+        overview:
+          "Los albaranes, los formularios de inspección y los registros de turno pueden pasar por varias manos: alguien completa un formulario en papel, otra persona lo comprueba y alguien más introduce los mismos datos en una hoja de cálculo o en un sistema de gestión. Este tratamiento repetido lleva tiempo y dificulta resolver campos vacíos, escritura poco clara o referencias que no coinciden. La guía explica cómo los formularios digitales y la captura de documentos pueden evitar la reintroducción innecesaria de datos, comprobar que la información requerida esté completa y recurrir a una revisión humana cuando haya dudas. También trata cómo vincular los registros aprobados con el trabajo, pedido, activo o proveedor correspondiente para poder aprovecharlos más adelante.",
+        file: "es/processspark-guia-papeleo-y-entrada-de-datos.pdf",
+      },
+      {
+        title: "Trabajo conectado entre equipos",
+        description:
+          "Ayuda a los equipos a conocer el estado y la persona responsable del trabajo en los sistemas actuales.",
+        overviewTitle: "Conecta el trabajo entre equipos",
+        overview:
+          "Un pedido o lote puede implicar a producción, compras, almacén y calidad, y cada equipo puede llevar sus propios registros. Cuando el estado, las responsabilidades y las actualizaciones están repartidos entre herramientas distintas, a menudo hay que conciliar la información manualmente para saber en qué punto está el trabajo o por qué se ha retrasado. Esta guía describe una forma práctica de empezar por un proceso, acordar qué fuentes son fiables para cada dato clave y conectar las actualizaciones que permiten seguir el trabajo. El objetivo es aclarar los cambios de responsabilidad, las acciones pendientes y las excepciones, sin dejar de utilizar los sistemas actuales que sigan siendo útiles.",
+        file: "es/processspark-guia-traspasos-conectados.pdf",
+      },
+      {
+        title: "Trazabilidad y registros",
+        description:
+          "Facilita la relación entre los acontecimientos operativos y los registros necesarios para entenderlos más adelante.",
+        overviewTitle: "Trazabilidad sin buscar entre papeles",
+        overview:
+          "Cuando un cliente o auditor pregunta por un lote, responder puede exigir consultar registros de recepción, producción, inspección y expedición. Esos datos pueden estar en distintos formularios, carpetas y sistemas, con identificadores que no siempre coinciden. Esta guía explica cómo empezar por las preguntas que el proceso debe responder, identificar los registros y comprobaciones que conviene conservar y vincularlos con el lote, pedido, material o activo correspondiente. También propone formas de facilitar la consulta y revisión de los registros, teniendo en cuenta que los requisitos de trazabilidad dependen del producto, del cliente y de la normativa aplicable.",
+        file: "es/processspark-guia-trazabilidad-y-registros.pdf",
+      },
+    ],
   },
   notFound: {
     title: "404",

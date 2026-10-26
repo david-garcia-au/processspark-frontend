@@ -160,10 +160,8 @@ body .about-cta h2 span {
     font-size: 56px;
   }
 }
-/* The header nav has five links since the About link was added. Keep each on
-   one line, tighten the row, and fall back to the mobile menu where the links
-   no longer fit beside the switcher and button: below 920px in English and
-   below 1010px in Spanish (longer labels). */
+/* Keep the header links on one line and switch to the mobile menu before the
+   separate Resources link, language switcher, and CTA become crowded. */
 body .desktop-nav a {
   white-space: nowrap;
 }
@@ -175,9 +173,10 @@ body .desktop-nav a {
     gap: 16px;
   }
 }
-@media (min-width: 851px) and (max-width: 920px) {
+@media (min-width: 851px) and (max-width: 1030px) {
   body .desktop-nav,
-  .nav .lang-switch {
+  .nav .lang-switch,
+  .nav-resources-link {
     display: none;
   }
   body .nav-cta {
@@ -190,9 +189,10 @@ body .desktop-nav a {
     height: 73px;
   }
 }
-@media (min-width: 921px) and (max-width: 1010px) {
+@media (min-width: 1031px) and (max-width: 1260px) {
   html[lang="es"] body .desktop-nav,
-  html[lang="es"] .nav .lang-switch {
+  html[lang="es"] .nav .lang-switch,
+  html[lang="es"] .nav-resources-link {
     display: none;
   }
   html[lang="es"] body .nav-cta {

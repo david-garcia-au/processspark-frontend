@@ -45,7 +45,8 @@ export function Header({
   const [open, setOpen] = useState(false);
   const aboutHref = localePath(lang, "/about");
   const aboutCurrent = page === "about" ? ("page" as const) : undefined;
-  const switchPath = page === "about" ? "/about" : "/";
+  const switchPath =
+    page === "about" ? "/about" : page === "resources" ? "/resources" : "/";
   const contactHref = sectionHref(lang, page, "#contact");
   return (
     <header className="header">
@@ -65,6 +66,13 @@ export function Header({
           </SiteLink>
         </nav>
         <LanguageSwitcher lang={lang} copy={switcherCopy} path={switchPath} />
+        <SiteLink
+          href={localePath(lang, "/resources")}
+          className="nav-resources-link"
+          aria-current={page === "resources" ? "page" : undefined}
+        >
+          {copy.resources}
+        </SiteLink>
         <Button asChild className="nav-cta">
           <SiteLink href={contactHref}>
             {copy.cta} <ArrowUpRight size={16} />
@@ -105,6 +113,15 @@ export function Header({
             </SiteLink>
           ))}
           <LanguageSwitcher lang={lang} copy={switcherCopy} path={switchPath} />
+          <SiteLink
+            href={localePath(lang, "/resources")}
+            className="mobile-resources-link"
+            aria-current={page === "resources" ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            {copy.resources}
+            <ArrowUpRight size={16} />
+          </SiteLink>
         </nav>
       )}
     </header>
