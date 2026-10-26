@@ -23,7 +23,7 @@ The reference's clear industrial hierarchy, spacious sections, sector groupings 
 - `proxy.ts`, `lib/i18n/`: locale routing and the English and Spanish dictionaries. See `docs/i18n.md`.
 - `lib/content.ts`: language-independent structure (ids, icons, order). All copy is in `lib/i18n/en.ts` and `lib/i18n/es.ts`.
 - `components/language-switcher.tsx`: EN / ES switch.
-- `components/process-explorer.tsx`: Radix accessible tabs, with automatic keyboard navigation.
+- `components/process-explorer.tsx`: responsive challenge picker with accessible buttons and a focused process example.
 - `components/header.tsx`: responsive navigation.
 - `components/process-brief.tsx`: contact form that posts to `/api/contact` (SES email) with a local brief download.
 - `components/transformation-visuals.tsx`: conveyor inspection hero and document-processing story, using optimised local images.

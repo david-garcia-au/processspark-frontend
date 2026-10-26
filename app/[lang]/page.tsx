@@ -220,13 +220,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <div className="approach-grid">
               {approachSteps.map((id, i) => (
                 <article key={id}>
+                  <span className="approach-number">{String(i + 1).padStart(2, "0")}</span>
                   <Media
                     slot={`approach-${id}`}
                     text={dict.media[`approach-${id}`]}
-                    tone="dark"
                     sizes="(max-width: 850px) 50vw, 20vw"
                   />
-                  <span className="approach-number">0{i + 1}</span>
                   <h3>{approach.steps[id].title}</h3>
                   <p>{approach.steps[id].text}</p>
                 </article>

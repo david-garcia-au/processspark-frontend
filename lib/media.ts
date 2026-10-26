@@ -141,7 +141,7 @@ export const media = {
       "Customer enquiry or RFQ beside a draft quotation on screen, drawn from existing product information and pricing, ready for review.",
   },
 
-  // Approach (dark section) -------------------------------------------------
+  // Approach timeline -------------------------------------------------------
   "approach-show-us-the-process": {
     kind: "image",
     ratio: R43,

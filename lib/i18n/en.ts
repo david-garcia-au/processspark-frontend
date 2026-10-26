@@ -264,19 +264,13 @@ export const en = {
       line2: "get stuck?",
     },
     lead: "Paper forms, disconnected systems, hard-to-find information or unclear progress? Explore how we help your team move work forward.",
-    tablistLabel: "Explore operational problems",
-    todayLabel: "Today",
-    afterLabel: "With ProcessSpark",
+    selectorLabel: "Choose a process challenge",
     items: {
       documents: {
         name: "Paperwork",
         question: "Still writing it down, then typing it in again?",
         detail:
           "Digitise retained records and replace everyday paper forms with digital capture. Link the information to the relevant job, asset or order.",
-        today:
-          "Fill out a paper form. Retype the details. File the scan. Chase missing information.",
-        after:
-          "Capture information digitally or extract it from existing records. Check required details and link them to the work.",
         outcome: "Capture once. Reduce repeated entry.",
         example: "Digital records and forms",
       },
@@ -285,10 +279,6 @@ export const en = {
         question: "Does your team connect the dots between systems by hand?",
         detail:
           "Integrate relevant data from existing systems, spreadsheets and databases. Reduce copying and give teams a consistent view of the information they need.",
-        today:
-          "Export a spreadsheet. Copy the details. Reconcile different versions. Ask someone for an update.",
-        after:
-          "Connect the relevant sources. Apply agreed checks. Keep shared information updated and flag exceptions.",
         outcome: "Connected sources. A consistent view.",
         example: "Data integration",
       },
@@ -297,10 +287,6 @@ export const en = {
         question: "Know the answer exists, but can’t find it?",
         detail:
           "Search manuals, procedures and records with AI-assisted document search. Find relevant answers with references to the source.",
-        today:
-          "Search folders. Open documents. Read through pages. Ask a colleague.",
-        after:
-          "Ask a question. Find the relevant answer and its source. Review the supporting information.",
         outcome: "Less searching. Answers you can check.",
         example: "AI-assisted document search",
       },
@@ -309,10 +295,6 @@ export const en = {
         question: "Is completed work still waiting on paperwork or approval?",
         detail:
           "Check required information, assign the next action and route work for approval—including the handover from completed jobs to finance.",
-        today:
-          "Finish the job. Email the report. Chase missing details and approval. Finance waits.",
-        after:
-          "Check completeness. Assign the reviewer. Make outstanding actions visible and prepare the finance handover.",
         outcome: "Clear ownership. Fewer stalled handovers.",
         example: "Connected workflows",
       },
@@ -321,10 +303,6 @@ export const en = {
         question: "Still chasing people to find out where things stand?",
         detail:
           "Bring status, ownership and exceptions into a shared view. See what is progressing, what is blocked and who needs to act.",
-        today:
-          "Collect updates from inboxes and spreadsheets. Ask who owns the next step. Discover delays late.",
-        after:
-          "See progress, owners and outstanding actions together. Identify blocked work and act on exceptions.",
         outcome: "Know what’s moving and what needs attention.",
         example: "Operational visibility",
       },

@@ -520,49 +520,12 @@ body .under-note {
 body .under-note a {
   font-size: 14px;
 }
-body .card-top .eyebrow,
-body .panel-heading .eyebrow {
+body .card-top .eyebrow {
   font-size: 11px;
 }
-body .panel-heading p:last-child {
-  font-size: 16px;
-  line-height: 1.65;
-}
-body .process-tab {
-  font-size: 15px;
-}
-body .flow-outcome p,
-body .flow-outcome a {
-  font-size: 15px;
-  line-height: 1.6;
-}
-body .example-note,
 body .section-note {
   font-size: 12px;
   line-height: 1.7;
-}
-body .approach-intro > p {
-  font-size: 16px;
-  max-width: 320px;
-}
-body .approach-grid h3 {
-  font-size: 19px;
-  line-height: 1.3;
-}
-body .approach-grid p {
-  font-size: 15px;
-  line-height: 1.75;
-}
-body .agnostic {
-  grid-template-columns: 1.1fr 1.5fr 0.7fr;
-}
-body .agnostic > span:first-child {
-  font-size: 16px;
-  line-height: 1.5;
-}
-body .agnostic p,
-body .agnostic-note {
-  font-size: 14px;
 }
 body .contact-copy > p:not(.eyebrow) {
   font-size: 17px;
@@ -614,9 +577,6 @@ body .download-brief {
   body .industry-inner strong {
     font-size: 15px;
   }
-  body .panel-heading h3 {
-    font-size: 30px;
-  }
 }
 @media (min-width: 851px) and (max-width: 1100px) {
   body .desktop-nav {
@@ -639,9 +599,6 @@ body .download-brief {
   }
   .vision-caption {
     padding: 21px 18px;
-  }
-  body .process-tab {
-    font-size: 13px;
   }
   .document-copy {
     padding: 30px 25px;
@@ -698,12 +655,6 @@ body .download-brief {
   }
   body .pain-card blockquote {
     font-size: 27px;
-  }
-  body .panel-number {
-    align-self: flex-start;
-  }
-  body .flow-outcome {
-    flex-wrap: wrap;
   }
   body .agnostic {
     grid-template-columns: 1fr 1fr;
@@ -770,16 +721,6 @@ body .download-brief {
   .transformation-outcomes > div {
     flex-direction: row;
     gap: 15px;
-  }
-  body .process-tab {
-    font-size: 12px;
-  }
-  body .panel-heading h3 {
-    font-size: 25px;
-  }
-  body .flow-outcome p,
-  body .flow-outcome a {
-    font-size: 14px;
   }
   body .approach-grid {
     grid-template-columns: 1fr;

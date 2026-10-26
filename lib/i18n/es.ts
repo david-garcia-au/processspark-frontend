@@ -279,19 +279,13 @@ export const es: Dictionary = {
       line2: "tu trabajo?",
     },
     lead: "¿Formularios en papel, sistemas desconectados, información difícil de encontrar o progreso poco claro? Descubre cómo ayudamos a tu equipo a avanzar.",
-    tablistLabel: "Explora problemas operativos",
-    todayLabel: "Hoy",
-    afterLabel: "Con ProcessSpark",
+    selectorLabel: "Elige un reto de tu proceso",
     items: {
       documents: {
         name: "Papeleo",
         question: "¿Sigues escribiéndolo a mano y después tecleándolo?",
         detail:
           "Digitaliza los registros conservados y sustituye los formularios en papel por captura digital. Vincula la información al trabajo, activo o pedido correspondiente.",
-        today:
-          "Rellena un formulario en papel. Vuelve a teclear los datos. Archiva el escaneo. Persigue la información que falta.",
-        after:
-          "Captura información digitalmente o extráela de registros existentes. Comprueba los datos obligatorios y vincúlalos al trabajo.",
         outcome: "Captura una vez. Reduce la entrada repetida.",
         example: "Registros y formularios digitales",
       },
@@ -300,10 +294,6 @@ export const es: Dictionary = {
         question: "¿Tu equipo une a mano la información de distintos sistemas?",
         detail:
           "Integra datos relevantes de tus sistemas, hojas de cálculo y bases de datos. Reduce las copias y ofrece una vista coherente de la información necesaria.",
-        today:
-          "Exporta una hoja de cálculo. Copia los datos. Concilia versiones. Pide una actualización.",
-        after:
-          "Conecta las fuentes relevantes. Aplica las comprobaciones acordadas. Mantén actualizada la información compartida y señala excepciones.",
         outcome: "Fuentes conectadas. Una vista coherente.",
         example: "Integración de datos",
       },
@@ -312,10 +302,6 @@ export const es: Dictionary = {
         question: "¿Sabes que la respuesta existe, pero no la encuentras?",
         detail:
           "Busca en manuales, procedimientos y registros con búsqueda documental asistida por IA. Encuentra respuestas relevantes con referencias a las fuentes.",
-        today:
-          "Busca en carpetas. Abre documentos. Lee páginas. Pregunta a un compañero.",
-        after:
-          "Haz una pregunta. Encuentra la respuesta y su fuente. Revisa la información que la respalda.",
         outcome: "Menos búsquedas. Respuestas comprobables.",
         example: "Búsqueda documental asistida por IA",
       },
@@ -325,10 +311,6 @@ export const es: Dictionary = {
           "¿El trabajo terminado sigue esperando documentación o aprobación?",
         detail:
           "Comprueba la información necesaria, asigna la siguiente acción y envía el trabajo a aprobación, incluido el traspaso de trabajos terminados a administración.",
-        today:
-          "Termina el trabajo. Envía el informe. Persigue datos y aprobaciones. Administración espera.",
-        after:
-          "Comprueba que esté completo. Asigna al revisor. Haz visibles las acciones pendientes y prepara el traspaso a administración.",
         outcome: "Responsables claros. Menos traspasos bloqueados.",
         example: "Flujos de trabajo conectados",
       },
@@ -338,10 +320,6 @@ export const es: Dictionary = {
           "¿Sigues persiguiendo a la gente para saber cómo va el trabajo?",
         detail:
           "Reúne estados, responsables y excepciones en una vista compartida. Ve qué avanza, qué está bloqueado y quién debe actuar.",
-        today:
-          "Recoge actualizaciones de correos y hojas de cálculo. Pregunta quién debe actuar. Descubre los retrasos tarde.",
-        after:
-          "Ve el progreso, los responsables y las acciones pendientes juntos. Identifica bloqueos y actúa sobre las excepciones.",
         outcome: "Ve qué avanza y qué necesita atención.",
         example: "Visibilidad operativa",
       },
