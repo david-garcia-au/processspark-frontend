@@ -240,20 +240,20 @@ export const es: Dictionary = {
     lead: {
       line1: "Tu equipo conoce su trabajo.",
       line2: "Lo que lo frena es el papeleo, las comprobaciones manuales",
-      line3: "y la administración repetitiva.",
+      line3: "y las tareas repetitivas.",
     },
     items: {
       operations: {
         role: "OPERACIONES",
         quote: "“No sé qué está parado hasta que llama un cliente.”",
         answer:
-          "Pon a la vista el trabajo pendiente, los responsables y las excepciones para que tu equipo actúe antes de que los retrasos crezcan.",
+          "Pon a la vista el trabajo pendiente, los responsables y las excepciones para que tu equipo actúe antes de que aparezcan retrasos o bloqueos.",
         tag: "Más capacidad",
       },
       "quality-manufacturing": {
         role: "CALIDAD Y FABRICACIÓN",
         quote:
-          "“Mi equipo pasa horas revisando papeles y persiguiendo la información que falta.”",
+          "“Mi equipo pasa horas revisando papeles y buscando la información que falta.”",
         answer:
           "Comprueba si en los registros falta información o hay datos incoherentes, y centra a tu equipo en las excepciones.",
         tag: "Más consistencia",
@@ -269,7 +269,7 @@ export const es: Dictionary = {
     },
     underNote: {
       lead: "¿No sabes por dónde empezar?",
-      text: "Muéstranos el trabajo repetitivo que tu equipo dejaría de hacer encantado.",
+      text: "Muéstranos las tareas repetitivas que roban energía a tu equipo sin aportar valor.",
       link: "Vamos a encontrarlo juntos",
     },
   },
@@ -317,8 +317,7 @@ export const es: Dictionary = {
       },
       "tracking-work": {
         name: "Visibilidad operativa",
-        question:
-          "¿Sigues persiguiendo a la gente para saber cómo va el trabajo?",
+        question: "¿Sigues buscando a la gente para saber cómo va el trabajo?",
         detail:
           "Reúne estados, responsables y excepciones en una vista compartida. Ve qué avanza, qué está bloqueado y quién debe actuar.",
         outcome: "Ve qué avanza y qué necesita atención.",
@@ -420,7 +419,7 @@ export const es: Dictionary = {
     },
     lead: "Cuéntanos dónde el papeleo, los sistemas desconectados o la falta de visibilidad frenan a tu equipo. Te ayudaremos a identificar un primer paso práctico para conectar tu información y ver el estado del trabajo.",
     notes: {
-      conversation: "Una conversación sobre tus retos",
+      conversation: "Una conversación sobre tus procesos",
       assessment: "Una valoración sincera de la oportunidad",
       nextStep: "Un siguiente paso claro y práctico",
     },
@@ -462,7 +461,7 @@ export const es: Dictionary = {
           "Por ejemplo, recibimos decenas de documentos de proveedores cada día y metemos los datos a mano en nuestro sistema.",
       },
       honeypotLabel: "Deja este campo vacío",
-      submit: "Hablemos de tu reto",
+      submit: "Vamos a hablar",
       sending: "Enviando...",
       pdf: "Descarga nuestra presentación (PDF en inglés, 2 páginas)",
       note: "Tu resumen se envía por correo electrónico al equipo de ProcessSpark, que responderá a la dirección que indiques. Puedes descargar nuestra presentación de dos páginas (en inglés) sin rellenar este formulario.",
