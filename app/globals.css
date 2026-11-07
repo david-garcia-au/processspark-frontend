@@ -1763,18 +1763,6 @@ h2 {
 .phone-cards-dark .phone-card-number:focus-visible::after {
   outline-color: var(--orange-wash);
 }
-.contact-call {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 16px;
-  margin-top: 16px;
-}
-.contact-call-label {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--muted);
-}
 .phone-cards-dark {
   margin-top: 16px;
 }
@@ -1792,13 +1780,6 @@ h2 {
   .contact-copy .contact-signoff {
     margin-top: 20px;
     padding-top: 16px;
-  }
-  .contact-call {
-    margin-top: 12px;
-  }
-  .contact-call .phone-card {
-    min-height: 56px;
-    padding: 8px 16px;
   }
 }
 

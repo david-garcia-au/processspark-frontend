@@ -82,6 +82,105 @@ body .about-page .about-text {
     font-size: 15px;
   }
 }
+/* World map ------------------------------------------------------------------ */
+.about-map {
+  padding-bottom: 64px;
+}
+body .about-page .about-map h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+  font-weight: 550;
+}
+.world-map {
+  margin: 0;
+  padding: 28px 24px;
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at 50% 0, var(--forest-soft) 0, transparent 70%),
+    var(--forest-deep);
+}
+.world-map-canvas {
+  position: relative;
+  width: 100%;
+}
+.world-map-canvas svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.world-pin {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.world-pin-dot {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--orange) 35%, transparent);
+  animation: world-pin-pulse 2.4s ease-out infinite;
+}
+.world-pin-stem {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  height: 36px;
+  border-left: 1.5px dotted var(--on-dark-muted);
+}
+.world-pin-label {
+  position: absolute;
+  left: 0;
+  bottom: 42px;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: 5px;
+  background: var(--on-dark);
+  color: var(--forest-deep);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+@keyframes world-pin-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--orange) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 16px color-mix(in srgb, var(--orange) 0%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-pin-dot {
+    animation: none;
+  }
+}
+@media (max-width: 540px) {
+  .world-map {
+    padding: 18px 10px;
+  }
+  .world-pin-stem {
+    height: 26px;
+  }
+  .world-pin-label {
+    bottom: 32px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 900px) {
+  .about-map {
+    padding-bottom: 88px;
+  }
+  .world-map {
+    padding: 40px 48px;
+  }
+}
 .about-cta {
   background: var(--forest);
   color: var(--on-dark);

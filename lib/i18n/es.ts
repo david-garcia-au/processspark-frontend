@@ -115,6 +115,7 @@ export const es: Dictionary = {
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
     },
+    solutions: "Soluciones",
     resources: "Recursos",
     cta: "Muéstranos tu proceso",
   },
@@ -427,7 +428,6 @@ export const es: Dictionary = {
       line1: "No hace falta ningún conocimiento técnico.",
       strong: "Solo cuéntanos qué frena a tu equipo.",
     },
-    phonePrompt: "¿Prefieres llamar?",
     form: {
       eyebrow: "EMPECEMOS POR TU RETO",
       name: {
@@ -486,6 +486,7 @@ export const es: Dictionary = {
       useCases: "Aplicaciones prácticas",
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
+      solutions: "Soluciones",
       resources: "Recursos",
       demo: "Demo",
     },
@@ -499,12 +500,167 @@ export const es: Dictionary = {
     eyebrow: "SOBRE PROCESSSPARK",
     heading: "Basado en experiencia real en operaciones.",
     text: "Nuestro enfoque se apoya en la experiencia en operaciones de fabricación, ingeniería industrial, sistemas empresariales y tecnologías cloud. Entendemos lo difícil que es conectar soluciones nuevas con procesos ya establecidos sin interrumpir el trabajo que mantiene en marcha tu negocio.",
+    mapHeading: "Nuestras ubicaciones",
+    mapLabel: "Mapamundi con las ubicaciones de ProcessSpark en España y Australia",
     pillarsLabel: "Áreas de experiencia",
     pillars: {
       manufacturing: "Operaciones de fabricación",
       engineering: "Ingeniería industrial",
       systems: "Sistemas empresariales",
       cloud: "Tecnologías cloud",
+    },
+  },
+  solutionsPage: {
+    title: "Soluciones para fabricantes | ProcessSpark",
+    description:
+      "Soluciones prácticas para fabricantes medianos, desde el seguimiento de solicitudes de oferta y la entrada de pedidos hasta la captura de datos en planta y la revisión de facturas. Las personas siguen al mando de cada decisión.",
+    eyebrow: "SOLUCIONES PARA FABRICANTES",
+    heading: {
+      line1: "Múltiples formas prácticas",
+      line2: "de reducir la fricción.",
+    },
+    hint: "Pasa el cursor o toca para ver la solución",
+    solutionLabel: "LA SOLUCIÓN",
+    controlLabel: "Las personas mantienen el control",
+    showSolution: "Mostrar la solución",
+    showProblem: "Mostrar el problema",
+    closing: {
+      heading: "¿No ves aquí tu proceso?",
+      text: "Son puntos de partida. Cuéntanos qué frena a tu equipo y veremos qué encaja.",
+    },
+    groups: {
+      "sales-orders": "Ventas y pedidos",
+      production: "Producción y planta",
+      "supply-finance": "Cadena de suministro y finanzas",
+      "quality-service": "Calidad y servicio",
+    },
+    items: {
+      "rfq-follow-up": {
+        title: "Seguimiento de solicitudes de oferta y visibilidad de presupuestos",
+        problem:
+          "Cuando las solicitudes de presupuesto se pierden entre el correo electrónico, buenas oportunidades pueden enfriarse.",
+        solution:
+          "Capturamos y priorizamos las solicitudes de oferta que llegan, mostramos en qué punto está cada presupuesto y ayudamos a tu equipo a preparar las respuestas más rápido.",
+        control:
+          "Una persona revisa y aprueba cada presupuesto antes de enviarlo.",
+      },
+      "job-progress": {
+        title: "Visibilidad del avance de trabajos, listas de materiales y rutas",
+        problem:
+          "Cuando un cliente pregunta cuándo estará listo un pedido, o si una parte puede enviarse antes, hace falta algo más que una suposición o un paseo por la fábrica.",
+        solution:
+          "Te ayudamos a establecer un control práctico sobre las listas de materiales y las rutas de producción, para que tu equipo vea cómo avanzan los trabajos y la dirección pueda decidir con información sobre cuellos de botella, capacidad e inversión en equipos.",
+        control:
+          "La empresa elige qué listas de materiales, pasos de ruta y actualizaciones registrar.",
+      },
+      "order-entry": {
+        title: "Entrada de pedidos desde el correo electrónico",
+        problem:
+          "Si el personal tiene que imprimir un pedido, dividirlo en líneas y volver a teclearlo todo en varios sistemas, se pierden horas en administración.",
+        solution:
+          "Capturamos los datos del pedido a partir de los documentos que llegan y los llevamos al flujo adecuado, para que tu gente se centre en las excepciones y en comprobar el resultado.",
+        control:
+          "Los pedidos de rutina avanzan con menos reintroducción de datos. Los pedidos poco claros o inusuales pasan a una persona.",
+      },
+      "call-follow-through": {
+        title: "Seguimiento de las llamadas de clientes",
+        problem:
+          "Cuando un cliente llama y no obtiene respuesta, la llamada puede olvidarse, y la frustración crece con cada nuevo intento.",
+        solution:
+          "Ayudamos a identificar a quien llama con los registros de clientes que ya utilizas y guardamos un historial trazable de cada llamada entrante, su resultado y cualquier seguimiento.",
+        control:
+          "El personal atiende las conversaciones complejas, delicadas o comerciales y decide la resolución.",
+      },
+      "shop-floor-capture": {
+        title: "Captura precisa de información en planta",
+        problem:
+          "Cuando los operarios copian a mano números de pieza, números de serie o datos de máquina, los errores dificultan identificar y seguir los artículos.",
+        solution:
+          "Capturamos esa información de documentos y etiquetas de equipos y la pasamos a tus sistemas, con comprobaciones donde la precisión importa.",
+        control:
+          "Los identificadores de alto impacto pueden requerir confirmación antes de registrarse en un sistema.",
+      },
+      "technical-answers": {
+        title: "Respuestas rápidas desde manuales y documentación técnica",
+        problem:
+          "Cuando los técnicos tienen que rebuscar en manuales, o interrumpir a compañeros con experiencia, para resolver un problema, el servicio se ralentiza y el conocimiento se convierte en cuello de botella.",
+        solution:
+          "Hacemos que la información técnica aprobada sea más fácil de consultar con lenguaje cotidiano, para que los técnicos encuentren antes respuestas y documentos de origen.",
+        control:
+          "Las respuestas se basan en tus documentos aprobados y los técnicos pueden consultar la fuente citada.",
+      },
+      "incoming-goods": {
+        title: "Mercancía entrante y revisión de documentos de proveedores",
+        problem:
+          "Cuando las entregas llegan con pedidos de compra, albaranes y certificados que revisar, el papeleo puede retrasar la recepción y ocultar datos que faltan.",
+        solution:
+          "Reunimos esos documentos, señalamos las discrepancias y ayudamos al personal a comprobar que cada entrega tiene los registros necesarios.",
+        control:
+          "El personal de recepción y calidad decide si una discrepancia es aceptable y si el material puede liberarse.",
+      },
+      "visual-quality": {
+        title: "Controles visuales de calidad",
+        problem:
+          "Cuando cuesta detectar los defectos de forma constante, los problemas pueden avanzar por la línea antes de que nadie los vea.",
+        solution:
+          "Podemos ayudar a señalar problemas visibles a partir de imágenes del producto, para que los inspectores se centren en las piezas que merecen una mirada más atenta y registren lo que encuentran.",
+        control:
+          "El sistema destaca posibles problemas. Los inspectores toman la decisión de calidad.",
+      },
+      "dispatch-verification": {
+        title: "Verificación de preparación de pedidos y expedición",
+        problem:
+          "Cuando se envía el artículo o la cantidad equivocados, el coste incluye repetir el trabajo, el transporte y un cliente que tiene que volver a esperar.",
+        solution:
+          "Ayudamos a comprobar los artículos preparados y sus etiquetas con el pedido antes de la expedición, para que el personal detecte las diferencias antes de que salga la mercancía.",
+        control:
+          "El personal resuelve las excepciones y confirma las sustituciones o los envíos parciales.",
+      },
+      "nonconformance-triage": {
+        title: "Clasificación de no conformidades y garantías",
+        problem:
+          "Cuando las reclamaciones de calidad llegan por distintos canales, es difícil saber quién se ocupa de cada una o si el mismo problema se repite.",
+        solution:
+          "Registramos y derivamos los casos de forma coherente, los conectamos con la información de pedidos y productos que corresponda y hacemos más fácil detectar los problemas recurrentes.",
+        control:
+          "El personal de calidad y servicio determina la causa, la acción correctiva y el resultado de la garantía.",
+      },
+      "shift-handovers": {
+        title: "Relevos de turno y acciones pendientes",
+        problem:
+          "Cuando datos importantes quedan en conversaciones con prisa o en notas escritas a mano, el turno siguiente puede pasar por alto un retraso, una avería o una acción prometida.",
+        solution:
+          "Convertimos la información del relevo en un registro compartido con responsables claros, para que las incidencias abiertas pasen de un turno a otro.",
+        control:
+          "Quien entrega el turno revisa el resumen y asigna responsables.",
+      },
+      "engineering-changes": {
+        title: "Comunicación de cambios de ingeniería",
+        problem:
+          "Cuando cambia un plano o una especificación, la última versión no siempre llega a todas las personas que la necesitan.",
+        solution:
+          "Ayudamos a distribuir el cambio aprobado, a registrar quién lo ha confirmado y a que los equipos encuentren fácilmente las instrucciones vigentes del trabajo.",
+        control:
+          "Ingeniería aprueba el cambio y decide su impacto.",
+      },
+      "invoice-checking": {
+        title: "Revisión de facturas de proveedores",
+        problem:
+          "Cuando llegan facturas de proveedores, el personal suele tener que repasar las cuentas y comparar a mano cada línea con el pedido original.",
+        solution:
+          "Capturamos la factura, comprobamos que las cifras cuadran y comparamos sus artículos con tus registros de compras, señalando las discrepancias para su revisión antes de que avancen por cuentas a pagar.",
+        control:
+          "El personal autorizado resuelve las discrepancias y aprueba el pago.",
+      },
+      "order-portal": {
+        title: "Portal de visibilidad de pedidos para clientes y proveedores",
+        problem:
+          "Los clientes y proveedores no deberían tener que llamar ni enviar correos de seguimiento solo para saber qué pasa con un pedido o un pago.",
+        solution:
+          "Ofrecemos a cada tercero un portal seguro con el estado relevante y los siguientes pasos, para reducir las consultas rutinarias y que tu equipo se centre en lo que diferencia a tu negocio.",
+        control:
+          "Tus equipos deciden a qué registros y campos accede cada cliente o proveedor.",
+      },
     },
   },
   resourcesPage: {

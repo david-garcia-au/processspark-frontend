@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 import { localePath, type Locale } from "@/lib/i18n/config";
 
 /** Which page renders the header or footer. Decides where anchors point. */
-export type PageId = "home" | "about" | "resources";
+export type PageId = "home" | "about" | "resources" | "solutions";
 
 /**
  * Hash links ("#contact") only work on the landing page. Elsewhere they point

@@ -37,6 +37,7 @@ export function buildLlmsTxt(locale: Locale): string {
     `## ${seo.llms.links}`,
     "",
     `- [${seo.llms.home}](${absoluteUrl(localePath(locale))}): ${seo.llms.homeDescription}`,
+    `- [${dict.header.solutions}](${absoluteUrl(localePath(locale, "/solutions"))}): ${dict.solutionsPage.description}`,
     `- [${dict.aboutPage.title}](${absoluteUrl(localePath(locale, "/about"))}): ${dict.footer.lead}`,
     `- [${seo.llms.contactLink}](${absoluteUrl(`${localePath(locale)}#contact`)}): ${seo.llms.contactDescription}`,
     `- [${seo.llms.sitemap}](${absoluteUrl("/sitemap.xml")})`,

@@ -21,7 +21,6 @@ export function Brand({ label, href = "#" }: { label: string; href?: string }) {
 
 const sectionLinks = [
   ["problems", "#problems"],
-  ["capabilities", "#capabilities"],
   ["useCases", "#use-cases"],
   ["approach", "#approach"],
 ] as const;
@@ -45,8 +44,15 @@ export function Header({
   const [open, setOpen] = useState(false);
   const aboutHref = localePath(lang, "/about");
   const aboutCurrent = page === "about" ? ("page" as const) : undefined;
+  const solutionsHref = localePath(lang, "/solutions");
   const switchPath =
-    page === "about" ? "/about" : page === "resources" ? "/resources" : "/";
+    page === "about"
+      ? "/about"
+      : page === "resources"
+        ? "/resources"
+        : page === "solutions"
+          ? "/solutions"
+          : "/";
   const contactHref = sectionHref(lang, page, "#contact");
   return (
     <header className="header">
@@ -61,6 +67,12 @@ export function Header({
               {copy.links[key]}
             </SiteLink>
           ))}
+          <SiteLink
+            href={solutionsHref}
+            aria-current={page === "solutions" ? "page" : undefined}
+          >
+            {copy.solutions}
+          </SiteLink>
           <SiteLink href={aboutHref} aria-current={aboutCurrent}>
             {copy.links.about}
           </SiteLink>
@@ -99,13 +111,20 @@ export function Header({
               ([key, hash]) =>
                 [copy.links[key], sectionHref(lang, page, hash)] as const,
             ),
+            [copy.solutions, solutionsHref] as const,
             [copy.links.about, aboutHref] as const,
             [copy.cta, contactHref] as const,
           ].map(([label, href]) => (
             <SiteLink
               href={href}
               key={href}
-              aria-current={href === aboutHref ? aboutCurrent : undefined}
+              aria-current={
+                href === aboutHref
+                  ? aboutCurrent
+                  : href === solutionsHref && page === "solutions"
+                    ? "page"
+                    : undefined
+              }
               onClick={() => setOpen(false)}
             >
               {label}

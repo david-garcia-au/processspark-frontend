@@ -63,6 +63,14 @@ export function Footer({
               </li>
               <li>
                 <SiteLink
+                  href={localePath(lang, "/solutions")}
+                  aria-current={page === "solutions" ? "page" : undefined}
+                >
+                  {copy.links.solutions}
+                </SiteLink>
+              </li>
+              <li>
+                <SiteLink
                   href={localePath(lang, "/resources")}
                   aria-current={page === "resources" ? "page" : undefined}
                 >
@@ -100,7 +108,9 @@ export function Footer({
                 ? "/about"
                 : page === "resources"
                   ? "/resources"
-                  : "/"
+                  : page === "solutions"
+                    ? "/solutions"
+                    : "/"
             }
           />
           <a href="#top">

@@ -62,9 +62,9 @@ export const phones: readonly Phone[] = [
   {
     region: "AU",
     label: { en: "Australia", es: "Australia" },
-    display: "+61 2 9164 7575",
-    tel: "+61291647575",
-    e164Dashed: "+61-2-9164-7575",
+    display: "+61 2 9102 2410",
+    tel: "+61291022410",
+    e164Dashed: "+61-2-9102-2410",
     default: true,
   },
   {

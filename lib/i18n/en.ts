@@ -100,6 +100,7 @@ export const en = {
       approach: "How we work",
       about: "About",
     },
+    solutions: "Solutions",
     resources: "Resources",
     cta: "Show us your process",
   },
@@ -411,7 +412,6 @@ export const en = {
       line1: "No technical knowledge required.",
       strong: "Just tell us what’s slowing your team down.",
     },
-    phonePrompt: "Prefer to call?",
     form: {
       eyebrow: "LET’S START WITH YOUR CHALLENGE",
       name: {
@@ -470,6 +470,7 @@ export const en = {
       useCases: "Practical applications",
       approach: "How we work",
       about: "About",
+      solutions: "Solutions",
       resources: "Resources",
       demo: "Demo",
     },
@@ -485,12 +486,170 @@ export const en = {
     eyebrow: "ABOUT PROCESSSPARK",
     heading: "Built on real operations experience.",
     text: "Our approach is grounded in experience across manufacturing operations, industrial engineering, enterprise systems and cloud technologies. We understand the challenges of connecting new solutions to established processes without disrupting the work that keeps your business running.",
+    mapHeading: "Our locations",
+    mapLabel: "World map with ProcessSpark locations in Spain and Australia",
     pillarsLabel: "Areas of experience",
     pillars: {
       manufacturing: "Manufacturing operations",
       engineering: "Industrial engineering",
       systems: "Enterprise systems",
       cloud: "Cloud technologies",
+    },
+  },
+  // Copy for the Solutions page (app/[lang]/solutions). Cards are keyed by the
+  // ids in lib/content.ts. `problem` shows on the front of a card, `solution`
+  // and `control` on the back.
+  solutionsPage: {
+    title: "Manufacturing solutions | ProcessSpark",
+    description:
+      "Practical solutions for medium-sized manufacturers, from RFQ follow-up and order entry to shop-floor capture and invoice checking. People stay in control of every decision.",
+    eyebrow: "SOLUTIONS FOR MANUFACTURERS",
+    heading: {
+      line1: "Multiple practical ways",
+      line2: "to remove friction.",
+    },
+    hint: "Hover or tap to see the solution",
+    solutionLabel: "THE SOLUTION",
+    controlLabel: "People stay in control",
+    showSolution: "Show the solution",
+    showProblem: "Show the problem",
+    closing: {
+      heading: "Don’t see your process here?",
+      text: "These are starting points. Tell us what is slowing your team down and we will look at what fits.",
+    },
+    groups: {
+      "sales-orders": "Sales and orders",
+      production: "Production and shop floor",
+      "supply-finance": "Supply chain and finance",
+      "quality-service": "Quality and service",
+    },
+    items: {
+      "rfq-follow-up": {
+        title: "RFQ follow-up and quote visibility",
+        problem:
+          "When quote requests get buried in email, good opportunities can go cold.",
+        solution:
+          "We capture and prioritise incoming RFQs, show where each quote stands, and help your team prepare responses faster.",
+        control:
+          "A person checks and approves every quote before it is sent.",
+      },
+      "job-progress": {
+        title: "Job progress, BOM and routing visibility",
+        problem:
+          "When a customer asks when an order will be ready, or whether part of it can ship early, you need more than a guess or a walk around the factory.",
+        solution:
+          "We help you put practical control around bills of materials and production routings, so your team can see how jobs are progressing and management can make informed decisions about bottlenecks, capacity and equipment investment.",
+        control:
+          "The business chooses which BOMs, routing steps and updates to track.",
+      },
+      "order-entry": {
+        title: "Order entry from email",
+        problem:
+          "If staff have to print an order, split it into lines and re-enter everything across systems, hours disappear into administration.",
+        solution:
+          "We capture order details from incoming documents and put them into the right workflow, so your people can focus on exceptions and checking the result.",
+        control:
+          "Routine orders move with less rekeying. Unclear or unusual orders go to a person.",
+      },
+      "call-follow-through": {
+        title: "Customer call follow-through",
+        problem:
+          "When a customer calls and doesn’t get an answer, the call can be forgotten, and frustration grows with every follow-up.",
+        solution:
+          "We help identify callers against the customer records you already use and keep a traceable record of each inbound call, its outcome and any follow-up.",
+        control:
+          "Staff handle complex, sensitive or commercial conversations and decide the resolution.",
+      },
+      "shop-floor-capture": {
+        title: "Accurate capture of shop-floor information",
+        problem:
+          "When operators copy part numbers, serial numbers or machine details by hand, errors make items harder to identify and track.",
+        solution:
+          "We capture that information from documents and equipment labels and pass it into your systems, with checks where accuracy matters.",
+        control:
+          "High-impact identifiers can require confirmation before they are written to a system.",
+      },
+      "technical-answers": {
+        title: "Fast answers from manuals and technical documents",
+        problem:
+          "When technicians have to search through manuals, or interrupt experienced colleagues, to solve a problem, service slows down and expertise becomes a bottleneck.",
+        solution:
+          "We make approved technical information easier to search in everyday language, so technicians can find relevant answers and source material faster.",
+        control:
+          "Answers draw on your approved documents, and technicians can inspect the cited source.",
+      },
+      "incoming-goods": {
+        title: "Incoming goods and supplier document checks",
+        problem:
+          "When deliveries arrive with purchase orders, delivery notes and certificates to check, paperwork can hold up receiving and hide missing information.",
+        solution:
+          "We bring those documents together, flag mismatches, and help staff verify that each delivery has the records it needs.",
+        control:
+          "Receiving and quality staff decide whether a discrepancy is acceptable and whether material can be released.",
+      },
+      "visual-quality": {
+        title: "Visual quality checks",
+        problem:
+          "When defects are hard to spot consistently, problems can move further down the line before anyone catches them.",
+        solution:
+          "We can help flag visible issues from product images, so inspectors can focus on items that need a closer look and record what they find.",
+        control:
+          "The system highlights likely issues. Inspectors make the quality decision.",
+      },
+      "dispatch-verification": {
+        title: "Picking and dispatch verification",
+        problem:
+          "When the wrong item or quantity ships, the cost includes rework, freight and a customer who has to wait again.",
+        solution:
+          "We help check picked items and labels against the order before dispatch, giving staff a chance to catch mismatches before the goods leave.",
+        control:
+          "Staff resolve exceptions and confirm substitutions or split shipments.",
+      },
+      "nonconformance-triage": {
+        title: "Nonconformance and warranty triage",
+        problem:
+          "When quality complaints arrive through different channels, it’s difficult to see who owns each issue or whether the same problem keeps happening.",
+        solution:
+          "We capture and route cases consistently, connect them with relevant order and product information, and make recurring issues easier to spot.",
+        control:
+          "Quality and service staff determine cause, corrective action and warranty outcome.",
+      },
+      "shift-handovers": {
+        title: "Shift handovers and outstanding actions",
+        problem:
+          "When important details live in hurried conversations or handwritten notes, the next shift can miss a delay, fault or promised action.",
+        solution:
+          "We turn handover information into a shared record with clear owners, so open issues carry forward between shifts.",
+        control:
+          "The person handing over checks the summary and assigns ownership.",
+      },
+      "engineering-changes": {
+        title: "Engineering change communication",
+        problem:
+          "When a drawing or specification changes, the latest version doesn’t always reach everyone who needs it.",
+        solution:
+          "We help distribute the approved change, track acknowledgement, and make it easier for teams to find the current instructions for the job.",
+        control:
+          "Engineering approves the change and decides its impact.",
+      },
+      "invoice-checking": {
+        title: "Supplier invoice checking",
+        problem:
+          "When supplier invoices arrive, staff often have to recheck the arithmetic and compare each line with the original order by hand.",
+        solution:
+          "We capture the invoice, check that the figures add up, and compare its items with your purchasing records, flagging discrepancies for review before they move through accounts payable.",
+        control:
+          "Authorised staff resolve discrepancies and approve payment.",
+      },
+      "order-portal": {
+        title: "Customer and supplier order visibility portal",
+        problem:
+          "Customers and suppliers shouldn’t have to call or send follow-up emails just to find out what’s happening with an order or payment.",
+        solution:
+          "We give each third party a secure portal with the relevant status and next steps, reducing routine enquiries so your team can focus on work that differentiates your business.",
+        control:
+          "Your teams decide which records and fields each customer or supplier can access.",
+      },
     },
   },
   resourcesPage: {

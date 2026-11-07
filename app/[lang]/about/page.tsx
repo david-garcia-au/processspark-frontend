@@ -20,11 +20,18 @@ import {
   locales,
   ogLocale,
 } from "@/lib/i18n";
-import { site } from "@/lib/site";
+import { WorldMap } from "@/components/world-map";
+import { phones, site } from "@/lib/site";
 
 export const dynamicParams = false;
 
 const aboutPath = "/about";
+
+/** Pin positions for the world map: Madrid and Sydney. Labels come from `phones`. */
+const mapPlaces = [
+  { id: "ES", lat: 40.4, lon: -3.7 },
+  { id: "AU", lat: -33.9, lon: 151.2 },
+] as const;
 
 const pillars = [
   ["manufacturing", Factory],
@@ -118,6 +125,16 @@ export default async function AboutPage({
               </li>
             ))}
           </ul>
+        </section>
+        <section className="shell about-map" aria-labelledby="about-map-title">
+          <h2 id="about-map-title">{aboutPage.mapHeading}</h2>
+          <WorldMap
+            label={aboutPage.mapLabel}
+            places={mapPlaces.map((place) => ({
+              ...place,
+              label: phones.find((p) => p.region === place.id)?.label[lang] ?? place.id,
+            }))}
+          />
         </section>
         <section className="about-cta">
           <div className="shell about-cta-inner">

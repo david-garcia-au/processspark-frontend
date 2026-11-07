@@ -1,0 +1,271 @@
+/* Solutions page: 3D flip cards --------------------------------------------- */
+.solutions-page {
+  padding-top: 72px;
+  padding-bottom: 80px;
+}
+.solutions-page .eyebrow {
+  color: var(--orange-ink);
+  margin-bottom: 16px;
+}
+.solutions-page h1 span {
+  display: block;
+}
+.solutions-page h1 {
+  max-width: none;
+  font-size: clamp(34px, 6vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -1.8px;
+}
+.sol-groups {
+  display: grid;
+  gap: 56px;
+  margin-top: 48px;
+}
+.sol-group > h2 {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  font-weight: 600;
+}
+.sol-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sol-card {
+  position: relative;
+  min-width: 0;
+  perspective: 1200px;
+}
+.sol-card-inner {
+  display: grid;
+  height: 100%;
+  min-height: 330px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.sol-card[data-flipped="true"] .sol-card-inner {
+  transform: rotateY(180deg);
+}
+@media (hover: hover) {
+  .sol-card:hover .sol-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+.sol-face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.sol-front {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 14px 30px -20px
+    color-mix(in srgb, var(--forest-deep) 42%, transparent);
+}
+.sol-back {
+  transform: rotateY(180deg);
+  border: 1px solid var(--forest);
+  background: linear-gradient(
+    150deg,
+    var(--forest-soft) 0,
+    var(--forest) 55%,
+    var(--forest-deep) 100%
+  );
+  color: var(--on-dark-soft);
+}
+.sol-number {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--orange);
+  border-radius: 50%;
+  color: var(--orange-ink);
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+.sol-face h3 {
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  font-weight: 600;
+}
+.sol-front > p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.sol-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--orange-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+.sol-back-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--on-dark-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.sol-back-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.sol-back h3 {
+  color: var(--on-dark);
+  font-size: 17px;
+}
+.sol-solution {
+  color: var(--on-dark-soft);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.sol-control {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-dark);
+  color: var(--on-dark-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.sol-control svg {
+  margin-top: 2px;
+  color: var(--orange-wash);
+}
+.sol-control strong {
+  color: var(--on-dark);
+  font-weight: 600;
+}
+/* Full-card toggle for touch and keyboard users. */
+.sol-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+}
+.sol-toggle:focus-visible {
+  outline: 3px solid var(--orange-ink);
+  outline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  .sol-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .solutions-page {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+  .sol-groups {
+    gap: 40px;
+    margin-top: 36px;
+  }
+  .sol-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .sol-card-inner {
+    min-height: 300px;
+  }
+  .sol-face {
+    padding: 24px;
+  }
+}
+.solutions-closing {
+  margin-top: 64px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--orange);
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--orange-wash) 16%, var(--tint));
+}
+.solutions-closing h2 {
+  font-size: 26px;
+  letter-spacing: -0.6px;
+}
+.solutions-closing p {
+  max-width: 62ch;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.solutions-closing a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  background: var(--orange);
+  color: var(--forest-deep);
+  font-size: 15px;
+  font-weight: 600;
+}
+.solutions-closing a:hover {
+  background: var(--orange-hover);
+}
+/* Reduced motion: swap faces with a quick fade instead of a 3D turn. */
+@media (prefers-reduced-motion: reduce) {
+  .sol-card {
+    perspective: none;
+  }
+  .sol-card-inner {
+    transform-style: flat;
+    transition: none;
+  }
+  .sol-card[data-flipped="true"] .sol-card-inner {
+    transform: none;
+  }
+  .sol-face {
+    transition: opacity 0.2s ease;
+  }
+  .sol-back {
+    transform: none;
+    opacity: 0;
+  }
+  .sol-card[data-flipped="true"] .sol-back {
+    opacity: 1;
+  }
+  .sol-card[data-flipped="true"] .sol-front {
+    opacity: 0;
+  }
+  @media (hover: hover) {
+    .sol-card:hover .sol-card-inner {
+      transform: none;
+    }
+    .sol-card:hover .sol-back {
+      opacity: 1;
+    }
+    .sol-card:hover .sol-front {
+      opacity: 0;
+    }
+  }
+}

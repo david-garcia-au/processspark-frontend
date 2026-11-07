@@ -21,6 +21,7 @@ import "../media.css";
 import "../footer.css";
 import "../language-switcher.css";
 import "../about.css";
+import "../solutions.css";
 
 export const dynamicParams = false;
 

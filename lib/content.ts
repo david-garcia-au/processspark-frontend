@@ -46,6 +46,57 @@ export const useCases = [
 
 export type UseCaseId = (typeof useCases)[number]["id"];
 
+/** Manufacturing solution cards, in sales-guide order (the card number). */
+export const solutions = [
+  "rfq-follow-up",
+  "job-progress",
+  "order-entry",
+  "call-follow-through",
+  "shop-floor-capture",
+  "technical-answers",
+  "incoming-goods",
+  "visual-quality",
+  "dispatch-verification",
+  "nonconformance-triage",
+  "shift-handovers",
+  "engineering-changes",
+  "invoice-checking",
+  "order-portal",
+] as const;
+
+export type SolutionId = (typeof solutions)[number];
+
+/** How the cards are grouped on /solutions. Titles live in lib/i18n. */
+export const solutionGroups = [
+  {
+    id: "sales-orders",
+    items: ["rfq-follow-up", "order-entry", "call-follow-through", "order-portal"],
+  },
+  {
+    id: "production",
+    items: [
+      "job-progress",
+      "shop-floor-capture",
+      "visual-quality",
+      "shift-handovers",
+      "engineering-changes",
+    ],
+  },
+  {
+    id: "supply-finance",
+    items: ["incoming-goods", "dispatch-verification", "invoice-checking"],
+  },
+  {
+    id: "quality-service",
+    items: ["technical-answers", "nonconformance-triage"],
+  },
+] as const satisfies readonly {
+  id: string;
+  items: readonly SolutionId[];
+}[];
+
+export type SolutionGroupId = (typeof solutionGroups)[number]["id"];
+
 export const approachSteps = [
   "show-us-the-process",
   "find-the-opportunity",

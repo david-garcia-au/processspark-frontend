@@ -30,5 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
     alternates: { languages: languageAlternates("/resources") },
   }));
-  return [...home, ...about, ...resources];
+  const solutions = locales.map((locale) => ({
+    url: absoluteUrl(localePath(locale, "/solutions")),
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+    alternates: { languages: languageAlternates("/solutions") },
+  }));
+  return [...home, ...solutions, ...about, ...resources];
 }
