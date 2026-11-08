@@ -8,7 +8,7 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n";
-import { rememberLanguageChoice } from "@/lib/i18n/language-suggestion";
+import { rememberLanguageChoice } from "@/lib/i18n/language-choice";
 import { cn } from "@/lib/utils";
 
 type LanguageSwitcherProps = {
@@ -23,8 +23,8 @@ type LanguageSwitcherProps = {
 /**
  * EN | ES switch. Each link points at the same page in the other locale.
  * Hook-free on purpose. Imports the locale config only, never the
- * dictionaries. Client component only so a click can remember the choice,
- * which stops the language suggestion banner from showing again.
+ * dictionaries. Client component only so a click can save the choice in the
+ * NEXT_LOCALE cookie, which proxy.ts reads before Accept-Language.
  */
 export function LanguageSwitcher({
   lang,
@@ -57,7 +57,7 @@ export function LanguageSwitcher({
             lang={hreflang[locale]}
             hrefLang={hreflang[locale]}
             aria-label={copy[locale]}
-            onClick={rememberLanguageChoice}
+            onClick={() => rememberLanguageChoice(locale)}
           >
             {localeCodes[locale]}
           </a>

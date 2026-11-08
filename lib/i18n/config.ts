@@ -4,11 +4,16 @@
  */
 export const locales = ["en", "es"] as const;
 export type Locale = (typeof locales)[number];
-/** Served without a URL prefix (/ instead of /en). */
+/**
+ * Fallback when the visitor's language is unknown or unsupported, and the
+ * hreflang x-default. Every locale has its own URL prefix (/en, /es).
+ */
 export const defaultLocale: Locale = "en";
 export function hasLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
+/** Cookie that remembers an explicit language choice (read by proxy.ts). */
+export const localeCookie = "NEXT_LOCALE";
 /** Value of <html lang>. */
 export const htmlLang: Record<Locale, string> = { en: "en", es: "es" };
 /** Value used for hreflang and JSON-LD inLanguage. */
@@ -25,7 +30,6 @@ export const ogLocale: Record<Locale, string | undefined> = {
 export const localeCodes: Record<Locale, string> = { en: "EN", es: "ES" };
 /** Public path for a site-relative path in the given locale. */
 export function localePath(locale: Locale, path = "/"): string {
-  if (locale === defaultLocale) return path;
   return path === "/" ? `/${locale}` : `/${locale}${path}`;
 }
 /** Path of the Open Graph / Twitter image for a locale. */

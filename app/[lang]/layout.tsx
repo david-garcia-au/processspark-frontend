@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
-import { LanguageBanner } from "@/components/language-banner";
 import {
   defaultLocale,
   getDictionary,
@@ -184,7 +183,6 @@ export default async function RootLayout({
     <html lang={htmlLang[lang]} data-scroll-behavior="smooth">
       <body id="top">
         {children}
-        <LanguageBanner lang={lang} />
         <Script id="aws-rum" strategy="afterInteractive">
           {rumSnippet}
         </Script>
