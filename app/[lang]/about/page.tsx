@@ -107,7 +107,10 @@ export default async function AboutPage({
         <section className="shell about-intro">
           <div className="about-heading">
             <p className="eyebrow">{aboutPage.eyebrow}</p>
-            <h1>{aboutPage.heading}</h1>
+            <h1>
+              <span>{aboutPage.heading.line1}</span>{" "}
+              <span className="orange">{aboutPage.heading.line2}</span>
+            </h1>
             <p className="about-lead">{dict.footer.lead}</p>
           </div>
           <p className="about-text">{aboutPage.text}</p>

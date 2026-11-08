@@ -483,7 +483,10 @@ export const en = {
   aboutPage: {
     title: "About ProcessSpark",
     eyebrow: "ABOUT PROCESSSPARK",
-    heading: "Built on real operations experience.",
+    heading: {
+      line1: "Built on real",
+      line2: "operations experience.",
+    },
     text: "Our approach is grounded in experience across manufacturing operations, industrial engineering, enterprise systems and cloud technologies. We understand the challenges of connecting new solutions to established processes without disrupting the work that keeps your business running.",
     mapHeading: "Our locations",
     mapLabel: "World map with ProcessSpark locations in Spain and Australia",

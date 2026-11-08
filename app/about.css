@@ -11,23 +11,25 @@ body .about-page .eyebrow {
   color: var(--orange-ink);
   margin-bottom: 16px;
 }
+body .about-page h1 span {
+  display: block;
+}
 body .about-page h1 {
-  font-size: clamp(34px, 8vw, 40px);
+  font-size: clamp(34px, 6vw, 52px);
   line-height: 1.1;
-  letter-spacing: -1.6px;
-  font-weight: 550;
+  letter-spacing: -1.8px;
   margin-bottom: 22px;
   max-width: 13em;
 }
 body .about-page .about-lead {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--muted);
   max-width: 34em;
 }
 body .about-page .about-text {
-  font-size: 17px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--ink);
   max-width: 62ch;
 }
@@ -91,7 +93,7 @@ body .about-page .about-map h2 {
   font-size: 26px;
   line-height: 1.25;
   letter-spacing: -0.8px;
-  font-weight: 550;
+  font-weight: 600;
 }
 .world-map {
   margin: 0;
@@ -196,7 +198,7 @@ body .about-cta h2 {
   font-size: 26px;
   line-height: 1.25;
   letter-spacing: -0.8px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--on-dark);
   max-width: 20em;
 }
@@ -204,10 +206,6 @@ body .about-cta h2 span {
   color: var(--on-dark-muted);
 }
 @media (min-width: 541px) {
-  body .about-page h1 {
-    font-size: 44px;
-    letter-spacing: -2px;
-  }
   .about-pillar-list {
     gap: 14px;
   }
@@ -237,10 +235,6 @@ body .about-cta h2 span {
     padding-top: 88px;
     padding-bottom: 56px;
   }
-  body .about-page h1 {
-    font-size: 52px;
-    letter-spacing: -2.4px;
-  }
   body .about-page .about-text {
     padding-top: 30px;
   }
@@ -252,11 +246,6 @@ body .about-cta h2 span {
   }
   body .about-cta h2 {
     font-size: 34px;
-  }
-}
-@media (min-width: 1440px) {
-  body .about-page h1 {
-    font-size: 56px;
   }
 }
 /* Keep the header links on one line and switch to the mobile menu before the

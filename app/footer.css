@@ -17,7 +17,7 @@ body .site-footer .site-footer-title {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--on-dark-muted);
+  color: var(--orange);
   margin: 0 0 20px;
 }
 /* The brand lockup already names the company; keep the heading for the landmark outline. */

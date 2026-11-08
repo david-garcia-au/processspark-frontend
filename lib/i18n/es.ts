@@ -497,7 +497,10 @@ export const es: Dictionary = {
   aboutPage: {
     title: "Sobre ProcessSpark",
     eyebrow: "SOBRE PROCESSSPARK",
-    heading: "Basado en experiencia real en operaciones.",
+    heading: {
+      line1: "Basado en experiencia real",
+      line2: "en operaciones.",
+    },
     text: "Nuestro enfoque se apoya en la experiencia en operaciones de fabricación, ingeniería industrial, sistemas empresariales y tecnologías cloud. Entendemos lo difícil que es conectar soluciones nuevas con procesos ya establecidos sin interrumpir el trabajo que mantiene en marcha tu negocio.",
     mapHeading: "Nuestras ubicaciones",
     mapLabel: "Mapamundi con las ubicaciones de ProcessSpark en España y Australia",
