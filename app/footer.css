@@ -86,22 +86,6 @@ body .site-footer .site-footer-title {
   color: var(--orange-wash);
   text-decoration-color: var(--orange);
 }
-.site-footer-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 48px;
-  padding: 0 20px;
-  border-radius: 4px;
-  background: var(--orange);
-  color: var(--forest-deep);
-  font-size: 15px;
-  font-weight: 700;
-  transition: background-color 0.15s ease;
-}
-.site-footer .site-footer-cta:hover {
-  background: var(--orange-hover);
-}
 .site-footer-email {
   display: block;
   width: fit-content;
@@ -149,8 +133,4 @@ body .site-footer .site-footer-title {
   .site-footer-bottom {
     flex-wrap: wrap;
   }
-}
-/* Phone cards: the ring is drawn on the card (a::after), not on the link. */
-.site-footer .phone-card-number:focus-visible {
-  outline: none;
 }

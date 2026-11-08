@@ -475,7 +475,6 @@ export const en = {
       demo: "Demo",
     },
     talkHeading: "Let’s talk",
-    cta: "Show us your process",
     copyright: "© 2026 ProcessSpark",
     backToTop: "Back to top",
   },

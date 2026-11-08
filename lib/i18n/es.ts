@@ -491,7 +491,6 @@ export const es: Dictionary = {
       demo: "Demo",
     },
     talkHeading: "Hablemos",
-    cta: "Muéstranos tu proceso",
     copyright: "© 2026 ProcessSpark",
     backToTop: "Volver arriba",
   },

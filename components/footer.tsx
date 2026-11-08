@@ -1,4 +1,4 @@
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { Brand } from "@/components/header";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteLink, sectionHref, type PageId } from "@/components/site-link";
@@ -85,16 +85,10 @@ export function Footer({
         </div>
         <div>
           <h2 className="site-footer-title">{copy.talkHeading}</h2>
-          <SiteLink
-            className="site-footer-cta"
-            href={sectionHref(lang, page, "#contact")}
-          >
-            {copy.cta} <ArrowUpRight size={18} aria-hidden="true" />
-          </SiteLink>
           <a className="site-footer-email" href={`mailto:${site.email}`}>
             {site.email}
           </a>
-          <PhoneCards lang={lang} variant="dark" />
+          <PhoneCards lang={lang} />
         </div>
       </div>
       <div className="shell">

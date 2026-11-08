@@ -34,7 +34,7 @@ export const site = {
 } as const;
 
 /**
- * Phone numbers by region, shown as small country cards (components/phone-cards.tsx),
+ * Phone numbers by region, shown as a simple list in the footer (components/phone-cards.tsx),
  * in structured data and in llms.txt.
  *
  * To enable the Spain number, fill in display, tel and e164Dashed for region ES (full number supplied by David). Nothing else needs changing.
