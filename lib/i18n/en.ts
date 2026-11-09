@@ -491,11 +491,16 @@ export const en = {
     mapHeading: "Our locations",
     mapLabel: "World map with ProcessSpark locations in Spain and Australia",
     pillarsLabel: "Areas of experience",
+    pillarsIntro: {
+      lead: "More than 40 years of combined experience in",
+      accent: "manufacturing, process engineering and IT.",
+    },
     pillars: {
-      manufacturing: "Manufacturing operations",
-      engineering: "Industrial engineering",
-      systems: "Enterprise systems",
-      cloud: "Cloud technologies",
+      manufacturing: "Discrete and process manufacturing",
+      medical: "Medical devices",
+      critical: "Critical environments",
+      vision: "Computer vision",
+      cloud: "Cloud technology",
     },
   },
   // Copy for the Solutions page (app/[lang]/solutions). Cards are keyed by the

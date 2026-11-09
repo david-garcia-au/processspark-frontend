@@ -505,11 +505,16 @@ export const es: Dictionary = {
     mapHeading: "Nuestras ubicaciones",
     mapLabel: "Mapamundi con las ubicaciones de ProcessSpark en España y Australia",
     pillarsLabel: "Áreas de experiencia",
+    pillarsIntro: {
+      lead: "Más de 40 años de experiencia combinada en",
+      accent: "fabricación, ingeniería de procesos e informática.",
+    },
     pillars: {
-      manufacturing: "Operaciones de fabricación",
-      engineering: "Ingeniería industrial",
-      systems: "Sistemas empresariales",
-      cloud: "Tecnologías cloud",
+      manufacturing: "Fabricación discreta y de procesos",
+      medical: "Dispositivos médicos",
+      critical: "Entornos críticos",
+      vision: "Visión artificial",
+      cloud: "Tecnología cloud",
     },
   },
   solutionsPage: {

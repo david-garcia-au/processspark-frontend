@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
   Cloud,
-  Database,
   Factory,
-  Ruler,
+  ScanEye,
+  ShieldCheck,
+  Stethoscope,
 } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -35,8 +36,9 @@ const mapPlaces = [
 
 const pillars = [
   ["manufacturing", Factory],
-  ["engineering", Ruler],
-  ["systems", Database],
+  ["medical", Stethoscope],
+  ["critical", ShieldCheck],
+  ["vision", ScanEye],
   ["cloud", Cloud],
 ] as const;
 
@@ -116,6 +118,10 @@ export default async function AboutPage({
           <p className="about-text">{aboutPage.text}</p>
         </section>
         <section className="shell about-pillars">
+          <h2 className="about-pillars-title">
+            {aboutPage.pillarsIntro.lead}{" "}
+            <span className="orange">{aboutPage.pillarsIntro.accent}</span>
+          </h2>
           <ul className="about-pillar-list" aria-label={aboutPage.pillarsLabel}>
             {pillars.map(([key, Icon]) => (
               <li className="about-pillar" key={key}>

@@ -27,14 +27,29 @@ body .about-page .about-lead {
   color: var(--muted);
   max-width: 34em;
 }
+/* Same as the paragraph beside a home section heading (.section-heading > p). */
 body .about-page .about-text {
-  font-size: 18px;
-  line-height: 1.65;
-  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--muted);
   max-width: 62ch;
 }
 .about-pillars {
   padding-bottom: 64px;
+}
+/* A supporting statement, not a page title: well below the H1 (52px). */
+body .about-pillars-title {
+  max-width: 28em;
+  margin-bottom: 28px;
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+}
+@media (min-width: 851px) {
+  body .about-pillars-title {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
 }
 .about-pillar-list {
   list-style: none;
@@ -48,33 +63,39 @@ body .about-page .about-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
-  padding: 18px 16px;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
+  gap: 20px;
+  padding: 22px 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   background: var(--surface);
+  box-shadow: 0 14px 30px -18px
+    color-mix(in srgb, var(--forest-deep) 42%, transparent);
 }
 .about-pillar-icon {
   display: grid;
   flex: none;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   background: var(--orange-wash);
   color: var(--orange-ink);
 }
 .about-pillar-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke-width: 1.5;
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.6;
 }
 .about-pillar-title {
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 17px;
+  line-height: 1.35;
   font-weight: 600;
   color: var(--ink);
   overflow-wrap: break-word;
+}
+/* Five cards: two columns on phones with the odd one spanning the row. */
+.about-pillar:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 @media (max-width: 360px) {
   .about-pillar {
@@ -210,7 +231,7 @@ body .about-cta h2 span {
     gap: 14px;
   }
   .about-pillar {
-    padding: 22px 20px;
+    padding: 26px 22px;
   }
   body .about-cta h2 {
     font-size: 30px;
@@ -218,13 +239,21 @@ body .about-cta h2 span {
 }
 @media (min-width: 701px) {
   .about-pillar-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .about-pillar:last-child:nth-child(odd) {
+    grid-column: auto;
   }
   .about-cta-inner {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 48px;
+  }
+}
+@media (min-width: 1024px) {
+  .about-pillar-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 @media (min-width: 900px) {
