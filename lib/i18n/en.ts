@@ -71,7 +71,7 @@ export const en = {
       links: "Links",
       home: "Home",
       homeDescription: "Overview, use cases and how we work",
-      contactLink: "Show us your process",
+      contactLink: "Find your first win",
       contactDescription: "Start with one process",
       sitemap: "Sitemap",
       contact: "Contact",
@@ -102,7 +102,7 @@ export const en = {
     },
     solutions: "Solutions",
     resources: "Resources",
-    cta: "Show us your process",
+    cta: "Find your first win",
   },
   hero: {
     eyebrow: "FOR MANUFACTURING, LOGISTICS & SERVICE BUSINESSES",
@@ -113,7 +113,7 @@ export const en = {
     },
     description:
       "We digitise paper-based work, connect your existing data sources and make documents searchable with AI—so you can see progress, spot bottlenecks and act on what needs attention.",
-    ctaPrimary: "Show us your process",
+    ctaPrimary: "Find your first win",
     ctaSecondary: "See practical demos",
     reassurance:
       "Built around your existing systems. Implemented with minimal disruption.",
@@ -205,18 +205,17 @@ export const en = {
         "Defined checks flag missing information, and your team reviews exceptions before the record moves forward.",
       link: "See practical demos",
     },
-    outcomes: {
-      time: {
-        title: "Read and extract",
-        text: "Capture useful information from documents and scanned records.",
+    // Data-control panel under the story card.
+    trust: {
+      title: {
+        line1: "Put AI to work.",
+        accent: "Keep control of your business information.",
       },
-      capacity: {
-        title: "Find answers",
-        text: "Ask questions across your documents using AI-assisted search with source references.",
-      },
-      attention: {
-        title: "Check and flag",
-        text: "Identify missing details and inconsistencies for your team to review.",
+      text: "Your contracts, drawings, pricing and operational records contain valuable business knowledge. We build solutions with controlled access and clear rules for how that information is processed, stored and used.",
+      points: {
+        access: "Access limited to authorised people.",
+        hosting: "Hosting and data handling agreed with you.",
+        training: "Your information never used to train AI models.",
       },
     },
   },

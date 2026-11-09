@@ -4,9 +4,10 @@ import {
   Check,
   FileText,
   Files,
+  LockKeyhole,
   ScanLine,
-  Timer,
-  TrendingUp,
+  Server,
+  ShieldCheck,
   User,
 } from "lucide-react";
 import type { Dictionary } from "@/lib/i18n";
@@ -160,29 +161,29 @@ export function TransformationVisuals({
           </a>
         </div>
       </article>
-      <div className="transformation-outcomes">
-        <div>
-          <Timer size={24} />
-          <p>
-            <strong>{copy.outcomes.time.title}</strong>
-            <span>{copy.outcomes.time.text}</span>
-          </p>
+      <aside className="trust-panel" aria-labelledby="trust-title">
+        <div className="trust-intro">
+          <h3 id="trust-title">
+            {copy.trust.title.line1}{" "}
+            <span>{copy.trust.title.accent}</span>
+          </h3>
+          <p>{copy.trust.text}</p>
         </div>
-        <div>
-          <TrendingUp size={24} />
-          <p>
-            <strong>{copy.outcomes.capacity.title}</strong>
-            <span>{copy.outcomes.capacity.text}</span>
-          </p>
-        </div>
-        <div>
-          <ScanLine size={24} />
-          <p>
-            <strong>{copy.outcomes.attention.title}</strong>
-            <span>{copy.outcomes.attention.text}</span>
-          </p>
-        </div>
-      </div>
+        <ul className="trust-points">
+          <li>
+            <LockKeyhole size={24} aria-hidden="true" />
+            <span>{copy.trust.points.access}</span>
+          </li>
+          <li>
+            <Server size={24} aria-hidden="true" />
+            <span>{copy.trust.points.hosting}</span>
+          </li>
+          <li>
+            <ShieldCheck size={24} aria-hidden="true" />
+            <span>{copy.trust.points.training}</span>
+          </li>
+        </ul>
+      </aside>
       </div>
     </section>
   );

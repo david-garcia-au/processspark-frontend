@@ -86,7 +86,7 @@ export const es: Dictionary = {
       links: "Enlaces",
       home: "Inicio",
       homeDescription: "Resumen, casos de uso y cómo trabajamos",
-      contactLink: "Muéstranos tu proceso",
+      contactLink: "Encuentra tu primera mejora",
       contactDescription: "Empieza por un proceso",
       sitemap: "Mapa del sitio",
       contact: "Contacto",
@@ -117,7 +117,7 @@ export const es: Dictionary = {
     },
     solutions: "Soluciones",
     resources: "Recursos",
-    cta: "Muéstranos tu proceso",
+    cta: "Encuentra tu primera mejora",
   },
   hero: {
     eyebrow: "PARA FABRICACIÓN, LOGÍSTICA Y EMPRESAS DE SERVICIOS",
@@ -128,7 +128,7 @@ export const es: Dictionary = {
     },
     description:
       "Digitalizamos el trabajo en papel, conectamos tus fuentes de datos actuales y facilitamos la búsqueda en documentos con IA, para que puedas ver el progreso, detectar cuellos de botella y actuar sobre lo que necesita atención.",
-    ctaPrimary: "Muéstranos tu proceso",
+    ctaPrimary: "Encuentra tu primera mejora",
     ctaSecondary: "Ver demos prácticas",
     reassurance:
       "Pensado para tus sistemas actuales. Implementado con una interrupción mínima.",
@@ -220,18 +220,16 @@ export const es: Dictionary = {
         "Las comprobaciones definidas señalan la información que falta y tu equipo revisa las excepciones antes de que el registro avance.",
       link: "Ver demos prácticas",
     },
-    outcomes: {
-      time: {
-        title: "Leer y extraer",
-        text: "Captura información útil de documentos y registros escaneados.",
+    trust: {
+      title: {
+        line1: "Pon la IA a trabajar.",
+        accent: "Mantén el control de la información de tu negocio.",
       },
-      capacity: {
-        title: "Encontrar respuestas",
-        text: "Haz preguntas sobre tus documentos con búsqueda asistida por IA y referencias a las fuentes.",
-      },
-      attention: {
-        title: "Comprobar y señalar",
-        text: "Identifica datos ausentes e inconsistencias para que tu equipo los revise.",
+      text: "Tus contratos, planos, precios y registros operativos contienen conocimiento valioso para tu negocio. Creamos soluciones con acceso controlado y reglas claras sobre cómo se procesa, almacena y utiliza esa información.",
+      points: {
+        access: "Acceso limitado a personas autorizadas.",
+        hosting: "Alojamiento y tratamiento de datos acordados contigo.",
+        training: "Tu información nunca se usa para entrenar modelos de IA.",
       },
     },
   },
