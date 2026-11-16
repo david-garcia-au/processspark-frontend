@@ -8,12 +8,18 @@ type PhoneCardsProps = {
 
 /**
  * Plain contact list: country name, then a phone icon and the tel: link. One
- * entry per ready number, in the order of `phones` (lib/site.ts). Static
- * markup: every number is always shown, nothing depends on language or
- * location. Used in the dark footer.
+ * entry per ready number. Every number is always shown; the language only
+ * decides which one comes first (the reader's own region), otherwise the
+ * order of `phones` (lib/site.ts) applies. Used in the dark footer.
  */
+const firstRegion: Record<Locale, string> = { en: "AU", es: "ES" };
+
 export function PhoneCards({ lang }: PhoneCardsProps) {
-  const ready = readyPhones();
+  const ready = [...readyPhones()].sort(
+    (a, b) =>
+      Number(b.region === firstRegion[lang]) -
+      Number(a.region === firstRegion[lang]),
+  );
   if (ready.length === 0) return null;
   return (
     <ul className="phone-list">

@@ -70,9 +70,9 @@ export const phones: readonly Phone[] = [
   {
     region: "ES",
     label: { en: "Spain", es: "España" },
-    display: null,
-    tel: null,
-    e164Dashed: null,
+    display: "+34 918 24 95 23",
+    tel: "+34918249523",
+    e164Dashed: "+34-918-24-95-23",
   },
 ];
 
