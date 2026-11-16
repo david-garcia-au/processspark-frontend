@@ -63,8 +63,8 @@ export function WorldMap({
               x2="0"
               y2={height}
             >
-              <stop offset="0" style={{ stopColor: "var(--orange)" }} />
-              <stop offset="0.55" style={{ stopColor: "var(--orange-wash)" }} />
+              <stop offset="0" style={{ stopColor: "var(--accent-bright)" }} />
+              <stop offset="0.55" style={{ stopColor: "var(--on-dark-soft)" }} />
               <stop offset="1" style={{ stopColor: "var(--on-dark-muted)" }} />
             </linearGradient>
           </defs>

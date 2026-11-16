@@ -1,0 +1,217 @@
+/* About page, in the same system as the home page. Loaded last; the hero
+   reuses .home-hero from app/home.css. ----------------------------------------- */
+html body .about-hero {
+  min-height: clamp(420px, 58svh, 620px);
+  padding: 128px 0 64px;
+}
+
+/* Statement ------------------------------------------------------------------ */
+.about-statement {
+  padding-top: 112px;
+}
+html body .about-statement h2 {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.about-accent {
+  color: var(--accent);
+}
+
+/* Areas of experience: five tiles, title only ---------------------------------- */
+.about-areas {
+  padding-top: 56px;
+}
+.about-areas ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.about-areas li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 64px;
+  min-height: 230px;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--tint);
+}
+.about-area-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+.about-area-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.7;
+}
+.about-area-title {
+  max-width: 16ch;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+/* Fills alternate so no two neighbours match. */
+.about-areas li:nth-child(1) {
+  grid-column: span 2;
+  background: var(--forest);
+  color: var(--on-dark);
+}
+.about-areas li:nth-child(1) .about-area-title {
+  max-width: 20ch;
+  font-size: 2rem;
+}
+.about-areas li:nth-child(4) {
+  background: var(--accent);
+  color: var(--on-dark);
+}
+.about-areas li:nth-child(5) {
+  background: var(--accent-wash);
+}
+.about-areas li:nth-child(1) .about-area-icon,
+.about-areas li:nth-child(4) .about-area-icon {
+  background: rgb(255 255 255 / 0.16);
+  color: var(--on-dark);
+}
+
+/* Map ------------------------------------------------------------------------ */
+.about-map {
+  padding-top: 112px;
+  padding-bottom: 0;
+}
+html body .about-page .about-map h2 {
+  margin-bottom: 28px;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+html body .world-map {
+  padding: 56px 64px;
+  border-radius: var(--radius-xl);
+  background: var(--forest-deep);
+}
+html body .world-pin-dot {
+  background: var(--on-dark);
+  box-shadow: 0 0 0 4px rgb(138 164 255 / 0.55);
+  animation: none;
+}
+html body .world-pin-stem {
+  border-left-color: var(--accent-bright);
+}
+html body .world-pin-label {
+  border-radius: 999px;
+  padding: 7px 14px;
+  background: var(--on-dark);
+  color: var(--forest-deep);
+}
+/* The one motion on this page: the land draws in left to right as the map
+   scrolls into view, then the two pins land. Visible by default. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .world-map-canvas svg {
+      animation: map-sweep linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 38%;
+    }
+    .world-pin {
+      animation: pin-land linear both;
+      animation-timeline: view();
+      animation-range: cover 30% cover 42%;
+    }
+    .world-pin:nth-of-type(2) {
+      animation-range: cover 38% cover 50%;
+    }
+  }
+}
+@keyframes map-sweep {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes pin-land {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Closing band --------------------------------------------------------------- */
+html body .about-cta {
+  margin-top: 112px;
+  padding: 112px 0;
+  color: var(--on-dark);
+  background: linear-gradient(150deg, #2346e0 0%, #1631a8 55%, #0d1b33 100%);
+}
+html body .about-cta h2 {
+  max-width: 20ch;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--on-dark);
+}
+html body .about-cta h2 span {
+  color: var(--on-dark-soft);
+}
+html body .about-cta-inner {
+  gap: 48px;
+}
+
+/* Responsive ------------------------------------------------------------------ */
+@media (max-width: 1000px) {
+  .about-areas ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  html body .about-hero {
+    min-height: 0;
+    padding: 160px 0 48px;
+  }
+  .about-statement,
+  .about-map {
+    padding-top: 80px;
+  }
+  .about-areas ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .about-areas li,
+  .about-areas li:nth-child(1) {
+    grid-column: auto;
+    min-height: 0;
+    gap: 40px;
+    padding: 24px;
+  }
+  .about-areas li:nth-child(1) .about-area-title {
+    font-size: 1.6rem;
+  }
+  html body .world-map {
+    padding: 28px 14px;
+  }
+  html body .about-cta {
+    margin-top: 80px;
+    padding: 72px 0;
+  }
+}

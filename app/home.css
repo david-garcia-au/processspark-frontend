@@ -82,9 +82,17 @@ html body .nav > .lang-switch {
   margin-left: auto;
 }
 html body .desktop-nav {
+  align-items: center;
+  align-self: stretch;
   gap: 30px;
   font-size: 15px;
   font-weight: 500;
+  line-height: 1.2;
+}
+html body .desktop-nav a,
+html body .desktop-nav .nav-dropdown-toggle {
+  font: inherit;
+  line-height: inherit;
 }
 html body .desktop-nav a:hover,
 html body .nav-resources-link:hover {
@@ -1555,4 +1563,173 @@ html body .home .capability-summary > li:nth-child(4) .vig-panel {
   border-color: var(--spark);
   background: var(--spark-wash);
   color: var(--spark-deep);
+}
+
+/* Solutions dropdown ----------------------------------------------------------- */
+html body .nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 2px;
+}
+html body .nav-dropdown-toggle {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+html body .nav-dropdown-toggle:hover {
+  background: var(--sage);
+}
+.nav-dropdown-toggle svg {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-dropdown[data-open="true"] .nav-dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: -26px;
+  z-index: 50;
+  width: min(740px, 92vw);
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 40px 80px -30px rgb(13 27 51 / 0.45);
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.25s;
+}
+/* Keeps the menu open while the pointer crosses the gap below the header. */
+.nav-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
+.nav-dropdown[data-open="true"] .nav-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.nav-menu ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html body .nav-menu ul a {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px;
+  border-radius: 16px;
+  color: var(--ink);
+  white-space: normal;
+}
+html body .nav-menu ul a:hover,
+html body .nav-menu ul a:focus-visible {
+  background: var(--tint);
+  color: var(--ink);
+}
+html body .nav-menu ul a[aria-current="page"] {
+  background: var(--accent-wash);
+}
+.nav-menu-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--accent-wash);
+  color: var(--accent);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+html body .nav-menu ul a:hover .nav-menu-icon,
+html body .nav-menu ul a:focus-visible .nav-menu-icon,
+html body .nav-menu ul a[aria-current="page"] .nav-menu-icon {
+  background: var(--accent);
+  color: var(--on-dark);
+}
+.nav-menu-text {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.nav-menu-text strong {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.nav-menu-text small {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--muted);
+}
+html body .nav-menu .nav-menu-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 14px 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+html body .nav-menu .nav-menu-all:hover {
+  color: var(--accent-hover);
+}
+/* Phone menu: the teams sit under Solutions, one level in. */
+.mobile-nav .mobile-subnav {
+  display: grid;
+  margin: 0 0 6px;
+  padding: 0 0 6px 16px;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+html body .mobile-nav .mobile-subnav a {
+  padding: 9px 0;
+  border-bottom: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+html body .mobile-nav .mobile-subnav a[aria-current="page"] {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu,
+  .nav-menu-icon,
+  .nav-dropdown-toggle svg {
+    transition: none;
+  }
 }

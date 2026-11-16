@@ -1,25 +1,12 @@
-"use client";
-import { useState } from "react";
-import { ArrowUpRight, Menu, X, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { Brand } from "@/components/brand";
+import { HeaderBar, type HeaderMenuItem } from "@/components/header-bar";
+import type { PageId } from "@/components/site-link";
 import type { Dictionary } from "@/lib/i18n";
-import { SiteLink, sectionHref, type PageId } from "@/components/site-link";
-import { localePath, type Locale } from "@/lib/i18n/config";
+import type { Locale } from "@/lib/i18n/config";
+import { solutionsCopy } from "@/lib/solutions-copy";
+import { teams } from "@/lib/teams";
 
-export function Brand({ label, href = "#" }: { label: string; href?: string }) {
-  return (
-    <SiteLink href={href} className="brand" aria-label={label}>
-      <span className="brand-icon">
-        <Zap size={21} fill="currentColor" />
-      </span>
-      Process<span className="brand-light">Spark</span>
-      <span className="brand-dot">.</span>
-    </SiteLink>
-  );
-}
-
-const sectionLinks = [["approach", "#approach"]] as const;
+export { Brand };
 
 type HeaderProps = {
   lang: Locale;
@@ -28,121 +15,26 @@ type HeaderProps = {
   brandLabel: string;
   /** Page being rendered. Defaults to the landing page. */
   page?: PageId;
-  /** Locale-less path of this exact page, when it is not the page's root (e.g. "/solutions/operations"). */
+  /** Locale-less path of this exact page, when it is not the page's root. */
   path?: string;
 };
 
-export function Header({
-  lang,
-  copy,
-  switcherCopy,
-  brandLabel,
-  page = "home",
-  path,
-}: HeaderProps) {
-  const [open, setOpen] = useState(false);
-  const aboutHref = localePath(lang, "/about");
-  const aboutCurrent = page === "about" ? ("page" as const) : undefined;
-  const solutionsHref = localePath(lang, "/solutions");
-  const switchPath =
-    path ??
-    (page === "about"
-      ? "/about"
-      : page === "resources"
-        ? "/resources"
-        : page === "solutions"
-          ? "/solutions"
-          : "/");
-  const contactHref = sectionHref(lang, page, "#contact");
+/**
+ * Server wrapper: builds the Solutions menu from the team data so that data
+ * never ships in the client bundle, then renders the interactive bar.
+ */
+export function Header(props: HeaderProps) {
+  const menu: HeaderMenuItem[] = teams[props.lang].map((team) => ({
+    id: team.id,
+    label: team.label,
+    hint: team.examples.slice(0, 2).join(" · "),
+  }));
+  const copy = solutionsCopy[props.lang];
   return (
-    <header className="header">
-      <div className="shell nav">
-        <Brand
-          label={brandLabel}
-          href={page === "home" ? "#" : localePath(lang)}
-        />
-        <nav aria-label={copy.mainNavLabel} className="desktop-nav">
-          {sectionLinks.map(([key, hash]) => (
-            <SiteLink key={hash} href={sectionHref(lang, page, hash)}>
-              {copy.links[key]}
-            </SiteLink>
-          ))}
-          <SiteLink
-            href={solutionsHref}
-            aria-current={page === "solutions" ? "page" : undefined}
-          >
-            {copy.solutions}
-          </SiteLink>
-          <SiteLink href={aboutHref} aria-current={aboutCurrent}>
-            {copy.links.about}
-          </SiteLink>
-        </nav>
-        <LanguageSwitcher lang={lang} copy={switcherCopy} path={switchPath} />
-        <SiteLink
-          href={localePath(lang, "/resources")}
-          className="nav-resources-link"
-          aria-current={page === "resources" ? "page" : undefined}
-        >
-          {copy.resources}
-        </SiteLink>
-        <Button asChild className="nav-cta">
-          <SiteLink href={contactHref}>
-            {copy.demo} <ArrowUpRight size={16} />
-          </SiteLink>
-        </Button>
-        <button
-          className="mobile-toggle"
-          aria-label={open ? copy.closeNav : copy.openNav}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X /> : <Menu />}
-        </button>
-      </div>
-      {open && (
-        <nav
-          id="mobile-nav"
-          className="mobile-nav"
-          aria-label={copy.mobileNavLabel}
-        >
-          {[
-            ...sectionLinks.map(
-              ([key, hash]) =>
-                [copy.links[key], sectionHref(lang, page, hash)] as const,
-            ),
-            [copy.solutions, solutionsHref] as const,
-            [copy.links.about, aboutHref] as const,
-            [copy.demo, contactHref] as const,
-          ].map(([label, href]) => (
-            <SiteLink
-              href={href}
-              key={href}
-              aria-current={
-                href === aboutHref
-                  ? aboutCurrent
-                  : href === solutionsHref && page === "solutions"
-                    ? "page"
-                    : undefined
-              }
-              onClick={() => setOpen(false)}
-            >
-              {label}
-              <ArrowUpRight size={16} />
-            </SiteLink>
-          ))}
-          <LanguageSwitcher lang={lang} copy={switcherCopy} path={switchPath} />
-          <SiteLink
-            href={localePath(lang, "/resources")}
-            className="mobile-resources-link"
-            aria-current={page === "resources" ? "page" : undefined}
-            onClick={() => setOpen(false)}
-          >
-            {copy.resources}
-            <ArrowUpRight size={16} />
-          </SiteLink>
-        </nav>
-      )}
-    </header>
+    <HeaderBar
+      {...props}
+      menu={menu}
+      menuCopy={{ toggle: copy.menuToggle, all: copy.allSolutions }}
+    />
   );
 }

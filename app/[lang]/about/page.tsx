@@ -12,7 +12,6 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SiteLink, sectionHref } from "@/components/site-link";
 import { AboutStructuredData } from "@/components/structured-data";
-import { Button } from "@/components/ui/button";
 import { languageAlternates } from "@/lib/alternates";
 import {
   getDictionary,
@@ -108,28 +107,40 @@ export default async function AboutPage({
         page="about"
       />
       <main id="main" className="about-page">
-        <section className="shell about-intro">
-          <div className="about-heading">
-            <p className="eyebrow">{aboutPage.eyebrow}</p>
-            <h1>
+        <section
+          className="home-hero about-hero"
+          aria-labelledby="about-title"
+        >
+          <div className="home-hero-glow" aria-hidden="true" />
+          <div className="shell home-hero-inner">
+            <h1 id="about-title">
               <span>{aboutPage.heading.line1}</span>{" "}
-              <span className="orange">{aboutPage.heading.line2}</span>
+              <span>{aboutPage.heading.line2}</span>
             </h1>
+            <div className="home-hero-side">
+              <p>{aboutPage.text}</p>
+            </div>
           </div>
-          <p className="about-text">{aboutPage.text}</p>
         </section>
-        <section className="shell about-pillars">
-          <h2 className="about-pillars-title">
+        <section
+          className="shell about-statement"
+          aria-labelledby="about-statement-title"
+        >
+          <h2 id="about-statement-title">
             {aboutPage.pillarsIntro.lead}{" "}
-            <span className="orange">{aboutPage.pillarsIntro.accent}</span>
+            <span className="about-accent">
+              {aboutPage.pillarsIntro.accent}
+            </span>
           </h2>
-          <ul className="about-pillar-list" aria-label={aboutPage.pillarsLabel}>
+        </section>
+        <section className="shell about-areas">
+          <ul aria-label={aboutPage.pillarsLabel}>
             {pillars.map(([key, Icon]) => (
-              <li className="about-pillar" key={key}>
-                <span className="about-pillar-icon">
+              <li key={key} data-area={key}>
+                <span className="about-area-icon">
                   <Icon aria-hidden="true" />
                 </span>
-                <span className="about-pillar-title">
+                <span className="about-area-title">
                   {aboutPage.pillars[key]}
                 </span>
               </li>
@@ -153,11 +164,12 @@ export default async function AboutPage({
             <h2>
               <span>{contact.signoff.line1}</span> {contact.signoff.strong}
             </h2>
-            <Button asChild className="button-primary">
-              <SiteLink href={sectionHref(lang, "about", "#contact")}>
-                {dict.header.cta} <ArrowUpRight size={18} />
-              </SiteLink>
-            </Button>
+            <SiteLink
+              className="pill pill-light"
+              href={sectionHref(lang, "about", "#contact")}
+            >
+              {dict.header.demo} <ArrowUpRight size={18} aria-hidden="true" />
+            </SiteLink>
           </div>
         </section>
       </main>
