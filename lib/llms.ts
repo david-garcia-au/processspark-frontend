@@ -1,6 +1,8 @@
-import { capabilities, useCases } from "@/lib/content";
+import { capabilities } from "@/lib/capabilities";
+import { teams } from "@/lib/teams";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { absoluteUrl, readyPhones, site } from "@/lib/site";
+import { solutionsCopy } from "@/lib/solutions-copy";
 
 /**
  * Plain-text summary for AI assistants and answer engines (llms.txt
@@ -20,20 +22,22 @@ export function buildLlmsTxt(locale: Locale): string {
     "",
     ...seo.sectors.map((sector) => `- ${sector}`),
     "",
-    `## ${seo.llms.kinds}`,
+    `## ${dict.solutionsPage.eyebrow}`,
     "",
-    ...capabilities.map((item) => {
-      const text = dict.capabilities.items[item.id];
-      return `- **${text.name}**: ${text.question} ${text.detail} ${text.outcome}`;
-    }),
+    ...teams[locale].flatMap((team) => [
+      `### [${team.label}](${absoluteUrl(localePath(locale, `/solutions/${team.id}`))})`,
+      team.problem,
+      ...team.cases.map((item) => `- **${item.title}**: ${item.text}`),
+      "",
+    ]),
+    `## ${solutionsCopy[locale].capabilitiesHeading}`,
     "",
-    `## ${seo.llms.useCases}`,
-    "",
-    ...useCases.map((item) => {
-      const text = dict.useCases.items[item.id];
-      return `- **${text.title}** (${text.sector}): ${text.text}`;
-    }),
-    "",
+    ...capabilities[locale].flatMap((item) => [
+      `### [${item.title}](${absoluteUrl(`${localePath(locale, "/solutions")}#${item.id}`)})`,
+      `${item.headline} ${item.text}`,
+      ...item.points.map((point) => `- ${point}`),
+      "",
+    ]),
     `## ${seo.llms.links}`,
     "",
     `- [${seo.llms.home}](${absoluteUrl(localePath(locale))}): ${seo.llms.homeDescription}`,

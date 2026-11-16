@@ -19,11 +19,7 @@ export function Brand({ label, href = "#" }: { label: string; href?: string }) {
   );
 }
 
-const sectionLinks = [
-  ["problems", "#problems"],
-  ["useCases", "#use-cases"],
-  ["approach", "#approach"],
-] as const;
+const sectionLinks = [["approach", "#approach"]] as const;
 
 type HeaderProps = {
   lang: Locale;
@@ -32,6 +28,8 @@ type HeaderProps = {
   brandLabel: string;
   /** Page being rendered. Defaults to the landing page. */
   page?: PageId;
+  /** Locale-less path of this exact page, when it is not the page's root (e.g. "/solutions/operations"). */
+  path?: string;
 };
 
 export function Header({
@@ -40,19 +38,21 @@ export function Header({
   switcherCopy,
   brandLabel,
   page = "home",
+  path,
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const aboutHref = localePath(lang, "/about");
   const aboutCurrent = page === "about" ? ("page" as const) : undefined;
   const solutionsHref = localePath(lang, "/solutions");
   const switchPath =
-    page === "about"
+    path ??
+    (page === "about"
       ? "/about"
       : page === "resources"
         ? "/resources"
         : page === "solutions"
           ? "/solutions"
-          : "/";
+          : "/");
   const contactHref = sectionHref(lang, page, "#contact");
   return (
     <header className="header">
@@ -87,7 +87,7 @@ export function Header({
         </SiteLink>
         <Button asChild className="nav-cta">
           <SiteLink href={contactHref}>
-            {copy.cta} <ArrowUpRight size={16} />
+            {copy.demo} <ArrowUpRight size={16} />
           </SiteLink>
         </Button>
         <button
@@ -113,7 +113,7 @@ export function Header({
             ),
             [copy.solutions, solutionsHref] as const,
             [copy.links.about, aboutHref] as const,
-            [copy.cta, contactHref] as const,
+            [copy.demo, contactHref] as const,
           ].map(([label, href]) => (
             <SiteLink
               href={href}

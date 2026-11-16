@@ -80,7 +80,9 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: aboutPage.title,
       description: footer.lead,
-      ...(parentTwitter?.images?.length ? { images: parentTwitter.images } : {}),
+      ...(parentTwitter?.images?.length
+        ? { images: parentTwitter.images }
+        : {}),
     },
   };
 }
@@ -113,7 +115,6 @@ export default async function AboutPage({
               <span>{aboutPage.heading.line1}</span>{" "}
               <span className="orange">{aboutPage.heading.line2}</span>
             </h1>
-            <p className="about-lead">{dict.footer.lead}</p>
           </div>
           <p className="about-text">{aboutPage.text}</p>
         </section>
@@ -141,15 +142,16 @@ export default async function AboutPage({
             label={aboutPage.mapLabel}
             places={mapPlaces.map((place) => ({
               ...place,
-              label: phones.find((p) => p.region === place.id)?.label[lang] ?? place.id,
+              label:
+                phones.find((p) => p.region === place.id)?.label[lang] ??
+                place.id,
             }))}
           />
         </section>
         <section className="about-cta">
           <div className="shell about-cta-inner">
             <h2>
-              <span>{contact.signoff.line1}</span>{" "}
-              {contact.signoff.strong}
+              <span>{contact.signoff.line1}</span> {contact.signoff.strong}
             </h2>
             <Button asChild className="button-primary">
               <SiteLink href={sectionHref(lang, "about", "#contact")}>

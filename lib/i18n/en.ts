@@ -103,18 +103,18 @@ export const en = {
     solutions: "Solutions",
     resources: "Resources",
     cta: "Find your first win",
+    demo: "Request a demo",
   },
   hero: {
     eyebrow: "FOR MANUFACTURING, LOGISTICS & SERVICE BUSINESSES",
     title: {
-      line1: "Digitise your paperwork.",
-      line2: "Connect your data silos.",
-      accent: "Gain full operational visibility.",
+      line1: "Transform the way",
+      line2: "your business operates.",
     },
     description:
-      "We digitise paper-based work, connect your existing data sources and make documents searchable with AI—so you can see progress, spot bottlenecks and act on what needs attention.",
+      "Practical solutions for manufacturing, logistics and service businesses—built around the systems you already use.",
     ctaPrimary: "Find your first win",
-    ctaSecondary: "See practical demos",
+    ctaSecondary: "Request a demo",
     reassurance:
       "Built around your existing systems. Implemented with minimal disruption.",
   },
@@ -460,7 +460,7 @@ export const en = {
   },
   footer: {
     navLabel: "Footer",
-    lead: "We help manufacturing, logistics and service businesses digitise paper-based work, connect data across existing systems and gain operational visibility.",
+    lead: "Practical digitisation for manufacturing, logistics and service businesses.",
     tagline: "Less paper. Connected information. Clearer operations.",
     exploreHeading: "Explore",
     links: {
@@ -486,7 +486,7 @@ export const en = {
       line1: "Built on real",
       line2: "operations experience.",
     },
-    text: "Our approach is grounded in experience across manufacturing operations, industrial engineering, enterprise systems and cloud technologies. We understand the challenges of connecting new solutions to established processes without disrupting the work that keeps your business running.",
+    text: "We combine manufacturing, process engineering and IT experience to make improvements that fit the way your business works.",
     mapHeading: "Our locations",
     mapLabel: "World map with ProcessSpark locations in Spain and Australia",
     pillarsLabel: "Areas of experience",
@@ -506,13 +506,13 @@ export const en = {
   // ids in lib/content.ts. `problem` shows on the front of a card, `solution`
   // and `control` on the back.
   solutionsPage: {
-    title: "Manufacturing solutions | ProcessSpark",
+    title: "Solutions by team | ProcessSpark",
     description:
-      "Practical solutions for medium-sized manufacturers, from RFQ follow-up and order entry to shop-floor capture and invoice checking. People stay in control of every decision.",
-    eyebrow: "SOLUTIONS FOR MANUFACTURERS",
+      "Explore practical solutions for operations, engineering, sales, finance, HR and management. Start with one business problem.",
+    eyebrow: "SOLUTIONS BY TEAM",
     heading: {
-      line1: "Multiple practical ways",
-      line2: "to remove friction.",
+      line1: "Find the problem",
+      line2: "you want to solve.",
     },
     hint: "Hover or tap to see the solution",
     solutionLabel: "THE SOLUTION",
@@ -536,8 +536,7 @@ export const en = {
           "When quote requests get buried in email, good opportunities can go cold.",
         solution:
           "We capture and prioritise incoming RFQs, show where each quote stands, and help your team prepare responses faster.",
-        control:
-          "A person checks and approves every quote before it is sent.",
+        control: "A person checks and approves every quote before it is sent.",
       },
       "job-progress": {
         title: "Job progress, BOM and routing visibility",
@@ -635,8 +634,7 @@ export const en = {
           "When a drawing or specification changes, the latest version doesn’t always reach everyone who needs it.",
         solution:
           "We help distribute the approved change, track acknowledgement, and make it easier for teams to find the current instructions for the job.",
-        control:
-          "Engineering approves the change and decides its impact.",
+        control: "Engineering approves the change and decides its impact.",
       },
       "invoice-checking": {
         title: "Supplier invoice checking",
@@ -644,8 +642,7 @@ export const en = {
           "When supplier invoices arrive, staff often have to recheck the arithmetic and compare each line with the original order by hand.",
         solution:
           "We capture the invoice, check that the figures add up, and compare its items with your purchasing records, flagging discrepancies for review before they move through accounts payable.",
-        control:
-          "Authorised staff resolve discrepancies and approve payment.",
+        control: "Authorised staff resolve discrepancies and approve payment.",
       },
       "order-portal": {
         title: "Customer and supplier order visibility portal",
@@ -663,7 +660,7 @@ export const en = {
     description:
       "PDF guides and practical resources for ProcessSpark customers.",
     intro:
-      "Explore common problems caused by paper-heavy work, scattered information and limited visibility—and practical ways to improve them.",
+      "Five short guides to spotting problems and choosing where to start.",
     overviewLabel: "GUIDE OVERVIEW",
     readOverview: "Read the overview",
     downloadGuide: "Download the two-page guide",

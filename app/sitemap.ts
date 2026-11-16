@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { languageAlternates } from "@/lib/alternates";
 import { localePath, locales } from "@/lib/i18n";
 import { absoluteUrl, site } from "@/lib/site";
+import { teamIds } from "@/lib/teams";
 
 // Evaluated at build time, so lastModified is the date of the latest deploy.
 const lastModified = new Date();
@@ -37,5 +38,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
     alternates: { languages: languageAlternates("/solutions") },
   }));
-  return [...home, ...solutions, ...about, ...resources];
+  const teamPages = teamIds.flatMap((id) =>
+    locales.map((locale) => ({
+      url: absoluteUrl(localePath(locale, `/solutions/${id}`)),
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: { languages: languageAlternates(`/solutions/${id}`) },
+    })),
+  );
+  return [...home, ...solutions, ...teamPages, ...about, ...resources];
 }

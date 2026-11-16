@@ -4,7 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SiteLink, sectionHref } from "@/components/site-link";
+import { CapabilitySections } from "@/components/capability-sections";
 import { SolutionCards } from "@/components/solution-cards";
+import { solutionsCopy } from "@/lib/solutions-copy";
 import { languageAlternates } from "@/lib/alternates";
 import {
   getDictionary,
@@ -88,7 +90,9 @@ export default async function SolutionsPage({
             <span>{copy.heading.line1}</span>{" "}
             <span className="orange">{copy.heading.line2}</span>
           </h1>
-          <SolutionCards copy={copy} />
+          <p className="solutions-summary">{solutionsCopy[lang].summary}</p>
+          <SolutionCards lang={lang} />
+          <CapabilitySections lang={lang} />
           <aside className="solutions-closing">
             <h2>{copy.closing.heading}</h2>
             <p>{copy.closing.text}</p>

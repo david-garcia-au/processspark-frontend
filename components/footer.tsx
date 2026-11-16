@@ -7,12 +7,7 @@ import { localePath, type Locale } from "@/lib/i18n/config";
 import { PhoneCards } from "@/components/phone-cards";
 import { site } from "@/lib/site";
 
-const exploreLinks = [
-  ["problems", "#problems"],
-  ["capabilities", "#capabilities"],
-  ["useCases", "#use-cases"],
-  ["approach", "#approach"],
-] as const;
+const exploreLinks = [["approach", "#approach"]] as const;
 
 type FooterProps = {
   lang: Locale;
@@ -40,7 +35,6 @@ export function Footer({
             href={page === "home" ? "#" : localePath(lang)}
           />
           <p className="site-footer-lead">{copy.lead}</p>
-          <p className="site-footer-tagline">{copy.tagline}</p>
         </div>
         <div>
           <h2 className="site-footer-title">{copy.exploreHeading}</h2>

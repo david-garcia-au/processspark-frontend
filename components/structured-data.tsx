@@ -1,4 +1,4 @@
-import { capabilities, useCases } from "@/lib/content";
+import { teams } from "@/lib/teams";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { hreflang, localePath, socialImagePath } from "@/lib/i18n";
 import { absoluteUrl, defaultPhone, readyPhones, site } from "@/lib/site";
@@ -50,20 +50,21 @@ function buildGraph(lang: Locale, dict: Dictionary) {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: seo.jsonLd.offerCatalogName,
-          itemListElement: useCases.map((item) => {
-            const text = dict.useCases.items[item.id];
-            return {
+          itemListElement: teams[lang].flatMap((team) =>
+            team.cases.map((item) => ({
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
-                name: text.title,
-                description: text.text,
-                serviceType: dict.capabilities.items[item.capability].name,
-                category: text.sector,
+                name: item.title,
+                description: item.text,
+                category: team.label,
                 provider: { "@id": organizationId },
+                url: absoluteUrl(
+                  `${localePath(lang, "/solutions")}#${team.id}`,
+                ),
               },
-            };
-          }),
+            })),
+          ),
         },
       },
       {
@@ -92,15 +93,13 @@ function buildGraph(lang: Locale, dict: Dictionary) {
         mainEntity: {
           "@type": "ItemList",
           name: seo.jsonLd.itemListName,
-          itemListElement: capabilities.map((item, index) => {
-            const text = dict.capabilities.items[item.id];
-            return {
-              "@type": "ListItem",
-              position: index + 1,
-              name: text.name,
-              description: `${text.question} ${text.detail} ${text.outcome}`,
-            };
-          }),
+          itemListElement: teams[lang].map((team, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: team.label,
+            description: team.problem,
+            url: absoluteUrl(localePath(lang, `/solutions/${team.id}`)),
+          })),
         },
       },
     ],

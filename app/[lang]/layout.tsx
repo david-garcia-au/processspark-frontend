@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import { Manrope } from "next/font/google";
 import {
   defaultLocale,
   getDictionary,
@@ -21,6 +22,16 @@ import "../footer.css";
 import "../language-switcher.css";
 import "../about.css";
 import "../solutions.css";
+import "../focused.css";
+import "../home.css";
+import "../journey.css";
+
+// Self-hosted at build time by next/font, no runtime request to Google.
+const sans = Manrope({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-brand",
+  display: "swap",
+});
 
 export const dynamicParams = false;
 
@@ -180,7 +191,11 @@ export default async function RootLayout({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   return (
-    <html lang={htmlLang[lang]} data-scroll-behavior="smooth">
+    <html
+      lang={htmlLang[lang]}
+      data-scroll-behavior="smooth"
+      className={sans.variable}
+    >
       <body id="top">
         {children}
         <Script id="aws-rum" strategy="afterInteractive">

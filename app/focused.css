@@ -1,0 +1,663 @@
+/* Focused discovery: one promise, six teams, clear next step. */
+.focused-home .hero {
+  padding: 72px 0 54px;
+}
+.focused-home .hero-grid {
+  align-items: center;
+  gap: 48px;
+}
+.focused-home .hero h1 {
+  font-size: clamp(2.3rem, 4vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.focused-home .hero-description {
+  font-size: 1.15rem;
+  max-width: 43ch;
+  line-height: 1.65;
+}
+.focused-home .hero h1 span {
+  display: block;
+}
+.audience-strip {
+  padding-block: 26px;
+  border-block: 1px solid var(--line);
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.audience-strip span {
+  font-weight: 650;
+}
+.audience-strip p {
+  color: var(--muted);
+  margin: 0;
+}
+.focused-heading {
+  font-size: clamp(2rem, 3.3vw, 3.5rem);
+  max-width: 23ch;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  margin: 12px 0 38px;
+}
+.team-explorer {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) 1.6fr;
+  gap: 60px;
+}
+.team-options {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+.team-options button {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.06rem;
+  color: var(--muted);
+  cursor: pointer;
+  background: transparent;
+}
+.team-options button[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--sage);
+  border-left: 3px solid var(--orange);
+  font-weight: 650;
+}
+.team-options button:hover {
+  color: var(--ink);
+  background: var(--tint);
+}
+.team-options button:focus-visible,
+.solution-team-nav a:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+.team-detail {
+  background: var(--forest);
+  color: var(--on-dark);
+  padding: 44px;
+  border-radius: 16px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.team-detail .eyebrow {
+  color: var(--on-dark-muted);
+}
+.team-detail h3 {
+  font-size: clamp(1.8rem, 2.7vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 23ch;
+}
+.team-detail > p:not(.eyebrow) {
+  color: var(--on-dark-soft);
+  margin: 18px 0;
+  font-size: 1.1rem;
+}
+.team-detail ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px;
+  display: grid;
+  gap: 9px;
+}
+.team-detail li:before {
+  content: "↗";
+  color: var(--on-dark-muted);
+  margin-right: 12px;
+}
+.team-detail .text-link {
+  color: var(--on-dark);
+  margin-top: auto;
+}
+.demo-section {
+  background: var(--sage);
+}
+.demo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.demo-pair article {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 25px;
+}
+.demo-number {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.demo-pair h3 {
+  font-size: 1.65rem;
+  line-height: 1.2;
+  margin: 22px 0 12px;
+  max-width: 23ch;
+}
+.demo-pair p {
+  max-width: 47ch;
+  color: var(--muted);
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+.demo-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 36px;
+}
+.security-strip {
+  display: flex;
+  gap: 22px;
+  padding-block: 45px;
+  border-bottom: 1px solid var(--line);
+}
+.security-strip > svg {
+  flex-shrink: 0;
+}
+.security-strip h2 {
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+.security-strip ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  padding: 0;
+  margin: 15px 0 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.simple-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+.simple-steps article {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 20px;
+}
+.simple-steps span {
+  color: var(--orange);
+  font-size: 0.85rem;
+}
+.simple-steps h3 {
+  font-size: 1.3rem;
+  margin: 20px 0 12px;
+}
+.simple-steps p {
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 34ch;
+}
+.focused-home .contact-grid {
+  border-top: 1px solid var(--line);
+}
+.focused-home .contact-copy > p {
+  max-width: 40ch;
+}
+.anchor-alias {
+  display: block;
+  scroll-margin-top: 110px;
+}
+.solution-team-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding: 24px 0;
+  border-block: 1px solid var(--line);
+  margin: 35px 0 10px;
+}
+.solution-team-nav a {
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.solutions-summary {
+  max-width: 62ch;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 22px;
+}
+.team-solution-section {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 75px;
+  padding: 65px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 105px;
+}
+.team-solution-intro h2 {
+  font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-top: 15px;
+  max-width: 22ch;
+}
+.solution-line {
+  padding: 0 0 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.solution-line h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+.solution-line p {
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 55ch;
+}
+@media (max-width: 850px) {
+  .focused-home .hero {
+    padding-top: 35px;
+  }
+  .focused-home .hero-grid {
+    gap: 30px;
+  }
+  .audience-strip {
+    display: block;
+  }
+  .audience-strip p {
+    margin-top: 10px;
+    line-height: 1.8;
+  }
+  .team-explorer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .team-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .team-options button {
+    font-size: 0.9rem;
+    padding: 16px 12px;
+  }
+  .team-detail {
+    min-height: 400px;
+    padding: 28px;
+  }
+  .demo-pair {
+    gap: 30px;
+  }
+  .team-solution-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 0;
+  }
+  .simple-steps {
+    gap: 22px;
+  }
+}
+@media (max-width: 540px) {
+  .demo-pair,
+  .simple-steps {
+    grid-template-columns: 1fr;
+  }
+  .focused-home .hero h1 {
+    font-size: clamp(2rem, 8.2vw, 2.75rem);
+  }
+  .focused-home .hero-description {
+    font-size: 1.05rem;
+  }
+  .team-options button {
+    font-size: 0.85rem;
+  }
+  .security-strip ul {
+    display: grid;
+    gap: 12px;
+  }
+  .focused-home .section {
+    padding-block: 48px;
+  }
+}
+
+/* Image-led team showcase. The image sets the context; the copy states the outcome. */
+#problems .focused-heading {
+  max-width: 32ch;
+  margin-bottom: 38px;
+}
+.team-showcase {
+  gap: 0;
+  grid-template-columns: minmax(240px, 0.72fr) 1.8fr;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.team-showcase .team-options {
+  padding: 24px 20px;
+  align-self: stretch;
+  justify-content: center;
+}
+.team-showcase .team-options button {
+  border: 0;
+  border-radius: 9px;
+  padding: 23px 14px;
+  font-size: 1rem;
+  line-height: 1.4;
+  position: relative;
+}
+.team-showcase .team-options button[aria-pressed="true"] {
+  background: var(--forest);
+  color: var(--on-dark);
+  border: 0;
+}
+.team-showcase .team-options button span {
+  opacity: 0.55;
+}
+.team-showcase .team-options button[aria-pressed="true"] span {
+  opacity: 1;
+  color: var(--on-dark);
+}
+.team-showcase .team-detail {
+  isolation: isolate;
+  position: relative;
+  padding: 0;
+  min-height: 610px;
+  border-radius: 0;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+.team-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  animation: scene-in 0.35s ease-out;
+}
+.team-scene img {
+  object-fit: cover;
+  object-position: center;
+}
+.team-showcase .team-detail:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 15%,
+    rgba(16, 31, 23, 0.28) 35%,
+    rgba(16, 31, 23, 0.96) 90%
+  );
+  z-index: -1;
+}
+.team-story {
+  padding: 40px;
+  max-width: 650px;
+}
+.team-story .eyebrow {
+  color: var(--on-dark-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+}
+.team-story h3 {
+  font-size: clamp(1.8rem, 2.8vw, 2.65rem);
+  max-width: 24ch;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.team-story .text-link {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--line-dark);
+  padding-bottom: 9px;
+}
+@keyframes scene-in {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-scene {
+    animation: none;
+  }
+}
+@media (max-width: 850px) {
+  .team-showcase {
+    grid-template-columns: 1fr;
+  }
+  .team-showcase .team-options {
+    padding: 12px;
+    gap: 5px;
+  }
+  .team-showcase .team-options button {
+    padding: 13px 10px;
+    font-size: 0.85rem;
+  }
+  .team-showcase .team-detail {
+    min-height: 0;
+  }
+  .team-scene {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    z-index: 0;
+  }
+  .team-showcase .team-detail:after {
+    display: none;
+  }
+  .team-story {
+    padding: 28px;
+  }
+  .team-story h3 {
+    font-size: 1.9rem;
+  }
+  .team-story .text-link {
+    margin-top: 22px;
+  }
+}
+
+/* Solutions structure: team overview, shared capabilities, team pages. ------- */
+.team-overview,
+.capability-sections {
+  margin-top: 72px;
+}
+.team-overview > h2,
+.capability-sections > h2,
+.team-cases > h2,
+.other-teams > h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.team-overview > ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.team-overview > ul > li {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  scroll-margin-top: 105px;
+}
+.team-overview h3 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+.team-overview h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.team-problem {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.team-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.team-examples li {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.team-overview .text-link {
+  margin-top: auto;
+  padding-top: 6px;
+}
+.capability-intro {
+  max-width: 62ch;
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.capability-list {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.capability {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 105px;
+}
+.capability h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.capability-headline {
+  margin-top: 12px;
+  max-width: 28ch;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+.capability-body > p:first-child {
+  max-width: 62ch;
+  line-height: 1.7;
+}
+.capability h4 {
+  margin: 22px 0 10px;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.capability-body ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.capability-body ul li {
+  max-width: 62ch;
+  line-height: 1.55;
+}
+.capability-teams {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 22px;
+  font-size: 0.92rem;
+}
+.capability-teams span {
+  color: var(--muted);
+}
+.capability-teams a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.team-page h1 {
+  max-width: 24ch;
+  font-size: clamp(30px, 4.6vw, 46px);
+  letter-spacing: -1.4px;
+  text-wrap: balance;
+}
+.team-page .team-examples {
+  margin-top: 24px;
+}
+.team-cases {
+  margin-top: 56px;
+}
+.team-cases .solution-line {
+  margin: 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+.team-cases .solution-line:first-of-type {
+  margin-top: 20px;
+}
+.team-cases .text-link {
+  margin-top: 12px;
+  font-size: 0.92rem;
+}
+.other-teams {
+  margin-top: 56px;
+}
+.other-teams ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.other-teams a {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+@media (max-width: 1000px) {
+  .team-overview > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .team-overview,
+  .capability-sections {
+    margin-top: 48px;
+  }
+  .team-overview > ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .capability {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 32px 0;
+  }
+}

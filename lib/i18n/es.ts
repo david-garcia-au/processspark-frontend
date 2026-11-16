@@ -118,18 +118,18 @@ export const es: Dictionary = {
     solutions: "Soluciones",
     resources: "Recursos",
     cta: "Encuentra tu primera mejora",
+    demo: "Solicita una demo",
   },
   hero: {
     eyebrow: "PARA FABRICACIÓN, LOGÍSTICA Y EMPRESAS DE SERVICIOS",
     title: {
-      line1: "Digitaliza tu papeleo.",
-      line2: "Conecta tus silos de datos.",
-      accent: "Gana visibilidad operativa total.",
+      line1: "Transforma la forma de trabajar",
+      line2: "de tu empresa.",
     },
     description:
-      "Digitalizamos el trabajo en papel, conectamos tus fuentes de datos actuales y facilitamos la búsqueda en documentos con IA, para que puedas ver el progreso, detectar cuellos de botella y actuar sobre lo que necesita atención.",
+      "Soluciones prácticas para empresas de fabricación, logística y servicios, adaptadas a los sistemas que ya utilizas.",
     ctaPrimary: "Encuentra tu primera mejora",
-    ctaSecondary: "Ver demos prácticas",
+    ctaSecondary: "Solicita una demo",
     reassurance:
       "Pensado para tus sistemas actuales. Implementado con una interrupción mínima.",
   },
@@ -475,7 +475,7 @@ export const es: Dictionary = {
   },
   footer: {
     navLabel: "Pie de página",
-    lead: "Ayudamos a las empresas de fabricación, logística y servicios a digitalizar el trabajo en papel, conectar los datos de sus sistemas actuales y ganar visibilidad operativa.",
+    lead: "Digitalización práctica para empresas de fabricación, logística y servicios.",
     tagline: "Menos papel. Información conectada. Operaciones más claras.",
     exploreHeading: "Explorar",
     links: {
@@ -499,9 +499,10 @@ export const es: Dictionary = {
       line1: "Basado en experiencia real",
       line2: "en operaciones.",
     },
-    text: "Nuestro enfoque se apoya en la experiencia en operaciones de fabricación, ingeniería industrial, sistemas empresariales y tecnologías cloud. Entendemos lo difícil que es conectar soluciones nuevas con procesos ya establecidos sin interrumpir el trabajo que mantiene en marcha tu negocio.",
+    text: "Combinamos experiencia en fabricación, ingeniería de procesos e informática para mejorar la forma en que funciona tu negocio.",
     mapHeading: "Nuestras ubicaciones",
-    mapLabel: "Mapamundi con las ubicaciones de ProcessSpark en España y Australia",
+    mapLabel:
+      "Mapamundi con las ubicaciones de ProcessSpark en España y Australia",
     pillarsLabel: "Áreas de experiencia",
     pillarsIntro: {
       lead: "Más de 40 años de experiencia combinada en",
@@ -516,13 +517,13 @@ export const es: Dictionary = {
     },
   },
   solutionsPage: {
-    title: "Soluciones para fabricantes | ProcessSpark",
+    title: "Soluciones por equipo | ProcessSpark",
     description:
-      "Soluciones prácticas para fabricantes medianos, desde el seguimiento de solicitudes de oferta y la entrada de pedidos hasta la captura de datos en planta y la revisión de facturas. Las personas siguen al mando de cada decisión.",
-    eyebrow: "SOLUCIONES PARA FABRICANTES",
+      "Explora soluciones para operaciones, ingeniería, ventas, finanzas, RR. HH. y dirección. Empieza por un problema concreto.",
+    eyebrow: "SOLUCIONES POR EQUIPO",
     heading: {
-      line1: "Múltiples formas prácticas",
-      line2: "de reducir la fricción.",
+      line1: "Encuentra el problema",
+      line2: "que quieres resolver.",
     },
     hint: "Pasa el cursor o toca para ver la solución",
     solutionLabel: "LA SOLUCIÓN",
@@ -541,7 +542,8 @@ export const es: Dictionary = {
     },
     items: {
       "rfq-follow-up": {
-        title: "Seguimiento de solicitudes de oferta y visibilidad de presupuestos",
+        title:
+          "Seguimiento de solicitudes de oferta y visibilidad de presupuestos",
         problem:
           "Cuando las solicitudes de presupuesto se pierden entre el correo electrónico, buenas oportunidades pueden enfriarse.",
         solution:
@@ -550,7 +552,8 @@ export const es: Dictionary = {
           "Una persona revisa y aprueba cada presupuesto antes de enviarlo.",
       },
       "job-progress": {
-        title: "Visibilidad del avance de trabajos, listas de materiales y rutas",
+        title:
+          "Visibilidad del avance de trabajos, listas de materiales y rutas",
         problem:
           "Cuando un cliente pregunta cuándo estará listo un pedido, o si una parte puede enviarse antes, hace falta algo más que una suposición o un paseo por la fábrica.",
         solution:
@@ -645,8 +648,7 @@ export const es: Dictionary = {
           "Cuando cambia un plano o una especificación, la última versión no siempre llega a todas las personas que la necesitan.",
         solution:
           "Ayudamos a distribuir el cambio aprobado, a registrar quién lo ha confirmado y a que los equipos encuentren fácilmente las instrucciones vigentes del trabajo.",
-        control:
-          "Ingeniería aprueba el cambio y decide su impacto.",
+        control: "Ingeniería aprueba el cambio y decide su impacto.",
       },
       "invoice-checking": {
         title: "Revisión de facturas de proveedores",
@@ -673,7 +675,7 @@ export const es: Dictionary = {
     description:
       "Guías PDF y recursos prácticos para clientes de ProcessSpark.",
     intro:
-      "Descubre problemas habituales causados por el exceso de papeleo, la información dispersa y la falta de visibilidad, y formas prácticas de mejorarlos.",
+      "Cinco guías breves para identificar problemas y elegir por dónde empezar.",
     overviewLabel: "RESUMEN DE LA GUÍA",
     readOverview: "Leer el resumen",
     downloadGuide: "Descargar la guía de dos páginas",
