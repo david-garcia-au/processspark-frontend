@@ -1640,6 +1640,8 @@ html body .nav-menu ul a {
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  box-sizing: border-box;
+  height: 100%;
   min-width: 0;
   padding: 14px;
   border-radius: 16px;

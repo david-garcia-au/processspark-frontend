@@ -26,6 +26,7 @@ import "../focused.css";
 import "../home.css";
 import "../journey.css";
 import "../about-page.css";
+import "../solutions-page.css";
 
 // Self-hosted at build time by next/font, no runtime request to Google.
 const sans = Manrope({

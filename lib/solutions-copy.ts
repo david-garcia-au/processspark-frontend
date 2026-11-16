@@ -24,6 +24,7 @@ export type SolutionsCopy = {
   readMore: string;
   otherTeams: string;
   cta: string;
+  relatedHeading: string;
   /** Header Solutions menu */
   menuToggle: string;
   allSolutions: string;
@@ -48,6 +49,7 @@ export const solutionsCopy: Record<Locale, SolutionsCopy> = {
     readMore: "How this works",
     otherTeams: "Other teams",
     cta: "Discuss your first use case",
+    relatedHeading: "The ideas behind these solutions",
     menuToggle: "Show solutions by team",
     allSolutions: "All solutions",
   },
@@ -69,6 +71,7 @@ export const solutionsCopy: Record<Locale, SolutionsCopy> = {
     readMore: "Cómo funciona",
     otherTeams: "Otros equipos",
     cta: "Hablemos de tu primer caso de uso",
+    relatedHeading: "Las ideas detrás de estas soluciones",
     menuToggle: "Mostrar soluciones por equipo",
     allSolutions: "Todas las soluciones",
   },

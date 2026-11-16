@@ -83,24 +83,37 @@ export default async function SolutionsPage({
         brandLabel={dict.common.brandLabel}
         page="solutions"
       />
-      <main id="main" className="solutions-page">
-        <div className="shell">
-          <p className="eyebrow">{copy.eyebrow}</p>
-          <h1>
-            <span>{copy.heading.line1}</span>{" "}
-            <span className="orange">{copy.heading.line2}</span>
-          </h1>
-          <p className="solutions-summary">{solutionsCopy[lang].summary}</p>
-          <SolutionCards lang={lang} />
-          <CapabilitySections lang={lang} />
-          <aside className="solutions-closing">
-            <h2>{copy.closing.heading}</h2>
-            <p>{copy.closing.text}</p>
-            <SiteLink href={sectionHref(lang, "solutions", "#contact")}>
-              {dict.header.cta} <ArrowUpRight size={16} aria-hidden="true" />
+      <main id="main" className="sol-page">
+        <section
+          className="home-hero about-hero"
+          aria-labelledby="solutions-title"
+        >
+          <div className="home-hero-glow" aria-hidden="true" />
+          <div className="shell home-hero-inner">
+            <h1 id="solutions-title">
+              <span>{copy.heading.line1}</span>{" "}
+              <span>{copy.heading.line2}</span>
+            </h1>
+            <div className="home-hero-side">
+              <p>{solutionsCopy[lang].summary}</p>
+            </div>
+          </div>
+        </section>
+        <SolutionCards lang={lang} />
+        <CapabilitySections lang={lang} />
+        <section className="about-cta">
+          <div className="shell about-cta-inner">
+            <h2>
+              <span>{copy.closing.heading}</span> {copy.closing.text}
+            </h2>
+            <SiteLink
+              className="pill pill-light"
+              href={sectionHref(lang, "solutions", "#contact")}
+            >
+              {dict.header.demo} <ArrowUpRight size={18} aria-hidden="true" />
             </SiteLink>
-          </aside>
-        </div>
+          </div>
+        </section>
       </main>
       <Footer
         lang={lang}

@@ -18,24 +18,23 @@ export function CapabilitySections({ lang }: { lang: Locale }) {
   return (
     <section
       id="capabilities"
-      className="capability-sections"
+      className="shell sol-caps"
       aria-labelledby="capabilities-heading"
     >
       <h2 id="capabilities-heading">{copy.capabilitiesHeading}</h2>
-      <p className="capability-intro">{copy.capabilitiesIntro}</p>
-      <div className="capability-list">
+      <p className="sol-caps-intro">{copy.capabilitiesIntro}</p>
+      <div className="sol-cap-list">
         {capabilities[lang].map((item) => (
           <article
             id={item.id}
             key={item.id}
-            className="capability"
+            className="sol-cap"
+            data-cap={item.id}
             aria-labelledby={`${item.id}-title`}
           >
-            <div className="capability-lead">
+            <div className="sol-cap-text">
               <h3 id={`${item.id}-title`}>{item.title}</h3>
-              <p className="capability-headline">{item.headline}</p>
-            </div>
-            <div className="capability-body">
+              <p className="sol-cap-headline">{item.headline}</p>
               <p>{item.text}</p>
               <h4>{item.pointsLabel}</h4>
               <ul>
@@ -43,7 +42,7 @@ export function CapabilitySections({ lang }: { lang: Locale }) {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-              <p className="capability-teams">
+              <p className="sol-cap-teams">
                 <span>{copy.usedBy}</span>
                 {teamsUsing(lang, item.id).map((team) => (
                   <SiteLink
@@ -55,9 +54,13 @@ export function CapabilitySections({ lang }: { lang: Locale }) {
                 ))}
               </p>
             </div>
+            <div className="sol-cap-art">
+              <CapabilityVignette id={item.id} lang={lang} />
+            </div>
           </article>
         ))}
       </div>
+      <p className="capability-note">{vignetteNote(lang)}</p>
     </section>
   );
 }

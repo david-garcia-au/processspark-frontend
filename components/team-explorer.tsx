@@ -10,16 +10,8 @@ import {
 } from "react";
 import { ArrowUpRight, Check, Pause, Play, Sparkles } from "lucide-react";
 import type { Team } from "@/lib/teams";
+import { teamImageSrc } from "@/lib/team-images";
 import { localePath, type Locale } from "@/lib/i18n/config";
-
-const teamImages: Record<string, string> = {
-  operations: "warehouse-manager.webp",
-  engineering: "boiler-room.webp",
-  sales: "email-manager-wide.webp",
-  finance: "document-processing.webp",
-  people: "workflow.webp",
-  leadership: "dashboard.webp",
-};
 
 const motionQuery = "(prefers-reduced-motion: reduce)";
 function subscribeMotion(onChange: () => void) {
@@ -135,7 +127,7 @@ export function TeamExplorer({ teams, lang }: { teams: Team[]; lang: Locale }) {
             data-active={i === index ? "true" : "false"}
           >
             <Image
-              src={`/images/${teamImages[t.id]}`}
+              src={teamImageSrc(t.id)}
               alt=""
               fill
               sizes="(max-width: 850px) 100vw, 1200px"
