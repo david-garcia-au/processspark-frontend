@@ -1,0 +1,101 @@
+/* Home page rhythm on desktop: each section is at least one window tall, with
+   its content centred, so a screen holds one idea. Type and images keep their
+   size; only the space around them changes. min-height (never height), so a
+   section that needs more room simply grows. The hero is left as it is.
+   Phones and tablets keep the natural flow. ------------------------------- */
+@media (min-width: 1001px) {
+  html body .home {
+    --screen: calc(100svh - 76px);
+  }
+
+  html body .home .home-statement,
+  html body .home #problems,
+  html body .home .home-trust,
+  html body .home #approach,
+  html body .home .home-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: var(--screen);
+  }
+  /* The sections that are also .shell keep their own width and margins. */
+  html body .home .home-statement {
+    padding-block: 64px;
+  }
+  html body .home #problems {
+    padding-block: 40px;
+  }
+  html body .home .home-trust {
+    padding-block: 48px;
+  }
+  html body .home #approach {
+    padding-block: 48px;
+  }
+  html body .home .home-contact {
+    padding-block: 48px;
+  }
+
+  /* Trust panel: shorter, with the same type and the same views. Only the
+     padding and the gaps between rows tighten. */
+  html body .home .trust {
+    padding: 40px 48px;
+  }
+  html body .home .trust-cols {
+    margin-top: 24px;
+  }
+  html body .home .trust-sub {
+    margin: 6px 0 14px;
+  }
+  html body .home .trust-card {
+    gap: 12px;
+    padding: 18px 20px;
+  }
+  html body .home .trust-options {
+    gap: 8px;
+  }
+  html body .home .trust-options li {
+    padding: 10px 14px;
+  }
+  html body .home .trust-checks {
+    gap: 7px;
+    padding-top: 12px;
+  }
+  html body .home .trust-log li {
+    padding: 8px 0;
+  }
+  html body .home .trust-perms {
+    padding: 14px;
+  }
+  html body .home .trust-perms ul {
+    gap: 8px;
+    margin-top: 10px;
+  }
+  html body .home .trust-cta {
+    margin-top: 28px;
+  }
+
+  /* Capability tiles: a screen and a bit, not a screen and a half. The tiles
+     keep their type and views; the padding and gaps tighten. */
+  html body .home #capabilities {
+    padding-block: 80px 0;
+  }
+  html body .home #capabilities .home-heading {
+    margin-bottom: 32px;
+  }
+  html body .home .capability-summary {
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  html body .home .capability-summary a {
+    padding: 24px;
+  }
+  html body .home .capability-summary .capability-headline-short {
+    margin-bottom: 14px;
+  }
+  html body .home .capability-summary .vig-bars {
+    height: 92px;
+  }
+  html body .home .capability-note {
+    margin-bottom: 24px;
+  }
+}

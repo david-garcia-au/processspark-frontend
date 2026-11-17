@@ -140,7 +140,6 @@ export function ProcessBrief({ lang, copy, email }: ProcessBriefProps) {
       >
         <Download size={14} /> {copy.pdf}
       </a>
-      <p className="form-note">{copy.note}</p>
       <p className="form-status" role="status" aria-live="polite">
         {status === "sending" && copy.statusSending}
         {status === "sent" && (

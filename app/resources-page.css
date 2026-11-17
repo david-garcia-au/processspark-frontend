@@ -1,0 +1,139 @@
+/* Downloads page, in the same system as home, About and Solutions. The hero
+   reuses .home-hero and .about-hero; the closing band is the shared CtaBand. ---- */
+
+/* One guide per row, split by hairlines. No card boxes. ----------------------- */
+html body .res-page .res-list {
+  margin-top: 72px;
+}
+html body .res-page .resources-grid {
+  display: block;
+  border-top: 1px solid var(--line);
+}
+html body .res-page .resource-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px 56px;
+  padding: 36px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+html body .res-page .resource-card-copy {
+  min-width: 0;
+}
+html body .res-page .resource-card h2 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+html body .res-page .resource-card-copy p {
+  max-width: 60ch;
+  margin-top: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+html body .res-page .resource-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Buttons: pills, blue for the action, outline for the secondary one. ---------- */
+html body .res-page .resource-card-actions a,
+html body .res-page .resource-card-actions button,
+html body .res-page .resources-dialog-content > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+html body .res-page .resource-card-actions button:hover,
+html body .res-page .resource-card-actions button:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent-deep);
+}
+html body .res-page .resource-card-actions .resource-download-link,
+html body .res-page .resources-dialog-content > a {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-dark);
+}
+html body .res-page .resource-card-actions .resource-download-link:hover,
+html body .res-page .resource-card-actions .resource-download-link:focus-visible,
+html body .res-page .resources-dialog-content > a:hover,
+html body .res-page .resources-dialog-content > a:focus-visible {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+  color: var(--on-dark);
+}
+
+/* Overview dialog. -------------------------------------------------------------- */
+html body .res-page .resources-dialog {
+  width: min(560px, calc(100% - 32px));
+  border: 0;
+  border-radius: 28px;
+  box-shadow: 0 40px 80px -30px rgb(13 27 51 / 0.55);
+}
+html body .res-page .resources-dialog::backdrop {
+  background: rgb(13 27 51 / 0.6);
+}
+html body .res-page .resources-dialog-content {
+  padding: 40px;
+}
+html body .res-page .resources-dialog-content h2 {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+html body .res-page .resources-dialog-close {
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent-wash);
+  color: var(--accent-deep);
+}
+html body .res-page .resources-dialog-close:hover,
+html body .res-page .resources-dialog-close:focus-visible {
+  border: 0;
+  background: var(--accent);
+  color: var(--on-dark);
+}
+
+@media (max-width: 800px) {
+  html body .res-page .res-list {
+    margin-top: 48px;
+  }
+  html body .res-page .resource-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 28px 0;
+  }
+  html body .res-page .resource-card-actions a,
+  html body .res-page .resource-card-actions button {
+    flex: 1 1 auto;
+    white-space: normal;
+    text-align: center;
+  }
+  html body .res-page .resources-dialog-content {
+    padding: 32px 24px;
+  }
+}

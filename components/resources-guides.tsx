@@ -78,7 +78,6 @@ export function ResourcesGuides({
             >
               <X size={20} aria-hidden="true" />
             </button>
-            <p className="eyebrow">{copy.overviewLabel}</p>
             <h2 id="resources-dialog-title">{selectedGuide.overviewTitle}</h2>
             <p id="resources-dialog-description">{selectedGuide.overview}</p>
             <a

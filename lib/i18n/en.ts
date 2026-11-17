@@ -101,7 +101,7 @@ export const en = {
       about: "About",
     },
     solutions: "Solutions",
-    resources: "Resources",
+    resources: "Downloads",
     cta: "Find your first win",
     demo: "Request a demo",
   },
@@ -112,7 +112,7 @@ export const en = {
       line2: "your business operates.",
     },
     description:
-      "Practical solutions for manufacturing, logistics and service businesses—built around the systems you already use.",
+      "We make AI and automation accessible to small and medium-sized businesses, with solutions that adapt to the way you work—not the other way round.",
     ctaPrimary: "Find your first win",
     ctaSecondary: "Request a demo",
     reassurance:
@@ -448,10 +448,9 @@ export const en = {
           "For example, we receive dozens of supplier documents every day and manually enter the details into our system.",
       },
       honeypotLabel: "Leave this field empty",
-      submit: "Let’s discuss your challenge",
+      submit: "Let’s Talk",
       sending: "Sending...",
       pdf: "Download our overview (PDF, 2 pages)",
-      note: "Your brief is emailed to the ProcessSpark team, who will reply to the address you give. You can download our two-page overview without filling in this form.",
       statusSending: "Sending your brief...",
       statusSent:
         "Thanks. We have received your brief and sent a confirmation to your email.",
@@ -465,6 +464,8 @@ export const en = {
   footer: {
     navLabel: "Footer",
     lead: "Practical digitisation for manufacturing, logistics and service businesses.",
+    /** Line under the logo in the footer. `lead` stays for the About page description. */
+    slogan: "Less Paperwork. Clearer Processes. Better Business.",
     tagline: "Less paper. Connected information. Clearer operations.",
     exploreHeading: "Explore",
     links: {
@@ -474,7 +475,7 @@ export const en = {
       approach: "How we work",
       about: "About",
       solutions: "Solutions",
-      resources: "Resources",
+      resources: "Downloads",
       demo: "Demo",
     },
     talkHeading: "Let’s talk",
@@ -671,7 +672,7 @@ export const en = {
     },
   },
   resourcesPage: {
-    title: "Resources",
+    title: "Downloads",
     description:
       "PDF guides and practical resources for ProcessSpark customers.",
     intro:

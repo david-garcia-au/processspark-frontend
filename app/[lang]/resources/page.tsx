@@ -1,8 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ResourcesGuides } from "@/components/resources-guides";
+import { sectionHref } from "@/components/site-link";
 import { languageAlternates } from "@/lib/alternates";
 import {
   getDictionary,
@@ -78,12 +80,28 @@ export default async function ResourcesPage({
         brandLabel={dict.common.brandLabel}
         page="resources"
       />
-      <main id="main" className="resources-page">
-        <div className="shell">
-          <h1>{dict.resourcesPage.title}</h1>
-          <p className="resources-intro">{dict.resourcesPage.intro}</p>
+      <main id="main" className="res-page">
+        <section
+          className="home-hero about-hero"
+          aria-labelledby="resources-title"
+        >
+          <div className="home-hero-glow" aria-hidden="true" />
+          <div className="shell home-hero-inner">
+            <h1 id="resources-title">{dict.resourcesPage.title}</h1>
+            <div className="home-hero-side">
+              <p>{dict.resourcesPage.intro}</p>
+            </div>
+          </div>
+        </section>
+        <section className="shell res-list">
           <ResourcesGuides copy={dict.resourcesPage} />
-        </div>
+        </section>
+        <CtaBand
+          heading={dict.contact.signoff.strong}
+          text={dict.contact.signoff.line1}
+          button={dict.contact.discoveryButton}
+          href={sectionHref(lang, "resources", "#contact")}
+        />
       </main>
       <Footer
         lang={lang}

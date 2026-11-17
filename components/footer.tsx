@@ -34,7 +34,7 @@ export function Footer({
             label={brandLabel}
             href={page === "home" ? "#" : localePath(lang)}
           />
-          <p className="site-footer-lead">{copy.lead}</p>
+          <p className="site-footer-lead">{copy.slogan}</p>
         </div>
         <div>
           <h2 className="site-footer-title">{copy.exploreHeading}</h2>

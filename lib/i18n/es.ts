@@ -116,7 +116,7 @@ export const es: Dictionary = {
       about: "Sobre nosotros",
     },
     solutions: "Soluciones",
-    resources: "Recursos",
+    resources: "Downloads",
     cta: "Encuentra tu primera mejora",
     demo: "Solicita una demo",
   },
@@ -127,7 +127,7 @@ export const es: Dictionary = {
       line2: "de tu empresa.",
     },
     description:
-      "Soluciones prácticas para empresas de fabricación, logística y servicios, adaptadas a los sistemas que ya utilizas.",
+      "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
     ctaPrimary: "Encuentra tu primera mejora",
     ctaSecondary: "Solicita una demo",
     reassurance:
@@ -464,7 +464,6 @@ export const es: Dictionary = {
       submit: "Vamos a hablar",
       sending: "Enviando...",
       pdf: "Descarga nuestra presentación (PDF en inglés, 2 páginas)",
-      note: "Tu resumen se envía por correo electrónico al equipo de ProcessSpark, que responderá a la dirección que indiques. Puedes descargar nuestra presentación de dos páginas (en inglés) sin rellenar este formulario.",
       statusSending: "Enviando tu resumen...",
       statusSent:
         "Gracias. Hemos recibido tu resumen y te hemos enviado una confirmación por correo electrónico.",
@@ -478,6 +477,7 @@ export const es: Dictionary = {
   footer: {
     navLabel: "Pie de página",
     lead: "Digitalización práctica para empresas de fabricación, logística y servicios.",
+    slogan: "Less Paperwork. Clearer Processes. Better Business.",
     tagline: "Menos papel. Información conectada. Operaciones más claras.",
     exploreHeading: "Explorar",
     links: {
@@ -487,7 +487,7 @@ export const es: Dictionary = {
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
       solutions: "Soluciones",
-      resources: "Recursos",
+      resources: "Downloads",
       demo: "Demo",
     },
     talkHeading: "Hablemos",
@@ -683,7 +683,7 @@ export const es: Dictionary = {
     },
   },
   resourcesPage: {
-    title: "Recursos",
+    title: "Downloads",
     description:
       "Guías PDF y recursos prácticos para clientes de ProcessSpark.",
     intro:
