@@ -5,6 +5,7 @@ import {
   Inbox,
   ReceiptText,
   Search,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
@@ -37,7 +38,7 @@ const tasks: {
     ex: 66,
     ey: 7,
     r: -5,
-    m: [5, 5, 5, 4, -4],
+    m: [5, 3, 5, 4, -4],
   },
   {
     icon: Inbox,
@@ -48,7 +49,7 @@ const tasks: {
     ex: 66,
     ey: 15.5,
     r: 4,
-    m: [14, 13, 5, 11.5, 3],
+    m: [14, 10.5, 5, 11.5, 3],
   },
   {
     icon: Search,
@@ -70,7 +71,7 @@ const tasks: {
     ex: 66,
     ey: 35,
     r: 6,
-    m: [9, 22, 5, 19, 5],
+    m: [9, 18, 5, 19, 5],
   },
   {
     icon: ClipboardCheck,
@@ -81,7 +82,18 @@ const tasks: {
     ex: 66,
     ey: 43.5,
     r: -6,
-    m: [10, 31, 5, 26.5, -5],
+    m: [10, 25.5, 5, 26.5, -5],
+  },
+  {
+    icon: Users,
+    en: "Self-service portals for customers and suppliers",
+    es: "Portales de autoservicio para clientes y proveedores",
+    sx: 68,
+    sy: 3,
+    ex: 66,
+    ey: 52,
+    r: 5,
+    m: [13, 33, 5, 34, 4],
   },
 ];
 

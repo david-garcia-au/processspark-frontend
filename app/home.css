@@ -942,7 +942,7 @@ html body .home #capabilities {
     }
     @media (max-width: 700px) {
       html body .home .capability-summary > li {
-        --travel: 56px;
+        --travel: 0px;
       }
     }
   }
@@ -1449,7 +1449,15 @@ html body .solutions-closing a:hover {
   .home-statement {
     padding-top: 80px;
   }
-  html body .home .capability-summary,
+  /* Phones: one tile per row, each the full width of the section. */
+  html body .home .capability-summary {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0;
+  }
+  html body .home .capability-summary > li:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
   html body .home .capability-summary a {
     padding: 24px;
   }
@@ -1709,6 +1717,39 @@ html body .nav-menu .nav-menu-all {
 }
 html body .nav-menu .nav-menu-all:hover {
   color: var(--accent-hover);
+}
+/* Phone menu opens and closes over half a second: the panel grows from zero
+   height while it fades. Closed, it is hidden and inert, so it can't be tabbed to. */
+html body .mobile-nav-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+}
+html body .mobile-nav-wrap[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+html body .mobile-nav-wrap > .mobile-nav {
+  min-height: 0;
+  overflow: hidden;
+  transition: padding 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html body .mobile-nav-wrap[data-open="false"] > .mobile-nav {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .mobile-nav-wrap,
+  html body .mobile-nav-wrap > .mobile-nav {
+    transition: none;
+  }
 }
 /* Phone menu: the teams sit under Solutions, one level in. */
 .mobile-nav .mobile-subnav {

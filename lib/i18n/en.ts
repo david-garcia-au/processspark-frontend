@@ -407,9 +407,13 @@ export const en = {
       assessment: "An honest assessment of the opportunity",
       nextStep: "A clear and practical next step",
     },
+    /** Button of the closing bands at the foot of the inner pages. */
+    discoveryButton: "Book a free discovery meeting with our team",
     signoff: {
       line1: "No technical knowledge required.",
-      strong: "Just tell us what’s slowing your team down.",
+      strong: "Want to see how this would work for you?",
+      /** Used at the foot of /solutions, where the heading above is already used by a band. */
+      ask: "Just tell us what’s slowing your team down.",
     },
     form: {
       eyebrow: "LET’S START WITH YOUR CHALLENGE",
@@ -519,10 +523,21 @@ export const en = {
     controlLabel: "People stay in control",
     showSolution: "Show the solution",
     showProblem: "Show the problem",
-    closing: {
-      heading: "Don’t see your process here?",
-      text: "These are starting points. Tell us what is slowing your team down and we will look at what fits.",
-    },
+    /** Call-to-action bands between the team sections of /solutions, in order. */
+    bands: [
+      {
+        heading: "Which of these costs your team the most time?",
+        text: "Pick one. We will look at how it works today and what a first step could be.",
+      },
+      {
+        heading: "Not sure where to begin?",
+        text: "That is normal. We will help you choose one process to start with.",
+      },
+      {
+        heading: "Want to see how this would work for you?",
+        text: "Bring a real example and we will show you what it could look like.",
+      },
+    ],
     groups: {
       "sales-orders": "Sales and orders",
       production: "Production and shop floor",

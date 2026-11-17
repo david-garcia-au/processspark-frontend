@@ -422,9 +422,11 @@ export const es: Dictionary = {
       assessment: "Una valoración sincera de la oportunidad",
       nextStep: "Un siguiente paso claro y práctico",
     },
+    discoveryButton: "Reserva una reunión gratuita con nuestro equipo",
     signoff: {
       line1: "No hace falta ningún conocimiento técnico.",
-      strong: "Solo cuéntanos qué frena a tu equipo.",
+      strong: "¿Quieres ver cómo funcionaría en tu caso?",
+      ask: "Solo cuéntanos qué frena a tu equipo.",
     },
     form: {
       eyebrow: "EMPECEMOS POR TU RETO",
@@ -530,10 +532,20 @@ export const es: Dictionary = {
     controlLabel: "Las personas mantienen el control",
     showSolution: "Mostrar la solución",
     showProblem: "Mostrar el problema",
-    closing: {
-      heading: "¿No ves aquí tu proceso?",
-      text: "Son puntos de partida. Cuéntanos qué frena a tu equipo y veremos qué encaja.",
-    },
+    bands: [
+      {
+        heading: "¿Cuál de estos problemas te cuesta más tiempo?",
+        text: "Elige uno. Veremos cómo se hace hoy y cuál podría ser un primer paso.",
+      },
+      {
+        heading: "¿No sabes por dónde empezar?",
+        text: "Es normal. Te ayudamos a elegir un proceso con el que empezar.",
+      },
+      {
+        heading: "¿Quieres ver cómo funcionaría en tu caso?",
+        text: "Trae un ejemplo real y te enseñamos cómo podría ser.",
+      },
+    ],
     groups: {
       "sales-orders": "Ventas y pedidos",
       production: "Producción y planta",

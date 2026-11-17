@@ -161,14 +161,16 @@ export default async function AboutPage({
         </section>
         <section className="about-cta">
           <div className="shell about-cta-inner">
-            <h2>
-              <span>{contact.signoff.line1}</span> {contact.signoff.strong}
-            </h2>
+            <div className="about-cta-text">
+              <h2>{contact.signoff.strong}</h2>
+              <p>{contact.signoff.line1}</p>
+            </div>
             <SiteLink
               className="pill pill-light"
               href={sectionHref(lang, "about", "#contact")}
             >
-              {dict.header.demo} <ArrowUpRight size={18} aria-hidden="true" />
+              {contact.discoveryButton}{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
             </SiteLink>
           </div>
         </section>

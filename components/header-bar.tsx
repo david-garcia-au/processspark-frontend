@@ -202,11 +202,12 @@ export function HeaderBar({
           {open ? <X /> : <Menu />}
         </button>
       </div>
-      {open && (
+      <div className="mobile-nav-wrap" data-open={open ? "true" : "false"}>
         <nav
           id="mobile-nav"
           className="mobile-nav"
           aria-label={copy.mobileNavLabel}
+          inert={!open}
         >
           {[
             ...sectionLinks.map(
@@ -262,7 +263,7 @@ export function HeaderBar({
             <ArrowUpRight size={16} />
           </SiteLink>
         </nav>
-      )}
+      </div>
     </header>
   );
 }

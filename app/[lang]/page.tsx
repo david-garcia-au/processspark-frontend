@@ -88,6 +88,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <TeamExplorer teams={teams[lang]} lang={lang} />
         </section>
 
+        <section className="about-cta">
+          <div className="shell about-cta-inner">
+            <div className="about-cta-text">
+              <h2>{contact.signoff.strong}</h2>
+              <p>{contact.signoff.line1}</p>
+            </div>
+            <a className="pill pill-light" href="#contact">
+              {contact.discoveryButton}{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
         <section
           className="home-section shell"
           id="capabilities"

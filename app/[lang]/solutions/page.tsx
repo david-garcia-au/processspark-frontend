@@ -1,9 +1,9 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { SiteLink, sectionHref } from "@/components/site-link";
+import { sectionHref } from "@/components/site-link";
 import { CapabilitySections } from "@/components/capability-sections";
 import { SolutionCards } from "@/components/solution-cards";
 import { solutionsCopy } from "@/lib/solutions-copy";
@@ -70,6 +70,7 @@ export default async function SolutionsPage({
   if (!hasLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const copy = dict.solutionsPage;
+  const contactHref = sectionHref(lang, "solutions", "#contact");
 
   return (
     <>
@@ -99,21 +100,19 @@ export default async function SolutionsPage({
             </div>
           </div>
         </section>
-        <SolutionCards lang={lang} />
+        <SolutionCards
+          lang={lang}
+          bands={copy.bands}
+          button={dict.contact.discoveryButton}
+          contactHref={contactHref}
+        />
         <CapabilitySections lang={lang} />
-        <section className="about-cta">
-          <div className="shell about-cta-inner">
-            <h2>
-              <span>{copy.closing.heading}</span> {copy.closing.text}
-            </h2>
-            <SiteLink
-              className="pill pill-light"
-              href={sectionHref(lang, "solutions", "#contact")}
-            >
-              {dict.header.demo} <ArrowUpRight size={18} aria-hidden="true" />
-            </SiteLink>
-          </div>
-        </section>
+        <CtaBand
+          heading={dict.contact.signoff.ask}
+          text={dict.contact.signoff.line1}
+          button={dict.contact.discoveryButton}
+          href={contactHref}
+        />
       </main>
       <Footer
         lang={lang}

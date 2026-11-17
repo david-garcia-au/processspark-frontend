@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SiteLink, sectionHref } from "@/components/site-link";
@@ -169,6 +170,13 @@ export default async function TeamPage({
           </div>
         </section>
 
+        <CtaBand
+          heading={dict.contact.signoff.strong}
+          text={dict.contact.signoff.line1}
+          button={dict.contact.discoveryButton}
+          href={sectionHref(lang, "solutions", "#contact")}
+        />
+
         {usedIds.length ? (
           <section className="shell sol-caps" aria-labelledby="related-heading">
             <h2 id="related-heading">{copy.relatedHeading}</h2>
@@ -218,21 +226,6 @@ export default async function TeamPage({
               ))}
           </ul>
         </nav>
-
-        <section className="about-cta">
-          <div className="shell about-cta-inner">
-            <h2>
-              <span>{dict.solutionsPage.closing.heading}</span>{" "}
-              {dict.solutionsPage.closing.text}
-            </h2>
-            <SiteLink
-              className="pill pill-light"
-              href={sectionHref(lang, "solutions", "#contact")}
-            >
-              {dict.header.demo} <ArrowUpRight size={18} aria-hidden="true" />
-            </SiteLink>
-          </div>
-        </section>
       </main>
       <Footer
         lang={lang}
