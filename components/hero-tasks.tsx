@@ -87,7 +87,7 @@ const tasks: {
   {
     icon: Users,
     en: "Self-service portals for customers and suppliers",
-    es: "Portales de autoservicio para clientes y proveedores",
+    es: "Portales web para proveedores y clientes",
     sx: 68,
     sy: 3,
     ex: 66,
