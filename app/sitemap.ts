@@ -38,6 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
     alternates: { languages: languageAlternates("/solutions") },
   }));
+  const privacy = locales.map((locale) => ({
+    url: absoluteUrl(localePath(locale, "/privacy")),
+    lastModified,
+    changeFrequency: "yearly" as const,
+    priority: 0.3,
+    alternates: { languages: languageAlternates("/privacy") },
+  }));
   const teamPages = teamIds.flatMap((id) =>
     locales.map((locale) => ({
       url: absoluteUrl(localePath(locale, `/solutions/${id}`)),
@@ -47,5 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: languageAlternates(`/solutions/${id}`) },
     })),
   );
-  return [...home, ...solutions, ...teamPages, ...about, ...resources];
+  return [
+    ...home,
+    ...solutions,
+    ...teamPages,
+    ...about,
+    ...resources,
+    ...privacy,
+  ];
 }

@@ -489,10 +489,12 @@ export const es: Dictionary = {
       solutions: "Soluciones",
       resources: "Downloads",
       demo: "Demo",
+      privacy: "Política de privacidad",
     },
     talkHeading: "Hablemos",
     copyright: "© 2026 ProcessSpark",
     backToTop: "Volver arriba",
+    cookieSettings: "Configuración de cookies",
   },
   aboutPage: {
     title: "Sobre ProcessSpark",
@@ -843,6 +845,148 @@ export const es: Dictionary = {
     "contact-team": {
       label: "Personas hablando de un proceso",
       alt: "Un equipo en una sala de reuniones mientras una persona señala una pizarra que compara el proceso actual de gestión de correos con un proceso mejorado con IA",
+    },
+  },
+  consent: {
+    regionLabel: "Banner de información de privacidad",
+    heading: "Información de privacidad",
+    textBefore:
+      "Usamos cookies necesarias para que este sitio funcione y, solo si nos das tu consentimiento, cookies opcionales para entender cómo se usa. Puedes aceptar todas las cookies o rechazar las opcionales, y puedes cambiar tus preferencias en cualquier momento. Para más detalles, consulta Más información o nuestra ",
+    policyLinkLabel: "Política de privacidad",
+    textAfter: ".",
+    moreInfo: "Más información",
+    moreInfoClose: "Menos información",
+    detailsNecessaryHeading: "Necesarias",
+    detailsNecessary:
+      "NEXT_LOCALE recuerda el idioma que eliges. ps_consent recuerda esta elección. Siempre están activas.",
+    detailsOptionalHeading: "Opcionales",
+    detailsOptional:
+      "AWS CloudWatch RUM crea cwr_s y cwr_u para medir el rendimiento del sitio y detectar errores. Permanece desactivado salvo que aceptes todo.",
+    currentAccepted: "Tu elección actual: todas las cookies aceptadas.",
+    currentRejected: "Tu elección actual: cookies opcionales rechazadas.",
+    accept: "Aceptar todo",
+    reject: "Rechazar opcionales",
+  },
+  privacyPage: {
+    title: "Política de privacidad",
+    heading: "Política de privacidad",
+    updatedLabel: "Última actualización",
+    updated: "20 de noviembre de 2026",
+    intro:
+      "Esta política explica qué datos personales recoge ProcessSpark a través de este sitio web, para qué y cómo puedes controlarlos.",
+    sections: [
+      {
+        id: "who",
+        heading: "Quiénes somos",
+        paragraphs: [
+          "ProcessSpark es el responsable del tratamiento de los datos de este sitio web. Puedes escribirnos a la dirección de correo electrónico de abajo para cualquier duda sobre esta política.",
+        ],
+      },
+      {
+        id: "collect",
+        heading: "Qué datos recogemos",
+        paragraphs: [
+          "Formulario de contacto. Cuando nos envías un mensaje recibimos tu nombre, tu correo electrónico, tu empresa, la categoría que eliges y el texto que escribes. El formulario nos lo envía por correo electrónico a través de AWS SES.",
+          "Analítica, solo con tu consentimiento. Si aceptas todas las cookies usamos AWS CloudWatch RUM, alojado en la región ap-southeast-2, para medir el tráfico. Registra un identificador de sesión anónimo, un identificador de visitante anónimo, las páginas que ves y datos de rendimiento y de errores. Tu dirección IP llega a AWS como parte de cada petición. Si rechazas las cookies opcionales, este script no se carga y no se envía nada a AWS para analítica.",
+        ],
+      },
+      {
+        id: "cookies",
+        heading: "Cookies",
+        paragraphs: [
+          "Las cookies necesarias están siempre activas. Las cookies opcionales permanecen desactivadas hasta que las aceptes. Puedes cambiar tu elección en cualquier momento con el botón de abajo o con el enlace Configuración de cookies del pie de página.",
+        ],
+      },
+      {
+        id: "why",
+        heading: "Para qué los usamos",
+        paragraphs: [
+          "Usamos los datos de contacto para responder a tu consulta. Con tu consentimiento, usamos la analítica para entender cómo se usa el sitio y para encontrar errores.",
+        ],
+      },
+      {
+        id: "recipients",
+        heading: "Quién los recibe",
+        paragraphs: [
+          "Amazon Web Services recibe los datos descritos arriba como proveedor del envío de correo electrónico (AWS SES) y, con tu consentimiento, de la analítica (AWS CloudWatch RUM).",
+        ],
+      },
+      {
+        id: "where",
+        heading: "Dónde se tratan",
+        paragraphs: [
+          "Los correos de contacto se envían a través de AWS SES en la región ap-southeast-2 y los datos de analítica van a la región ap-southeast-2. El propio script de analítica se descarga de AWS en la región us-east-1.",
+        ],
+      },
+      {
+        id: "keep",
+        heading: "Cuánto tiempo los conservamos",
+        paragraphs: [
+          "Las consultas de contacto se registran en nuestro sistema de gestión de relaciones con clientes (CRM) y se conservan sin una fecha fija de eliminación. La duración de las cookies figura en la tabla de cookies de arriba.",
+        ],
+      },
+      {
+        id: "rights",
+        heading: "Tus derechos",
+        paragraphs: [
+          "Puedes solicitar el acceso, la corrección o la eliminación de tus datos escribiendo a info@ProcessSpark.com. [TO CONFIRM: base jurídica y referencias a las autoridades de control de Australia y España.]",
+        ],
+      },
+      {
+        id: "demo",
+        heading: "El sitio de demostración",
+        paragraphs: [
+          "Esta política cubre solo www.processspark.com. La demo de demo.processspark.com es un servicio aparte.",
+        ],
+      },
+      {
+        id: "changes",
+        heading: "Cambios en esta política",
+        paragraphs: [
+          "Podemos actualizar esta política. La fecha de arriba indica el último cambio. Si un cambio afecta a las cookies, te volveremos a pedir tu elección.",
+        ],
+      },
+    ],
+    contactLabel: "Contacto",
+    cookieTable: {
+      label: "Cookies que usa este sitio",
+      columns: {
+        name: "Nombre",
+        purpose: "Finalidad",
+        type: "Tipo",
+        duration: "Duración",
+      },
+      necessary: "Necesaria",
+      optional: "Opcional",
+      rows: [
+        {
+          name: "NEXT_LOCALE",
+          purpose:
+            "Recuerda el idioma que eliges con el selector EN o ES. Solo se crea cuando haces clic en él.",
+          optional: false,
+          duration: "1 año",
+        },
+        {
+          name: "ps_consent",
+          purpose: "Recuerda tu elección sobre las cookies.",
+          optional: false,
+          duration: "12 meses",
+        },
+        {
+          name: "cwr_s",
+          purpose:
+            "Identificador de sesión anónimo de AWS CloudWatch RUM, para agrupar las páginas vistas en una visita.",
+          optional: true,
+          duration: "Sesión",
+        },
+        {
+          name: "cwr_u",
+          purpose:
+            "Identificador de visitante anónimo de AWS CloudWatch RUM, para reconocer las visitas repetidas.",
+          optional: true,
+          duration: "30 días por defecto",
+        },
+      ],
     },
   },
 };

@@ -1,7 +1,8 @@
 import type { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import { Manrope } from "next/font/google";
+import { ConsentBanner } from "@/components/consent-banner";
+import { RumScript } from "@/components/rum-script";
 import {
   defaultLocale,
   getDictionary,
@@ -29,6 +30,7 @@ import "../about-page.css";
 import "../solutions-page.css";
 import "../home-rhythm.css";
 import "../resources-page.css";
+import "../consent.css";
 
 // Self-hosted at build time by next/font, no runtime request to Google.
 const sans = Manrope({
@@ -165,35 +167,13 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-// AWS CloudWatch RUM web client: measures traffic to the main site.
-const rumSnippet = `(function (n, i, v, r, s, c, u, x, z) {
-  x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c, u: u };
-  window[n] = function (c, p) { x.q.push({ c: c, p: p }); };
-  z = document.createElement('script');
-  z.async = true;
-  z.src = s;
-  document.head.insertBefore(z, document.getElementsByTagName('script')[0]);
-})(
-  'cwr',
-  '24d6e5f0-6ad4-4460-9038-a5681c63ac23',
-  '1.0.0',
-  'ap-southeast-2',
-  'https://client.rum.us-east-1.amazonaws.com/3.x/cwr.js',
-  {
-    "sessionSampleRate": 1,
-    "identityPoolId": "ap-southeast-2:dba2b7a6-5a81-4a49-8875-f5dcd5361ec9",
-    "endpoint": "https://dataplane.rum.ap-southeast-2.amazonaws.com",
-    "telemetries": ["errors", "performance", "http"],
-    "allowCookies": true
-  }
-);`;
-
 export default async function RootLayout({
   children,
   params,
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
+  const dict = getDictionary(lang);
   return (
     <html
       lang={htmlLang[lang]}
@@ -201,10 +181,15 @@ export default async function RootLayout({
       className={sans.variable}
     >
       <body id="top">
+        {/* First in the DOM so keyboard and screen-reader users meet the
+            choice first; it is fixed to the bottom of the viewport by CSS. */}
+        <ConsentBanner
+          lang={lang}
+          copy={dict.consent}
+          brandLabel={dict.common.brandLabel}
+        />
         {children}
-        <Script id="aws-rum" strategy="afterInteractive">
-          {rumSnippet}
-        </Script>
+        <RumScript />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import { ArrowUp } from "lucide-react";
 import { Brand } from "@/components/header";
+import { CookieSettingsButton } from "@/components/cookie-settings-button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteLink, sectionHref, type PageId } from "@/components/site-link";
 import type { Dictionary } from "@/lib/i18n";
@@ -98,9 +99,20 @@ export function Footer({
                   ? "/resources"
                   : page === "solutions"
                     ? "/solutions"
-                    : "/"
+                    : page === "privacy"
+                      ? "/privacy"
+                      : "/"
             }
           />
+          <span className="site-footer-legal">
+            <SiteLink
+              href={localePath(lang, "/privacy")}
+              aria-current={page === "privacy" ? "page" : undefined}
+            >
+              {copy.links.privacy}
+            </SiteLink>
+            <CookieSettingsButton label={copy.cookieSettings} />
+          </span>
           <a href="#top">
             {copy.backToTop} <ArrowUp size={15} aria-hidden="true" />
           </a>

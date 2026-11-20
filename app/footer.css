@@ -62,13 +62,15 @@ body .site-footer .site-footer-title {
   border-radius: 2px;
   transition: color 0.15s ease;
 }
-.site-footer a:focus-visible {
+.site-footer a:focus-visible,
+.site-footer .cookie-settings:focus-visible {
   outline: 3px solid var(--orange-wash);
   outline-offset: 4px;
 }
 .site-footer-links a,
 .site-footer-email,
-.site-footer-bottom a {
+.site-footer-bottom a,
+.site-footer-bottom .cookie-settings {
   color: var(--on-dark-soft);
   font-size: 16px;
   line-height: 1.5;
@@ -82,7 +84,8 @@ body .site-footer .site-footer-title {
 }
 .site-footer-links a:hover,
 .site-footer-email:hover,
-.site-footer-bottom a:hover {
+.site-footer-bottom a:hover,
+.site-footer-bottom .cookie-settings:hover {
   color: var(--orange-wash);
   text-decoration-color: var(--orange);
 }
@@ -103,7 +106,14 @@ body .site-footer .site-footer-title {
   line-height: 1.5;
   color: var(--on-dark-muted);
 }
-.site-footer-bottom a {
+.site-footer-legal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+.site-footer-bottom a,
+.site-footer-bottom .cookie-settings {
   display: inline-flex;
   align-items: center;
   gap: 6px;
