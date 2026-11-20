@@ -859,7 +859,7 @@ export const en = {
     reject: "Reject optional",
   },
   // Privacy Policy page (app/[lang]/privacy). Draft from the site's actual
-  // behaviour. Not legal advice. [TO CONFIRM: ...] marks facts still open.
+  // behaviour. Not legal advice. Have the final text reviewed before relying on it.
   privacyPage: {
     title: "Privacy Policy",
     heading: "Privacy Policy",
@@ -922,7 +922,9 @@ export const en = {
         id: "rights",
         heading: "Your rights",
         paragraphs: [
-          "You can ask to access, correct or delete your details by emailing info@ProcessSpark.com. [TO CONFIRM: legal basis and regulator references for Australia and Spain.]",
+          "You can ask to access, correct or delete your details by emailing info@ProcessSpark.com.",
+          "Australia. We handle personal information in line with the Privacy Act 1988 (Cth) and the Australian Privacy Principles. Under those principles you can ask for access to your information (APP 12) and for it to be corrected (APP 13). You can complain to the Office of the Australian Information Commissioner (OAIC) at oaic.gov.au.",
+          "Spain and the European Union. If you are in the European Economic Area, the General Data Protection Regulation (Regulation (EU) 2016/679) and Spain's Organic Law 3/2018 on personal data protection and digital rights apply. You have the rights of access, rectification, erasure, restriction, portability and objection (Articles 15 to 21 GDPR), and you can withdraw your consent at any time using Cookie settings. We use your contact details to answer your enquiry, on the basis of our legitimate interests (Article 6(1)(f) GDPR) or steps you ask us to take before a contract (Article 6(1)(b)). Analytics cookies are used only with your consent (Article 6(1)(a) GDPR and Article 22(2) of Law 34/2002 on information society services). You can complain to the Spanish Data Protection Agency (AEPD) at aepd.es.",
         ],
       },
       {

@@ -929,7 +929,9 @@ export const es: Dictionary = {
         id: "rights",
         heading: "Tus derechos",
         paragraphs: [
-          "Puedes solicitar el acceso, la corrección o la eliminación de tus datos escribiendo a info@ProcessSpark.com. [TO CONFIRM: base jurídica y referencias a las autoridades de control de Australia y España.]",
+          "Puedes solicitar el acceso, la corrección o la eliminación de tus datos escribiendo a info@ProcessSpark.com.",
+          "Australia. Tratamos la información personal conforme a la Privacy Act 1988 (Cth) y a los Australian Privacy Principles. Según esos principios puedes solicitar el acceso a tu información (APP 12) y su corrección (APP 13). Puedes presentar una reclamación ante la Office of the Australian Information Commissioner (OAIC) en oaic.gov.au.",
+          "España y la Unión Europea. Si te encuentras en el Espacio Económico Europeo, se aplican el Reglamento General de Protección de Datos (Reglamento (UE) 2016/679, RGPD) y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales. Tienes los derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición (artículos 15 a 21 del RGPD) y puedes retirar tu consentimiento en cualquier momento desde Configuración de cookies. Usamos tus datos de contacto para responder a tu consulta, con base en nuestro interés legítimo (artículo 6.1.f del RGPD) o en medidas que nos pidas antes de un contrato (artículo 6.1.b). Las cookies de analítica solo se usan con tu consentimiento (artículo 6.1.a del RGPD y artículo 22.2 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico). Puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en aepd.es.",
         ],
       },
       {
