@@ -33,7 +33,8 @@ export const es: Dictionary = {
       "Herramientas prácticas para empresas medianas que siguen con Excel, Word y papel: fabricantes, empresas de mantenimiento y asesorías.",
     keywords: [
       "software para fabricantes con Excel y papel",
-      "formularios digitales para técnicos",
+      "formularios web para técnicos",
+      "formularios electrónicos para técnicos",
       "software de mantenimiento de equipos",
       "portal de documentos de clientes para asesorías",
       "preguntar a manuales y procedimientos",
@@ -262,9 +263,9 @@ export const es: Dictionary = {
         name: "Papeleo",
         question: "¿Sigues escribiéndolo a mano y después tecleándolo?",
         detail:
-          "Digitaliza los registros conservados y sustituye los formularios en papel por captura digital. Vincula la información al trabajo, activo o pedido correspondiente.",
+          "Digitaliza los registros conservados y sustituye los formularios en papel por formularios web electrónicos. Vincula la información al trabajo, activo o pedido correspondiente.",
         outcome: "Captura una vez. Reduce la entrada repetida.",
-        example: "Registros y formularios digitales",
+        example: "Formularios web y registros",
       },
       integrations: {
         name: "Sistemas desconectados",
@@ -774,7 +775,7 @@ export const es: Dictionary = {
       alt: "La oficina de un despacho contable con documentos de clientes que llegan en pantalla y en papel",
     },
     "product-digitise-paperwork": {
-      label: "Registro en papel junto a los mismos campos en un formulario móvil",
+      label: "Registro en papel junto a los mismos campos en un formulario web electrónico",
       alt: "Registro de inspección en papel, ilustrativo, con sus campos manuscritos resaltados junto a un panel con la información capturada",
     },
     "product-talk-to-your-data": {

@@ -66,9 +66,9 @@ export const esCatalogue: CatalogueCopy = {
     "digitise-paperwork": {
       name: "Digitaliza tu papeleo",
       shortName: "Digitaliza tu papeleo",
-      menuHint: "Formularios electrónicos y papel leído por ti",
+      menuHint: "Formularios web y papel leído por ti",
       oneLine:
-        "Sustituye los formularios de papel por formularios electrónicos y lee el papel y los PDF que siguen llegando.",
+        "Sustituye los formularios de papel por formularios web electrónicos y lee el papel y los PDF que siguen llegando.",
       lead: "Los formularios web electrónicos, que funcionan en cualquier dispositivo, sustituyen al papel en el origen. El papel y los PDF que siguen llegando se leen, se comprueban con tus reglas y pasan como datos limpios a tus sistemas.",
       covers: [
         "Formularios web electrónicos en cualquier dispositivo. Pensados para seguir funcionando sin cobertura y enviarlo todo cuando vuelve.",
@@ -99,7 +99,7 @@ export const esCatalogue: CatalogueCopy = {
       seo: {
         title: "Digitaliza el papeleo con formularios web",
         description:
-          "Sustituye los formularios de papel por formularios electrónicos y lee el papel y los PDF que siguen llegando. Los datos limpios van a tus sistemas.",
+          "Sustituye el papel por formularios electrónicos y web, y lee el papel y los PDF que siguen llegando. Los datos limpios van a tus sistemas.",
       },
     },
     "talk-to-your-data": {
@@ -517,7 +517,7 @@ export const esCatalogue: CatalogueCopy = {
       statement:
         "Los técnicos van tan justos que no rellenan el papel, y una semana después nadie sabe cuándo pasó algo.",
       change:
-        "Los formularios electrónicos rellenan solos la hora, la persona y el equipo, y casi todo son preguntas de sí o no, así que un técnico ocupado termina rápido.",
+        "Los formularios web rellenan solos la hora, la persona y el equipo, y casi todo son preguntas de sí o no, así que un técnico ocupado termina rápido.",
     },
     "site-issue-register": {
       statement:
@@ -606,7 +606,7 @@ export const esCatalogue: CatalogueCopy = {
         steps: {
           "digitise-paperwork": {
             title: "Captura en origen",
-            text: "Los registros de inspección, certificados y albaranes se capturan en formularios electrónicos o se leen desde papel y PDF, y llegan como datos limpios.",
+            text: "Los registros de inspección, certificados y albaranes se capturan en formularios web electrónicos o se leen desde papel y PDF, y llegan como datos limpios.",
           },
           "talk-to-your-documents": {
             title: "Hazlo consultable",
@@ -650,7 +650,7 @@ export const esCatalogue: CatalogueCopy = {
       seo: {
         title: "Software para fabricantes con Excel y papel",
         description:
-          "Herramientas para fabricantes medianos con Excel, Word y papel: formularios digitales, respuestas de manuales, portales y ofertas desde tu tarifa.",
+          "Herramientas para fabricantes medianos con Excel, Word y papel: formularios web electrónicos, respuestas de manuales, portales y ofertas desde tu tarifa.",
       },
     },
     "equipment-maintenance": {
@@ -709,7 +709,7 @@ export const esCatalogue: CatalogueCopy = {
       seo: {
         title: "Software para mantenimiento de equipos",
         description:
-          "Partes de trabajo digitales, historial de servicio consultable y una ventana para clientes, para empresas que mantienen calderas, enfriadoras y bombas.",
+          "Partes de trabajo en formularios web, historial de servicio consultable y una ventana para clientes, para empresas que mantienen calderas, enfriadoras y bombas.",
       },
     },
     "accounting-firms": {
@@ -768,7 +768,7 @@ export const esCatalogue: CatalogueCopy = {
   },
   heroTags: [
     "Deja de reescribir papeles y PDF",
-    "Sustituye los formularios en papel por electrónicos",
+    "Sustituye los formularios en papel por formularios web",
     "Házle una pregunta a tus números",
     "Encuentra la respuesta en tus manuales",
     "Comprueba las facturas contra tus pedidos",
@@ -807,7 +807,7 @@ export const esCatalogue: CatalogueCopy = {
       "retyping-paper": "Se lee una vez y se rellena solo",
       "spreadsheet-few-people": "Pregunta a tus datos con palabras",
       "know-how-in-heads": "Respuestas de tus documentos",
-      "forms-not-filled": "Se rellenan desde cualquier dispositivo",
+      "forms-not-filled": "Formularios web que se rellenan desde cualquier dispositivo",
       "invoice-mismatch": "Revisadas antes de contabilizar",
       "client-document-chasing": "El proveedor sube, tú no persigues",
       "slow-quotes": "Primer borrador desde la solicitud",

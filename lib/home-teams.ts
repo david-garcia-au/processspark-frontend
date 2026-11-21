@@ -46,7 +46,7 @@ export const homeTeams: Record<Locale, HomeTeam[]> = {
       id: "operations",
       label: "Operations & production",
       summary:
-        "Replace your paper travellers with electronic forms. Know what is on track, what is delayed and what needs attention.",
+        "Replace your paper travellers with web forms. Know what is on track, what is delayed and what needs attention.",
       prompt: {
         question: "Which jobs are at risk of running late today?",
         reply: "Jobs at risk flagged, each with an owner",
@@ -108,7 +108,7 @@ export const homeTeams: Record<Locale, HomeTeam[]> = {
       id: "operations",
       label: "Operaciones y producción",
       summary:
-        "Sustituye tus hojas de ruta en papel por formularios electrónicos. Conoce qué va en plazo, qué se retrasa y qué necesita atención.",
+        "Sustituye tus hojas de ruta en papel por formularios web. Conoce qué va en plazo, qué se retrasa y qué necesita atención.",
       prompt: {
         question: "¿Qué trabajos corren el riesgo de retrasarse hoy?",
         reply: "Trabajos en riesgo señalados, cada uno con su responsable",

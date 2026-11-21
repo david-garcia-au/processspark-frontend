@@ -19,7 +19,8 @@ export const en = {
       "Practical tools for medium-sized businesses that still run on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
     keywords: [
       "software for manufacturers on Excel and paper",
-      "digital forms for technicians",
+      "web forms for technicians",
+      "electronic forms for technicians",
       "equipment maintenance software",
       "accounting firm client document portal",
       "chat with your manuals and procedures",
@@ -249,9 +250,9 @@ export const en = {
         name: "Paperwork",
         question: "Still writing it down, then typing it in again?",
         detail:
-          "Digitise retained records and replace everyday paper forms with digital capture. Link the information to the relevant job, asset or order.",
+          "Digitise retained records and replace everyday paper forms with electronic web forms. Link the information to the relevant job, asset or order.",
         outcome: "Capture once. Reduce repeated entry.",
-        example: "Digital records and forms",
+        example: "Electronic forms and records",
       },
       integrations: {
         name: "Disconnected systems",
@@ -763,7 +764,7 @@ export const en = {
       alt: "An accounting firm office with client documents arriving on screen and on paper",
     },
     "product-digitise-paperwork": {
-      label: "Paper record beside the same fields on a phone form",
+      label: "Paper record beside the same fields in an electronic web form",
       alt: "Illustrative paper inspection record with its handwritten fields highlighted, next to a panel of the captured information",
     },
     "product-talk-to-your-data": {

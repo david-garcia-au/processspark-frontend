@@ -67,9 +67,9 @@ export const enCatalogue: CatalogueCopy = {
     "digitise-paperwork": {
       name: "Digitise Your Paperwork",
       shortName: "Digitise Your Paperwork",
-      menuHint: "Electronic forms, and paper read for you",
+      menuHint: "Web forms, and paper read for you",
       oneLine:
-        "Replace paper forms with electronic forms, and read the paper and PDFs that still arrive.",
+        "Replace paper forms with electronic web forms, and read the paper and PDFs that still arrive.",
       lead: "Electronic web forms that work on any device replace paper at the source. The paper and PDFs that still arrive are read, checked against your rules and passed on as clean data to your systems.",
       covers: [
         "Electronic web forms on any device. Built to keep working without a signal, and sends everything when it's back.",
@@ -99,7 +99,7 @@ export const enCatalogue: CatalogueCopy = {
       seo: {
         title: "Digitise paperwork with electronic forms",
         description:
-          "Replace paper forms with electronic forms and read the paper and PDFs that still arrive. Clean data goes to your systems and people review exceptions.",
+          "Replace paper with electronic web forms and read the paper and PDFs that still arrive. Clean data goes to your systems and people review exceptions.",
       },
     },
     "talk-to-your-data": {
@@ -515,7 +515,7 @@ export const enCatalogue: CatalogueCopy = {
       statement:
         "Technicians are too busy to fill in paper, and a week later nobody can say when something happened.",
       change:
-        "Electronic forms fill in the time, the person and the asset themselves, and ask mostly yes or no questions, so a busy technician finishes quickly.",
+        "Web forms fill in the time, the person and the asset themselves, and ask mostly yes or no questions, so a busy technician finishes quickly.",
     },
     "site-issue-register": {
       statement:
@@ -603,7 +603,7 @@ export const enCatalogue: CatalogueCopy = {
         steps: {
           "digitise-paperwork": {
             title: "Capture it at the source",
-            text: "Inspection records, certificates and delivery notes are captured on electronic forms or read from paper and PDFs, and arrive as clean data.",
+            text: "Inspection records, certificates and delivery notes are captured on electronic web forms or read from paper and PDFs, and arrive as clean data.",
           },
           "talk-to-your-documents": {
             title: "Make it searchable",
@@ -646,7 +646,7 @@ export const enCatalogue: CatalogueCopy = {
       seo: {
         title: "Software for manufacturers on Excel and paper",
         description:
-          "Practical tools for medium-sized manufacturers on Excel, Word and paper: digital forms, answers from manuals, portals, and quotes from your price list.",
+          "Practical tools for medium-sized manufacturers on Excel, Word and paper: electronic web forms, answers from manuals, portals, and quotes from your price list.",
       },
     },
     "equipment-maintenance": {
@@ -704,7 +704,7 @@ export const enCatalogue: CatalogueCopy = {
       seo: {
         title: "Software for equipment maintenance companies",
         description:
-          "Digital job forms, searchable service history, a client window and contractor records for companies that maintain boilers, chillers, pumps and electrical plant.",
+          "Electronic job forms, searchable service history, a client window and contractor records for companies that maintain boilers, chillers, pumps and electrical plant.",
       },
     },
     "accounting-firms": {
@@ -762,7 +762,7 @@ export const enCatalogue: CatalogueCopy = {
   },
   heroTags: [
     "Stop re-typing paper and PDFs",
-    "Replace paper forms with electronic ones",
+    "Replace paper forms with electronic web forms",
     "Ask your numbers a question",
     "Find the answer in your manuals",
     "Check invoices against what you ordered",
@@ -801,7 +801,7 @@ export const enCatalogue: CatalogueCopy = {
       "retyping-paper": "Read once, filled in for you",
       "spreadsheet-few-people": "Ask your data in plain words",
       "know-how-in-heads": "Answers from your own documents",
-      "forms-not-filled": "Forms people fill in on any device",
+      "forms-not-filled": "Web forms people fill in on any device",
       "invoice-mismatch": "Checked before they hit the books",
       "client-document-chasing": "Suppliers upload, you stop chasing",
       "slow-quotes": "First draft from the request",
