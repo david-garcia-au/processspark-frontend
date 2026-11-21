@@ -411,7 +411,7 @@ export function menus(
     problem: true,
     icon: structure.problems[id].icon,
     label: c.menu.problemLabels[id],
-    hint: c.products[structure.problems[id].products[0]].shortName,
+    hint: c.menu.problemHints[id],
   }));
   const industryItems: MenuItem[] = structure.industryIds.map((id) => ({
     id,
@@ -428,7 +428,12 @@ export function menus(
     toggleLabel: copy.solveToggle,
     current: here === "/problems",
     columns: [
-      { heading: copy.startProblem, items: problemItems, twoUp: true },
+      {
+        heading: copy.startProblem,
+        items: problemItems,
+        twoUp: true,
+        more: { href: hubPath, label: copy.seeAllProblems },
+      },
       {
         heading: copy.startIndustry,
         headingHref: localePath(lang, "/industries"),
@@ -439,10 +444,7 @@ export function menus(
         },
       },
     ],
-    links: [
-      { href: hubPath, label: copy.seeAllProblems },
-      { href: contactHref, label: copy.notListed },
-    ],
+    links: [{ href: contactHref, label: copy.notListed }],
     card: { placement: "strip" },
   };
   const solutions: Menu = {
@@ -475,7 +477,7 @@ export function menus(
       },
       { href: localePath(lang, "/solutions"), label: copy.allSolutions },
     ],
-    card: { placement: "afterColumn", column: 3 },
+    card: { placement: "strip" },
   };
   return [solve, solutions];
 }

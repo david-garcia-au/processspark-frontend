@@ -89,8 +89,8 @@ export const en = {
     cta: "Find your first win",
     demo: "Book a call",
     menu: {
-      solve: "What we solve",
-      solveToggle: "Show what we solve",
+      solve: "Problems we solve",
+      solveToggle: "Show problems we solve",
       solutionsToggle: "Show solutions",
       startProblem: "Start from the problem",
       startIndustry: "Start from your industry",

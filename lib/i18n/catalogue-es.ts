@@ -776,7 +776,7 @@ export const esCatalogue: CatalogueCopy = {
   ],
   selectorTitles: {
     "retyping-paper": "Reescribir papeles y PDF",
-    "spreadsheet-few-people": "Cifras que solo una persona entiende",
+    "spreadsheet-few-people": "Cifras que solo uno entiende",
     "know-how-in-heads": "Saber en pocas cabezas",
     "same-staff-questions": "Las mismas preguntas, una y otra vez",
     "invoice-mismatch": "Facturas que no cuadran",
@@ -795,13 +795,23 @@ export const esCatalogue: CatalogueCopy = {
   menu: {
     problemLabels: {
       "retyping-paper": "Reescribir papeles y PDF",
-      "spreadsheet-few-people": "Cifras que solo una persona entiende",
-      "know-how-in-heads": "Saber solo en unas pocas cabezas",
+      "spreadsheet-few-people": "Cifras que solo uno entiende",
+      "know-how-in-heads": "Saber en pocas cabezas",
       "forms-not-filled": "Formularios que nadie rellena",
       "invoice-mismatch": "Facturas que no cuadran",
       "client-document-chasing": "Perseguir papeles a clientes",
       "slow-quotes": "Ofertas hechas a mano",
       "machine-stops": "Averías que se ven tarde",
+    },
+    problemHints: {
+      "retyping-paper": "Se lee una vez y se rellena solo",
+      "spreadsheet-few-people": "Pregunta a tus datos con palabras",
+      "know-how-in-heads": "Respuestas de tus documentos",
+      "forms-not-filled": "Se rellenan desde el móvil",
+      "invoice-mismatch": "Revisadas antes de contabilizar",
+      "client-document-chasing": "El cliente sube, tú no persigues",
+      "slow-quotes": "Primer borrador desde la solicitud",
+      "machine-stops": "Avisos antes de que pare",
     },
     cards: {
       "first-project": {

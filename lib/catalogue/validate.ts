@@ -209,6 +209,7 @@ export function validateCatalogue(
     }
     for (const id of s.headlineProblems as readonly (keyof CatalogueCopy["menu"]["problemLabels"])[]) {
       max(`${lang} menu label ${id}`, copy.menu.problemLabels[id], 36);
+      max(`${lang} menu hint ${id}`, copy.menu.problemHints[id], 40);
     }
     // Every problem the home block can show needs a short title.
     const shown = new Set<ProblemId>(s.homeProblems);

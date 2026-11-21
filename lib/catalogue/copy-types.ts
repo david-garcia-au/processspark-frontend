@@ -79,6 +79,8 @@ export type CatalogueCopy = {
   menu: {
     /** At most 36 characters each. */
     problemLabels: Record<HeadlineProblemId, string>;
+    /** One plain outcome line per problem, at most 40 characters each. */
+    problemHints: Record<HeadlineProblemId, string>;
     /** Title at most 40 characters, text at most 90. */
     cards: Record<NavCardId, { title: string; text: string }>;
   };

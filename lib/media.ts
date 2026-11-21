@@ -272,11 +272,13 @@ export const media = {
     ratio: R32,
     brief:
       "One printed process map on a table, two people pointing at one step. No screens, no figures.",
+    src: "/images/process-mapped.webp",
   },
   "nav-guides": {
     kind: "image",
     ratio: R32,
     brief: "Printed guide pages on a desk.",
+    src: "/images/copy-by-hand.webp",
   },
 } as const satisfies Record<string, MediaItem>;
 

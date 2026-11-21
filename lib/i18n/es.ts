@@ -103,8 +103,8 @@ export const es: Dictionary = {
     cta: "Encuentra tu primera mejora",
     demo: "Reservar una llamada",
     menu: {
-      solve: "Qué resolvemos",
-      solveToggle: "Mostrar qué resolvemos",
+      solve: "Problemas que resolvemos",
+      solveToggle: "Mostrar problemas que resolvemos",
       solutionsToggle: "Mostrar soluciones",
       startProblem: "Empieza por el problema",
       startIndustry: "Empieza por tu sector",

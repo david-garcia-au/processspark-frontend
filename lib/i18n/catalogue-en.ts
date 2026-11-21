@@ -790,12 +790,22 @@ export const enCatalogue: CatalogueCopy = {
     problemLabels: {
       "retyping-paper": "Re-typing paper and PDFs",
       "spreadsheet-few-people": "Numbers only one person gets",
-      "know-how-in-heads": "Know-how in a few people's heads",
+      "know-how-in-heads": "Know-how in a few heads",
       "forms-not-filled": "Forms nobody has time to fill",
       "invoice-mismatch": "Invoices that don't match",
       "client-document-chasing": "Chasing clients for papers",
       "slow-quotes": "Quotes built by hand",
       "machine-stops": "Breakdowns seen too late",
+    },
+    problemHints: {
+      "retyping-paper": "Read once, filled in for you",
+      "spreadsheet-few-people": "Ask your data in plain words",
+      "know-how-in-heads": "Answers from your own documents",
+      "forms-not-filled": "Forms people fill in on a phone",
+      "invoice-mismatch": "Checked before they hit the books",
+      "client-document-chasing": "Clients upload, you stop chasing",
+      "slow-quotes": "First draft from the request",
+      "machine-stops": "Alerts before it stops",
     },
     cards: {
       "first-project": {

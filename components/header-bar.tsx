@@ -9,6 +9,7 @@ import {
 } from "react";
 import {
   Activity,
+  ArrowRight,
   ArrowUpRight,
   BookOpen,
   Calculator,
@@ -237,7 +238,6 @@ export function HeaderBar({
               onClick={closeAll}
             >
               {column.heading}
-              <ArrowUpRight size={14} aria-hidden="true" />
             </SiteLink>
           ) : (
             column.heading
@@ -260,7 +260,7 @@ export function HeaderBar({
             onClick={closeAll}
           >
             {column.more.label}
-            <ArrowUpRight size={14} aria-hidden="true" />
+            <ArrowRight size={14} aria-hidden="true" />
           </SiteLink>
         ) : null}
         {menu.card?.placement === "afterColumn" &&
@@ -352,7 +352,7 @@ export function HeaderBar({
                           onClick={closeAll}
                         >
                           {link.label}
-                          <ArrowUpRight size={15} aria-hidden="true" />
+                          <ArrowRight size={15} aria-hidden="true" />
                         </SiteLink>
                       ))}
                     </div>
