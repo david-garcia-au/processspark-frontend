@@ -67,12 +67,12 @@ export const enCatalogue: CatalogueCopy = {
     "digitise-paperwork": {
       name: "Digitise Your Paperwork",
       shortName: "Digitise Your Paperwork",
-      menuHint: "Phone forms, and paper read for you",
+      menuHint: "Electronic forms, and paper read for you",
       oneLine:
-        "Replace paper forms with phone forms, and read the paper and PDFs that still arrive.",
-      lead: "Electronic web forms that work on any phone replace paper at the source. The paper and PDFs that still arrive are read, checked against your rules and passed on as clean data to your systems.",
+        "Replace paper forms with electronic forms, and read the paper and PDFs that still arrive.",
+      lead: "Electronic web forms that work on any device replace paper at the source. The paper and PDFs that still arrive are read, checked against your rules and passed on as clean data to your systems.",
       covers: [
-        "Electronic web forms on any phone. Built to keep working without a signal, and sends everything when it's back.",
+        "Electronic web forms on any device. Built to keep working without a signal, and sends everything when it's back.",
         "Forms fill in what they can: the time, the person, and the site or asset from a QR code. Photos attach in one tap.",
         "Most questions are yes or no, so a busy technician can finish quickly and you can later see what happened when, and what lines up with what.",
         "Paper and PDFs that still arrive, such as supplier certificates, delivery notes, job sheets and inspection records, are read and checked.",
@@ -82,7 +82,7 @@ export const enCatalogue: CatalogueCopy = {
       controlText:
         "Your people decide. The forms and the reading prepare the work, everything is checked against your rules, and exceptions go to a person to review before they move on.",
       firstStep:
-        "One form or one document type, built on your real examples: for example a visit checklist filled in on a phone, or one type of certificate read from PDF. You get a checked or flagged result and a review screen.",
+        "One form or one document type, built on your real examples: for example a visit checklist filled in on a phone or tablet, or one type of certificate read from PDF. You get a checked or flagged result and a review screen.",
       whoFor:
         "Teams in any industry that re-type or check documents by hand: quality, operations, admin, field service and finance.",
       goodToKnow: [
@@ -97,9 +97,9 @@ export const enCatalogue: CatalogueCopy = {
           "Yes. The supplier and batch match the order, and it is valid until the date shown. Sent on to your system.",
       },
       seo: {
-        title: "Digitise paperwork with phone forms",
+        title: "Digitise paperwork with electronic forms",
         description:
-          "Replace paper forms with electronic phone forms and read the paper and PDFs that still arrive. Clean data goes to your systems and people review exceptions.",
+          "Replace paper forms with electronic forms and read the paper and PDFs that still arrive. Clean data goes to your systems and people review exceptions.",
       },
     },
     "talk-to-your-data": {
@@ -515,13 +515,13 @@ export const enCatalogue: CatalogueCopy = {
       statement:
         "Technicians are too busy to fill in paper, and a week later nobody can say when something happened.",
       change:
-        "Phone forms fill in the time, the person and the asset themselves, and ask mostly yes or no questions, so a busy technician finishes quickly.",
+        "Electronic forms fill in the time, the person and the asset themselves, and ask mostly yes or no questions, so a busy technician finishes quickly.",
     },
     "site-issue-register": {
       statement:
         "Keeping a register of site photos and notes takes hours, so it falls behind.",
       change:
-        "Photos and notes are captured on the phone at the asset and land in one register you can search.",
+        "Photos and notes are captured on a phone or tablet at the asset and land in one register you can search.",
     },
     "workforce-records": {
       statement:
@@ -603,7 +603,7 @@ export const enCatalogue: CatalogueCopy = {
         steps: {
           "digitise-paperwork": {
             title: "Capture it at the source",
-            text: "Inspection records, certificates and delivery notes are captured on phone forms or read from paper and PDFs, and arrive as clean data.",
+            text: "Inspection records, certificates and delivery notes are captured on electronic forms or read from paper and PDFs, and arrive as clean data.",
           },
           "talk-to-your-documents": {
             title: "Make it searchable",
@@ -664,7 +664,7 @@ export const enCatalogue: CatalogueCopy = {
         steps: {
           "digitise-paperwork": {
             title: "Capture the register and the paperwork at the source",
-            text: "Job sheets, site issues, photos and training records are captured on a phone, with the details that are easy to forget filled in for you.",
+            text: "Job sheets, site issues, photos and training records are captured on a phone or tablet, with the details that are easy to forget filled in for you.",
           },
           "talk-to-your-documents": {
             title: "Let people ask it questions",
@@ -679,7 +679,7 @@ export const enCatalogue: CatalogueCopy = {
       spotlight: {
         heading: "Forms that fill themselves in",
         paragraphs: [
-          "A technician on site has no time for paper, so a week later much of what happened is missing, including simple facts such as when. Electronic web forms on any phone fill in what they can: the exact time, the person, and the site or asset from a QR code, with photos in one tap.",
+          "A technician on site has no time for paper, so a week later much of what happened is missing, including simple facts such as when. Electronic web forms on any device fill in what they can: the exact time, the person, and the site or asset from a QR code, with photos in one tap.",
           "Most questions are yes or no, about basic things. The answers build a timeline for each site or asset, so you can see what changed before a fault and how often it repeats. Built to keep working without a signal, and sends everything when it's back.",
           "Location is optional. A QR code at the asset or choosing the site are alternatives, and you tell staff in advance.",
         ],
@@ -688,7 +688,7 @@ export const enCatalogue: CatalogueCopy = {
         "talk-to-your-documents":
           "Equipment manuals, service history, the site issue register and past fault records.",
         "digitise-paperwork":
-          "Job sheets, service reports, visit checklists on a phone, training registers, PPE records and licences.",
+          "Job sheets, service reports, visit checklists on a phone or tablet, training registers, PPE records and licences.",
         "customer-portal":
           "A window for clients who do not know their equipment: service history, what was done and what is due next.",
         "contractor-portal":
@@ -793,7 +793,7 @@ export const enCatalogue: CatalogueCopy = {
       "know-how-in-heads": "Know-how in a few heads",
       "forms-not-filled": "Forms nobody has time to fill",
       "invoice-mismatch": "Invoices that don't match",
-      "client-document-chasing": "Chasing clients for papers",
+      "client-document-chasing": "Search suppliers for papers",
       "slow-quotes": "Quotes built by hand",
       "machine-stops": "Breakdowns seen too late",
     },
@@ -801,9 +801,9 @@ export const enCatalogue: CatalogueCopy = {
       "retyping-paper": "Read once, filled in for you",
       "spreadsheet-few-people": "Ask your data in plain words",
       "know-how-in-heads": "Answers from your own documents",
-      "forms-not-filled": "Forms people fill in on a phone",
+      "forms-not-filled": "Forms people fill in on any device",
       "invoice-mismatch": "Checked before they hit the books",
-      "client-document-chasing": "Clients upload, you stop chasing",
+      "client-document-chasing": "Suppliers upload, you stop chasing",
       "slow-quotes": "First draft from the request",
       "machine-stops": "Alerts before it stops",
     },

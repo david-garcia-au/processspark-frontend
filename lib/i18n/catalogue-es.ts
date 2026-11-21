@@ -66,12 +66,12 @@ export const esCatalogue: CatalogueCopy = {
     "digitise-paperwork": {
       name: "Digitaliza tu papeleo",
       shortName: "Digitaliza tu papeleo",
-      menuHint: "Formularios en el móvil y papel leído por ti",
+      menuHint: "Formularios electrónicos y papel leído por ti",
       oneLine:
-        "Sustituye los formularios de papel por formularios en el móvil y lee el papel y los PDF que siguen llegando.",
-      lead: "Los formularios web electrónicos, que funcionan en cualquier móvil, sustituyen al papel en el origen. El papel y los PDF que siguen llegando se leen, se comprueban con tus reglas y pasan como datos limpios a tus sistemas.",
+        "Sustituye los formularios de papel por formularios electrónicos y lee el papel y los PDF que siguen llegando.",
+      lead: "Los formularios web electrónicos, que funcionan en cualquier dispositivo, sustituyen al papel en el origen. El papel y los PDF que siguen llegando se leen, se comprueban con tus reglas y pasan como datos limpios a tus sistemas.",
       covers: [
-        "Formularios web electrónicos en cualquier móvil. Pensados para seguir funcionando sin cobertura y enviarlo todo cuando vuelve.",
+        "Formularios web electrónicos en cualquier dispositivo. Pensados para seguir funcionando sin cobertura y enviarlo todo cuando vuelve.",
         "Los formularios rellenan lo que pueden: la hora, la persona y el emplazamiento o el equipo a partir de un código QR. Las fotos se adjuntan con un toque.",
         "La mayoría de las preguntas son de sí o no, así que un técnico ocupado termina rápido y después puedes ver qué pasó y cuándo, y qué coincide con qué.",
         "El papel y los PDF que siguen llegando, como certificados de proveedor, albaranes, partes de trabajo y registros de inspección, se leen y se comprueban.",
@@ -81,7 +81,7 @@ export const esCatalogue: CatalogueCopy = {
       controlText:
         "Tu gente decide. Los formularios y la lectura preparan el trabajo, todo se comprueba con tus reglas y las excepciones pasan por una persona antes de seguir.",
       firstStep:
-        "Un formulario o un tipo de documento, construido con tus ejemplos reales: por ejemplo una lista de comprobación de visita rellenada en el móvil, o un tipo de certificado leído desde PDF. Recibes un resultado comprobado o marcado y una pantalla de revisión.",
+        "Un formulario o un tipo de documento, construido con tus ejemplos reales: por ejemplo una lista de comprobación de visita rellenada en el móvil o la tableta, o un tipo de certificado leído desde PDF. Recibes un resultado comprobado o marcado y una pantalla de revisión.",
       whoFor:
         "Equipos de cualquier sector que reescriben o revisan documentos a mano: calidad, operaciones, administración, servicio técnico y finanzas.",
       goodToKnow: [
@@ -97,9 +97,9 @@ export const esCatalogue: CatalogueCopy = {
           "Sí. El proveedor y el lote coinciden con el pedido, y es válido hasta la fecha indicada. Enviado a tu sistema.",
       },
       seo: {
-        title: "Digitaliza el papeleo con formularios móviles",
+        title: "Digitaliza el papeleo con formularios web",
         description:
-          "Sustituye los formularios de papel por formularios electrónicos en el móvil y lee el papel y los PDF que siguen llegando. Los datos limpios van a tus sistemas.",
+          "Sustituye los formularios de papel por formularios electrónicos y lee el papel y los PDF que siguen llegando. Los datos limpios van a tus sistemas.",
       },
     },
     "talk-to-your-data": {
@@ -517,13 +517,13 @@ export const esCatalogue: CatalogueCopy = {
       statement:
         "Los técnicos van tan justos que no rellenan el papel, y una semana después nadie sabe cuándo pasó algo.",
       change:
-        "Los formularios del móvil rellenan solos la hora, la persona y el equipo, y casi todo son preguntas de sí o no, así que un técnico ocupado termina rápido.",
+        "Los formularios electrónicos rellenan solos la hora, la persona y el equipo, y casi todo son preguntas de sí o no, así que un técnico ocupado termina rápido.",
     },
     "site-issue-register": {
       statement:
         "Llevar un registro de fotos y notas de las incidencias en obra lleva horas, y siempre va atrasado.",
       change:
-        "Las fotos y notas se capturan en el móvil, junto al equipo, y llegan a un único registro donde se puede buscar.",
+        "Las fotos y notas se capturan en el móvil o la tableta, junto al equipo, y llegan a un único registro donde se puede buscar.",
     },
     "workforce-records": {
       statement:
@@ -606,7 +606,7 @@ export const esCatalogue: CatalogueCopy = {
         steps: {
           "digitise-paperwork": {
             title: "Captura en origen",
-            text: "Los registros de inspección, certificados y albaranes se capturan en formularios del móvil o se leen desde papel y PDF, y llegan como datos limpios.",
+            text: "Los registros de inspección, certificados y albaranes se capturan en formularios electrónicos o se leen desde papel y PDF, y llegan como datos limpios.",
           },
           "talk-to-your-documents": {
             title: "Hazlo consultable",
@@ -668,7 +668,7 @@ export const esCatalogue: CatalogueCopy = {
         steps: {
           "digitise-paperwork": {
             title: "Captura el registro y el papeleo en origen",
-            text: "Partes de trabajo, incidencias, fotos y registros de formación se capturan en el móvil, con los datos que se olvidan fácilmente ya rellenados.",
+            text: "Partes de trabajo, incidencias, fotos y registros de formación se capturan en el móvil o la tableta, con los datos que se olvidan fácilmente ya rellenados.",
           },
           "talk-to-your-documents": {
             title: "Deja que la gente le pregunte",
@@ -683,7 +683,7 @@ export const esCatalogue: CatalogueCopy = {
       spotlight: {
         heading: "Formularios que se rellenan solos",
         paragraphs: [
-          "Un técnico en obra no tiene tiempo para el papel, así que una semana después falta mucho de lo ocurrido, incluso datos simples como cuándo. Los formularios web electrónicos de cualquier móvil rellenan lo que pueden: la hora exacta, la persona y el emplazamiento o el equipo a partir de un código QR, con fotos en un toque.",
+          "Un técnico en obra no tiene tiempo para el papel, así que una semana después falta mucho de lo ocurrido, incluso datos simples como cuándo. Los formularios web electrónicos de cualquier dispositivo rellenan lo que pueden: la hora exacta, la persona y el emplazamiento o el equipo a partir de un código QR, con fotos en un toque.",
           "La mayoría de las preguntas son de sí o no, sobre cosas básicas. Las respuestas construyen una cronología de cada centro o equipo, para ver qué cambió antes de una avería y con qué frecuencia se repite. Pensado para seguir funcionando sin cobertura y enviarlo todo cuando vuelve.",
           "La ubicación es opcional. Un código QR en el equipo o elegir el centro son alternativas, y avisas a tu personal con antelación.",
         ],
@@ -692,7 +692,7 @@ export const esCatalogue: CatalogueCopy = {
         "talk-to-your-documents":
           "Manuales de equipos, historial de servicio, el registro de incidencias del centro y registros de averías anteriores.",
         "digitise-paperwork":
-          "Partes de trabajo, informes de servicio, listas de comprobación de visitas en el móvil, registros de formación, EPI y licencias.",
+          "Partes de trabajo, informes de servicio, listas de comprobación de visitas en el móvil o la tableta, registros de formación, EPI y licencias.",
         "customer-portal":
           "Una ventana para clientes que no conocen sus equipos: historial de servicio, qué se hizo y qué toca después.",
         "contractor-portal":
@@ -799,7 +799,7 @@ export const esCatalogue: CatalogueCopy = {
       "know-how-in-heads": "Saber en pocas cabezas",
       "forms-not-filled": "Formularios que nadie rellena",
       "invoice-mismatch": "Facturas que no cuadran",
-      "client-document-chasing": "Perseguir papeles a clientes",
+      "client-document-chasing": "Buscar papeles a proveedores",
       "slow-quotes": "Ofertas hechas a mano",
       "machine-stops": "Averías que se ven tarde",
     },
@@ -807,9 +807,9 @@ export const esCatalogue: CatalogueCopy = {
       "retyping-paper": "Se lee una vez y se rellena solo",
       "spreadsheet-few-people": "Pregunta a tus datos con palabras",
       "know-how-in-heads": "Respuestas de tus documentos",
-      "forms-not-filled": "Se rellenan desde el móvil",
+      "forms-not-filled": "Se rellenan desde cualquier dispositivo",
       "invoice-mismatch": "Revisadas antes de contabilizar",
-      "client-document-chasing": "El cliente sube, tú no persigues",
+      "client-document-chasing": "El proveedor sube, tú no persigues",
       "slow-quotes": "Primer borrador desde la solicitud",
       "machine-stops": "Avisos antes de que pare",
     },
