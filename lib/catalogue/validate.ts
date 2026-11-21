@@ -21,6 +21,7 @@ export type CatalogueStructure = {
   problems: Record<ProblemId, ProblemStructure>;
   industries: Record<IndustryId, IndustryStructure>;
   headlineProblems: readonly ProblemId[];
+  homeProblems: readonly ProblemId[];
   heroTagIcons: readonly IconName[];
   comparisons: Record<ComparisonId, readonly ProductId[]>;
 };
@@ -123,6 +124,10 @@ export function validateCatalogue(
   for (const id of s.problemIds) {
     if (!s.problems[id].icon) bad(`problem ${id}: no icon`);
   }
+  if (s.homeProblems.length < 5 || s.homeProblems.length > 7) {
+    bad("homeProblems must have 5 to 7 entries");
+  }
+  if (dupes(s.homeProblems).length) bad("homeProblems has duplicates");
   const headlineIcons = headline.map((id) => s.problems[id]?.icon);
   if (dupes(headlineIcons).length) bad("headline problems share an icon");
   for (const [id, list] of Object.entries(s.comparisons)) {
@@ -204,6 +209,16 @@ export function validateCatalogue(
     }
     for (const id of s.headlineProblems as readonly (keyof CatalogueCopy["menu"]["problemLabels"])[]) {
       max(`${lang} menu label ${id}`, copy.menu.problemLabels[id], 36);
+    }
+    // Every problem the home block can show needs a short title.
+    const shown = new Set<ProblemId>(s.homeProblems);
+    for (const i of s.industryIds) {
+      for (const p of s.industries[i].featuredProblems) shown.add(p);
+    }
+    for (const id of shown) {
+      const title = copy.selectorTitles[id];
+      if (!title) bad(`${lang} home block title missing for ${id}`);
+      else max(`${lang} home block title ${id}`, title, 40);
     }
     for (const [id, card] of Object.entries(copy.menu.cards)) {
       max(`${lang} menu card ${id} title`, card.title, 40);

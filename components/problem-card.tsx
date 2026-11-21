@@ -1,4 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
+import { CatalogueIcon } from "@/components/catalogue-icon";
 import { SiteLink } from "@/components/site-link";
 import {
   industries,
@@ -46,11 +47,17 @@ export function ProblemCard({
       tabIndex={hub ? -1 : undefined}
       aria-labelledby={`${problem.id}-statement`}
     >
+      <span className="problem-icon" aria-hidden="true">
+        <CatalogueIcon name={problem.icon} size={24} />
+      </span>
       <h3 className="problem-statement" id={`${problem.id}-statement`}>
         {problem.statement}
       </h3>
       <div className="problem-change">
-        <span className="problem-change-label">{copy.whatChanges}</span>
+        <span className="problem-change-label">
+          <Check size={14} aria-hidden="true" />
+          {copy.whatChanges}
+        </span>
         <p>{problem.change}</p>
       </div>
       <ul className="problem-links">

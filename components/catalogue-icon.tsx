@@ -1,0 +1,90 @@
+import {
+  Activity,
+  BookOpen,
+  Calculator,
+  ChartColumn,
+  ClipboardCheck,
+  ClipboardList,
+  ClipboardPen,
+  Database,
+  EyeOff,
+  Factory,
+  FilePen,
+  FileSpreadsheet,
+  FileText,
+  HardHat,
+  Headset,
+  Hourglass,
+  IdCard,
+  Keyboard,
+  Lightbulb,
+  LogOut,
+  Mail,
+  MapPin,
+  MessageCircleQuestionMark,
+  Package,
+  Phone,
+  PhoneCall,
+  Receipt,
+  Repeat,
+  Ruler,
+  Search,
+  ShieldCheck,
+  TriangleAlert,
+  Truck,
+  UsersRound,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
+import type { IconName } from "@/lib/catalogue";
+/**
+ * Server-side icon lookup for catalogue icon names (named imports only, so
+ * the whole icon set never ships). The client header has its own copy.
+ */
+const icons: Record<IconName, LucideIcon> = {
+  factory: Factory,
+  wrench: Wrench,
+  calculator: Calculator,
+  "clipboard-pen": ClipboardPen,
+  database: Database,
+  "book-open": BookOpen,
+  headset: Headset,
+  "users-round": UsersRound,
+  package: Package,
+  "hard-hat": HardHat,
+  "receipt-text": Receipt,
+  ruler: Ruler,
+  "file-spreadsheet": FileSpreadsheet,
+  activity: Activity,
+  keyboard: Keyboard,
+  "chart-column": ChartColumn,
+  lightbulb: Lightbulb,
+  "clipboard-list": ClipboardList,
+  mail: Mail,
+  "triangle-alert": TriangleAlert,
+  hourglass: Hourglass,
+  phone: Phone,
+  "phone-call": PhoneCall,
+  repeat: Repeat,
+  "log-out": LogOut,
+  "map-pin": MapPin,
+  "id-card": IdCard,
+  "message-circle-question": MessageCircleQuestionMark,
+  "eye-off": EyeOff,
+  truck: Truck,
+  "shield-check": ShieldCheck,
+  "file-pen": FilePen,
+  "clipboard-check": ClipboardCheck,
+  search: Search,
+  "file-text": FileText,
+};
+export function CatalogueIcon({
+  name,
+  size = 22,
+}: {
+  name: IconName;
+  size?: number;
+}) {
+  const Icon = icons[name];
+  return <Icon size={size} aria-hidden="true" />;
+}

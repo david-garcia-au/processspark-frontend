@@ -443,6 +443,19 @@ export const headlineProblems = [
   "machine-stops",
 ] as const satisfies readonly ProblemId[];
 export type HeadlineProblemId = (typeof headlineProblems)[number];
+/**
+ * The home page "Which of these sounds like you?" block, "All industries" view:
+ * 5 to 7 problems, each led by a different product. The industry views use
+ * each industry's featuredProblems.
+ */
+export const homeProblems = [
+  "retyping-paper",
+  "spreadsheet-few-people",
+  "know-how-in-heads",
+  "same-staff-questions",
+  "invoice-mismatch",
+  "slow-quotes",
+] as const satisfies readonly ProblemId[];
 
 export const comparisonIds = ["questions", "portals", "pricing"] as const;
 export type ComparisonId = (typeof comparisonIds)[number];

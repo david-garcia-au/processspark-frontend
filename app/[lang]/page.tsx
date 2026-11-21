@@ -4,9 +4,11 @@ import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ProblemCard } from "@/components/problem-card";
-import { ProblemSelector } from "@/components/problem-selector";
-import { SiteLink } from "@/components/site-link";
+import {
+  ProblemExplorer,
+  type ExplorerItem,
+} from "@/components/problem-explorer";
+import { ProblemVisual } from "@/components/problem-visual";
 import { TrustPanel } from "@/components/trust-panel";
 import { ApproachJourney } from "@/components/approach-journey";
 import { ProcessBrief } from "@/components/process-brief";
@@ -14,16 +16,17 @@ import { StructuredData } from "@/components/structured-data";
 import { TeamExplorer } from "@/components/team-explorer";
 import { homeTeams } from "@/lib/home-teams";
 import { HeroTasks } from "@/components/hero-tasks";
-import { IndustryIcon } from "@/components/industry-icon";
 import {
   industries,
   problem,
-  productsByGroup,
+  product,
+  productHref,
   selectorLists,
-  selectorProblemIds,
-  type ProblemId,
+  selectorTitle,
+  type FilterId,
+  type ProductId,
 } from "@/lib/catalogue";
-import { getDictionary, hasLocale, localePath, locales } from "@/lib/i18n";
+import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -39,17 +42,40 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const { hero, contact, homePage } = dict;
   const english = lang === "en";
   const list = industries(lang);
-  const cards: Partial<Record<ProblemId, ReactNode>> = Object.fromEntries(
-    selectorProblemIds().map((id) => [
-      id,
-      <ProblemCard
-        key={id}
-        lang={lang}
-        problem={problem(lang, id)}
-        copy={dict.problemCard}
-      />,
-    ]),
-  );
+  const filterIds = ["all", ...list.map((i) => i.id)] as FilterId[];
+  const lists = selectorLists();
+  const views: Record<string, ExplorerItem[]> = {};
+  const visuals: Record<string, ReactNode[]> = {};
+  for (const filterId of filterIds) {
+    // Within one view, show each product once where the problem allows it.
+    const used = new Set<ProductId>();
+    views[filterId] = [];
+    visuals[filterId] = [];
+    for (const id of lists[filterId]) {
+      const p = problem(lang, id);
+      const lead = p.products.find((x) => !used.has(x)) ?? p.products[0];
+      used.add(lead);
+      views[filterId].push({
+        id: `${filterId}-${id}`,
+        title: selectorTitle(lang, id),
+        statement: p.statement,
+        change: p.change,
+        products: p.products.map((x) => ({
+          id: x,
+          name: product(lang, x).shortName,
+          href: productHref(lang, x),
+        })),
+      });
+      visuals[filterId].push(
+        <ProblemVisual
+          key={`${filterId}-${id}`}
+          product={product(lang, lead)}
+          question={p.statement}
+          priority={filterId === "all" && visuals[filterId].length === 0}
+        />,
+      );
+    }
+  }
   return (
     <>
       <StructuredData lang={lang} dict={dict} />
@@ -72,29 +98,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <div className="shell home-hero-inner">
             <h1 id="hero-title">{hero.title}</h1>
             <p className="home-hero-subhead">{hero.subtitle}</p>
-            <p className="home-hero-sub">{hero.description}</p>
-            <div className="home-picker">
-              <h2 className="home-picker-label">{hero.pickerLabel}</h2>
-              <ul>
-                {list.map((industry) => (
-                  <li key={industry.id}>
-                    <SiteLink href={industry.href} className="home-picker-card">
-                      <span className="home-picker-icon" aria-hidden="true">
-                        <IndustryIcon name={industry.icon} size={22} />
-                      </span>
-                      <span className="home-picker-text">
-                        <strong>{industry.copy.shortName}</strong>
-                        <small>{industry.copy.menuHint}</small>
-                      </span>
-                      <ArrowUpRight size={18} aria-hidden="true" />
-                    </SiteLink>
-                  </li>
-                ))}
-              </ul>
-              <a className="home-picker-else" href="#problems">
-                {hero.pickerElse} <span aria-hidden="true">↓</span>
-              </a>
-            </div>
             <div className="home-hero-actions">
               <Button asChild className="pill pill-light">
                 <a href="#problems">
@@ -106,6 +109,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 {hero.ctaSecondary}
               </a>
             </div>
+            <p className="home-hero-sub">{hero.description}</p>
           </div>
           <HeroTasks lang={lang} />
         </section>
@@ -115,67 +119,17 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           aria-labelledby="problems-title"
         >
           <span id="use-cases" className="anchor-alias" />
-          <h2 id="problems-title" className="home-heading">
-            {homePage.selector.heading}
-          </h2>
-          <p className="home-selector-intro">{homePage.selector.intro}</p>
-          <ProblemSelector
-            filters={[
-              { id: "all", label: homePage.selector.filterAll },
-              ...list.map((industry) => ({
-                id: industry.id,
-                label: industry.copy.shortName,
-                href: industry.href,
-              })),
-            ]}
-            cards={cards}
-            layout={{ kind: "list", views: selectorLists() }}
+          <ProblemExplorer
+            heading={homePage.selector.heading}
+            views={views}
+            visuals={visuals}
             copy={{
-              groupLabel: homePage.selector.filterLabel,
-              liveAll: homePage.selector.liveAll,
-              liveIndustry: homePage.selector.liveIndustry,
-              seeIndustry: homePage.selector.seeIndustry,
-            }}
-            seeAll={{
-              href: localePath(lang, "/problems"),
-              label: homePage.selector.seeAll,
+              listLabel: homePage.selector.listLabel,
+              explore: homePage.selector.explore,
+              pause: homePage.selector.pause,
+              play: homePage.selector.play,
             }}
           />
-        </section>
-        <section
-          className="home-section shell home-pieces"
-          id="capabilities"
-          aria-labelledby="capabilities-title"
-        >
-          <h2 id="capabilities-title" className="home-heading">
-            {homePage.pieces.heading}
-          </h2>
-          <p className="home-selector-intro">{homePage.pieces.intro}</p>
-          <ol className="pieces-groups">
-            {productsByGroup(lang).map((group) => (
-              <li key={group.id}>
-                <h3>{group.name}</h3>
-                <p>{group.intro}</p>
-                <ul>
-                  {group.products.map((item) => (
-                    <li key={item.id}>
-                      <SiteLink href={item.href}>
-                        {item.shortName}
-                        <ArrowUpRight size={15} aria-hidden="true" />
-                      </SiteLink>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ol>
-          <SiteLink
-            className="text-link"
-            href={localePath(lang, "/solutions")}
-          >
-            {homePage.pieces.seeAll}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </SiteLink>
         </section>
         <section
           className="home-statement shell"
@@ -183,9 +137,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         >
           <h2 id="statement-title">{homePage.statement.title}</h2>
           <p>{homePage.statement.text}</p>
-          <p className="home-sectors">
-            {list.map((industry) => industry.copy.name).join(" · ")}
-          </p>
+          <a className="pill button-primary home-statement-cta" href="#contact">
+            {homePage.statement.cta}{" "}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
         </section>
         <section
           className="home-section shell"
@@ -197,8 +152,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </h2>
           <TeamExplorer teams={homeTeams[lang]} lang={lang} />
         </section>
-        <TrustPanel lang={lang} />
-        <ApproachJourney copy={homePage.how} />
         <section className="about-cta">
           <div className="shell about-cta-inner">
             <div className="about-cta-text">
@@ -211,6 +164,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </a>
           </div>
         </section>
+        <TrustPanel lang={lang} />
+        <ApproachJourney copy={homePage.how} />
         <section id="contact" className="home-contact" aria-labelledby="contact-title">
           <div className="shell home-contact-panel">
             <div className="home-contact-copy">

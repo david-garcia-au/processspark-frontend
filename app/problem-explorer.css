@@ -1,0 +1,400 @@
+/* Home "Which of these sounds like you?" ------------------------------------
+   Laid out after Mitti's "One platform that fits in your pocket"
+   (mitti.com/frontline-worker-solutions), measured at 1440px:
+   two equal columns, 32px gap; heading top left; the ruled list pinned to
+   the bottom of the left column; a 700px photo with 16px corners on the
+   right carrying floating app cards. Items: 2px rule that fills as the
+   timer, 18px bold title (grey when closed), "Supporting capabilities" and
+   a 16px paragraph 20px apart. On phones the items become cards with a
+   chevron and the open card carries its photo. Existing tokens only. */
+/* Same 112px step after the hero as the other home sections; no padding
+   below, so the statement's own 104px sets the gap to the next block.
+   Overrides the full-window centring in app/home-rhythm.css. */
+html body .home #problems.home-selector {
+  display: block;
+  min-height: 0;
+  padding-block: 112px 0;
+}
+.pe {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "heading visual"
+    "list visual";
+  column-gap: 32px;
+  min-height: 700px;
+}
+.pe-heading {
+  grid-area: heading;
+  max-width: 15ch;
+  margin: 0;
+  color: var(--ink);
+}
+.pe button:focus-visible,
+.pe a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* The list ------------------------------------------------------------------ */
+.pe-list {
+  grid-area: list;
+  align-self: end;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pe-list > li {
+  position: relative;
+}
+/* Timer: a thin line that fills under the open title (no rules between
+   items, so the list reads as one quiet column like the team scene). */
+.pe-rule {
+  position: absolute;
+  left: 24px;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: transparent;
+}
+.pe-list > li[data-active="true"] .pe-rule {
+  background: var(--line);
+}
+.pe-bar {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: pe-fill var(--pe-cycle, 5.5s) linear forwards;
+  animation-play-state: paused;
+}
+.pe[data-running="true"] .pe-bar {
+  animation-play-state: running;
+}
+@keyframes pe-fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+.pe-title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.pe-title button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 14px 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--faint);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.pe-title button:hover,
+.pe-list > li[data-active="true"] .pe-title button {
+  color: var(--ink);
+}
+.pe-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transition:
+    opacity 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.pe-list > li[data-active="true"] .pe-dot {
+  opacity: 1;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-wash);
+}
+.pe-chevron {
+  margin-left: auto;
+}
+.pe-chevron {
+  display: none;
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+}
+.pe-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pe-detail[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.pe-detail-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding-left: 24px;
+}
+.pe-change {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.pe-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding-bottom: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+html body a.pe-explore:hover {
+  color: var(--accent);
+}
+.pe-explore svg {
+  flex: 0 0 auto;
+}
+.pe-card-visual {
+  display: none;
+}
+.pe-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* The photo ----------------------------------------------------------------- */
+.pe-visual {
+  grid-area: visual;
+  position: relative;
+  align-self: stretch;
+  display: grid;
+  min-height: 700px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--sage);
+  box-shadow:
+    0 2px 6px -2px rgb(13 27 51 / 0.12),
+    0 28px 56px -28px rgb(13 27 51 / 0.45);
+}
+.pe-slide {
+  grid-area: 1 / 1;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.pe-slide[data-active="true"] {
+  opacity: 1;
+}
+.pv {
+  position: absolute;
+  inset: 0;
+}
+.pv-photo {
+  object-fit: cover;
+}
+/* Floating app cards: a white card inside a frosted frame. */
+.pv-card {
+  position: absolute;
+  z-index: 1;
+  padding: 6px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.35);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 16px 32px -16px rgb(2 8 30 / 0.45);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease 0.2s,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+.pe-slide[data-active="true"] .pv-card {
+  opacity: 1;
+  transform: none;
+}
+.pe-slide[data-active="true"] .pv-card-bottom {
+  transition-delay: 0.5s;
+}
+.pv-card-inner {
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--ink);
+}
+.pv-card-top {
+  top: 64px;
+  right: 40px;
+  width: min(300px, 52%);
+}
+.pv-card-top .pv-card-inner {
+  padding: 14px 16px 16px;
+}
+.pv-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.pv-card-head svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+.pv-card-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.pv-card-bottom {
+  right: 40px;
+  bottom: 48px;
+  width: min(260px, 46%);
+}
+.pv-card-bottom .pv-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+}
+.pv-card-bottom .pv-card-text {
+  flex: 1;
+  color: var(--ink);
+  font-weight: 600;
+}
+.pv-card-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-wash);
+  color: var(--accent-deep);
+}
+.pv-card-check {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-dark);
+}
+.pe-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 50%;
+  background: rgb(13 27 51 / 0.55);
+  color: var(--on-dark);
+  cursor: pointer;
+}
+/* Tablet and phone: accordion cards, photo inside the open one. */
+@media (max-width: 900px) {
+  .pe {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "heading"
+      "list";
+    min-height: 0;
+  }
+  .pe-visual,
+  .pe-rule {
+    display: none;
+  }
+  .pe-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .pe-list > li {
+    padding: 0 24px;
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    background: var(--tint);
+  }
+  .pe-title button {
+    padding: 20px 0;
+    color: var(--ink);
+  }
+  .pe-list > li[data-active="true"] .pe-title button {
+    padding-bottom: 0;
+  }
+  .pe-chevron {
+    display: block;
+  }
+  .pe-list > li[data-active="true"] .pe-chevron {
+    transform: rotate(180deg);
+  }
+  .pe-card-visual {
+    display: block;
+    position: relative;
+    height: 340px;
+    margin: 20px 0 24px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow:
+      0 2px 6px -2px rgb(13 27 51 / 0.12),
+      0 20px 40px -24px rgb(13 27 51 / 0.4);
+  }
+  .pe-card-visual .pv-card {
+    opacity: 1;
+    transform: none;
+  }
+  .pv-card-top {
+    top: 16px;
+    right: 16px;
+    width: min(280px, 82%);
+  }
+  .pv-card-bottom {
+    right: 16px;
+    bottom: 16px;
+    width: min(240px, 72%);
+  }
+  /* Phones open one card at a time by tap; there is no rotation. */
+  .pe-toggle {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  html body .home #problems.home-selector {
+    padding-block: 80px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pe-bar {
+    animation: none;
+    transform: scaleX(1);
+  }
+  .pe-detail,
+  .pe-slide,
+  .pv-card,
+  .pe-title button,
+  .pe-chevron {
+    transition: none;
+  }
+}

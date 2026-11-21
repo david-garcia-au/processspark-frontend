@@ -118,6 +118,7 @@ export type IndustryView = {
 
 export type ProblemView = ProblemCopy & {
   id: ProblemId;
+  icon: IconName;
   products: readonly ProductId[];
   industries: readonly IndustryId[];
 };
@@ -199,6 +200,7 @@ export function problem(lang: Locale, id: ProblemId): ProblemView {
   return {
     ...copies[lang].problems[id],
     id,
+    icon: structure.problems[id].icon,
     products: structure.problems[id].products,
     industries: industriesOfProblem(id),
   };
@@ -304,7 +306,7 @@ export function problemsByGroup(lang: Locale) {
 
 export function selectorLists(): Record<FilterId, readonly ProblemId[]> {
   return {
-    all: structure.headlineProblems,
+    all: structure.homeProblems,
     ...(Object.fromEntries(
       structure.industryIds.map((i) => [
         i,
@@ -319,6 +321,10 @@ export function selectorProblemIds(): ProblemId[] {
   return [...new Set(Object.values(selectorLists()).flat())];
 }
 
+/** Short title of a problem in the home block. */
+export function selectorTitle(lang: Locale, id: ProblemId): string {
+  return copies[lang].selectorTitles[id] ?? copies[lang].problems[id].statement;
+}
 export function headlineProblemIds() {
   return structure.headlineProblems;
 }

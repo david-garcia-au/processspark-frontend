@@ -13,15 +13,15 @@ import { homeTeamLinks, type HomeTeam } from "@/lib/home-teams";
 import { teamImageSrc } from "@/lib/team-images";
 import { localePath, type Locale } from "@/lib/i18n/config";
 
-const motionQuery = "(prefers-reduced-motion: reduce)";
-function subscribeMotion(onChange: () => void) {
+export const motionQuery = "(prefers-reduced-motion: reduce)";
+export function subscribeMotion(onChange: () => void) {
   const query = window.matchMedia(motionQuery);
   query.addEventListener("change", onChange);
   return () => query.removeEventListener("change", onChange);
 }
-const prefersReducedMotion = () => window.matchMedia(motionQuery).matches;
+export const prefersReducedMotion = () => window.matchMedia(motionQuery).matches;
 // On the server, assume reduced motion so nothing starts before hydration.
-const reducedOnServer = () => true;
+export const reducedOnServer = () => true;
 
 /*
  * Sequence for each department while the scene plays:

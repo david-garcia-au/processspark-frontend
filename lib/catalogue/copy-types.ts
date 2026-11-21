@@ -71,6 +71,11 @@ export type CatalogueCopy = {
   industries: { [I in IndustryId]: IndustryCopy<I> };
   /** Six floating tags on the home hero, one line each, at most 60 characters. */
   heroTags: string[];
+  /**
+   * Short title (at most 40 characters) of each problem the home block can
+   * show: the "All industries" list and every industry's featured problems.
+   */
+  selectorTitles: Partial<Record<ProblemId, string>>;
   menu: {
     /** At most 36 characters each. */
     problemLabels: Record<HeadlineProblemId, string>;

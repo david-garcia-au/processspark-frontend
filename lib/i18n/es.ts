@@ -122,8 +122,6 @@ export const es: Dictionary = {
       "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
     ctaPrimary: "Encuentra tu problema",
     ctaSecondary: "Ver una demo",
-    pickerLabel: "Empieza por tu sector",
-    pickerElse: "¿Otra cosa? Empieza por el problema",
   },
   band: {
     ariaLabel: "Sectores con los que trabajamos",
@@ -536,19 +534,19 @@ export const es: Dictionary = {
     selector: {
       heading: "¿Cuál de estos te suena?",
       intro:
-        "Elige el que más te cuesta. Cada tarjeta muestra qué cambia y la solución que hay detrás.",
+        "Elige el que más te cuesta. Cada uno muestra qué cambia y las soluciones que hay detrás.",
+      supporting: "Soluciones de apoyo:",
+      explore: "Explora estas soluciones",
+      listLabel: "Problemas",
+      pause: "Pausar la rotación",
+      play: "Reanudar la rotación",
+      whatChanges: "Qué cambia",
       filterLabel: "Mostrar problemas de",
       filterAll: "Todos",
       liveAll: "Mostrando {count} problemas habituales",
       liveIndustry: "Mostrando {count} problemas de {industry}",
       seeIndustry: "Ver todo para {industry}",
       seeAll: "Ver todo lo que resolvemos",
-    },
-    pieces: {
-      heading: "Cómo encajan las piezas",
-      intro:
-        "Captura la información una vez, deja que la gente le haga preguntas y abre después una ventana a quienes están fuera de la empresa. Cada grupo se apoya en el anterior.",
-      seeAll: "Ver todas las soluciones",
     },
     teamsHeading: "¿Dónde necesita ayuda tu equipo?",
     how: {
@@ -600,6 +598,7 @@ export const es: Dictionary = {
     statement: {
       title: "Empezamos por tu proceso, no por la tecnología.",
       text: "ProcessSpark nace de la experiencia directa en fabricación, ingeniería de procesos e informática. Conocemos los retrasos, el papeleo y las preguntas que solo una persona sabe responder. Hoy trabajamos con fabricantes, empresas de mantenimiento de equipos y asesorías.",
+      cta: "Reserva una llamada de descubrimiento de 15 minutos",
     },
   },
   problemsPage: {

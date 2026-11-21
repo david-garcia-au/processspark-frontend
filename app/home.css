@@ -319,6 +319,74 @@ html body .home-hero h1 {
   margin-top: 28px;
 }
 
+/* Hero refinement (Impeccable): roomier tag zone with no overlaps or wrapping
+   on desktop, clearer headline > subhead > actions rhythm, and the right-hand
+   sentence anchored by a hairline rule. Specificity beats catalogue.css. */
+html body main.home .home-hero.home-hero-landing {
+  --tag-zone: 280px;
+  padding-bottom: 72px;
+}
+html body main.home .home-hero .hero-tasks {
+  top: 20px;
+  height: var(--tag-zone);
+}
+html body main.home .home-hero .hero-tasks li {
+  max-width: 30ch;
+}
+@media (min-width: 1280px) {
+  html body main.home .home-hero .hero-tasks li {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+html body main.home .home-hero-landing h1 {
+  max-width: 20ch;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+}
+html body main.home .home-hero-landing .home-hero-subhead {
+  margin-top: 8px;
+  max-width: 30ch;
+}
+html body main.home .home-hero-landing .home-hero-actions {
+  margin-top: 20px;
+}
+html body main.home .home-hero-landing .home-hero-sub {
+  max-width: 36ch;
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 0.28);
+  text-wrap: pretty;
+}
+html body main.home .home-hero-landing .home-hero-actions .pill-ghost:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+@media (max-width: 1000px) {
+  html body main.home .home-hero.home-hero-landing {
+    --tag-zone: 260px;
+  }
+  html body main.home .home-hero-landing .home-hero-sub {
+    margin-top: 12px;
+    max-width: 44ch;
+  }
+}
+@media (max-width: 850px) {
+  html body main.home .home-hero.home-hero-landing {
+    --tag-zone: 340px;
+  }
+  html body main.home .home-hero .hero-tasks {
+    top: 12px;
+  }
+  html body main.home .home-hero .hero-tasks li {
+    max-width: 74cqw;
+    white-space: normal;
+  }
+}
+@media (max-width: 700px) {
+  html body main.home .home-hero-landing h1 {
+    max-width: none;
+    font-size: 2.4rem;
+  }
+}
 /* Statement ------------------------------------------------------------------ */
 .home-statement {
   padding-block: 120px 8px;
@@ -341,12 +409,14 @@ html body .home-hero h1 {
   color: var(--muted);
   text-wrap: pretty;
 }
-html body .home-statement .home-sectors {
+html body .home-statement .home-statement-cta {
+  display: inline-flex;
+  align-self: center;
+  max-width: 100%;
   margin-top: 36px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--faint);
+  font-size: 16px;
+  padding-block: 12px;
+  text-align: center;
 }
 @keyframes chat-in {
   from {
@@ -571,13 +641,6 @@ html body .home-statement .home-sectors {
   outline-offset: 4px;
 }
 
-/* Tiles arrive from their own side as the section scrolls up: left tiles from
-   the left, right tiles from the right, meeting in each row. Scroll-linked, so
-   it moves at the pace of the scroll. Visible by default; reduced-motion
-   visitors and browsers without scroll-driven animation see the finished grid. */
-html body .home #capabilities {
-  overflow-x: clip;
-}
 @keyframes tile-in {
   from {
     opacity: 0.1;

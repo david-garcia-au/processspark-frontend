@@ -19,8 +19,16 @@
     min-height: var(--screen);
   }
   /* The sections that are also .shell keep their own width and margins. */
+  /* The statement follows the problem block directly: no full-screen
+     centring, so no empty band between the two. */
   html body .home .home-statement {
-    padding-block: 64px;
+    min-height: 0;
+    padding-block: 104px 80px;
+  }
+  /* The blue band sits between the team scene and the dark trust panel: give
+     it the same white space below as above. */
+  html body .home .about-cta {
+    margin-bottom: 48px;
   }
   html body .home #problems {
     padding-block: 40px;
@@ -73,12 +81,4 @@
   html body .home .trust-cta {
     margin-top: 28px;
   }
-
-  /* Capability tiles: a screen and a bit, not a screen and a half. The tiles
-     keep their type and views; the padding and gaps tighten. */
-  html body .home #capabilities {
-    padding-block: 80px 0;
-  }
-  html body .home #capabilities .home-heading {
-    margin-bottom: 32px;
-  }}
+}

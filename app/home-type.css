@@ -1,0 +1,101 @@
+/* Home page type and vertical rhythm. Loaded last, so it replaces the older
+   per-section sizes and paddings in home.css, about-page.css,
+   home-rhythm.css and catalogue.css for the home page only.
+
+   Headings: every H2 uses the statement heading's style ("We start from your
+   process, not from the technology."). Each section keeps its own colour,
+   width and alignment.
+
+   Rhythm (one scale, more space above a heading than below it):
+   - section to section: the same padding above and below every section, so
+     the gap between two blocks is always twice --sec;
+   - full-bleed colour bands (blue CTA, contact) carry --band inside;
+   - H2 to the paragraph that explains it: --tight;
+   - H2 to the component it introduces (list, scene, steps): --loose. */
+html body main.home {
+  --sec: 72px;
+  --band: 96px;
+  --tight: 24px;
+  --loose: 48px;
+}
+@media (max-width: 1000px) {
+  html body main.home {
+    --sec: 56px;
+    --band: 72px;
+  }
+}
+@media (max-width: 700px) {
+  html body main.home {
+    --sec: 44px;
+    --band: 56px;
+    --tight: 16px;
+    --loose: 32px;
+  }
+}
+
+/* Headings ------------------------------------------------------------------ */
+html body main.home h2#problems-title,
+html body main.home h2#statement-title,
+html body main.home h2#teams-title,
+html body main.home .about-cta h2,
+html body main.home h2#trust-title,
+html body main.home h2#approach-title,
+html body main.home h2#contact-title {
+  margin-top: 0;
+  margin-bottom: var(--loose);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+/* A heading followed by its own explanatory paragraph sits close to it. */
+html body main.home h2#statement-title,
+html body main.home .about-cta h2,
+html body main.home h2#contact-title {
+  margin-bottom: var(--tight);
+}
+html body main.home h2#statement-title + p,
+html body main.home .about-cta h2 + p,
+html body main.home h2#contact-title + p {
+  margin-top: 0;
+}
+
+/* Sections ------------------------------------------------------------------ */
+html body main.home > section:not(.home-hero),
+html body main.home > section#problems.home-selector,
+html body main.home > section#approach,
+html body main.home > section#teams,
+html body main.home > section#contact {
+  min-height: 0;
+  margin-block: 0;
+  padding-block: var(--sec);
+}
+html body main.home > section.about-cta,
+html body main.home > section#contact.home-contact {
+  padding-block: var(--band);
+}
+/* The contact band's inner panel adds no padding of its own. */
+html body main.home .home-contact-panel {
+  padding-block: 0;
+}
+/* The statement's button is the end of that block; keep it close to the
+   paragraph, not floating. */
+html body main.home .home-statement-cta {
+  margin-top: 32px;
+}
+/* The hero ends in a hard dark edge against the white, so the first section
+   under it needs more breathing room on top than the gap between two white
+   sections. */
+html body main.home > section#problems.home-selector {
+  padding-top: calc(var(--sec) + 56px);
+}
+/* The problem block's list starts right under the heading. */
+html body main.home .pe-list {
+  margin-top: 0;
+}
+@media (min-width: 901px) {
+  html body main.home .pe-heading {
+    margin-bottom: var(--loose);
+  }
+}

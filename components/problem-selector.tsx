@@ -6,6 +6,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 import { flushSync } from "react-dom";
@@ -63,6 +64,8 @@ export function ProblemSelector({
 }: ProblemSelectorProps) {
   const [active, setActive] = useState<FilterId>("all");
   const [highlight, setHighlight] = useState<string | null>(null);
+  // Set once the visitor changes the filter, so the first paint never animates.
+  const [reflow, setReflow] = useState(false);
   const activeRef = useRef<FilterId>("all");
   const cardsRef = useRef(cards);
   const layoutRef = useRef(layout);
@@ -123,11 +126,12 @@ export function ProblemSelector({
     };
   }, [followHash, apply]);
 
-  const slot = (id: ProblemId) => (
+  const slot = (id: ProblemId, index = 0) => (
     <Fragment key={id}>
       <div
         className="problem-slot"
         data-highlight={highlight === id ? "true" : undefined}
+        style={{ "--i": index } as CSSProperties}
       >
         {cards[id]}
       </div>
@@ -157,15 +161,30 @@ export function ProblemSelector({
               onClick={() => {
                 setActive(filter.id);
                 setHighlight(null);
+                setReflow(true);
               }}
             >
               {filter.label}
+              {layout.kind === "list" ? (
+                <span className="problem-filter-count">
+                  {layout.views[filter.id].length}
+                </span>
+              ) : null}
             </button>
           ))}
         </div>
       ) : null}
       {layout.kind === "list" ? (
-        <div className="problem-grid">{ids.map((id) => slot(id))}</div>
+        <div
+          // New key per filter: the cards enter again, in order.
+          key={active}
+          className="problem-grid"
+          data-reflow={reflow ? "true" : undefined}
+          data-lead={ids.length % 3 === 2 ? "wide" : undefined}
+          data-lead-tablet={ids.length % 2 === 1 ? "wide" : undefined}
+        >
+          {ids.map((id, i) => slot(id, i))}
+        </div>
       ) : (
         layout.groups.map((group) => {
           const shown = group.ids.filter((id) => ids.includes(id));
@@ -183,7 +202,7 @@ export function ProblemSelector({
         })
       )}
       {filters ? (
-        <p className="sr-only" role="status" aria-live="polite">
+        <p className="problem-live" role="status" aria-live="polite">
           {live}
         </p>
       ) : null}

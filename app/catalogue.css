@@ -330,10 +330,10 @@ html body .site-footer .site-footer-title a:hover {
 }
 
 /* Home hero --------------------------------------------------------------------
-   Top-aligned and as tall as its content, so the headline and the industry
-   picker sit above the consent banner on a first visit. DOM order is
-   headline, sub, picker, buttons at every width; above 1000px the picker takes
-   the right column (grid areas, never CSS order, so tab order = visual order). */
+   Top-aligned and as tall as its content, so the headline sits above the
+   consent banner on a first visit. DOM order is headline, subheading, buttons,
+   sentence at every width; above 1000px the sentence takes the right column
+   (grid areas, never CSS order, so tab order = visual order). */
 html body .home-hero.home-hero-landing {
   display: block;
   min-height: 0;
@@ -360,7 +360,7 @@ html body .home-hero-landing .home-hero-subhead {
 }
 html body .home-hero-landing .home-hero-sub {
   max-width: 44ch;
-  margin: 0;
+  margin: 8px 0 0;
   font-size: 1.2rem;
   line-height: 1.55;
   color: var(--on-dark);
@@ -369,92 +369,14 @@ html body .home-hero-landing .home-hero-actions {
   margin-top: 8px;
   align-self: start;
 }
-.home-picker {
-  display: grid;
-  gap: 10px;
-  min-width: 0;
-}
-.home-picker ul {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-html body .home-picker-label {
-  margin: 0 0 2px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--on-dark-muted);
-}
-html body .home-picker-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-  padding: 14px 18px;
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius-lg);
-  background: rgb(255 255 255 / 0.08);
-  color: var(--on-dark);
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
-}
-html body .home-picker-card:hover,
-html body .home-picker-card:focus-visible {
-  border-color: var(--accent-bright);
-  background: rgb(255 255 255 / 0.16);
-}
-.home-picker-icon {
-  display: grid;
-  flex: 0 0 auto;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--accent-wash);
-  color: var(--accent-deep);
-}
-.home-picker-text {
-  display: grid;
-  flex: 1 1 auto;
-  gap: 2px;
-  min-width: 0;
-}
-.home-picker-text strong {
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.25;
-}
-.home-picker-text small {
-  font-size: 0.86rem;
-  line-height: 1.4;
-  color: var(--on-dark-soft);
-}
-html body .home-picker-else {
-  width: fit-content;
-  margin-top: 4px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--on-dark);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-html body .home-picker-else:hover {
-  color: var(--accent-bright);
-}
 @media (min-width: 1001px) {
   html body .home-hero-landing .home-hero-inner {
     grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr);
-    grid-template-rows: auto auto auto 1fr;
+    grid-template-rows: auto auto 1fr;
     grid-template-areas:
-      "title picker"
-      "subhead picker"
-      "sub picker"
-      "actions picker";
+      "title aside"
+      "subhead aside"
+      "actions aside";
     column-gap: 56px;
   }
   html body .home-hero-landing h1 {
@@ -463,15 +385,14 @@ html body .home-picker-else:hover {
   html body .home-hero-landing .home-hero-subhead {
     grid-area: subhead;
   }
+  /* Right column, bottom-aligned: its last line sits level with the buttons. */
   html body .home-hero-landing .home-hero-sub {
-    grid-area: sub;
-  }
-  html body .home-hero-landing .home-picker {
-    grid-area: picker;
+    grid-area: aside;
     align-self: end;
   }
   html body .home-hero-landing .home-hero-actions {
     grid-area: actions;
+    align-self: end;
   }
 }
 @media (max-width: 1000px) {
@@ -495,9 +416,6 @@ html body .home-picker-else:hover {
   }
   html body .home-hero-landing .home-hero-sub {
     font-size: 1.05rem;
-  }
-  html body .home-picker-card {
-    padding: 12px 14px;
   }
 }
 
@@ -559,8 +477,9 @@ html body .home .home-selector .home-heading {
 .problem-filter {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   min-height: 44px;
-  padding: 0 20px;
+  padding: 0 14px 0 20px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--surface);
@@ -581,6 +500,35 @@ html body .home .home-selector .home-heading {
   background: var(--accent);
   color: var(--on-dark);
 }
+.problem-filter-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.problem-filter[aria-pressed="true"] .problem-filter-count {
+  background: rgb(255 255 255 / 0.22);
+  color: var(--on-dark);
+}
+/* The live status stays for screen readers; the chips carry the state. */
+.problem-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .problem-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -594,36 +542,70 @@ html body .home .home-selector .home-heading {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   min-width: 0;
   padding: 26px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
   scroll-margin-top: 100px;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease;
+}
+/* The problem as it is now: a quiet tile. On hover or focus it turns blue,
+   the same change the card describes below. */
+.problem-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--tint);
+  color: var(--ink);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.problem-card:hover,
+.problem-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 22px 40px -26px rgb(2 8 30 / 0.45);
+}
+.problem-card:hover .problem-icon,
+.problem-card:focus-within .problem-icon {
+  background: var(--accent);
+  color: var(--on-dark);
 }
 html body .problem-card .problem-statement {
-  font-size: 1.22rem;
+  font-size: 1.28rem;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.28;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
+/* What it becomes: a tinted panel under the problem. */
 .problem-change {
   display: grid;
-  gap: 4px;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--accent-wash);
 }
 .problem-change-label {
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--faint);
+  color: var(--accent-deep);
 }
 .problem-change p {
   font-size: 0.98rem;
   line-height: 1.55;
-  color: var(--muted);
+  color: var(--ink);
 }
 .problem-links {
   display: grid;
@@ -669,6 +651,93 @@ html body .problem-more a:hover {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
+/* Filtering: the cards enter again in order. Only after the visitor picks a
+   filter, and never with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .problem-grid[data-reflow] .problem-slot {
+    animation: problem-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+  .problem-card:hover {
+    transform: translateY(-3px);
+  }
+}
+@keyframes problem-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* The first card leads when it fills the last row: it spans two columns and
+   sets the problem beside what changes. */
+@media (min-width: 1001px) {
+  .problem-grid[data-lead="wide"] > .problem-slot:first-child {
+    grid-column: span 2;
+  }
+  .problem-grid[data-lead="wide"] > .problem-slot:first-child .problem-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 18px 36px;
+    padding: 32px;
+  }
+  .problem-grid[data-lead="wide"] > .problem-slot:first-child .problem-icon {
+    grid-area: 1 / 1;
+  }
+  .problem-grid[data-lead="wide"] > .problem-slot:first-child .problem-statement {
+    grid-area: 2 / 1;
+    align-self: start;
+  }
+  .problem-grid[data-lead="wide"] > .problem-slot:first-child .problem-change {
+    grid-area: 1 / 2 / 3 / 3;
+    align-content: center;
+    padding: 24px;
+  }
+  .problem-grid[data-lead="wide"] > .problem-slot:first-child .problem-links {
+    grid-area: 3 / 1 / 4 / 3;
+    margin-top: 0;
+  }
+  html body .problem-grid[data-lead="wide"] > .problem-slot:first-child .problem-statement {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child {
+    grid-column: span 2;
+  }
+  .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child .problem-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 18px 36px;
+    padding: 32px;
+  }
+  .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child .problem-icon {
+    grid-area: 1 / 1;
+  }
+  .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child .problem-statement {
+    grid-area: 2 / 1;
+    align-self: start;
+  }
+  .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child .problem-change {
+    grid-area: 1 / 2 / 3 / 3;
+    align-content: center;
+    padding: 24px;
+  }
+  .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child .problem-links {
+    grid-area: 3 / 1 / 4 / 3;
+    margin-top: 0;
+  }
+  html body .problem-grid[data-lead-tablet="wide"] > .problem-slot:first-child .problem-statement {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+}
 @media (max-width: 1000px) {
   .problem-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -685,83 +754,6 @@ html body .problem-more a:hover {
     padding: 22px;
   }
 }
-
-/* "How the pieces fit together" -------------------------------------------- */
-html body .home .home-pieces {
-  min-height: 0;
-  justify-content: flex-start;
-  padding-block: 112px 0;
-}
-.pieces-groups {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin: 0 0 28px;
-  padding: 0;
-  list-style: none;
-  counter-reset: piece;
-}
-.pieces-groups > li {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-  padding: 24px;
-  border-radius: var(--radius-lg);
-  background: var(--tint);
-  counter-increment: piece;
-}
-.pieces-groups > li::before {
-  content: counter(piece);
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--on-dark);
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-html body .pieces-groups h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-.pieces-groups p {
-  font-size: 0.98rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
-.pieces-groups ul {
-  display: grid;
-  gap: 2px;
-  margin: auto 0 0;
-  padding: 0;
-  list-style: none;
-}
-html body .pieces-groups a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 32px;
-  font-weight: 600;
-  color: var(--accent);
-}
-@media (max-width: 1000px) {
-  .pieces-groups {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 700px) {
-  html body .home .home-pieces {
-    padding-block: 80px 0;
-  }
-  .pieces-groups {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 /* Problems hub, indexes, industry and product pages --------------------------- */
 .hub-body {
   padding-top: 64px;
@@ -1294,7 +1286,9 @@ html body .catalogue-contact .home-contact-panel {
 }
 @media (prefers-reduced-motion: reduce) {
   .problem-filter,
-  html body .home-picker-card {
+  .problem-filter-count,
+  .problem-card,
+  .problem-icon {
     transition: none;
   }
 }

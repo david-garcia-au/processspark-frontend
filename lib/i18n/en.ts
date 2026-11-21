@@ -108,8 +108,6 @@ export const en = {
       "We make AI and automation accessible to small and medium-sized businesses, with solutions that adapt to the way you work—not the other way round.",
     ctaPrimary: "Find your problem",
     ctaSecondary: "See a demo",
-    pickerLabel: "Start from your industry",
-    pickerElse: "Something else? Start from the problem",
   },
   band: {
     ariaLabel: "Industries we work with",
@@ -529,19 +527,19 @@ export const en = {
     selector: {
       heading: "Which of these sounds like you?",
       intro:
-        "Pick the one that costs you most. Each card shows what changes and the solution behind it.",
+        "Pick the one that costs you most. Each one shows what changes and the solutions behind it.",
+      supporting: "Supporting capabilities:",
+      explore: "Explore these solutions",
+      listLabel: "Problems",
+      pause: "Pause the rotation",
+      play: "Play the rotation",
+      whatChanges: "What changes",
       filterLabel: "Show problems for",
       filterAll: "All",
       liveAll: "Showing {count} common problems",
       liveIndustry: "Showing {count} problems for {industry}",
       seeIndustry: "See everything for {industry}",
       seeAll: "See all problems we solve",
-    },
-    pieces: {
-      heading: "How the pieces fit together",
-      intro:
-        "Capture the information once, let people ask it questions, then open a window to the people outside the business. Each group builds on the one before.",
-      seeAll: "See all solutions",
     },
     teamsHeading: "Where does your team need help?",
     how: {
@@ -589,6 +587,7 @@ export const en = {
     statement: {
       title: "We start from your process, not from the technology.",
       text: "ProcessSpark comes from first-hand experience in manufacturing, process engineering and IT. We know the delays, the paperwork and the questions only one person can answer. Today we work with manufacturers, equipment maintenance companies and accounting firms.",
+      cta: "Book a 15-minute discovery call",
     },
   },
   problemsPage: {
