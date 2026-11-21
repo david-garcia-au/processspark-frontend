@@ -285,6 +285,7 @@ export function problemsByGroup(lang: Locale) {
     .map((group) => ({
       id: group,
       heading: copies[lang].groups[group].problemHeading,
+      intro: copies[lang].groups[group].intro,
       problemIds: structure.problemIds.filter(
         (p) =>
           structure.products[structure.problems[p].products[0]].group ===

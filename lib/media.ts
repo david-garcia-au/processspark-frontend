@@ -266,6 +266,35 @@ export const media = {
     ratio: R32,
     brief: "Sensor on a pump or motor and a simple live reading on a phone.",
   },
+  // Problems page: one photo per group ------------------------------------
+  "problems-capture": {
+    kind: "image",
+    ratio: R43,
+    brief:
+      "Over-the-shoulder documentary photo: an operations manager at a wooden desk copying figures from a printed supplier certificate into a spreadsheet on a laptop, paper forms and a spiral notebook beside. Soft window light, shallow depth of field. No face, no readable text, no UI graphics.",
+    src: "/images/problems-capture.webp",
+  },
+  "problems-self-service": {
+    kind: "image",
+    ratio: R43,
+    brief:
+      "Documentary photo: a back-office coordinator on the phone while scanning a crowded shared inbox on a laptop, sticky notes on the monitor, a colleague blurred behind. Soft natural light, shallow depth of field. No readable text, no UI graphics.",
+    src: "/images/problems-self-service.webp",
+  },
+  "problems-finance-sales": {
+    kind: "image",
+    ratio: R43,
+    brief:
+      "Close documentary photo: hands comparing a printed supplier invoice with a purchase order on a tidy desk, calculator, laptop with a spreadsheet, a highlighted price list. Shallow depth of field. No readable text, no UI graphics.",
+    src: "/images/problems-finance-sales.webp",
+  },
+  "problems-monitor": {
+    kind: "image",
+    ratio: R43,
+    brief:
+      "Documentary photo: a technician in hi-vis beside a pump and motor in a plant room, checking a reading on a tablet, gauges in soft focus. Natural industrial light, shallow depth of field. No readable text, no UI graphics.",
+    src: "/images/problems-monitor.webp",
+  },
   // Menu cards --------------------------------------------------------------
   "nav-first-project": {
     kind: "image",

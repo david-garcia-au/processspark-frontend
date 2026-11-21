@@ -1,0 +1,309 @@
+/* Problems page ("What we solve"), in the same system as the home page. ------
+   After the hero: a sticky industry filter, then one band per group. Each band
+   has the group's heading, one sentence and a photo on the left (sticky while
+   the list scrolls) and the group's problems on the right as collapsed rows:
+   the customer's sentence is the title; "what changes", the solution links and
+   where it comes up open under it. Alternate bands sit on the tint colour so a
+   long scroll has pauses. Tokens only. --------------------------------------- */
+.hub-page {
+  --ph-header: 76px;
+}
+/* Filter bar --------------------------------------------------------------- */
+html body .hub-page .ph-bar {
+  position: sticky;
+  top: var(--ph-header);
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.ph-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding-block: 14px;
+}
+html body .hub-page .ph-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+.ph-industry-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.ph-industry-link:hover {
+  color: var(--accent-hover);
+}
+/* Groups ------------------------------------------------------------------- */
+.ph-group {
+  padding-block: clamp(64px, 8vw, 112px);
+}
+.ph-group:nth-of-type(even) {
+  background: var(--tint);
+}
+.ph-group-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 32px clamp(48px, 7vw, 112px);
+  align-items: start;
+}
+.ph-aside {
+  position: sticky;
+  top: calc(var(--ph-header) + 96px);
+}
+html body .hub-page .ph-heading {
+  max-width: 16ch;
+  margin: 0 0 16px;
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+.ph-intro {
+  max-width: 40ch;
+  margin: 0 0 32px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.ph-visual {
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--sage);
+  box-shadow:
+    0 2px 6px -2px rgb(13 27 51 / 0.12),
+    0 28px 56px -28px rgb(13 27 51 / 0.45);
+}
+.ph-visual .ph-media {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* Rows --------------------------------------------------------------------- */
+.ph-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line-strong);
+}
+.ph-row {
+  border-top: 1px solid var(--line-strong);
+  scroll-margin-top: calc(var(--ph-header) + 96px);
+  outline: none;
+}
+.ph-q {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.ph-q button {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 24px 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.ph-q button:hover {
+  color: var(--accent);
+}
+.ph-q button:focus-visible,
+.ph-a a:focus-visible,
+.ph-industry-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.ph-chevron {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--faint);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease;
+}
+.ph-row[data-open="true"] .ph-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+.ph-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ph-a[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.ph-a-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.ph-change {
+  max-width: 54ch;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.ph-change strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ph-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0 0 18px;
+  list-style: none;
+}
+html body .hub-page .ph-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+html body .hub-page .ph-links a:hover {
+  color: var(--accent-hover);
+}
+.ph-where {
+  margin: 0;
+  padding-bottom: 26px;
+  font-size: 0.875rem;
+  color: var(--faint);
+}
+.ph-where span {
+  font-weight: 600;
+  color: var(--muted);
+}
+/* The row a link pointed at */
+.ph-row[data-highlight="true"] .ph-q button {
+  color: var(--accent);
+}
+/* Not on the list ---------------------------------------------------------- */
+html body .hub-page .hub-note {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 16px clamp(48px, 7vw, 112px);
+  align-items: start;
+  padding-block: clamp(64px, 8vw, 104px);
+}
+html body .hub-page .hub-note h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+html body .hub-page .hub-note p {
+  margin: 0 0 20px;
+}
+html body .hub-page .hub-note .text-link {
+  grid-column: 2;
+}
+html body .hub-page .hub-note > p {
+  grid-column: 2;
+  grid-row: 1;
+}
+html body .hub-page .hub-note .text-link {
+  grid-row: 2;
+}
+@media (max-width: 1000px) {
+  .ph-group-inner,
+  html body .hub-page .hub-note {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ph-aside {
+    position: static;
+  }
+  .ph-intro {
+    margin-bottom: 24px;
+  }
+  .ph-visual {
+    max-width: 560px;
+  }
+  html body .hub-page .hub-note > p,
+  html body .hub-page .hub-note .text-link {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ph-a,
+  .ph-chevron {
+    transition: none;
+  }
+}
+/* A reference page: a shorter hero and tighter closing than the landing pages. */
+html body .hub-page .about-hero {
+  min-height: clamp(300px, 40svh, 420px);
+  padding: 120px 0 48px;
+}
+html body .hub-page .hub-note {
+  padding-block: clamp(56px, 6vw, 80px);
+}
+html body .hub-page .about-cta {
+  margin-top: 0;
+}
+.ph-group:first-of-type {
+  padding-top: clamp(48px, 6vw, 80px);
+}
+/* Every other band swaps sides: photo on the right, list on the left. The DOM
+   order stays heading first, so reading and tab order do not change. */
+@media (min-width: 1001px) {
+  .ph-group:nth-of-type(even) .ph-group-inner {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+  .ph-group:nth-of-type(even) .ph-aside {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .ph-group:nth-of-type(even) .ph-list {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+/* Phones: the filters scroll sideways in one row and the bar does not stick. */
+@media (max-width: 700px) {
+  html body .hub-page .ph-bar {
+    position: static;
+  }
+  html body .hub-page .ph-filters {
+    flex-wrap: nowrap;
+    margin-inline: -24px;
+    padding-inline: 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  html body .hub-page .ph-filters .problem-filter {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}

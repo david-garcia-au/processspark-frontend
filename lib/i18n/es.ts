@@ -807,6 +807,22 @@ export const es: Dictionary = {
       label: "Un mapa de proceso impreso sobre una mesa",
       alt: "Dos personas señalan un paso de un mapa de proceso impreso",
     },
+    "problems-capture": {
+      label: "Copiar cifras del papel a una hoja de cálculo",
+      alt: "Copiando cifras de un certificado impreso a una hoja de cálculo en un portátil",
+    },
+    "problems-self-service": {
+      label: "Atender llamadas y una bandeja de entrada saturada",
+      alt: "Una coordinadora al teléfono mientras revisa una bandeja compartida saturada",
+    },
+    "problems-finance-sales": {
+      label: "Comprobar una factura contra un pedido",
+      alt: "Manos comparando una factura impresa con un pedido de compra",
+    },
+    "problems-monitor": {
+      label: "Comprobar la lectura de una bomba en planta",
+      alt: "Un técnico comprueba la lectura de una bomba en una tableta en una sala de máquinas",
+    },
     "nav-guides": {
       label: "Páginas de guías impresas sobre una mesa",
       alt: "Páginas de guías impresas sobre una mesa",

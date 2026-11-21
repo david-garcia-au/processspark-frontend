@@ -6,16 +6,17 @@ import { CollectionStructuredData } from "@/components/structured-data";
 import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { ProblemCard } from "@/components/problem-card";
-import { ProblemSelector } from "@/components/problem-selector";
+import { Media } from "@/components/media";
+import { ProblemHub, type HubGroup } from "@/components/problem-hub";
 import { SiteLink } from "@/components/site-link";
 import {
   industries,
   problem,
-  problemIds,
   problemsByGroup,
-  type ProblemId,
+  product,
+  productHref,
 } from "@/lib/catalogue";
+import type { MediaSlot } from "@/lib/media";
 import { getDictionary, hasLocale, localePath, locales } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 
@@ -45,19 +46,39 @@ export default async function ProblemsPage({
   const dict = getDictionary(lang);
   const copy = dict.problemsPage;
   const { groups, members } = problemsByGroup(lang);
-  const cards: Partial<Record<ProblemId, ReactNode>> = Object.fromEntries(
-    problemIds.map((id) => [
-      id,
-      <ProblemCard
-        key={id}
-        lang={lang}
-        problem={problem(lang, id)}
-        copy={dict.problemCard}
-        hub
-        showIndustries
-      />,
-    ]),
-  );
+  const every = industries(lang);
+  const hubGroups: HubGroup[] = groups.map((g) => ({
+    id: g.id,
+    heading: g.heading,
+    intro: g.intro,
+    visual: (
+      <Media
+        slot={`problems-${g.id}` as MediaSlot}
+        text={dict.media[`problems-${g.id}` as MediaSlot]}
+        sizes="(max-width: 1000px) 100vw, 480px"
+        className="ph-media"
+      />
+    ),
+    problems: g.problemIds.map((id) => {
+      const p = problem(lang, id);
+      const where =
+        p.industries.length === every.length
+          ? [dict.problemCard.allIndustries]
+          : every
+              .filter((i) => p.industries.includes(i.id))
+              .map((i) => i.copy.shortName);
+      return {
+        id,
+        statement: p.statement,
+        change: p.change,
+        links: p.products.map((pid) => ({
+          name: product(lang, pid).shortName,
+          href: productHref(lang, pid),
+        })),
+        where: where.join(" · "),
+      };
+    }),
+  }));
   return (
     <>
       <CollectionStructuredData lang={lang} dict={dict} kind="problems" />
@@ -82,39 +103,27 @@ export default async function ProblemsPage({
             </div>
           </div>
         </section>
-        <section className="shell hub-body" aria-label={copy.heading}>
-          <ProblemSelector
-            followHash
-            filters={[
-              { id: "all", label: copy.filterAll },
-              ...industries(lang).map((industry) => ({
-                id: industry.id,
-                label: industry.copy.shortName,
-                href: industry.href,
-              })),
-            ]}
-            cards={cards}
-            layout={{
-              kind: "groups",
-              groups: groups.map((group) => ({
-                id: group.id,
-                heading: (
-                  <h2 className="hub-group-heading" id={`group-${group.id}`}>
-                    {group.heading}
-                  </h2>
-                ),
-                ids: group.problemIds,
-              })),
-              members,
-            }}
-            copy={{
-              groupLabel: copy.filterLabel,
-              liveAll: copy.liveAll,
-              liveIndustry: copy.liveIndustry,
-              seeIndustry: dict.homePage.selector.seeIndustry,
-            }}
-          />
-        </section>
+        <ProblemHub
+          groups={hubGroups}
+          members={members}
+          filters={[
+            { id: "all", label: copy.filterAll },
+            ...every.map((industry) => ({
+              id: industry.id,
+              label: industry.copy.shortName,
+              href: industry.href,
+            })),
+          ]}
+          copy={{
+            filterLabel: copy.filterLabel,
+            liveAll: copy.liveAll,
+            liveIndustry: copy.liveIndustry,
+            seeIndustry: dict.homePage.selector.seeIndustry,
+            whatChanges: dict.problemCard.whatChanges,
+            seeSolution: dict.problemCard.seeSolution,
+            industries: dict.problemCard.industries,
+          }}
+        />
         <section className="shell hub-note" aria-labelledby="not-listed">
           <h2 id="not-listed">{copy.notListedHeading}</h2>
           <p>{copy.notListedText}</p>

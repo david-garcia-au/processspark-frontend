@@ -796,6 +796,22 @@ export const en = {
       label: "A printed process map on a table",
       alt: "Two people pointing at one step on a printed process map",
     },
+    "problems-capture": {
+      label: "Copying figures from paper into a spreadsheet",
+      alt: "Copying figures from a printed certificate into a spreadsheet on a laptop",
+    },
+    "problems-self-service": {
+      label: "Answering calls and a crowded inbox",
+      alt: "A coordinator on the phone while checking a crowded shared inbox",
+    },
+    "problems-finance-sales": {
+      label: "Checking an invoice against an order",
+      alt: "Hands comparing a printed invoice with a purchase order",
+    },
+    "problems-monitor": {
+      label: "Checking a pump reading on site",
+      alt: "A technician checking a pump reading on a tablet in a plant room",
+    },
     "nav-guides": {
       label: "Printed guide pages on a desk",
       alt: "Printed guide pages on a desk",
