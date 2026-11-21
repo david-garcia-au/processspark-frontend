@@ -8,6 +8,7 @@ import { Media } from "@/components/media";
 import { ProblemCard } from "@/components/problem-card";
 import { SiteLink } from "@/components/site-link";
 import { ProductStructuredData } from "@/components/structured-data";
+import { productFaq } from "@/lib/faq";
 import {
   controlPattern,
   industriesForProduct,
@@ -57,6 +58,7 @@ export default async function ProductPage({
   const pattern = controlPattern(lang, item.control);
   const group = productsByGroup(lang).find((g) => g.id === item.group)!;
   const siblings = group.products.filter((p) => p.id !== id);
+  const faq = productFaq(copy.faq, item);
   return (
     <>
       <ProductStructuredData lang={lang} dict={dict} id={id} />
@@ -227,6 +229,19 @@ export default async function ProductPage({
           </ul>
         </section>
 
+        <section className="shell cat-section" aria-labelledby="faq-title">
+          <h2 id="faq-title" className="cat-heading">
+            {copy.faq.heading}
+          </h2>
+          <div className="cat-faq">
+            {faq.map((entry) => (
+              <details key={entry.question}>
+                <summary>{entry.question}</summary>
+                <p>{entry.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
         <ContactSection
           lang={lang}
           contact={dict.contact}
