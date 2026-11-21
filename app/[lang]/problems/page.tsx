@@ -1,14 +1,12 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { CollectionStructuredData } from "@/components/structured-data";
 import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Media } from "@/components/media";
 import { ProblemHub, type HubGroup } from "@/components/problem-hub";
-import { SiteLink } from "@/components/site-link";
 import {
   industries,
   problem,
@@ -105,6 +103,15 @@ export default async function ProblemsPage({
         </section>
         <ProblemHub
           groups={hubGroups}
+          ctas={copy.ctaBetween.map((cta) => (
+            <CtaBand
+              key={cta.heading}
+              heading={cta.heading}
+              text={cta.text}
+              button={dict.contact.discoveryButton}
+              href={`${localePath(lang)}#contact`}
+            />
+          ))}
           members={members}
           filters={[
             { id: "all", label: copy.filterAll },
@@ -123,20 +130,6 @@ export default async function ProblemsPage({
             seeSolution: dict.problemCard.seeSolution,
             industries: dict.problemCard.industries,
           }}
-        />
-        <section className="shell hub-note" aria-labelledby="not-listed">
-          <h2 id="not-listed">{copy.notListedHeading}</h2>
-          <p>{copy.notListedText}</p>
-          <SiteLink className="text-link" href={`${localePath(lang)}#contact`}>
-            {dict.header.menu.notListed}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </SiteLink>
-        </section>
-        <CtaBand
-          heading={copy.ctaHeading}
-          text={copy.ctaText}
-          button={dict.contact.discoveryButton}
-          href={`${localePath(lang)}#contact`}
         />
       </main>
       <Footer

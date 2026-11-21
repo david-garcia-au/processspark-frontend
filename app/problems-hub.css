@@ -44,7 +44,7 @@ html body .hub-page .ph-filters {
 .ph-group {
   padding-block: clamp(64px, 8vw, 112px);
 }
-.ph-group:nth-of-type(even) {
+.ph-group[data-alt="true"] {
   background: var(--tint);
 }
 .ph-group-inner {
@@ -207,37 +207,8 @@ html body .hub-page .ph-links a:hover {
 .ph-row[data-highlight="true"] .ph-q button {
   color: var(--accent);
 }
-/* Not on the list ---------------------------------------------------------- */
-html body .hub-page .hub-note {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 16px clamp(48px, 7vw, 112px);
-  align-items: start;
-  padding-block: clamp(64px, 8vw, 104px);
-}
-html body .hub-page .hub-note h2 {
-  margin: 0;
-  font-size: clamp(1.9rem, 3.2vw, 2.9rem);
-  font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-}
-html body .hub-page .hub-note p {
-  margin: 0 0 20px;
-}
-html body .hub-page .hub-note .text-link {
-  grid-column: 2;
-}
-html body .hub-page .hub-note > p {
-  grid-column: 2;
-  grid-row: 1;
-}
-html body .hub-page .hub-note .text-link {
-  grid-row: 2;
-}
 @media (max-width: 1000px) {
-  .ph-group-inner,
-  html body .hub-page .hub-note {
+  .ph-group-inner {
     grid-template-columns: minmax(0, 1fr);
   }
   .ph-aside {
@@ -249,11 +220,6 @@ html body .hub-page .hub-note .text-link {
   .ph-visual {
     max-width: 560px;
   }
-  html body .hub-page .hub-note > p,
-  html body .hub-page .hub-note .text-link {
-    grid-column: 1;
-    grid-row: auto;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .ph-a,
@@ -261,31 +227,29 @@ html body .hub-page .hub-note .text-link {
     transition: none;
   }
 }
-/* A reference page: a shorter hero and tighter closing than the landing pages. */
+/* A reference page: a shorter hero than the landing pages. */
 html body .hub-page .about-hero {
   min-height: clamp(300px, 40svh, 420px);
   padding: 120px 0 48px;
 }
-html body .hub-page .hub-note {
-  padding-block: clamp(56px, 6vw, 80px);
-}
 html body .hub-page .about-cta {
   margin-top: 0;
+  padding-block: clamp(64px, 7vw, 96px);
 }
-.ph-group:first-of-type {
+.ph-group[data-first="true"] {
   padding-top: clamp(48px, 6vw, 80px);
 }
 /* Every other band swaps sides: photo on the right, list on the left. The DOM
    order stays heading first, so reading and tab order do not change. */
 @media (min-width: 1001px) {
-  .ph-group:nth-of-type(even) .ph-group-inner {
+  .ph-group[data-alt="true"] .ph-group-inner {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   }
-  .ph-group:nth-of-type(even) .ph-aside {
+  .ph-group[data-alt="true"] .ph-aside {
     grid-column: 2;
     grid-row: 1;
   }
-  .ph-group:nth-of-type(even) .ph-list {
+  .ph-group[data-alt="true"] .ph-list {
     grid-column: 1;
     grid-row: 1;
   }
@@ -305,5 +269,11 @@ html body .hub-page .about-cta {
   html body .hub-page .ph-filters .problem-filter {
     flex: 0 0 auto;
     white-space: nowrap;
+  }
+}
+/* A group with a single problem: centre its row against the photo. */
+@media (min-width: 1001px) {
+  .ph-group[data-single="true"] .ph-list {
+    align-self: center;
   }
 }

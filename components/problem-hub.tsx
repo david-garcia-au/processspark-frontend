@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Fragment,
   useCallback,
   useEffect,
   useRef,
@@ -32,6 +33,8 @@ export type HubGroup = {
 
 type ProblemHubProps = {
   groups: HubGroup[];
+  /** Server-rendered call-to-action bands: one after each group but the last. */
+  ctas: ReactNode[];
   filters: { id: FilterId; label: string; href?: string }[];
   members: Record<FilterId, readonly ProblemId[]>;
   copy: {
@@ -52,10 +55,17 @@ type ProblemHubProps = {
  * open under it. Filtering is by rendering, so the visual order is the DOM and
  * tab order. A link such as /problems#invoice-mismatch opens that problem.
  */
-export function ProblemHub({ groups, filters, members, copy }: ProblemHubProps) {
+export function ProblemHub({
+  groups,
+  ctas,
+  filters,
+  members,
+  copy,
+}: ProblemHubProps) {
   const [active, setActive] = useState<FilterId>("all");
   const [open, setOpen] = useState<Set<string>>(
-    () => new Set(groups.map((g) => g.problems[0]?.id).filter(Boolean) as string[]),
+    () =>
+      new Set(groups.map((g) => g.problems[0]?.id).filter(Boolean) as string[]),
   );
   const [highlight, setHighlight] = useState<string | null>(null);
   const activeRef = useRef<FilterId>("all");
@@ -63,7 +73,9 @@ export function ProblemHub({ groups, filters, members, copy }: ProblemHubProps) 
     activeRef.current = active;
   });
 
-  const known = useRef(new Set(groups.flatMap((g) => g.problems.map((p) => p.id))));
+  const known = useRef(
+    new Set(groups.flatMap((g) => g.problems.map((p) => p.id))),
+  );
 
   const reveal = useCallback(
     (raw: string | null | undefined, userAction: boolean) => {
@@ -88,8 +100,13 @@ export function ProblemHub({ groups, filters, members, copy }: ProblemHubProps) 
       if (!userAction) return;
       const el = document.getElementById(id);
       if (!el) return;
-      const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      el.scrollIntoView({ block: "center", behavior: calm ? "auto" : "smooth" });
+      const calm = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      el.scrollIntoView({
+        block: "center",
+        behavior: calm ? "auto" : "smooth",
+      });
       el.focus({ preventScroll: true });
     },
     [members],
@@ -125,6 +142,15 @@ export function ProblemHub({ groups, filters, members, copy }: ProblemHubProps) 
       : copy.liveIndustry
           .replace("{count}", String(shownIds.length))
           .replace("{industry}", activeFilter?.label ?? "");
+
+  const visible = groups
+    .map((group, original) => ({
+      group,
+      original,
+      shown: group.problems.filter((p) => shownIds.includes(p.id)),
+    }))
+    .filter((entry) => entry.shown.length > 0)
+    .map((entry, position) => ({ ...entry, position }));
 
   return (
     <div className="ph">
@@ -164,88 +190,101 @@ export function ProblemHub({ groups, filters, members, copy }: ProblemHubProps) 
       <p className="problem-live" role="status" aria-live="polite">
         {live}
       </p>
-      {groups.map((group) => {
-        const shown = group.problems.filter((p) => shownIds.includes(p.id));
-        if (shown.length === 0) return null;
+      {visible.map(({ group, shown, position, original }) => {
         return (
-          <section
-            key={group.id}
-            className="ph-group"
-            aria-labelledby={`group-${group.id}`}
-          >
-            <div className="shell ph-group-inner">
-              <div className="ph-aside">
-                <h2 className="ph-heading" id={`group-${group.id}`}>
-                  {group.heading}
-                </h2>
-                <p className="ph-intro">{group.intro}</p>
-                <div className="ph-visual" aria-hidden="true">
-                  {group.visual}
+          <Fragment key={group.id}>
+            <section
+              className="ph-group"
+              data-alt={position % 2 === 1 ? "true" : undefined}
+              data-first={position === 0 ? "true" : undefined}
+              data-single={shown.length === 1 ? "true" : undefined}
+              aria-labelledby={`group-${group.id}`}
+            >
+              <div className="shell ph-group-inner">
+                <div className="ph-aside">
+                  <h2 className="ph-heading" id={`group-${group.id}`}>
+                    {group.heading}
+                  </h2>
+                  <p className="ph-intro">{group.intro}</p>
+                  <div className="ph-visual" aria-hidden="true">
+                    {group.visual}
+                  </div>
                 </div>
-              </div>
-              <ul className="ph-list">
-                {shown.map((problem) => {
-                  const isOpen = open.has(problem.id);
-                  return (
-                    <li
-                      key={problem.id}
-                      id={problem.id}
-                      className="ph-row"
-                      tabIndex={-1}
-                      data-open={isOpen ? "true" : "false"}
-                      data-problem-id={problem.id}
-                      data-highlight={highlight === problem.id ? "true" : undefined}
-                    >
-                      <h3 className="ph-q">
-                        <button
-                          type="button"
-                          id={`${problem.id}-q`}
-                          aria-expanded={isOpen}
-                          aria-controls={`${problem.id}-a`}
-                          onClick={() => toggle(problem.id)}
-                        >
-                          <span>{problem.statement}</span>
-                          <ChevronDown
-                            className="ph-chevron"
-                            size={22}
-                            aria-hidden="true"
-                          />
-                        </button>
-                      </h3>
-                      <div
-                        id={`${problem.id}-a`}
-                        role="region"
-                        aria-labelledby={`${problem.id}-q`}
-                        className="ph-a"
+                <ul className="ph-list">
+                  {shown.map((problem) => {
+                    const isOpen = open.has(problem.id);
+                    return (
+                      <li
+                        key={problem.id}
+                        id={problem.id}
+                        className="ph-row"
+                        tabIndex={-1}
                         data-open={isOpen ? "true" : "false"}
-                        inert={!isOpen}
+                        data-problem-id={problem.id}
+                        data-highlight={
+                          highlight === problem.id ? "true" : undefined
+                        }
                       >
-                        <div className="ph-a-inner">
-                          <p className="ph-change">
-                            <strong>{copy.whatChanges}</strong>
-                            {problem.change}
-                          </p>
-                          <ul className="ph-links">
-                            {problem.links.map((link) => (
-                              <li key={link.href}>
-                                <SiteLink href={link.href}>
-                                  {copy.seeSolution.replace("{name}", link.name)}
-                                  <ArrowUpRight size={16} aria-hidden="true" />
-                                </SiteLink>
-                              </li>
-                            ))}
-                          </ul>
-                          <p className="ph-where">
-                            <span>{copy.industries}</span> {problem.where}
-                          </p>
+                        <h3 className="ph-q">
+                          <button
+                            type="button"
+                            id={`${problem.id}-q`}
+                            aria-expanded={isOpen}
+                            aria-controls={`${problem.id}-a`}
+                            onClick={() => toggle(problem.id)}
+                          >
+                            <span>{problem.statement}</span>
+                            <ChevronDown
+                              className="ph-chevron"
+                              size={22}
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </h3>
+                        <div
+                          id={`${problem.id}-a`}
+                          role="region"
+                          aria-labelledby={`${problem.id}-q`}
+                          className="ph-a"
+                          data-open={isOpen ? "true" : "false"}
+                          inert={!isOpen}
+                        >
+                          <div className="ph-a-inner">
+                            <p className="ph-change">
+                              <strong>{copy.whatChanges}</strong>
+                              {problem.change}
+                            </p>
+                            <ul className="ph-links">
+                              {problem.links.map((link) => (
+                                <li key={link.href}>
+                                  <SiteLink href={link.href}>
+                                    {copy.seeSolution.replace(
+                                      "{name}",
+                                      link.name,
+                                    )}
+                                    <ArrowUpRight
+                                      size={16}
+                                      aria-hidden="true"
+                                    />
+                                  </SiteLink>
+                                </li>
+                              ))}
+                            </ul>
+                            <p className="ph-where">
+                              <span>{copy.industries}</span> {problem.where}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </section>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </section>
+            {position < visible.length - 1 && ctas[original]
+              ? ctas[original]
+              : null}
+          </Fragment>
         );
       })}
     </div>

@@ -208,7 +208,7 @@ export function validateCatalogue(
       range(`${at} seo.description`, c.seo.description, 70, 160);
     }
     for (const id of s.headlineProblems as readonly (keyof CatalogueCopy["menu"]["problemLabels"])[]) {
-      max(`${lang} menu label ${id}`, copy.menu.problemLabels[id], 36);
+      max(`${lang} menu label ${id}`, copy.menu.problemLabels[id], 42);
       max(`${lang} menu hint ${id}`, copy.menu.problemHints[id], 40);
     }
     // Every problem the home block can show needs a short title.
@@ -219,7 +219,7 @@ export function validateCatalogue(
     for (const id of shown) {
       const title = copy.selectorTitles[id];
       if (!title) bad(`${lang} home block title missing for ${id}`);
-      else max(`${lang} home block title ${id}`, title, 40);
+      else max(`${lang} home block title ${id}`, title, 42);
     }
     for (const [id, card] of Object.entries(copy.menu.cards)) {
       max(`${lang} menu card ${id} title`, card.title, 40);

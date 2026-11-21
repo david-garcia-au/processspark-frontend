@@ -606,6 +606,20 @@ export const en = {
     notListedHeading: "Not on the list?",
     notListedText:
       "If you run on Excel, Word and paper, your problem is probably close to one of these. Tell us yours.",
+    ctaBetween: [
+      {
+        heading: "Does one of these sound like you?",
+        text: "Tell us which. We will look at how it works today and what a first step could be.",
+      },
+      {
+        heading: "Still answering the same questions every day?",
+        text: "Pick the one that costs most. We will show what it could look like with your own examples.",
+      },
+      {
+        heading: "Which of these would you fix first?",
+        text: "Bring one example. We will show how it would work and what a pilot could cover.",
+      },
+    ],
     ctaHeading: "Which of these costs your team the most time?",
     ctaText:
       "Pick one. We will look at how it works today and what a first step could be.",

@@ -77,7 +77,7 @@ export type CatalogueCopy = {
    */
   selectorTitles: Partial<Record<ProblemId, string>>;
   menu: {
-    /** At most 36 characters each. */
+    /** At most 42 characters each. */
     problemLabels: Record<HeadlineProblemId, string>;
     /** One plain outcome line per problem, at most 40 characters each. */
     problemHints: Record<HeadlineProblemId, string>;

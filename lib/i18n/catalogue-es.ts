@@ -777,7 +777,7 @@ export const esCatalogue: CatalogueCopy = {
   selectorTitles: {
     "retyping-paper": "Reescribir papeles y PDF",
     "spreadsheet-few-people": "Cifras que solo uno entiende",
-    "know-how-in-heads": "Saber en pocas cabezas",
+    "know-how-in-heads": "Conocimiento depende de algunos empleados",
     "same-staff-questions": "Las mismas preguntas, una y otra vez",
     "invoice-mismatch": "Facturas que no cuadran",
     "slow-quotes": "Ofertas hechas a mano",
@@ -796,10 +796,10 @@ export const esCatalogue: CatalogueCopy = {
     problemLabels: {
       "retyping-paper": "Reescribir papeles y PDF",
       "spreadsheet-few-people": "Cifras que solo uno entiende",
-      "know-how-in-heads": "Saber en pocas cabezas",
+      "know-how-in-heads": "Conocimiento depende de algunos empleados",
       "forms-not-filled": "Formularios que nadie rellena",
       "invoice-mismatch": "Facturas que no cuadran",
-      "client-document-chasing": "Buscar papeles a proveedores",
+      "client-document-chasing": "Reclamar documentación a proveedores",
       "slow-quotes": "Ofertas hechas a mano",
       "machine-stops": "Averías que se ven tarde",
     },

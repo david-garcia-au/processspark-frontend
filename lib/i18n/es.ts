@@ -617,6 +617,20 @@ export const es: Dictionary = {
     notListedHeading: "¿No está en la lista?",
     notListedText:
       "Si trabajas con Excel, Word y papel, tu problema probablemente se parece a alguno de estos. Cuéntanos el tuyo.",
+    ctaBetween: [
+      {
+        heading: "¿Te suena alguno de estos?",
+        text: "Cuéntanos cuál. Veremos cómo funciona hoy y cuál podría ser un primer paso.",
+      },
+      {
+        heading: "¿Sigues respondiendo las mismas preguntas cada día?",
+        text: "Elige el que más cuesta. Te mostraremos cómo podría ser con tus propios ejemplos.",
+      },
+      {
+        heading: "¿Cuál de estos arreglarías primero?",
+        text: "Trae un ejemplo. Te mostraremos cómo funcionaría y qué podría cubrir un piloto.",
+      },
+    ],
     ctaHeading: "¿Cuál de estos le cuesta más tiempo a tu equipo?",
     ctaText:
       "Elige uno. Veremos cómo funciona hoy y cuál podría ser un primer paso.",
