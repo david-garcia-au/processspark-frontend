@@ -2,7 +2,11 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { categories, defaultCategoryValue } from "@/lib/content";
+import {
+  categories,
+  defaultCategoryValue,
+  type CategoryId,
+} from "@/lib/content";
 import type { Dictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n/config";
 type Status = "idle" | "sending" | "sent" | "error";
@@ -13,9 +17,19 @@ type ProcessBriefProps = {
   copy: Dictionary["contact"]["form"];
   /** Address shown in the error message. */
   email: string;
+  /** Preselects this category (a product page passes its own). */
+  defaultCategory?: CategoryId;
 };
 
-export function ProcessBrief({ lang, copy, email }: ProcessBriefProps) {
+export function ProcessBrief({
+  lang,
+  copy,
+  email,
+  defaultCategory,
+}: ProcessBriefProps) {
+  const defaultValue =
+    categories.find((item) => item.id === defaultCategory)?.value ??
+    defaultCategoryValue;
   const [status, setStatus] = useState<Status>("idle");
   async function submitBrief(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -90,7 +104,7 @@ export function ProcessBrief({ lang, copy, email }: ProcessBriefProps) {
         </label>
         <label>
           {copy.category.label}
-          <select name="category" defaultValue={defaultCategoryValue}>
+          <select name="category" defaultValue={defaultValue}>
             {categories.map(({ id, value }) => (
               <option key={id} value={value}>
                 {copy.category.options[id]}

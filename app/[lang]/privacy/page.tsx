@@ -78,6 +78,7 @@ export default async function PrivacyPage({
         copy={dict.header}
         switcherCopy={dict.languageSwitcher}
         brandLabel={dict.common.brandLabel}
+        mediaCopy={dict.media}
         page="privacy"
         path={privacyPath}
       />

@@ -23,71 +23,53 @@ import type { Dictionary } from "./en";
  */
 export const es: Dictionary = {
   seo: {
-    title: "ProcessSpark | Digitaliza el papeleo. Conecta tus datos.",
+    title: "ProcessSpark | Soluciones prácticas para Excel, Word y papel",
     description:
-      "Digitaliza el papeleo, conecta silos de datos y gana visibilidad operativa. Soluciones prácticas para empresas de fabricación, logística y servicios.",
-    tagline:
-      "Digitaliza el papeleo. Conecta tus datos. Gana visibilidad operativa.",
+      "Herramientas prácticas para empresas medianas que siguen con Excel, Word y papel: fabricantes, empresas de mantenimiento y asesorías.",
+    tagline: "Empieza por el problema. Resuelve un proceso cada vez.",
     socialTitle:
-      "Digitaliza tu papeleo. Conecta tus datos. Visualiza toda tu operación.",
+      "¿Sigues con Excel, Word y papel? Empieza por el problema.",
     socialDescription:
-      "Digitaliza el papeleo, conecta silos de datos y gana visibilidad operativa. Soluciones prácticas para empresas de fabricación, logística y servicios.",
+      "Herramientas prácticas para empresas medianas que siguen con Excel, Word y papel: fabricantes, empresas de mantenimiento y asesorías.",
     keywords: [
-      "digitalizar papeleo en fabricación",
-      "formularios digitales para fabricación",
-      "integración de datos industriales",
-      "integración de API para empresas",
-      "búsqueda documental asistida por IA",
-      "visibilidad operativa",
-      "automatización de flujos y aprobaciones",
-      "operaciones de fabricación",
-      "operaciones logísticas",
-      "operaciones de empresas de servicios",
+      "software para fabricantes con Excel y papel",
+      "formularios digitales para técnicos",
+      "software de mantenimiento de equipos",
+      "portal de documentos de clientes para asesorías",
+      "preguntar a manuales y procedimientos",
+      "portal de proveedores",
+      "portal de clientes",
+      "control de licencias y CAE de subcontratistas",
+      "revisión de facturas con pedidos de compra",
+      "automatización de ofertas y RFQ",
+      "monitorización con sensores y avisos",
       "digitalización de documentos",
-      "integración de sistemas empresariales",
     ],
-    sectors: [
-      "Fabricación",
-      "Ingeniería",
-      "Logística",
-      "Almacenaje",
-      "Servicios industriales",
-    ],
-    knowsAbout: [
-      "Digitalización de documentos y formularios digitales",
-      "Integración de datos y API",
-      "Búsqueda documental asistida por IA",
-      "Automatización de flujos y aprobaciones",
-      "Informes y visibilidad operativa",
-    ],
-    imageAlts: {
-      "bottle-inspection":
-        "Ilustración de una línea de embotellado con una cámara de visión sobre botellas que avanzan por una cinta transportadora",
-      "copy-by-hand":
-        "Ilustración de una persona que copia en un cuaderno los datos de un certificado de proveedor, mientras esos mismos datos ya están introducidos en una hoja de cálculo en el portátil",
-    },
     socialImage: {
-      alt: "Digitaliza tu papeleo. Conecta tus datos. Visualiza toda tu operación.",
-      line1: "Digitaliza tu papeleo.",
-      line2: "Conecta tus datos.",
-      sub: "Visualiza toda tu operación.",
-      tagline: "FABRICAR. MOVER. MANTENER.",
+      alt: "Empieza por el problema. Resuélvelo proceso a proceso. Para empresas que siguen con Excel, Word y papel.",
+      line1: "Empieza por el problema.",
+      line2: "Resuélvelo proceso a proceso.",
+      sub: "Para empresas que siguen con Excel, Word y papel.",
+      tagline: "FABRICACIÓN. MANTENIMIENTO. CONTABILIDAD.",
     },
     jsonLd: {
-      offerCatalogName: "Soluciones para procesos operativos",
-      itemListName: "Problemas operativos que ayuda a resolver ProcessSpark",
+      offerCatalogName: "Soluciones de ProcessSpark",
+      itemListName: "Soluciones que ofrece ProcessSpark",
     },
     llms: {
       intro:
-        "ProcessSpark ayuda a las empresas de fabricación, logística y servicios a resolver procesos basados en papel, datos desconectados y falta de visibilidad operativa. Digitalizamos los registros que necesitas conservar, implantamos formularios digitales, integramos los sistemas actuales y ofrecemos búsqueda documental asistida por IA con referencias a las fuentes. Implementamos mejoras prácticas sobre las operaciones existentes, proceso a proceso y con una interrupción mínima.",
+        "ProcessSpark ayuda a empresas medianas que siguen haciendo trabajo importante con Excel, Word y papel. Partimos del problema del cliente, con sus propias palabras, y lo asociamos a una solución. Cada proyecto empieza con un proceso como piloto, se construye alrededor de los sistemas que el cliente ya tiene y deriva a una persona todo lo que no está claro.",
       whoFor: "Para quién es",
-      kinds: "Tipos de trabajo manual en los que ayudamos",
-      useCases: "Casos de uso prácticos",
+      problems: "Problemas que resolvemos",
+      solutions: "Soluciones",
+      how: "Cómo trabajamos",
+      howText:
+        "Empezamos con un proceso como piloto, construido alrededor de tus sistemas actuales, con tu gente al mando. Después del piloto también podemos formar a tu equipo y mantener la solución en marcha.",
       links: "Enlaces",
       home: "Inicio",
-      homeDescription: "Resumen, casos de uso y cómo trabajamos",
-      contactLink: "Encuentra tu primera mejora",
-      contactDescription: "Empieza por un proceso",
+      homeDescription: "Empieza por tu problema o por tu sector",
+      contactLink: "Reservar una llamada",
+      contactDescription: "Empieza con un proceso",
       sitemap: "Mapa del sitio",
       contact: "Contacto",
       email: "Correo electrónico",
@@ -95,6 +77,7 @@ export const es: Dictionary = {
     },
   },
   common: {
+    homeLabel: "Inicio",
     skipLink: "Saltar al contenido",
     brandLabel: "Inicio de ProcessSpark",
   },
@@ -116,39 +99,35 @@ export const es: Dictionary = {
       about: "Sobre nosotros",
     },
     solutions: "Soluciones",
-    resources: "Downloads",
+    resources: "Descargas",
     cta: "Encuentra tu primera mejora",
-    demo: "Solicita una demo",
+    demo: "Reservar una llamada",
+    menu: {
+      solve: "Qué resolvemos",
+      solveToggle: "Mostrar qué resolvemos",
+      solutionsToggle: "Mostrar soluciones",
+      startProblem: "Empieza por el problema",
+      startIndustry: "Empieza por tu sector",
+      allIndustries: "Todos los sectores",
+      seeAllProblems: "Ver todo lo que resolvemos",
+      notListed: "¿No está en la lista? Cuéntanos el tuyo",
+      whichOne: "¿Cuál necesito?",
+      allSolutions: "Todas las soluciones",
+    },
   },
   hero: {
-    eyebrow: "PARA FABRICACIÓN, LOGÍSTICA Y EMPRESAS DE SERVICIOS",
-    title: {
-      line1: "Transforma la forma de trabajar",
-      line2: "de tu empresa.",
-    },
+    title: "Transforma la forma de trabajar de tu empresa.",
+    subtitle: "¿Tu empresa sigue funcionando con Excel, Word y papel?",
     description:
       "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
-    ctaPrimary: "Encuentra tu primera mejora",
-    ctaSecondary: "Solicita una demo",
-    reassurance:
-      "Pensado para tus sistemas actuales. Implementado con una interrupción mínima.",
+    ctaPrimary: "Encuentra tu problema",
+    ctaSecondary: "Ver una demo",
+    pickerLabel: "Empieza por tu sector",
+    pickerElse: "¿Otra cosa? Empieza por el problema",
   },
   band: {
     ariaLabel: "Sectores con los que trabajamos",
-    promise: {
-      line1: "Menos papel. Información conectada.",
-      line2: "Operaciones más claras.",
-    },
-    introLabel: "PARA EMPRESAS QUE",
-    introStrong: "fabrican. mueven. mantienen.",
-    sectorsLabel: "Sectores de actividad",
-    sectors: {
-      manufacturing: "Fabricación",
-      engineering: "Ingeniería",
-      logistics: "Logística",
-      warehousing: "Almacenaje",
-      "industrial-services": "Servicios industriales",
-    },
+    sectorsLabel: "Sectores con los que trabajamos",
   },
   transformation: {
     hero: {
@@ -445,13 +424,14 @@ export const es: Dictionary = {
       category: {
         label: "¿Qué te gustaría mejorar?",
         options: {
-          documents: "Procesamiento de documentos e introducción de datos",
-          reporting: "Informes y hojas de cálculo",
-          emails: "Correos y solicitudes de clientes",
-          "finding-information": "Encontrar información en documentos",
-          quotations: "Presupuestos y propuestas",
-          quality: "Registros de calidad y cumplimiento",
-          service: "Informes de servicio y mantenimiento",
+          paperwork: "Papeles, formularios e introducción de datos",
+          "data-questions": "Preguntas sobre nuestras cifras",
+          "document-answers": "Respuestas de manuales, procedimientos y registros",
+          "staff-questions": "Preguntas del personal",
+          portals: "Portales para clientes, proveedores o subcontratas",
+          invoices: "Revisión de facturas y contabilidad",
+          quotes: "Presupuestos y estimaciones",
+          monitoring: "Monitorización de equipos",
           other: "Otro / Aún no lo sé",
         },
       },
@@ -476,10 +456,12 @@ export const es: Dictionary = {
   },
   footer: {
     navLabel: "Pie de página",
-    lead: "Digitalización práctica para empresas de fabricación, logística y servicios.",
+    lead: "Soluciones prácticas para fabricantes, empresas de mantenimiento de equipos y asesorías.",
     slogan: "Less Paperwork. Clearer Processes. Better Business.",
     tagline: "Menos papel. Información conectada. Operaciones más claras.",
     exploreHeading: "Explorar",
+    industriesHeading: "Sectores",
+    solutionsHeading: "Soluciones",
     links: {
       problems: "Qué resolvemos",
       capabilities: "Qué cambia",
@@ -487,7 +469,7 @@ export const es: Dictionary = {
       approach: "Cómo trabajamos",
       about: "Sobre nosotros",
       solutions: "Soluciones",
-      resources: "Downloads",
+      resources: "Descargas",
       demo: "Demo",
       privacy: "Política de privacidad",
     },
@@ -521,171 +503,179 @@ export const es: Dictionary = {
     },
   },
   solutionsPage: {
-    title: "Soluciones por equipo | ProcessSpark",
-    description:
-      "Explora soluciones para operaciones, ingeniería, ventas, finanzas, RR. HH. y dirección. Empieza por un problema concreto.",
-    eyebrow: "SOLUCIONES POR EQUIPO",
-    heading: {
-      line1: "Encuentra el problema",
-      line2: "que quieres resolver.",
+    seo: {
+      title: "Soluciones para los problemas que resolvemos",
+      description:
+        "Once soluciones prácticas en cuatro grupos, cada una con el problema que resuelve. Mira quién mantiene el control y cómo se ve en tu sector.",
     },
-    hint: "Pasa el cursor o toca para ver la solución",
-    solutionLabel: "LA SOLUCIÓN",
-    controlLabel: "Las personas mantienen el control",
-    showSolution: "Mostrar la solución",
-    showProblem: "Mostrar el problema",
-    bands: [
-      {
-        heading: "¿Cuál de estos problemas te cuesta más tiempo?",
-        text: "Elige uno. Veremos cómo se hace hoy y cuál podría ser un primer paso.",
-      },
-      {
-        heading: "¿No sabes por dónde empezar?",
-        text: "Es normal. Te ayudamos a elegir un proceso con el que empezar.",
-      },
-      {
-        heading: "¿Quieres ver cómo funcionaría en tu caso?",
-        text: "Trae un ejemplo real y te enseñamos cómo podría ser.",
-      },
-    ],
-    groups: {
-      "sales-orders": "Ventas y pedidos",
-      production: "Producción y planta",
-      "supply-finance": "Cadena de suministro y finanzas",
-      "quality-service": "Calidad y servicio",
+    heading: "Soluciones, un problema cada vez.",
+    summary:
+      "Cada solución parte de un problema que reconocerás, muestra quién mantiene el control y empieza con un proceso como piloto.",
+    groupNavLabel: "Grupos de soluciones",
+    problemLabel: "El problema que resuelve",
+    industriesLabel: "Se usa en",
+    seeSolution: "Ver la solución",
+    compareHeading: "¿Cuál necesito?",
+    compareIntro:
+      "Algunas soluciones se confunden con facilidad. Así se diferencian.",
+    controlHeading: "Quién mantiene el control",
+    controlIntro:
+      "Cada solución se construye alrededor de tus sistemas actuales y deriva a una persona todo lo que no está claro. Hay tres patrones.",
+    industriesLink: "Mira cómo se ve en cada sector",
+    ctaHeading: "¿Cuál de estos le cuesta más tiempo a tu equipo?",
+    ctaText:
+      "Elige uno. Veremos cómo funciona hoy y cuál podría ser un primer paso.",
+  },
+  problemCard: {
+    whatChanges: "Qué cambia",
+    seeSolution: "Ver {name}",
+    industries: "Aparece en",
+    allIndustries: "Todos los sectores",
+  },
+  homePage: {
+    selector: {
+      heading: "¿Cuál de estos te suena?",
+      intro:
+        "Elige el que más te cuesta. Cada tarjeta muestra qué cambia y la solución que hay detrás.",
+      filterLabel: "Mostrar problemas de",
+      filterAll: "Todos",
+      liveAll: "Mostrando {count} problemas habituales",
+      liveIndustry: "Mostrando {count} problemas de {industry}",
+      seeIndustry: "Ver todo para {industry}",
+      seeAll: "Ver todo lo que resolvemos",
     },
-    items: {
-      "rfq-follow-up": {
-        title:
-          "Seguimiento de solicitudes de oferta y visibilidad de presupuestos",
-        problem:
-          "Cuando las solicitudes de presupuesto se pierden entre el correo electrónico, buenas oportunidades pueden enfriarse.",
-        solution:
-          "Capturamos y priorizamos las solicitudes de oferta que llegan, mostramos en qué punto está cada presupuesto y ayudamos a tu equipo a preparar las respuestas más rápido.",
-        control:
-          "Una persona revisa y aprueba cada presupuesto antes de enviarlo.",
+    pieces: {
+      heading: "Cómo encajan las piezas",
+      intro:
+        "Captura la información una vez, deja que la gente le haga preguntas y abre después una ventana a quienes están fuera de la empresa. Cada grupo se apoya en el anterior.",
+      seeAll: "Ver todas las soluciones",
+    },
+    teamsHeading: "¿Dónde necesita ayuda tu equipo?",
+    how: {
+      heading: "Cuatro pasos. Un trimestre.",
+      steps: [
+        {
+          title: "Llamada de descubrimiento (15 min)",
+          text: "Te escuchamos. Nos cuentas dónde está el problema. Lo asociamos a una solución que ya tenemos en marcha.",
+        },
+        {
+          title: "Identifica tu caso de uso de mayor valor",
+          text: "De entre nuestras once soluciones, encontramos la que encaja hoy con tu negocio.",
+        },
+        {
+          title: "Piloto: un equipo, un trimestre",
+          text: "Lo ponemos en marcha en un ámbito acotado. Tus datos siguen siendo tuyos: gobernados, seguros y auditables.",
+        },
+        {
+          title: "Mide antes de comprometerte",
+          text: "Ves el retorno de la inversión antes de ampliarlo.",
+        },
+      ],
+      cta: "Reserva tu llamada de descubrimiento",
+      call: {
+        title: "Llamada de descubrimiento",
+        lines: ["¿Dónde está el problema?", "¿Qué haces hoy?"],
+        mapped: "Asociado a una solución nuestra",
       },
-      "job-progress": {
-        title:
-          "Visibilidad del avance de trabajos, listas de materiales y rutas",
-        problem:
-          "Cuando un cliente pregunta cuándo estará listo un pedido, o si una parte puede enviarse antes, hace falta algo más que una suposición o un paseo por la fábrica.",
-        solution:
-          "Te ayudamos a establecer un control práctico sobre las listas de materiales y las rutas de producción, para que tu equipo vea cómo avanzan los trabajos y la dirección pueda decidir con información sobre cuellos de botella, capacidad e inversión en equipos.",
-        control:
-          "La empresa elige qué listas de materiales, pasos de ruta y actualizaciones registrar.",
+      pick: {
+        options: [
+          "Reescribir papeles",
+          "Revisión de facturas de proveedores",
+          "Redacción de ofertas",
+        ],
+        chosen: 1,
+        foot: "Lo que mejor encaja hoy con tu negocio",
       },
-      "order-entry": {
-        title: "Entrada de pedidos desde el correo electrónico",
-        problem:
-          "Si el personal tiene que imprimir un pedido, dividirlo en líneas y volver a teclearlo todo en varios sistemas, se pierden horas en administración.",
-        solution:
-          "Capturamos los datos del pedido a partir de los documentos que llegan y los llevamos al flujo adecuado, para que tu gente se centre en las excepciones y en comprobar el resultado.",
-        control:
-          "Los pedidos de rutina avanzan con menos reintroducción de datos. Los pedidos poco claros o inusuales pasan a una persona.",
+      pilot: {
+        label: "Ámbito del piloto",
+        chips: ["Un equipo", "Un trimestre", "Tus datos siguen siendo tuyos"],
+        foot: "Gobernado · seguro · auditable",
       },
-      "call-follow-through": {
-        title: "Seguimiento de las llamadas de clientes",
-        problem:
-          "Cuando un cliente llama y no obtiene respuesta, la llamada puede olvidarse, y la frustración crece con cada nuevo intento.",
-        solution:
-          "Ayudamos a identificar a quien llama con los registros de clientes que ya utilizas y guardamos un historial trazable de cada llamada entrante, su resultado y cualquier seguimiento.",
-        control:
-          "El personal atiende las conversaciones complejas, delicadas o comerciales y decide la resolución.",
+      measure: {
+        before: "Antes",
+        after: "Después",
+        foot: "Medida acordada: tiempo por factura",
       },
-      "shop-floor-capture": {
-        title: "Captura precisa de información en planta",
-        problem:
-          "Cuando los operarios copian a mano números de pieza, números de serie o datos de máquina, los errores dificultan identificar y seguir los artículos.",
-        solution:
-          "Capturamos esa información de documentos y etiquetas de equipos y la pasamos a tus sistemas, con comprobaciones donde la precisión importa.",
-        control:
-          "Los identificadores de alto impacto pueden requerir confirmación antes de registrarse en un sistema.",
-      },
-      "technical-answers": {
-        title: "Respuestas rápidas desde manuales y documentación técnica",
-        problem:
-          "Cuando los técnicos tienen que rebuscar en manuales, o interrumpir a compañeros con experiencia, para resolver un problema, el servicio se ralentiza y el conocimiento se convierte en cuello de botella.",
-        solution:
-          "Hacemos que la información técnica aprobada sea más fácil de consultar con lenguaje cotidiano, para que los técnicos encuentren antes respuestas y documentos de origen.",
-        control:
-          "Las respuestas se basan en tus documentos aprobados y los técnicos pueden consultar la fuente citada.",
-      },
-      "incoming-goods": {
-        title: "Mercancía entrante y revisión de documentos de proveedores",
-        problem:
-          "Cuando las entregas llegan con pedidos de compra, albaranes y certificados que revisar, el papeleo puede retrasar la recepción y ocultar datos que faltan.",
-        solution:
-          "Reunimos esos documentos, señalamos las discrepancias y ayudamos al personal a comprobar que cada entrega tiene los registros necesarios.",
-        control:
-          "El personal de recepción y calidad decide si una discrepancia es aceptable y si el material puede liberarse.",
-      },
-      "visual-quality": {
-        title: "Controles visuales de calidad",
-        problem:
-          "Cuando cuesta detectar los defectos de forma constante, los problemas pueden avanzar por la línea antes de que nadie los vea.",
-        solution:
-          "Podemos ayudar a señalar problemas visibles a partir de imágenes del producto, para que los inspectores se centren en las piezas que merecen una mirada más atenta y registren lo que encuentran.",
-        control:
-          "El sistema destaca posibles problemas. Los inspectores toman la decisión de calidad.",
-      },
-      "dispatch-verification": {
-        title: "Verificación de preparación de pedidos y expedición",
-        problem:
-          "Cuando se envía el artículo o la cantidad equivocados, el coste incluye repetir el trabajo, el transporte y un cliente que tiene que volver a esperar.",
-        solution:
-          "Ayudamos a comprobar los artículos preparados y sus etiquetas con el pedido antes de la expedición, para que el personal detecte las diferencias antes de que salga la mercancía.",
-        control:
-          "El personal resuelve las excepciones y confirma las sustituciones o los envíos parciales.",
-      },
-      "nonconformance-triage": {
-        title: "Clasificación de no conformidades y garantías",
-        problem:
-          "Cuando las reclamaciones de calidad llegan por distintos canales, es difícil saber quién se ocupa de cada una o si el mismo problema se repite.",
-        solution:
-          "Registramos y derivamos los casos de forma coherente, los conectamos con la información de pedidos y productos que corresponda y hacemos más fácil detectar los problemas recurrentes.",
-        control:
-          "El personal de calidad y servicio determina la causa, la acción correctiva y el resultado de la garantía.",
-      },
-      "shift-handovers": {
-        title: "Relevos de turno y acciones pendientes",
-        problem:
-          "Cuando datos importantes quedan en conversaciones con prisa o en notas escritas a mano, el turno siguiente puede pasar por alto un retraso, una avería o una acción prometida.",
-        solution:
-          "Convertimos la información del relevo en un registro compartido con responsables claros, para que las incidencias abiertas pasen de un turno a otro.",
-        control:
-          "Quien entrega el turno revisa el resumen y asigna responsables.",
-      },
-      "engineering-changes": {
-        title: "Comunicación de cambios de ingeniería",
-        problem:
-          "Cuando cambia un plano o una especificación, la última versión no siempre llega a todas las personas que la necesitan.",
-        solution:
-          "Ayudamos a distribuir el cambio aprobado, a registrar quién lo ha confirmado y a que los equipos encuentren fácilmente las instrucciones vigentes del trabajo.",
-        control: "Ingeniería aprueba el cambio y decide su impacto.",
-      },
-      "invoice-checking": {
-        title: "Revisión de facturas de proveedores",
-        problem:
-          "Cuando llegan facturas de proveedores, el personal suele tener que repasar las cuentas y comparar a mano cada línea con el pedido original.",
-        solution:
-          "Capturamos la factura, comprobamos que las cifras cuadran y comparamos sus artículos con tus registros de compras, señalando las discrepancias para su revisión antes de que avancen por cuentas a pagar.",
-        control:
-          "El personal autorizado resuelve las discrepancias y aprueba el pago.",
-      },
-      "order-portal": {
-        title: "Portal de visibilidad de pedidos para clientes y proveedores",
-        problem:
-          "Los clientes y proveedores no deberían tener que llamar ni enviar correos de seguimiento solo para saber qué pasa con un pedido o un pago.",
-        solution:
-          "Ofrecemos a cada tercero un portal seguro con el estado relevante y los siguientes pasos, para reducir las consultas rutinarias y que tu equipo se centre en lo que diferencia a tu negocio.",
-        control:
-          "Tus equipos deciden a qué registros y campos accede cada cliente o proveedor.",
-      },
+    },
+    statement: {
+      title: "Empezamos por tu proceso, no por la tecnología.",
+      text: "ProcessSpark nace de la experiencia directa en fabricación, ingeniería de procesos e informática. Conocemos los retrasos, el papeleo y las preguntas que solo una persona sabe responder. Hoy trabajamos con fabricantes, empresas de mantenimiento de equipos y asesorías.",
     },
   },
+  problemsPage: {
+    seo: {
+      title: "Qué resolvemos: problemas y soluciones",
+      description:
+        "Los problemas que más oímos, con las palabras de los clientes, cada uno con la solución que lo resuelve y los sectores donde aparece.",
+    },
+    heading: "Qué resolvemos",
+    summary:
+      "Los problemas que más oímos, con las palabras de los clientes. Cada uno muestra qué cambia, la solución que hay detrás y dónde aparece.",
+    filterLabel: "Mostrar problemas de",
+    filterAll: "Todos los sectores",
+    liveAll: "Mostrando los {count} problemas",
+    liveIndustry: "Mostrando {count} problemas de {industry}",
+    notListedHeading: "¿No está en la lista?",
+    notListedText:
+      "Si trabajas con Excel, Word y papel, tu problema probablemente se parece a alguno de estos. Cuéntanos el tuyo.",
+    ctaHeading: "¿Cuál de estos le cuesta más tiempo a tu equipo?",
+    ctaText:
+      "Elige uno. Veremos cómo funciona hoy y cuál podría ser un primer paso.",
+  },
+  industriesPage: {
+    seo: {
+      title: "Sectores con los que trabajamos",
+      description:
+        "Fabricación e industria, mantenimiento de equipos y asesorías: los problemas que resolvemos en cada sector y cómo encajan nuestras soluciones.",
+    },
+    heading: "Sectores con los que trabajamos",
+    summary:
+      "Empresas medianas que siguen haciendo trabajo importante con Excel, Word y papel. Elige el tuyo y empieza por sus problemas.",
+    seeIndustry: "Ver {name}",
+    tableHeading: "Cómo se ve en cada sector",
+    tableIntro:
+      "Las mismas soluciones, con un ejemplo para cada sector donde las ofrecemos.",
+    tableSolution: "Solución",
+    notOffered: "No se ofrece",
+    notListed:
+      "¿No está en la lista? Si trabajas con Excel, Word y papel, los problemas probablemente son los mismos. Habla con nosotros.",
+    ctaHeading: "¿Quieres ver cómo funcionaría en tu caso?",
+  },
+  industryPage: {
+    breadcrumbLabel: "Ruta de navegación",
+    breadcrumbRoot: "Sectores",
+    familiarHeading: "¿Te suena?",
+    productsHeading: "Cómo se ve en {industry}",
+    productsIntro: "Las soluciones que ofrecemos aquí, las principales primero.",
+    seeSolution: "Ver la solución",
+    moreHeading: "Más problemas que resolvemos en {industry}",
+    startHeading: "Cómo empezamos",
+    startText:
+      "Empezamos con un proceso como piloto, construido alrededor de tus sistemas actuales, y tu gente sigue al mando. Después del piloto también podemos formar a tu equipo y mantener la solución en marcha.",
+    contactHeading: "Cuéntanos tu negocio",
+    contactText:
+      "Cuéntanos un proceso que genere retrasos, trabajo repetido o preguntas sin respuesta. Te sugeriremos un primer paso.",
+    othersHeading: "Otros sectores",
+  },
+  productPage: {
+    breadcrumbLabel: "Ruta de navegación",
+    breadcrumbRoot: "Soluciones",
+    illustrative: "Ejemplo ilustrativo",
+    familiarHeading: "¿Te suena?",
+    whatItDoesHeading: "Qué hace",
+    controlHeading: "Quién decide",
+    industriesHeading: "En tu sector",
+    firstStepHeading: "Tu primer paso",
+    whoForHeading: "Para quién es",
+    goodToKnowHeading: "Conviene saber",
+    worksWithHeading: "Funciona con",
+    contactHeading: "Habla con nosotros sobre {name}",
+    contactText:
+      "Cuéntanos el proceso con el que empezarías. Te sugeriremos un primer paso.",
+    othersHeading: "Otras soluciones de este grupo",
+  },
   resourcesPage: {
-    title: "Downloads",
+    title: "Descargas",
     description:
       "Guías PDF y recursos prácticos para clientes de ProcessSpark.",
     intro:
@@ -758,6 +748,70 @@ export const es: Dictionary = {
     },
   },
   media: {
+    "industry-manufacturing": {
+      label: "Planta de producción con papeles en la mano",
+      alt: "Un trabajador en una planta de producción comprueba los datos de un certificado con un registro",
+    },
+    "industry-equipment-maintenance": {
+      label: "Técnico en una instalación con el móvil",
+      alt: "Técnico de servicio con un polímetro revisando un parte de trabajo junto a una caldera",
+    },
+    "industry-accounting-firms": {
+      label: "Oficina de un despacho, llegan documentos de clientes",
+      alt: "La oficina de un despacho contable con documentos de clientes que llegan en pantalla y en papel",
+    },
+    "product-digitise-paperwork": {
+      label: "Registro en papel junto a los mismos campos en un formulario móvil",
+      alt: "Registro de inspección en papel, ilustrativo, con sus campos manuscritos resaltados junto a un panel con la información capturada",
+    },
+    "product-talk-to-your-data": {
+      label: "Un responsable pregunta a un informe",
+      alt: "Panel ilustrativo con cifras de ejemplo al que un responsable puede hacer preguntas",
+    },
+    "product-talk-to-your-documents": {
+      label: "Ingeniero con una tableta junto a una máquina y sus manuales",
+      alt: "Un ingeniero de mantenimiento hace una pregunta en una tableta delante de una máquina",
+    },
+    "product-employee-service-desk": {
+      label: "Un empleado hace una pregunta sobre una política",
+      alt: "Un equipo trabajando con un flujo de trabajo compartido en pantalla",
+    },
+    "product-customer-portal": {
+      label: "Un cliente consulta un pedido y sube un documento",
+      alt: "Gestión ilustrativa de correos y solicitudes de clientes",
+    },
+    "product-supplier-portal": {
+      label: "Un proveedor comprueba si ha llegado una factura",
+      alt: "Una zona de recepción donde se comprueban las entregas y los documentos de los proveedores",
+    },
+    "product-contractor-portal": {
+      label: "Subcontratista en obra con el móvil",
+      alt: "Un subcontratista en obra con el móvil, con los documentos comprobados antes de empezar",
+    },
+    "product-invoice-bookkeeping": {
+      label: "Factura de proveedor junto a su pedido de compra",
+      alt: "Factura de proveedor ilustrativa con los campos leídos, lista para cotejar con un pedido",
+    },
+    "product-estimating-bids": {
+      label: "Quien presupuesta compara una consulta con trabajos anteriores",
+      alt: "Una persona que presupuesta compara una consulta nueva con trabajos anteriores",
+    },
+    "product-quotes-rfqs": {
+      label: "Correo de RFQ junto a una oferta borrador",
+      alt: "Un correo de RFQ junto a una oferta borrador calculada con una tarifa",
+    },
+    "product-sensors-iot": {
+      label: "Sensor en una bomba y lectura en directo en el móvil",
+      alt: "Un sensor instalado en una bomba y una lectura en directo en un móvil",
+    },
+    "nav-first-project": {
+      label: "Un mapa de proceso impreso sobre una mesa",
+      alt: "Dos personas señalan un paso de un mapa de proceso impreso",
+    },
+    "nav-guides": {
+      label: "Páginas de guías impresas sobre una mesa",
+      alt: "Páginas de guías impresas sobre una mesa",
+    },
     "pain-operations": {
       label: "Equipo bajo presión en una planta con mucha actividad",
       alt: "Responsable de almacén comprobando existencias con un portapapeles junto a estanterías de palés muy altas",

@@ -78,6 +78,7 @@ export default async function ResourcesPage({
         copy={dict.header}
         switcherCopy={dict.languageSwitcher}
         brandLabel={dict.common.brandLabel}
+        mediaCopy={dict.media}
         page="resources"
       />
       <main id="main" className="res-page">

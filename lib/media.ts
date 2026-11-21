@@ -184,6 +184,100 @@ export const media = {
       "Two or three people at a workbench or desk talking through a process, warm and unposed.",
     src: "/images/workflow.webp",
   },
+  // Industries --------------------------------------------------------------
+  "industry-manufacturing": {
+    kind: "image",
+    ratio: R32,
+    brief: "Production floor, paperwork in hand.",
+    src: "/images/hero.webp",
+  },
+  "industry-equipment-maintenance": {
+    kind: "image",
+    ratio: R32,
+    brief: "Technician at plant (boiler, chiller, pump), phone in hand.",
+    src: "/images/boiler-room.webp",
+  },
+  "industry-accounting-firms": {
+    kind: "image",
+    ratio: R32,
+    brief:
+      "Small firm office, client documents arriving on screen and on paper.",
+  },
+  // Products ----------------------------------------------------------------
+  "product-digitise-paperwork": {
+    kind: "image",
+    ratio: R32,
+    brief: "A paper record beside the same fields captured on a phone form.",
+    src: "/images/paper-form-fields.webp",
+  },
+  "product-talk-to-your-data": {
+    kind: "image",
+    ratio: R32,
+    brief: "A manager asking a question of a spreadsheet and seeing the figures.",
+    src: "/images/dashboard.webp",
+  },
+  "product-talk-to-your-documents": {
+    kind: "image",
+    ratio: R32,
+    brief: "Maintenance engineer with a tablet next to a machine and its manuals.",
+    src: "/images/error-code-machine.webp",
+  },
+  "product-employee-service-desk": {
+    kind: "image",
+    ratio: R32,
+    brief: "Staff member asking a policy question and getting the answer.",
+    src: "/images/workflow.webp",
+  },
+  "product-customer-portal": {
+    kind: "image",
+    ratio: R32,
+    brief: "Customer checking an order and uploading a document.",
+    src: "/images/email-manager-wide.webp",
+  },
+  "product-supplier-portal": {
+    kind: "image",
+    ratio: R32,
+    brief: "Supplier checking whether an invoice was received.",
+    src: "/images/warehouse-manager.webp",
+  },
+  "product-contractor-portal": {
+    kind: "image",
+    ratio: R32,
+    brief: "Contractor on site with a phone, documents checked before work starts.",
+  },
+  "product-invoice-bookkeeping": {
+    kind: "image",
+    ratio: R32,
+    brief: "Supplier invoice beside the purchase order it is checked against.",
+    src: "/images/document-processing.webp",
+  },
+  "product-estimating-bids": {
+    kind: "image",
+    ratio: R32,
+    brief: "An estimator comparing a new enquiry with past jobs.",
+  },
+  "product-quotes-rfqs": {
+    kind: "image",
+    ratio: R32,
+    brief: "An RFQ email beside a draft quote built from the price list.",
+  },
+  "product-sensors-iot": {
+    kind: "image",
+    ratio: R32,
+    brief: "Sensor on a pump or motor and a simple live reading on a phone.",
+  },
+  // Menu cards --------------------------------------------------------------
+  "nav-first-project": {
+    kind: "image",
+    ratio: R32,
+    brief:
+      "One printed process map on a table, two people pointing at one step. No screens, no figures.",
+  },
+  "nav-guides": {
+    kind: "image",
+    ratio: R32,
+    brief: "Printed guide pages on a desk.",
+  },
 } as const satisfies Record<string, MediaItem>;
 
 export type MediaSlot = keyof typeof media;

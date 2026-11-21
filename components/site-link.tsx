@@ -3,7 +3,14 @@ import type { ComponentProps } from "react";
 import { localePath, type Locale } from "@/lib/i18n/config";
 
 /** Which page renders the header or footer. Decides where anchors point. */
-export type PageId = "home" | "about" | "resources" | "solutions" | "privacy";
+export type PageId =
+  | "home"
+  | "about"
+  | "resources"
+  | "solutions"
+  | "industries"
+  | "problems"
+  | "privacy";
 
 /**
  * Hash links ("#contact") only work on the landing page. Elsewhere they point
@@ -24,4 +31,9 @@ export function SiteLink({
 }: ComponentProps<"a"> & { href: string }) {
   if (href.startsWith("#")) return <a href={href} {...props} />;
   return <Link href={href} {...props} />;
+}
+
+/** Locale-less path of a page's root, used for the language switcher and the current-page check. */
+export function pagePath(page: PageId): string {
+  return page === "home" ? "/" : `/${page}`;
 }

@@ -1,16 +1,24 @@
-import { capabilities } from "@/lib/capabilities";
-import { teams } from "@/lib/teams";
+import {
+  industries,
+  mainProblem,
+  problem,
+  problemIds,
+  problemsForProduct,
+  productsByGroup,
+  industriesForProduct,
+} from "@/lib/catalogue";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { absoluteUrl, readyPhones, site } from "@/lib/site";
-import { solutionsCopy } from "@/lib/solutions-copy";
 
 /**
  * Plain-text summary for AI assistants and answer engines (llms.txt
- * convention). Generated from the same content the page renders.
+ * convention). Generated from the same catalogue the pages render, so every
+ * URL in it is also in the sitemap.
  */
 export function buildLlmsTxt(locale: Locale): string {
   const dict = getDictionary(locale);
   const { seo } = dict;
+  const url = (path: string) => absoluteUrl(localePath(locale, path));
   const lines = [
     `# ${site.name}`,
     "",
@@ -20,30 +28,55 @@ export function buildLlmsTxt(locale: Locale): string {
     "",
     `## ${seo.llms.whoFor}`,
     "",
-    ...seo.sectors.map((sector) => `- ${sector}`),
+    ...industries(locale).map(
+      (i) => `- [${i.copy.name}](${i.href ? absoluteUrl(i.href) : ""}): ${i.copy.whoFor}`,
+    ),
     "",
-    `## ${dict.solutionsPage.eyebrow}`,
+    `## ${seo.llms.problems}`,
     "",
-    ...teams[locale].flatMap((team) => [
-      `### [${team.label}](${absoluteUrl(localePath(locale, `/solutions/${team.id}`))})`,
-      team.problem,
-      ...team.cases.map((item) => `- **${item.title}**: ${item.text}`),
+    ...problemIds.map((id) => {
+      const item = problem(locale, id);
+      const main = productsByGroup(locale)
+        .flatMap((g) => g.products)
+        .find((p) => p.id === item.products[0])!;
+      return `- ${item.statement} [${main.name}](${absoluteUrl(main.href)})`;
+    }),
+    "",
+    `## ${seo.llms.solutions}`,
+    "",
+    ...productsByGroup(locale).flatMap((group) => [
+      `### ${group.name}`,
+      "",
+      ...group.products.flatMap((item) => {
+        const others = problemsForProduct(locale, item.id).filter(
+          (p) => p.id !== mainProblem(locale, item.id).id,
+        );
+        const where = industriesForProduct(locale, item.id).map(
+          (e) => e.industry.copy.shortName,
+        );
+        return [
+          `- [${item.name}](${absoluteUrl(item.href)}): ${item.oneLine}`,
+          `  - ${dict.solutionsPage.problemLabel}: ${mainProblem(locale, item.id).statement}`,
+          ...others.map((p) => `  - ${p.statement}`),
+          ...(where.length
+            ? [`  - ${dict.solutionsPage.industriesLabel}: ${where.join(", ")}`]
+            : []),
+        ];
+      }),
       "",
     ]),
-    `## ${solutionsCopy[locale].capabilitiesHeading}`,
+    `## ${seo.llms.how}`,
     "",
-    ...capabilities[locale].flatMap((item) => [
-      `### [${item.title}](${absoluteUrl(`${localePath(locale, "/solutions")}#${item.id}`)})`,
-      `${item.headline} ${item.text}`,
-      ...item.points.map((point) => `- ${point}`),
-      "",
-    ]),
+    seo.llms.howText,
+    "",
     `## ${seo.llms.links}`,
     "",
-    `- [${seo.llms.home}](${absoluteUrl(localePath(locale))}): ${seo.llms.homeDescription}`,
-    `- [${dict.header.solutions}](${absoluteUrl(localePath(locale, "/solutions"))}): ${dict.solutionsPage.description}`,
-    `- [${dict.aboutPage.title}](${absoluteUrl(localePath(locale, "/about"))}): ${dict.footer.lead}`,
-    `- [${seo.llms.contactLink}](${absoluteUrl(`${localePath(locale)}#contact`)}): ${seo.llms.contactDescription}`,
+    `- [${seo.llms.home}](${url("/")}): ${seo.llms.homeDescription}`,
+    `- [${dict.problemsPage.heading}](${url("/problems")}): ${dict.problemsPage.seo.description}`,
+    `- [${dict.industriesPage.heading}](${url("/industries")}): ${dict.industriesPage.seo.description}`,
+    `- [${dict.header.solutions}](${url("/solutions")}): ${dict.solutionsPage.seo.description}`,
+    `- [${dict.aboutPage.title}](${url("/about")}): ${dict.footer.lead}`,
+    `- [${seo.llms.contactLink}](${url("/")}#contact): ${seo.llms.contactDescription}`,
     `- [${seo.llms.sitemap}](${absoluteUrl("/sitemap.xml")})`,
     "",
     `## ${seo.llms.contact}`,

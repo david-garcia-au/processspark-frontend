@@ -1,26 +1,34 @@
 import type { CSSProperties } from "react";
 import {
+  ChartColumn,
   ClipboardCheck,
   FileText,
-  Inbox,
+  Keyboard,
   ReceiptText,
   Search,
-  Users,
   type LucideIcon,
 } from "lucide-react";
+import { heroTags, type IconName } from "@/lib/catalogue";
 import type { Locale } from "@/lib/i18n/config";
-
+const icons: Partial<Record<IconName, LucideIcon>> = {
+  keyboard: Keyboard,
+  "clipboard-check": ClipboardCheck,
+  "chart-column": ChartColumn,
+  search: Search,
+  "receipt-text": ReceiptText,
+  "file-text": FileText,
+};
 /**
- * The tasks ProcessSpark takes off a team's plate, scattered over the hero
- * like loose slips of paper. Scrolling straightens them into an ordered
- * column on the grid (app/home.css): disorder becoming a system.
+ * Loose slips scattered over the hero. Scrolling straightens them into an
+ * ordered column on the grid (app/home.css): disorder becoming a system.
+ * Text and icons come from the catalogue (`heroTags`, six, in that order);
+ * the slots below keep the positions of the original production component.
  *
- * sx/sy: scattered position, % of the hero. ex/ey: ordered position. r: tilt.
+ * tag: index into the six catalogue tags. sx/sy: scattered position, % of the
+ * hero. ex/ey: ordered position. r: tilt.
  */
-const tasks: {
-  icon: LucideIcon;
-  en: string;
-  es: string;
+const slots: {
+  tag: number;
   sx: number;
   sy: number;
   ex: number;
@@ -29,104 +37,45 @@ const tasks: {
   /** Phone layout: same idea, inside the top of a narrow hero. */
   m: [sx: number, sy: number, ex: number, ey: number, r: number];
 }[] = [
-  {
-    icon: FileText,
-    en: "Automate quote generation",
-    es: "Automatiza la preparación de presupuestos",
-    sx: 7,
-    sy: 9,
-    ex: 66,
-    ey: 7,
-    r: -5,
-    m: [5, 3, 5, 4, -4],
-  },
-  {
-    icon: Inbox,
-    en: "Route incoming requests",
-    es: "Enruta y controla tus correos entrantes",
-    sx: 41,
-    sy: 5,
-    ex: 66,
-    ey: 15.5,
-    r: 4,
-    m: [14, 10.5, 5, 11.5, 3],
-  },
-  {
-    icon: Search,
-    en: "Find technical answers without searching all your documents",
-    es: "Encuentra respuestas técnicas sin buscar en todos tus documentos",
-    sx: 50,
-    sy: 27,
-    ex: 66,
-    ey: 24,
-    r: -3,
-    m: [0, 0, 0, 0, 0],
-  },
-  {
-    icon: ReceiptText,
-    en: "Simplify invoice checks",
-    es: "Simplifica la revisión de facturas",
-    sx: 16,
-    sy: 30,
-    ex: 66,
-    ey: 35,
-    r: 6,
-    m: [9, 18, 5, 19, 5],
-  },
-  {
-    icon: ClipboardCheck,
-    en: "Replace paper with electronic forms",
-    es: "Sustituye el papel por formularios electrónicos",
-    sx: 75,
-    sy: 15,
-    ex: 66,
-    ey: 43.5,
-    r: -6,
-    m: [10, 25.5, 5, 26.5, -5],
-  },
-  {
-    icon: Users,
-    en: "Self-service portals for customers and suppliers",
-    es: "Portales web para proveedores y clientes",
-    sx: 68,
-    sy: 3,
-    ex: 66,
-    ey: 52,
-    r: 5,
-    m: [13, 33, 5, 34, 4],
-  },
+  { tag: 5, sx: 7, sy: 9, ex: 4, ey: 10, r: -5, m: [5, 2, 5, 2, -4] },
+  { tag: 0, sx: 41, sy: 5, ex: 35, ey: 10, r: 4, m: [14, 19, 5, 19, 3] },
+  { tag: 3, sx: 44, sy: 33, ex: 66, ey: 10, r: -3, m: [0, 0, 0, 0, 0] },
+  { tag: 4, sx: 16, sy: 40, ex: 4, ey: 55, r: 6, m: [9, 36, 5, 36, 5] },
+  { tag: 1, sx: 66, sy: 38, ex: 35, ey: 55, r: -6, m: [10, 53, 5, 53, -5] },
+  { tag: 2, sx: 68, sy: 3, ex: 66, ey: 55, r: 5, m: [13, 70, 5, 70, 4] },
 ];
-
 export function HeroTasks({ lang }: { lang: Locale }) {
+  const tags = heroTags(lang);
   return (
-    <ul
-      className="hero-tasks"
-      aria-label={lang === "en" ? "What we take care of" : "De qué nos ocupamos"}
-    >
-      {tasks.map(({ icon: Icon, ...t }) => (
-        <li
-          key={t.en}
-          style={
-            {
-              "--dsx": t.sx,
-              "--dsy": t.sy,
-              "--dex": t.ex,
-              "--dey": t.ey,
-              "--dr": `${t.r}deg`,
-              "--msx": t.m[0],
-              "--msy": t.m[1],
-              "--mex": t.m[2],
-              "--mey": t.m[3],
-              "--mr": `${t.m[4]}deg`,
-            } as CSSProperties
-          }
-        >
-          <span className="hero-task-icon" aria-hidden="true">
-            <Icon size={16} />
-          </span>
-          {t[lang]}
-        </li>
-      ))}
+    <ul className="hero-tasks" aria-hidden="true">
+      {slots.map((t) => {
+        const { icon, text } = tags[t.tag];
+        const Icon = icons[icon];
+        return (
+          <li
+            key={t.tag}
+            style={
+              {
+                "--dsx": t.sx,
+                "--dsy": t.sy,
+                "--dex": t.ex,
+                "--dey": t.ey,
+                "--dr": `${t.r}deg`,
+                "--msx": t.m[0],
+                "--msy": t.m[1],
+                "--mex": t.m[2],
+                "--mey": t.m[3],
+                "--mr": `${t.m[4]}deg`,
+              } as CSSProperties
+            }
+          >
+            <span className="hero-task-icon" aria-hidden="true">
+              {Icon ? <Icon size={16} /> : null}
+            </span>
+            {text}
+          </li>
+        );
+      })}
     </ul>
   );
 }

@@ -1,25 +1,25 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
+import { CollectionStructuredData } from "@/components/structured-data";
 import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { sectionHref } from "@/components/site-link";
-import { CapabilitySections } from "@/components/capability-sections";
-import { SolutionCards } from "@/components/solution-cards";
-import { solutionsCopy } from "@/lib/solutions-copy";
-import { languageAlternates } from "@/lib/alternates";
+import { SiteLink } from "@/components/site-link";
 import {
-  getDictionary,
-  hasLocale,
-  localePath,
-  locales,
-  ogLocale,
-} from "@/lib/i18n";
-import { site } from "@/lib/site";
+  anchorAliases,
+  comparisons,
+  industriesForProduct,
+  mainProblem,
+  productsByControl,
+  productsByGroup,
+} from "@/lib/catalogue";
+import { getDictionary, hasLocale, localePath, locales } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/page-metadata";
 
 export const dynamicParams = false;
 
-const solutionsPath = "/solutions";
+const path = "/solutions";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -31,36 +31,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
-  const { solutionsPage } = getDictionary(lang);
-  const url = localePath(lang, solutionsPath);
-  const locale = ogLocale[lang];
-  const { openGraph: parentOg, twitter: parentTwitter } = await parent;
-
-  return {
-    title: { absolute: solutionsPage.title },
-    description: solutionsPage.description,
-    alternates: {
-      canonical: url,
-      languages: languageAlternates(solutionsPath),
-    },
-    openGraph: {
-      title: solutionsPage.title,
-      description: solutionsPage.description,
-      url,
-      type: "website",
-      siteName: site.name,
-      ...(locale ? { locale } : {}),
-      ...(parentOg?.images?.length ? { images: parentOg.images } : {}),
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: solutionsPage.title,
-      description: solutionsPage.description,
-      ...(parentTwitter?.images?.length
-        ? { images: parentTwitter.images }
-        : {}),
-    },
-  };
+  const { seo } = getDictionary(lang).solutionsPage;
+  return pageMetadata(parent, { lang, path, ...seo });
 }
 
 export default async function SolutionsPage({
@@ -70,10 +42,15 @@ export default async function SolutionsPage({
   if (!hasLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const copy = dict.solutionsPage;
-  const contactHref = sectionHref(lang, "solutions", "#contact");
-
+  const aliases = anchorAliases();
+  const groups = productsByGroup(lang);
+  const alias = (key: string) =>
+    (aliases[key] ?? []).map((id) => (
+      <span key={id} id={id} className="anchor-alias" />
+    ));
   return (
     <>
+      <CollectionStructuredData lang={lang} dict={dict} kind="solutions" />
       <a className="skip-link" href="#main">
         {dict.common.skipLink}
       </a>
@@ -82,36 +59,144 @@ export default async function SolutionsPage({
         copy={dict.header}
         switcherCopy={dict.languageSwitcher}
         brandLabel={dict.common.brandLabel}
+        mediaCopy={dict.media}
         page="solutions"
       />
-      <main id="main" className="sol-page">
+      <main id="main" className="sol-page solutions-index">
         <section
           className="home-hero about-hero"
           aria-labelledby="solutions-title"
         >
           <div className="home-hero-glow" aria-hidden="true" />
           <div className="shell home-hero-inner">
-            <h1 id="solutions-title">
-              <span>{copy.heading.line1}</span>{" "}
-              <span>{copy.heading.line2}</span>
-            </h1>
+            <h1 id="solutions-title">{copy.heading}</h1>
             <div className="home-hero-side">
-              <p>{solutionsCopy[lang].summary}</p>
+              <p>{copy.summary}</p>
             </div>
           </div>
         </section>
-        <SolutionCards
-          lang={lang}
-          bands={copy.bands}
-          button={dict.contact.discoveryButton}
-          contactHref={contactHref}
-        />
-        <CapabilitySections lang={lang} />
+        {alias("groups")}
+        <nav className="shell sol-nav" aria-label={copy.groupNavLabel}>
+          <ul>
+            {groups.map((group) => (
+              <li key={group.id}>
+                <a href={`#${group.id}`}>{group.name}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {groups.map((group) => (
+          <section
+            key={group.id}
+            id={group.id}
+            className="shell cat-section"
+            aria-labelledby={`${group.id}-title`}
+          >
+            <h2 id={`${group.id}-title`} className="cat-heading">
+              {group.name}
+            </h2>
+            <p className="cat-intro">{group.intro}</p>
+            <ul className="solution-cards">
+              {group.products.map((item) => {
+                const main = mainProblem(lang, item.id);
+                const where = industriesForProduct(lang, item.id);
+                return (
+                  <li key={item.id} id={item.id} className="solution-card">
+                    {alias(item.id)}
+                    <h3>
+                      <SiteLink href={item.href}>{item.name}</SiteLink>
+                    </h3>
+                    <p className="solution-card-problem">
+                      <span>{copy.problemLabel}</span> {main.statement}
+                    </p>
+                    <p>{item.oneLine}</p>
+                    {where.length > 0 ? (
+                      <ul className="solution-card-chips">
+                        <li className="solution-card-chips-label">
+                          {copy.industriesLabel}
+                        </li>
+                        {where.map(({ industry }) => (
+                          <li key={industry.id}>
+                            <SiteLink href={industry.href}>
+                              {industry.copy.shortName}
+                            </SiteLink>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    <SiteLink className="text-link" href={item.href}>
+                      {copy.seeSolution}
+                      <ArrowUpRight size={16} aria-hidden="true" />
+                    </SiteLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))}
+        <section
+          id="compare"
+          className="shell cat-section"
+          aria-labelledby="compare-title"
+        >
+          <h2 id="compare-title" className="cat-heading">
+            {copy.compareHeading}
+          </h2>
+          <p className="cat-intro">{copy.compareIntro}</p>
+          <div className="cat-compare">
+            {comparisons(lang).map((item) => (
+              <article key={item.id}>
+                <h3>{item.heading}</h3>
+                <p>{item.text}</p>
+                <ul>
+                  {item.products.map((p) => (
+                    <li key={p.id}>
+                      <SiteLink href={p.href}>{p.shortName}</SiteLink>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section
+          id="control"
+          className="shell cat-section"
+          aria-labelledby="control-title"
+        >
+          <h2 id="control-title" className="cat-heading">
+            {copy.controlHeading}
+          </h2>
+          <p className="cat-intro">{copy.controlIntro}</p>
+          <div className="cat-compare">
+            {productsByControl(lang).map((pattern) => (
+              <article key={pattern.id}>
+                <h3>{pattern.title}</h3>
+                <p>{pattern.text}</p>
+                <ul>
+                  {pattern.products.map((p) => (
+                    <li key={p.id}>
+                      <SiteLink href={p.href}>{p.shortName}</SiteLink>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <SiteLink
+            id="industries-link"
+            className="text-link"
+            href={localePath(lang, "/industries")}
+          >
+            {copy.industriesLink}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </SiteLink>
+        </section>
         <CtaBand
-          heading={dict.contact.signoff.ask}
-          text={dict.contact.signoff.line1}
+          heading={copy.ctaHeading}
+          text={copy.ctaText}
           button={dict.contact.discoveryButton}
-          href={contactHref}
+          href={`${localePath(lang)}#contact`}
         />
       </main>
       <Footer

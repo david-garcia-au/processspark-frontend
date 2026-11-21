@@ -1,65 +1,48 @@
 import type { MetadataRoute } from "next";
 import { languageAlternates } from "@/lib/alternates";
+import { industryIds, productIds } from "@/lib/catalogue";
 import { localePath, locales } from "@/lib/i18n";
-import { absoluteUrl, site } from "@/lib/site";
-import { teamIds } from "@/lib/teams";
+import { absoluteUrl } from "@/lib/site";
 
 // Evaluated at build time, so lastModified is the date of the latest deploy.
 const lastModified = new Date();
 
+type Entry = {
+  path: string;
+  priority: number;
+  changeFrequency: "monthly" | "yearly";
+};
+
 // Every page is listed once per locale, each entry pointing at all versions.
-export default function sitemap(): MetadataRoute.Sitemap {
-  const home = locales.map((locale) => ({
-    url: absoluteUrl(localePath(locale)),
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 1,
-    alternates: { languages: languageAlternates("/") },
-    images: site.images.map((image) => absoluteUrl(image.path)),
-  }));
-  const about = locales.map((locale) => ({
-    url: absoluteUrl(localePath(locale, "/about")),
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-    alternates: { languages: languageAlternates("/about") },
-  }));
-  const resources = locales.map((locale) => ({
-    url: absoluteUrl(localePath(locale, "/resources")),
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-    alternates: { languages: languageAlternates("/resources") },
-  }));
-  const solutions = locales.map((locale) => ({
-    url: absoluteUrl(localePath(locale, "/solutions")),
-    lastModified,
-    changeFrequency: "monthly" as const,
+// The catalogue pages come from the same ids the pages are generated from.
+const pages: Entry[] = [
+  { path: "/", priority: 1, changeFrequency: "monthly" },
+  { path: "/problems", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries", priority: 0.8, changeFrequency: "monthly" },
+  ...industryIds.map((id) => ({
+    path: `/industries/${id}`,
     priority: 0.7,
-    alternates: { languages: languageAlternates("/solutions") },
-  }));
-  const privacy = locales.map((locale) => ({
-    url: absoluteUrl(localePath(locale, "/privacy")),
-    lastModified,
-    changeFrequency: "yearly" as const,
-    priority: 0.3,
-    alternates: { languages: languageAlternates("/privacy") },
-  }));
-  const teamPages = teamIds.flatMap((id) =>
+    changeFrequency: "monthly" as const,
+  })),
+  { path: "/solutions", priority: 0.8, changeFrequency: "monthly" },
+  ...productIds.map((id) => ({
+    path: `/solutions/${id}`,
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+  })),
+  { path: "/about", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/resources", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return pages.flatMap((page) =>
     locales.map((locale) => ({
-      url: absoluteUrl(localePath(locale, `/solutions/${id}`)),
+      url: absoluteUrl(localePath(locale, page.path === "/" ? "/" : page.path)),
       lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-      alternates: { languages: languageAlternates(`/solutions/${id}`) },
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+      alternates: { languages: languageAlternates(page.path) },
     })),
   );
-  return [
-    ...home,
-    ...solutions,
-    ...teamPages,
-    ...about,
-    ...resources,
-    ...privacy,
-  ];
 }

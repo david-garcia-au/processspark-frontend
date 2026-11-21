@@ -31,6 +31,7 @@ import "../solutions-page.css";
 import "../home-rhythm.css";
 import "../resources-page.css";
 import "../consent.css";
+import "../catalogue.css";
 
 // Self-hosted at build time by next/font, no runtime request to Google.
 const sans = Manrope({

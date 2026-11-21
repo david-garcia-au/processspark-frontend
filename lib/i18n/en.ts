@@ -9,69 +9,52 @@
  */
 export const en = {
   seo: {
-    title: "ProcessSpark | Digitise Paperwork. Connect Your Data.",
+    title: "ProcessSpark | Practical fixes for Excel, Word and paper",
     description:
-      "Digitise paperwork, connect data silos and gain operational visibility. Practical solutions for manufacturing, logistics and service businesses.",
-    tagline: "Digitise paperwork. Connect data. Gain operational visibility.",
+      "Practical tools for medium-sized businesses that still run on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
+    tagline: "Start with the problem. Fix one process at a time.",
     socialTitle:
-      "Digitise your paperwork. Connect your data. See your whole operation.",
+      "Excel, Word and paper holding you back? Start with the problem.",
     socialDescription:
-      "Digitise paperwork, connect data silos and gain operational visibility. Practical solutions for manufacturing, logistics and service businesses.",
+      "Practical tools for medium-sized businesses that still run on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
     keywords: [
-      "digitise paperwork manufacturing",
-      "digital forms for manufacturing",
-      "industrial data integration",
-      "API integration manufacturing",
-      "AI-assisted document search",
-      "operational visibility",
-      "workflow automation and approvals",
-      "manufacturing operations",
-      "logistics operations",
-      "service business operations",
+      "software for manufacturers on Excel and paper",
+      "digital forms for technicians",
+      "equipment maintenance software",
+      "accounting firm client document portal",
+      "chat with your manuals and procedures",
+      "supplier portal",
+      "customer portal",
+      "contractor induction and licence checks",
+      "invoice checking against purchase orders",
+      "quote and RFQ automation",
+      "sensor monitoring and alerts",
       "document digitisation",
-      "connected business systems",
     ],
-    sectors: [
-      "Manufacturing",
-      "Engineering",
-      "Logistics",
-      "Warehousing",
-      "Industrial services",
-    ],
-    knowsAbout: [
-      "Document digitisation and digital forms",
-      "Data and API integration",
-      "AI-assisted document search",
-      "Workflow automation and approvals",
-      "Operational reporting and visibility",
-    ],
-    imageAlts: {
-      "bottle-inspection":
-        "Illustrative bottling line with a vision camera above bottles moving along a conveyor",
-      "copy-by-hand":
-        "Illustrative worker copying details from a supplier certificate into a notebook, with the same details already entered in a spreadsheet on a laptop",
-    },
     socialImage: {
-      alt: "Digitise your paperwork. Connect your data. See your whole operation.",
-      line1: "Digitise your paperwork.",
-      line2: "Connect your data.",
-      sub: "See your whole operation.",
-      tagline: "MAKE. MOVE. MAINTAIN.",
+      alt: "Start with the problem. Fix it one process at a time. For businesses still on Excel, Word and paper.",
+      line1: "Start with the problem.",
+      line2: "Fix it one process at a time.",
+      sub: "For businesses still on Excel, Word and paper.",
+      tagline: "MANUFACTURING. MAINTENANCE. ACCOUNTING.",
     },
     jsonLd: {
-      offerCatalogName: "Operational process solutions",
-      itemListName: "Operational problems ProcessSpark helps solve",
+      offerCatalogName: "ProcessSpark solutions",
+      itemListName: "Solutions ProcessSpark offers",
     },
     llms: {
       intro:
-        "ProcessSpark helps manufacturing, logistics and service businesses solve paper-heavy workflows, disconnected data and limited operational visibility. We digitise retained records, introduce digital forms, integrate existing systems and provide AI-assisted document search with source references. We implement practical improvements around existing operations, one process at a time, with minimal disruption.",
+        "ProcessSpark helps medium-sized businesses that still run important work on Excel, Word and paper. We start from the customer's problem, in their own words, and match it to one solution. Every project starts with one process as a pilot, is built around the customer's existing systems and hands anything uncertain to a person.",
       whoFor: "Who it is for",
-      kinds: "Kinds of manual work we help with",
-      useCases: "Practical use cases",
+      problems: "Problems we solve",
+      solutions: "Solutions",
+      how: "How we work",
+      howText:
+        "We start with one process as a pilot, built around your existing systems, with your people in control. After the pilot we can also train your team and keep the solution running.",
       links: "Links",
       home: "Home",
-      homeDescription: "Overview, use cases and how we work",
-      contactLink: "Find your first win",
+      homeDescription: "Start from your problem or your industry",
+      contactLink: "Book a call",
       contactDescription: "Start with one process",
       sitemap: "Sitemap",
       contact: "Contact",
@@ -80,6 +63,7 @@ export const en = {
     },
   },
   common: {
+    homeLabel: "Home",
     skipLink: "Skip to content",
     brandLabel: "ProcessSpark home",
   },
@@ -103,37 +87,33 @@ export const en = {
     solutions: "Solutions",
     resources: "Downloads",
     cta: "Find your first win",
-    demo: "Request a demo",
+    demo: "Book a call",
+    menu: {
+      solve: "What we solve",
+      solveToggle: "Show what we solve",
+      solutionsToggle: "Show solutions",
+      startProblem: "Start from the problem",
+      startIndustry: "Start from your industry",
+      allIndustries: "All industries",
+      seeAllProblems: "See every problem we solve",
+      notListed: "Not on the list? Tell us yours",
+      whichOne: "Which one do I need?",
+      allSolutions: "All solutions",
+    },
   },
   hero: {
-    eyebrow: "FOR MANUFACTURING, LOGISTICS & SERVICE BUSINESSES",
-    title: {
-      line1: "Transform the way",
-      line2: "your business operates.",
-    },
+    title: "Transform the way your business operates.",
+    subtitle: "Still running the business on Excel, Word and paper?",
     description:
       "We make AI and automation accessible to small and medium-sized businesses, with solutions that adapt to the way you work—not the other way round.",
-    ctaPrimary: "Find your first win",
-    ctaSecondary: "Request a demo",
-    reassurance:
-      "Built around your existing systems. Implemented with minimal disruption.",
+    ctaPrimary: "Find your problem",
+    ctaSecondary: "See a demo",
+    pickerLabel: "Start from your industry",
+    pickerElse: "Something else? Start from the problem",
   },
   band: {
     ariaLabel: "Industries we work with",
-    promise: {
-      line1: "Less paper. Connected\u00a0information.",
-      line2: "Clearer operations.",
-    },
-    introLabel: "FOR BUSINESSES THAT",
-    introStrong: "make. move. maintain.",
-    sectorsLabel: "Business sectors",
-    sectors: {
-      manufacturing: "Manufacturing",
-      engineering: "Engineering",
-      logistics: "Logistics",
-      warehousing: "Warehousing",
-      "industrial-services": "Industrial services",
-    },
+    sectorsLabel: "Industries we work with",
   },
   transformation: {
     hero: {
@@ -432,13 +412,14 @@ export const en = {
       category: {
         label: "What would you like to improve?",
         options: {
-          documents: "Document processing and data entry",
-          reporting: "Reporting and spreadsheets",
-          emails: "Customer emails and requests",
-          "finding-information": "Finding information in documents",
-          quotations: "Quotations and proposals",
-          quality: "Quality records and compliance",
-          service: "Service and maintenance reporting",
+          paperwork: "Paperwork, forms and data entry",
+          "data-questions": "Questions about our numbers",
+          "document-answers": "Answers from manuals, procedures and records",
+          "staff-questions": "Staff questions",
+          portals: "Portals for customers, suppliers or contractors",
+          invoices: "Invoice checking and bookkeeping",
+          quotes: "Quotes and estimates",
+          monitoring: "Equipment monitoring",
           other: "Other / Not sure yet",
         },
       },
@@ -463,11 +444,13 @@ export const en = {
   },
   footer: {
     navLabel: "Footer",
-    lead: "Practical digitisation for manufacturing, logistics and service businesses.",
+    lead: "Practical fixes for manufacturers, equipment maintenance companies and accounting firms.",
     /** Line under the logo in the footer. `lead` stays for the About page description. */
     slogan: "Less Paperwork. Clearer Processes. Better Business.",
     tagline: "Less paper. Connected information. Clearer operations.",
     exploreHeading: "Explore",
+    industriesHeading: "Industries",
+    solutionsHeading: "Solutions",
     links: {
       problems: "What we solve",
       capabilities: "What changes",
@@ -513,165 +496,172 @@ export const en = {
   // ids in lib/content.ts. `problem` shows on the front of a card, `solution`
   // and `control` on the back.
   solutionsPage: {
-    title: "Solutions by team | ProcessSpark",
-    description:
-      "Explore practical solutions for operations, engineering, sales, finance, HR and management. Start with one business problem.",
-    eyebrow: "SOLUTIONS BY TEAM",
-    heading: {
-      line1: "Find the problem",
-      line2: "you want to solve.",
+    seo: {
+      title: "Solutions for the problems we solve",
+      description:
+        "Eleven practical solutions in four groups, each starting from a problem you will recognise. See who stays in control and how it looks in your industry.",
     },
-    hint: "Hover or tap to see the solution",
-    solutionLabel: "THE SOLUTION",
-    controlLabel: "People stay in control",
-    showSolution: "Show the solution",
-    showProblem: "Show the problem",
-    /** Call-to-action bands between the team sections of /solutions, in order. */
-    bands: [
-      {
-        heading: "Which of these costs your team the most time?",
-        text: "Pick one. We will look at how it works today and what a first step could be.",
-      },
-      {
-        heading: "Not sure where to begin?",
-        text: "That is normal. We will help you choose one process to start with.",
-      },
-      {
-        heading: "Want to see how this would work for you?",
-        text: "Bring a real example and we will show you what it could look like.",
-      },
-    ],
-    groups: {
-      "sales-orders": "Sales and orders",
-      production: "Production and shop floor",
-      "supply-finance": "Supply chain and finance",
-      "quality-service": "Quality and service",
+    heading: "Solutions, one problem at a time.",
+    summary:
+      "Each solution starts from a problem you will recognise, shows who stays in control and begins with one process as a pilot.",
+    groupNavLabel: "Solution groups",
+    problemLabel: "The problem it fixes",
+    industriesLabel: "Used in",
+    seeSolution: "See the solution",
+    compareHeading: "Which one do I need?",
+    compareIntro:
+      "A few solutions are easy to confuse. Here is how they differ.",
+    controlHeading: "Who stays in control",
+    controlIntro:
+      "Every solution is built around your existing systems and hands anything uncertain to a person. There are three patterns.",
+    industriesLink: "See how it looks in each industry",
+    ctaHeading: "Which of these costs your team the most time?",
+    ctaText:
+      "Pick one. We will look at how it works today and what a first step could be.",
+  },
+  problemCard: {
+    whatChanges: "What changes",
+    seeSolution: "See {name}",
+    industries: "Comes up in",
+    allIndustries: "Every industry",
+  },
+  homePage: {
+    selector: {
+      heading: "Which of these sounds like you?",
+      intro:
+        "Pick the one that costs you most. Each card shows what changes and the solution behind it.",
+      filterLabel: "Show problems for",
+      filterAll: "All",
+      liveAll: "Showing {count} common problems",
+      liveIndustry: "Showing {count} problems for {industry}",
+      seeIndustry: "See everything for {industry}",
+      seeAll: "See all problems we solve",
     },
-    items: {
-      "rfq-follow-up": {
-        title: "RFQ follow-up and quote visibility",
-        problem:
-          "When quote requests get buried in email, good opportunities can go cold.",
-        solution:
-          "We capture and prioritise incoming RFQs, show where each quote stands, and help your team prepare responses faster.",
-        control: "A person checks and approves every quote before it is sent.",
+    pieces: {
+      heading: "How the pieces fit together",
+      intro:
+        "Capture the information once, let people ask it questions, then open a window to the people outside the business. Each group builds on the one before.",
+      seeAll: "See all solutions",
+    },
+    teamsHeading: "Where does your team need help?",
+    how: {
+      heading: "Four steps. One quarter.",
+      steps: [
+        {
+          title: "Discovery call (15 min)",
+          text: "We listen. You tell us where the pain is. We map it to a solution we already run.",
+        },
+        {
+          title: "Identify your highest-value use case",
+          text: "From our eleven solutions, we find the one that fits your business today.",
+        },
+        {
+          title: "Pilot: one team, one quarter",
+          text: "We deploy in a contained scope. Your data stays yours: governed, secure, auditable.",
+        },
+        {
+          title: "Measure before you commit",
+          text: "You see the ROI before you scale.",
+        },
+      ],
+      cta: "Book your discovery call",
+      call: {
+        title: "Discovery call",
+        lines: ["Where does it hurt?", "What do you do today?"],
+        mapped: "Mapped to a solution we run",
       },
-      "job-progress": {
-        title: "Job progress, BOM and routing visibility",
-        problem:
-          "When a customer asks when an order will be ready, or whether part of it can ship early, you need more than a guess or a walk around the factory.",
-        solution:
-          "We help you put practical control around bills of materials and production routings, so your team can see how jobs are progressing and management can make informed decisions about bottlenecks, capacity and equipment investment.",
-        control:
-          "The business chooses which BOMs, routing steps and updates to track.",
+      pick: {
+        options: ["Re-typing paper", "Supplier invoice checks", "Quote drafting"],
+        chosen: 1,
+        foot: "Best fit for your business today",
       },
-      "order-entry": {
-        title: "Order entry from email",
-        problem:
-          "If staff have to print an order, split it into lines and re-enter everything across systems, hours disappear into administration.",
-        solution:
-          "We capture order details from incoming documents and put them into the right workflow, so your people can focus on exceptions and checking the result.",
-        control:
-          "Routine orders move with less rekeying. Unclear or unusual orders go to a person.",
+      pilot: {
+        label: "Pilot scope",
+        chips: ["One team", "One quarter", "Your data stays yours"],
+        foot: "Governed · secure · auditable",
       },
-      "call-follow-through": {
-        title: "Customer call follow-through",
-        problem:
-          "When a customer calls and doesn’t get an answer, the call can be forgotten, and frustration grows with every follow-up.",
-        solution:
-          "We help identify callers against the customer records you already use and keep a traceable record of each inbound call, its outcome and any follow-up.",
-        control:
-          "Staff handle complex, sensitive or commercial conversations and decide the resolution.",
-      },
-      "shop-floor-capture": {
-        title: "Accurate capture of shop-floor information",
-        problem:
-          "When operators copy part numbers, serial numbers or machine details by hand, errors make items harder to identify and track.",
-        solution:
-          "We capture that information from documents and equipment labels and pass it into your systems, with checks where accuracy matters.",
-        control:
-          "High-impact identifiers can require confirmation before they are written to a system.",
-      },
-      "technical-answers": {
-        title: "Fast answers from manuals and technical documents",
-        problem:
-          "When technicians have to search through manuals, or interrupt experienced colleagues, to solve a problem, service slows down and expertise becomes a bottleneck.",
-        solution:
-          "We make approved technical information easier to search in everyday language, so technicians can find relevant answers and source material faster.",
-        control:
-          "Answers draw on your approved documents, and technicians can inspect the cited source.",
-      },
-      "incoming-goods": {
-        title: "Incoming goods and supplier document checks",
-        problem:
-          "When deliveries arrive with purchase orders, delivery notes and certificates to check, paperwork can hold up receiving and hide missing information.",
-        solution:
-          "We bring those documents together, flag mismatches, and help staff verify that each delivery has the records it needs.",
-        control:
-          "Receiving and quality staff decide whether a discrepancy is acceptable and whether material can be released.",
-      },
-      "visual-quality": {
-        title: "Visual quality checks",
-        problem:
-          "When defects are hard to spot consistently, problems can move further down the line before anyone catches them.",
-        solution:
-          "We can help flag visible issues from product images, so inspectors can focus on items that need a closer look and record what they find.",
-        control:
-          "The system highlights likely issues. Inspectors make the quality decision.",
-      },
-      "dispatch-verification": {
-        title: "Picking and dispatch verification",
-        problem:
-          "When the wrong item or quantity ships, the cost includes rework, freight and a customer who has to wait again.",
-        solution:
-          "We help check picked items and labels against the order before dispatch, giving staff a chance to catch mismatches before the goods leave.",
-        control:
-          "Staff resolve exceptions and confirm substitutions or split shipments.",
-      },
-      "nonconformance-triage": {
-        title: "Nonconformance and warranty triage",
-        problem:
-          "When quality complaints arrive through different channels, it’s difficult to see who owns each issue or whether the same problem keeps happening.",
-        solution:
-          "We capture and route cases consistently, connect them with relevant order and product information, and make recurring issues easier to spot.",
-        control:
-          "Quality and service staff determine cause, corrective action and warranty outcome.",
-      },
-      "shift-handovers": {
-        title: "Shift handovers and outstanding actions",
-        problem:
-          "When important details live in hurried conversations or handwritten notes, the next shift can miss a delay, fault or promised action.",
-        solution:
-          "We turn handover information into a shared record with clear owners, so open issues carry forward between shifts.",
-        control:
-          "The person handing over checks the summary and assigns ownership.",
-      },
-      "engineering-changes": {
-        title: "Engineering change communication",
-        problem:
-          "When a drawing or specification changes, the latest version doesn’t always reach everyone who needs it.",
-        solution:
-          "We help distribute the approved change, track acknowledgement, and make it easier for teams to find the current instructions for the job.",
-        control: "Engineering approves the change and decides its impact.",
-      },
-      "invoice-checking": {
-        title: "Supplier invoice checking",
-        problem:
-          "When supplier invoices arrive, staff often have to recheck the arithmetic and compare each line with the original order by hand.",
-        solution:
-          "We capture the invoice, check that the figures add up, and compare its items with your purchasing records, flagging discrepancies for review before they move through accounts payable.",
-        control: "Authorised staff resolve discrepancies and approve payment.",
-      },
-      "order-portal": {
-        title: "Customer and supplier order visibility portal",
-        problem:
-          "Customers and suppliers shouldn’t have to call or send follow-up emails just to find out what’s happening with an order or payment.",
-        solution:
-          "We give each third party a secure portal with the relevant status and next steps, reducing routine enquiries so your team can focus on work that differentiates your business.",
-        control:
-          "Your teams decide which records and fields each customer or supplier can access.",
+      measure: {
+        before: "Before",
+        after: "After",
+        foot: "Agreed measure: time per invoice",
       },
     },
+    statement: {
+      title: "We start from your process, not from the technology.",
+      text: "ProcessSpark comes from first-hand experience in manufacturing, process engineering and IT. We know the delays, the paperwork and the questions only one person can answer. Today we work with manufacturers, equipment maintenance companies and accounting firms.",
+    },
+  },
+  problemsPage: {
+    seo: {
+      title: "What we solve: problems and solutions",
+      description:
+        "The problems we hear most, in the words customers use, each with the solution that fixes it and the industries where it comes up.",
+    },
+    heading: "What we solve",
+    summary:
+      "The problems we hear most, in the words customers use. Each one shows what changes, the solution behind it and where it comes up.",
+    filterLabel: "Show problems for",
+    filterAll: "All industries",
+    liveAll: "Showing all {count} problems",
+    liveIndustry: "Showing {count} problems for {industry}",
+    notListedHeading: "Not on the list?",
+    notListedText:
+      "If you run on Excel, Word and paper, your problem is probably close to one of these. Tell us yours.",
+    ctaHeading: "Which of these costs your team the most time?",
+    ctaText:
+      "Pick one. We will look at how it works today and what a first step could be.",
+  },
+  industriesPage: {
+    seo: {
+      title: "Industries we work with",
+      description:
+        "Manufacturing and industrial, equipment maintenance and accounting firms: the problems we solve in each and how our solutions fit together.",
+    },
+    heading: "Industries we work with",
+    summary:
+      "Medium-sized businesses that still run important work on Excel, Word and paper. Pick yours to see its problems first.",
+    seeIndustry: "See {name}",
+    tableHeading: "What it looks like in each industry",
+    tableIntro:
+      "The same solutions, with an example for each industry where we offer them.",
+    tableSolution: "Solution",
+    notOffered: "Not offered",
+    notListed:
+      "Not on the list? If you run on Excel, Word and paper, the problems are probably the same. Talk to us.",
+    ctaHeading: "Want to see how this would work for you?",
+  },
+  industryPage: {
+    breadcrumbLabel: "Breadcrumb",
+    breadcrumbRoot: "Industries",
+    familiarHeading: "Sounds familiar?",
+    productsHeading: "What it looks like in {industry}",
+    productsIntro: "The solutions we offer here, lead solutions first.",
+    seeSolution: "See the solution",
+    moreHeading: "More problems we solve in {industry}",
+    startHeading: "How we start",
+    startText:
+      "We start with one process as a pilot, built around your existing systems, and your people stay in control. After the pilot we can also train your team and keep the solution running.",
+    contactHeading: "Tell us about your business",
+    contactText:
+      "Bring us one process that creates delays, repeated work or unanswered questions. We will suggest a first step.",
+    othersHeading: "Other industries",
+  },
+  productPage: {
+    breadcrumbLabel: "Breadcrumb",
+    breadcrumbRoot: "Solutions",
+    illustrative: "Illustrative example",
+    familiarHeading: "Sounds familiar?",
+    whatItDoesHeading: "What it does",
+    controlHeading: "Who decides",
+    industriesHeading: "In your industry",
+    firstStepHeading: "Your first step",
+    whoForHeading: "Who it is for",
+    goodToKnowHeading: "Good to know",
+    worksWithHeading: "Works with",
+    contactHeading: "Talk to us about {name}",
+    contactText:
+      "Tell us about the process you would start with. We will suggest a first step.",
+    othersHeading: "Other solutions in this group",
   },
   resourcesPage: {
     title: "Downloads",
@@ -747,6 +737,70 @@ export const en = {
     },
   },
   media: {
+    "industry-manufacturing": {
+      label: "Production floor with paperwork in hand",
+      alt: "A worker on a production floor checking certificate details against a record",
+    },
+    "industry-equipment-maintenance": {
+      label: "Technician at plant with a phone",
+      alt: "Service technician with a multimeter reviewing a job sheet beside a boiler",
+    },
+    "industry-accounting-firms": {
+      label: "Small firm office, client documents arriving",
+      alt: "An accounting firm office with client documents arriving on screen and on paper",
+    },
+    "product-digitise-paperwork": {
+      label: "Paper record beside the same fields on a phone form",
+      alt: "Illustrative paper inspection record with its handwritten fields highlighted, next to a panel of the captured information",
+    },
+    "product-talk-to-your-data": {
+      label: "A manager asking a question of a report",
+      alt: "Illustrative dashboard with sample figures that a manager can ask questions of",
+    },
+    "product-talk-to-your-documents": {
+      label: "Engineer with a tablet beside a machine and its manuals",
+      alt: "A maintenance engineer asking a question on a tablet in front of a machine",
+    },
+    "product-employee-service-desk": {
+      label: "Staff member asking a policy question",
+      alt: "A team working through a shared workflow on screen",
+    },
+    "product-customer-portal": {
+      label: "Customer checking an order and uploading a document",
+      alt: "Illustrative email and request handling for customer enquiries",
+    },
+    "product-supplier-portal": {
+      label: "Supplier checking whether an invoice arrived",
+      alt: "A goods-in area where supplier deliveries and documents are checked",
+    },
+    "product-contractor-portal": {
+      label: "Contractor on site with a phone",
+      alt: "A contractor on site with a phone, documents checked before work starts",
+    },
+    "product-invoice-bookkeeping": {
+      label: "Supplier invoice beside its purchase order",
+      alt: "Illustrative supplier invoice with the fields read from it, ready to check against an order",
+    },
+    "product-estimating-bids": {
+      label: "Estimator comparing an enquiry with past jobs",
+      alt: "An estimator comparing a new enquiry with past jobs",
+    },
+    "product-quotes-rfqs": {
+      label: "RFQ email beside a draft quote",
+      alt: "An RFQ email beside a draft quote built from a price list",
+    },
+    "product-sensors-iot": {
+      label: "Sensor on a pump and a live reading on a phone",
+      alt: "A sensor fitted to a pump and a live reading on a phone",
+    },
+    "nav-first-project": {
+      label: "A printed process map on a table",
+      alt: "Two people pointing at one step on a printed process map",
+    },
+    "nav-guides": {
+      label: "Printed guide pages on a desk",
+      alt: "Printed guide pages on a desk",
+    },
     "pain-operations": {
       label: "Team under pressure on a busy floor",
       alt: "Warehouse manager checking stock against a clipboard beside tall pallet racking",

@@ -112,14 +112,21 @@ export type ApproachStepId = (typeof approachSteps)[number];
  * reads, so it stays English in every locale; only the label is translated.
  */
 export const categories = [
-  { id: "documents", value: "Document processing and data entry" },
-  { id: "reporting", value: "Reporting and spreadsheets" },
-  { id: "emails", value: "Customer emails and requests" },
-  { id: "finding-information", value: "Finding information in documents" },
-  { id: "quotations", value: "Quotations and proposals" },
-  { id: "quality", value: "Quality records and compliance" },
-  { id: "service", value: "Service and maintenance reporting" },
+  { id: "paperwork", value: "Paperwork, forms and data entry" },
+  { id: "data-questions", value: "Questions about our numbers" },
+  {
+    id: "document-answers",
+    value: "Answers from manuals, procedures and records",
+  },
+  { id: "staff-questions", value: "Staff questions" },
+  {
+    id: "portals",
+    value: "Portals for customers, suppliers or contractors",
+  },
+  { id: "invoices", value: "Invoice checking and bookkeeping" },
+  { id: "quotes", value: "Quotes and estimates" },
+  { id: "monitoring", value: "Equipment monitoring" },
   { id: "other", value: "Other / Not sure yet" },
 ] as const;
-
+export type CategoryId = (typeof categories)[number]["id"];
 export const defaultCategoryValue = "Other / Not sure yet";

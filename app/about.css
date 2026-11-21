@@ -292,7 +292,7 @@ body .desktop-nav a {
     height: 73px;
   }
 }
-@media (min-width: 1031px) and (max-width: 1260px) {
+@media (min-width: 1031px) and (max-width: 1200px) {
   html[lang="es"] body .desktop-nav,
   html[lang="es"] .nav .lang-switch,
   html[lang="es"] .nav-resources-link {

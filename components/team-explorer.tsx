@@ -9,7 +9,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import { ArrowUpRight, Check, Pause, Play, Sparkles } from "lucide-react";
-import type { Team } from "@/lib/teams";
+import { homeTeamLinks, type HomeTeam } from "@/lib/home-teams";
 import { teamImageSrc } from "@/lib/team-images";
 import { localePath, type Locale } from "@/lib/i18n/config";
 
@@ -55,7 +55,7 @@ const labels = {
  * rotation never starts for visitors who prefer reduced motion, pauses while
  * the scene is off screen, and has a visible pause control (WCAG 2.2.2).
  */
-export function TeamExplorer({ teams, lang }: { teams: Team[]; lang: Locale }) {
+export function TeamExplorer({ teams, lang }: { teams: HomeTeam[]; lang: Locale }) {
   const copy = labels[lang];
   const [index, setIndex] = useState(0);
   // null until the visitor presses pause/play or picks a department.
@@ -163,7 +163,7 @@ export function TeamExplorer({ teams, lang }: { teams: Team[]; lang: Locale }) {
                   <p>{t.summary}</p>
                   <Link
                     className="team-stage-link"
-                    href={localePath(lang, `/solutions/${t.id}`)}
+                    href={localePath(lang, homeTeamLinks[t.id])}
                   >
                     {copy.link}
                     <ArrowUpRight size={16} aria-hidden="true" />

@@ -104,6 +104,7 @@ export default async function AboutPage({
         copy={dict.header}
         switcherCopy={dict.languageSwitcher}
         brandLabel={dict.common.brandLabel}
+        mediaCopy={dict.media}
         page="about"
       />
       <main id="main" className="about-page">
