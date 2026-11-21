@@ -704,7 +704,7 @@ export const enCatalogue: CatalogueCopy = {
       seo: {
         title: "Software for equipment maintenance companies",
         description:
-          "Electronic job forms, searchable service history, a client window and contractor records for companies that maintain boilers, chillers, pumps and electrical plant.",
+          "Web job forms, searchable service history, a client window and contractor records for companies that maintain boilers, chillers, pumps and electrical plant.",
       },
     },
     "accounting-firms": {

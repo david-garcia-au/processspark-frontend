@@ -807,7 +807,7 @@ export const esCatalogue: CatalogueCopy = {
       "retyping-paper": "Se lee una vez y se rellena solo",
       "spreadsheet-few-people": "Pregunta a tus datos con palabras",
       "know-how-in-heads": "Respuestas de tus documentos",
-      "forms-not-filled": "Formularios web que se rellenan desde cualquier dispositivo",
+      "forms-not-filled": "Formularios web en cualquier dispositivo",
       "invoice-mismatch": "Revisadas antes de contabilizar",
       "client-document-chasing": "El proveedor sube, tú no persigues",
       "slow-quotes": "Primer borrador desde la solicitud",
