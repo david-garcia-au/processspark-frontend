@@ -470,6 +470,8 @@ export const en = {
   // `footer.lead`, and its closing band reuses `header.cta` and `contact.signoff`.
   aboutPage: {
     title: "About ProcessSpark",
+    description:
+      "More than 40 years of combined manufacturing, process engineering and IT experience, applied to practical fixes for manufacturers, maintenance companies and accounting firms.",
     eyebrow: "ABOUT PROCESSSPARK",
     heading: {
       line1: "Built on real",
@@ -676,11 +678,24 @@ export const en = {
     contactText:
       "Tell us about the process you would start with. We will suggest a first step.",
     othersHeading: "Other solutions in this group",
+    faq: {
+      heading: "Common questions",
+      what: "What does {name} do?",
+      who: "Who is {name} for?",
+      control: "Who stays in control?",
+      systems: "Does it work with our existing systems?",
+      systemsAnswer:
+        "Yes. Every solution is built around your existing systems and hands anything uncertain to a person.",
+      first: "What is the first step?",
+      data: "Is our data used to train AI models?",
+      dataAnswer: "No. Your information is never used to train AI models.",
+      limits: "What should we know before starting?",
+    },
   },
   resourcesPage: {
     title: "Downloads",
     description:
-      "PDF guides and practical resources for ProcessSpark customers.",
+      "Five short PDF guides on spotting problems and choosing where to start: shopfloor visibility, know-how, paperwork and data entry, handoffs, and traceability.",
     intro:
       "Five short guides to spotting problems and choosing where to start.",
     overviewLabel: "GUIDE OVERVIEW",

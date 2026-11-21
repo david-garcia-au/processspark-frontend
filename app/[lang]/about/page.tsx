@@ -51,7 +51,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
-  const { aboutPage, footer } = getDictionary(lang);
+  const { aboutPage } = getDictionary(lang);
   const url = localePath(lang, aboutPath);
   const locale = ogLocale[lang];
   // An `openGraph` or `twitter` object here replaces the layout's, so carry
@@ -61,14 +61,14 @@ export async function generateMetadata(
     // Absolute: the layout template would append " | ProcessSpark" to a title
     // that already names the company.
     title: { absolute: aboutPage.title },
-    description: footer.lead,
+    description: aboutPage.description,
     alternates: {
       canonical: url,
       languages: languageAlternates(aboutPath),
     },
     openGraph: {
       title: aboutPage.title,
-      description: footer.lead,
+      description: aboutPage.description,
       url,
       type: "website",
       siteName: site.name,
@@ -78,7 +78,7 @@ export async function generateMetadata(
     twitter: {
       card: "summary_large_image",
       title: aboutPage.title,
-      description: footer.lead,
+      description: aboutPage.description,
       ...(parentTwitter?.images?.length
         ? { images: parentTwitter.images }
         : {}),

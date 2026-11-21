@@ -9,6 +9,7 @@ import {
   type ProductId,
 } from "@/lib/catalogue";
 import type { Dictionary, Locale } from "@/lib/i18n";
+import { productFaq } from "@/lib/faq";
 import { hreflang, localePath, socialImagePath } from "@/lib/i18n";
 import { absoluteUrl, defaultPhone, readyPhones, site } from "@/lib/site";
 
@@ -172,6 +173,18 @@ function buildProductGraph(lang: Locale, dict: Dictionary, id: ProductId) {
         { name: dict.productPage.breadcrumbRoot, path: "/solutions" },
         { name: item.shortName, path },
       ]),
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        url,
+        inLanguage: hreflang[lang],
+        isPartOf: { "@id": webpageId },
+        mainEntity: productFaq(dict.productPage.faq, item).map((entry) => ({
+          "@type": "Question",
+          name: entry.question,
+          acceptedAnswer: { "@type": "Answer", text: entry.answer },
+        })),
+      },
     ],
   };
 }
@@ -281,7 +294,7 @@ function buildAboutGraph(lang: Locale, dict: Dictionary) {
         "@id": `${aboutUrl}#webpage`,
         url: aboutUrl,
         name: dict.aboutPage.title,
-        description: dict.footer.lead,
+        description: dict.aboutPage.description,
         inLanguage: hreflang[lang],
         isPartOf: { "@id": absoluteUrl(`${localePath(lang)}#website`) },
         about: { "@id": organizationId },

@@ -479,6 +479,8 @@ export const es: Dictionary = {
   },
   aboutPage: {
     title: "Sobre ProcessSpark",
+    description:
+      "Más de 40 años de experiencia combinada en fabricación, ingeniería de procesos e informática, aplicada a soluciones prácticas para fabricantes, empresas de mantenimiento y asesorías.",
     eyebrow: "SOBRE PROCESSSPARK",
     heading: {
       line1: "Basado en experiencia real",
@@ -687,11 +689,24 @@ export const es: Dictionary = {
     contactText:
       "Cuéntanos el proceso con el que empezarías. Te sugeriremos un primer paso.",
     othersHeading: "Otras soluciones de este grupo",
+    faq: {
+      heading: "Preguntas frecuentes",
+      what: "¿Qué hace {name}?",
+      who: "¿Para quién es {name}?",
+      control: "¿Quién mantiene el control?",
+      systems: "¿Funciona con nuestros sistemas actuales?",
+      systemsAnswer:
+        "Sí. Cada solución se construye alrededor de tus sistemas actuales y pasa a una persona todo lo que no está claro.",
+      first: "¿Cuál es el primer paso?",
+      data: "¿Se usan nuestros datos para entrenar modelos de IA?",
+      dataAnswer: "No. Tu información nunca se usa para entrenar modelos de IA.",
+      limits: "¿Qué conviene saber antes de empezar?",
+    },
   },
   resourcesPage: {
     title: "Descargas",
     description:
-      "Guías PDF y recursos prácticos para clientes de ProcessSpark.",
+      "Cinco guías PDF breves para identificar problemas y elegir por dónde empezar: visibilidad en planta, conocimiento, papeleo, trabajo entre equipos y trazabilidad.",
     intro:
       "Cinco guías breves para identificar problemas y elegir por dónde empezar.",
     overviewLabel: "RESUMEN DE LA GUÍA",
