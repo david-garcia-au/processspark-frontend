@@ -152,19 +152,21 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </h2>
           <TeamExplorer teams={homeTeams[lang]} lang={lang} />
         </section>
-        <section className="about-cta">
-          <div className="shell about-cta-inner">
-            <div className="about-cta-text">
-              <h2>{contact.signoff.strong}</h2>
-              <p>{contact.signoff.line1}</p>
+        <div className="home-assure">
+          <section className="about-cta" aria-labelledby="assure-cta-title">
+            <div className="shell about-cta-inner">
+              <div className="about-cta-text">
+                <h2 id="assure-cta-title">{contact.signoff.strong}</h2>
+                <p>{contact.signoff.line1}</p>
+              </div>
+              <a className="pill pill-light" href="#contact">
+                {contact.discoveryButton}{" "}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
             </div>
-            <a className="pill pill-light" href="#contact">
-              {contact.discoveryButton}{" "}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-          </div>
-        </section>
-        <TrustPanel lang={lang} />
+          </section>
+          <TrustPanel lang={lang} />
+        </div>
         <ApproachJourney copy={homePage.how} />
         <section id="contact" className="home-contact" aria-labelledby="contact-title">
           <div className="shell home-contact-panel">
