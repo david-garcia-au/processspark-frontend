@@ -34,15 +34,17 @@ const slots: {
   ex: number;
   ey: number;
   r: number;
-  /** Phone layout: same idea, inside the top of a narrow hero. */
+  /** Phone layout: same idea, inside the top of a narrow hero. Only the
+   *  three short one-line tags show there (app/home.css hides slots 3 to 5),
+   *  so the headline is on the first screen. */
   m: [sx: number, sy: number, ex: number, ey: number, r: number];
 }[] = [
   { tag: 5, sx: 7, sy: 9, ex: 4, ey: 10, r: -5, m: [5, 2, 5, 2, -4] },
-  { tag: 0, sx: 41, sy: 5, ex: 35, ey: 10, r: 4, m: [14, 19, 5, 19, 3] },
+  { tag: 0, sx: 41, sy: 5, ex: 35, ey: 10, r: 4, m: [16, 34, 5, 34, 3] },
   { tag: 3, sx: 44, sy: 33, ex: 66, ey: 10, r: -3, m: [0, 0, 0, 0, 0] },
   { tag: 4, sx: 16, sy: 40, ex: 4, ey: 55, r: 6, m: [9, 36, 5, 36, 5] },
   { tag: 1, sx: 66, sy: 38, ex: 35, ey: 55, r: -6, m: [10, 53, 5, 53, -5] },
-  { tag: 2, sx: 68, sy: 3, ex: 66, ey: 55, r: 5, m: [13, 70, 5, 70, 4] },
+  { tag: 2, sx: 68, sy: 3, ex: 66, ey: 55, r: 5, m: [8, 66, 5, 66, -3] },
 ];
 export function HeroTasks({ lang }: { lang: Locale }) {
   const tags = heroTags(lang);
