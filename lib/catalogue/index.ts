@@ -408,7 +408,7 @@ export function menus(
   const hubPath = localePath(lang, "/problems");
   const problemItems: MenuItem[] = structure.headlineProblems.map((id) => ({
     id,
-    // "Search suppliers for papers" opens the Supplier Portal page directly.
+    // "Chase suppliers for documents" opens the Supplier Portal page directly.
     href:
       id === "client-document-chasing"
         ? productHref(lang, "supplier-portal")

@@ -793,7 +793,7 @@ export const enCatalogue: CatalogueCopy = {
       "know-how-in-heads": "Know-how in a few heads",
       "forms-not-filled": "Forms nobody has time to fill",
       "invoice-mismatch": "Invoices that don't match",
-      "client-document-chasing": "Search suppliers for papers",
+      "client-document-chasing": "Chase suppliers for documents",
       "slow-quotes": "Quotes built by hand",
       "machine-stops": "Breakdowns seen too late",
     },
