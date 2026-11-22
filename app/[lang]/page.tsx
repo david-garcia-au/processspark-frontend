@@ -138,7 +138,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           className="home-statement shell"
           aria-labelledby="statement-title"
         >
-          <h2 id="statement-title">{homePage.statement.title}</h2>
+          <h2 id="statement-title">
+            <span className="statement-line">{homePage.statement.title.line1}</span>{" "}
+            <span className="statement-line">{homePage.statement.title.line2}</span>
+          </h2>
           <p>{homePage.statement.text}</p>
           <a className="pill button-primary home-statement-cta" href="#contact">
             {homePage.statement.cta}{" "}
@@ -159,8 +162,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <section className="about-cta" aria-labelledby="assure-cta-title">
             <div className="shell about-cta-inner">
               <div className="about-cta-text">
-                <h2 id="assure-cta-title">{contact.signoff.strong}</h2>
-                <p>{contact.signoff.line1}</p>
+                <h2 id="assure-cta-title">{homePage.assureCta.heading}</h2>
+                <p>{homePage.assureCta.text}</p>
               </div>
               <a className="pill pill-light" href="#contact">
                 {contact.discoveryButton}{" "}
@@ -177,8 +180,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <h2 id="contact-title">{dict.header.cta}.</h2>
               <p>
                 {english
-                  ? "Bring us one process that creates delays, repeated work or unanswered questions. We’ll identify a suitable first use case, the information it needs and how success could be measured."
-                  : "Cuéntanos un proceso que genere retrasos, trabajo repetido o preguntas sin respuesta. Identificaremos un primer caso de uso, la información necesaria y cómo medir el éxito."}
+                  ? "Where is repeated work costing you time, margin or opportunities? Bring us one example. We’ll explore what could improve and how to measure the difference."
+                  : "¿Dónde te está costando tiempo, margen u oportunidades el trabajo repetido? Tráenos un ejemplo. Veremos qué se podría mejorar y cómo medir la diferencia."}
               </p>
             </div>
             <ProcessBrief lang={lang} copy={contact.form} email={site.email} />

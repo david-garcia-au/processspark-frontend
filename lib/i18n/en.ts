@@ -546,8 +546,16 @@ export const en = {
       seeAll: "See all problems we solve",
     },
     teamsHeading: "Where does your team need help?",
+    /** Blue call-to-action band above the trust panel (home only). */
+    assureCta: {
+      heading: "Where could your business gain the most?",
+      text: "Bring one recurring problem. In a 15-minute call, we’ll explore where a practical improvement could make a difference.",
+    },
     how: {
-      heading: "Four steps. One quarter.",
+      heading: {
+        line1: "Start small. See the value.",
+        line2: "Build from there.",
+      },
       steps: [
         {
           title: "Discovery call (15 min)",
@@ -562,8 +570,8 @@ export const en = {
           text: "We deploy in a contained scope. Your data stays yours: governed, secure, auditable.",
         },
         {
-          title: "Measure before you commit",
-          text: "You see the ROI before you scale.",
+          title: "Measure before you scale",
+          text: "Agree what success looks like, then measure the result before expanding.",
         },
       ],
       cta: "Book your discovery call",
@@ -589,8 +597,11 @@ export const en = {
       },
     },
     statement: {
-      title: "We start from your process, not from the technology.",
-      text: "ProcessSpark comes from first-hand experience in manufacturing, process engineering and IT. We know the delays, the paperwork and the questions only one person can answer. Today we work with manufacturers, equipment maintenance companies and accounting firms.",
+      title: {
+        line1: "You’ve built the business.",
+        line2: "Let’s make the everyday work easier.",
+      },
+      text: "Our experience spans manufacturing, process engineering and IT. We understand the paperwork, disconnected information and dependence on a few experienced people—and work with you to improve them.",
       cta: "Book a 15-minute discovery call",
     },
   },

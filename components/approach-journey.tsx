@@ -18,7 +18,8 @@ export function ApproachJourney({
       aria-labelledby="approach-title"
     >
       <h2 id="approach-title" className="home-heading">
-        {copy.heading}
+        <span className="heading-line">{copy.heading.line1}</span>{" "}
+        <span className="heading-line">{copy.heading.line2}</span>
       </h2>
       <ol className="journey">
         <li className="journey-step">

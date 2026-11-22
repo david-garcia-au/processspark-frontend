@@ -49,6 +49,19 @@ html body main.home h2#contact-title {
   letter-spacing: -0.035em;
   text-wrap: balance;
 }
+/* "How it works" heading: two set lines; on laptops and up the first line
+   ("Start small. See the value.") never wraps. */
+html body main.home h2#approach-title .heading-line {
+  display: block;
+}
+@media (min-width: 1001px) {
+  html body main.home h2#approach-title {
+    max-width: none;
+  }
+  html body main.home h2#approach-title .heading-line:first-child {
+    white-space: nowrap;
+  }
+}
 /* A heading followed by its own explanatory paragraph sits close to it. */
 html body main.home h2#statement-title,
 html body main.home .about-cta h2,

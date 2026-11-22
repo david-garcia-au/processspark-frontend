@@ -553,8 +553,15 @@ export const es: Dictionary = {
       seeAll: "Ver todo lo que resolvemos",
     },
     teamsHeading: "¿Dónde necesita ayuda tu equipo?",
+    assureCta: {
+      heading: "¿Dónde podría ganar más tu empresa?",
+      text: "Trae un problema que se repite. En una llamada de 15 minutos, veremos dónde una mejora práctica podría marcar la diferencia.",
+    },
     how: {
-      heading: "Cuatro pasos. Un trimestre.",
+      heading: {
+        line1: "Empieza poco a poco. Comprueba el valor.",
+        line2: "Crece a partir de ahí.",
+      },
       steps: [
         {
           title: "Llamada de descubrimiento (15 min)",
@@ -569,8 +576,8 @@ export const es: Dictionary = {
           text: "Lo ponemos en marcha en un ámbito acotado. Tus datos siguen siendo tuyos: gobernados, seguros y auditables.",
         },
         {
-          title: "Mide antes de comprometerte",
-          text: "Ves el retorno de la inversión antes de ampliarlo.",
+          title: "Mide antes de ampliar",
+          text: "Acordamos qué significa el éxito y medimos el resultado antes de ampliar.",
         },
       ],
       cta: "Reserva tu llamada sin compromiso",
@@ -600,8 +607,11 @@ export const es: Dictionary = {
       },
     },
     statement: {
-      title: "Empezamos por tu proceso, no por la tecnología.",
-      text: "ProcessSpark nace de la experiencia directa en fabricación, ingeniería de procesos e informática. Conocemos los retrasos, el papeleo y las preguntas que solo una persona sabe responder. Hoy trabajamos con fabricantes, empresas de mantenimiento de equipos y asesorías.",
+      title: {
+        line1: "Tú has construido la empresa.",
+        line2: "Hagamos más fácil el trabajo del día a día.",
+      },
+      text: "Nuestra experiencia abarca fabricación, ingeniería de procesos e informática. Conocemos el papeleo, la información desconectada y la dependencia de unas pocas personas con experiencia, y trabajamos contigo para mejorar todo eso.",
       cta: "Reserva una llamada sin compromiso de 15 minutos",
     },
   },

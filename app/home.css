@@ -451,6 +451,18 @@ html body main.home .home-hero-landing .home-hero-actions .pill-ghost:hover {
   padding-block: 120px 8px;
   text-align: center;
 }
+.home-statement h2 .statement-line {
+  display: block;
+}
+/* Laptops and up: the second line stays on one line, as one sentence. */
+@media (min-width: 1001px) {
+  html body .home-statement h2 {
+    max-width: none;
+  }
+  html body .home-statement h2 .statement-line + .statement-line {
+    white-space: nowrap;
+  }
+}
 .home-statement h2 {
   max-width: 22ch;
   margin: 0 auto;
