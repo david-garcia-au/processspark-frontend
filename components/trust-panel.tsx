@@ -8,7 +8,8 @@ import type { Locale } from "@/lib/i18n/config";
  */
 const copy = {
   en: {
-    heading: "Your business information, always under control.",
+    heading: "Your business information,",
+    headingAccent: "always under control.",
     cta: "Request a demo",
     security: {
       title: "Data security and compliance",
@@ -28,7 +29,8 @@ const copy = {
     },
   },
   es: {
-    heading: "Tu información empresarial, siempre bajo control.",
+    heading: "Tu información empresarial,",
+    headingAccent: "siempre bajo control.",
     cta: "Solicita una demo",
     security: {
       title: "Seguridad de los datos y cumplimiento normativo",
@@ -55,7 +57,7 @@ export function TrustPanel({ lang }: { lang: Locale }) {
     <section className="shell home-trust" aria-labelledby="trust-title">
       <div className="trust">
         <h2 id="trust-title">
-          {c.heading}
+          {c.heading} <span className="spark-text">{c.headingAccent}</span>
         </h2>
         <div className="trust-cols">
           <section aria-labelledby="trust-security">

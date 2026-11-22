@@ -140,7 +140,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         >
           <h2 id="statement-title">
             <span className="statement-line">{homePage.statement.title.line1}</span>{" "}
-            <span className="statement-line">{homePage.statement.title.line2}</span>
+            <span className="statement-line spark-text">{homePage.statement.title.line2}</span>
           </h2>
           <p>{homePage.statement.text}</p>
           <a className="pill button-primary home-statement-cta" href="#contact">

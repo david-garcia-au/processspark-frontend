@@ -62,6 +62,21 @@ html body main.home h2#approach-title .heading-line {
     white-space: nowrap;
   }
 }
+/* Logo orange on the payoff phrase of a heading: what it means for the
+   business owner. Headings only (3.2:1 on white passes for large text, never
+   use it for body copy), at most one per screen, never on the blue bands. */
+html body main.home h2 .spark-text {
+  color: var(--spark);
+}
+/* Trust heading: the orange phrase starts its own line and stays whole. */
+html body main.home h2#trust-title .spark-text {
+  display: block;
+}
+@media (min-width: 701px) {
+  html body main.home h2#trust-title .spark-text {
+    white-space: nowrap;
+  }
+}
 /* A heading followed by its own explanatory paragraph sits close to it. */
 html body main.home h2#statement-title,
 html body main.home .about-cta h2,
