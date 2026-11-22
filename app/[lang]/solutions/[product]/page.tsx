@@ -5,6 +5,7 @@ import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Media } from "@/components/media";
+import { DocsDemo } from "@/components/docs-demo";
 import { ProblemCard } from "@/components/problem-card";
 import { SiteLink } from "@/components/site-link";
 import { ProductStructuredData } from "@/components/structured-data";
@@ -19,8 +20,9 @@ import {
   productIds,
   productsByGroup,
 } from "@/lib/catalogue";
-import { getDictionary, hasLocale, locales } from "@/lib/i18n";
+import { getDictionary, hasLocale, locales, localePath } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
+import { crmDemoUi, docsDemo } from "@/lib/crm-demo";
 
 export const dynamicParams = false;
 
@@ -130,6 +132,27 @@ export default async function ProductPage({
             </div>
           </div>
         </section>
+        {id === "talk-to-your-documents" ? (
+          <section className="shell demo-section" aria-labelledby="demo-title">
+            <div className="demo-head">
+              <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
+              <h2 id="demo-title">{docsDemo[lang].heading}</h2>
+              <p className="demo-lead">{docsDemo[lang].intro}</p>
+            </div>
+            <DocsDemo demo={docsDemo[lang]} ui={crmDemoUi[lang]} />
+            <p className="demo-foot">{crmDemoUi[lang].illustrative}</p>
+            <div className="demo-cta">
+              <p>{crmDemoUi[lang].ctaLead}</p>
+              <SiteLink
+                className="demo-cta-link"
+                href={`${localePath(lang)}#contact`}
+              >
+                {crmDemoUi[lang].ctaButton}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </SiteLink>
+            </div>
+          </section>
+        ) : null}
 
         <section className="shell cat-section" aria-labelledby="familiar-title">
           <h2 id="familiar-title" className="cat-heading">

@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Manrope } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { ConsentBanner } from "@/components/consent-banner";
 import { RumScript } from "@/components/rum-script";
 import {
@@ -33,6 +35,8 @@ import "../resources-page.css";
 import "../consent.css";
 import "../catalogue.css";
 import "../problem-explorer.css";
+import "../solution-demo.css";
+import "../crm-demo.css";
 import "../problems-hub.css";
 import "../home-type.css";
 
@@ -182,7 +186,7 @@ export default async function RootLayout({
     <html
       lang={htmlLang[lang]}
       data-scroll-behavior="smooth"
-      className={sans.variable}
+      className={`${sans.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body id="top">
         {/* First in the DOM so keyboard and screen-reader users meet the
