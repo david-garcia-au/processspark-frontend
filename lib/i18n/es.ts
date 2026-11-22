@@ -118,6 +118,7 @@ export const es: Dictionary = {
   },
   hero: {
     title: "Transforma la forma de trabajar de tu empresa.",
+    kicker: "Protege tus márgenes. No dejes escapar oportunidades.",
     subtitle: "¿Tu empresa sigue funcionando con Excel, Word y papel?",
     description:
       "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
@@ -572,7 +573,7 @@ export const es: Dictionary = {
           text: "Ves el retorno de la inversión antes de ampliarlo.",
         },
       ],
-      cta: "Reserva tu llamada de descubrimiento",
+      cta: "Reserva tu llamada sin compromiso",
       call: {
         title: "Llamada de descubrimiento",
         lines: ["¿Dónde está el problema?", "¿Qué haces hoy?"],
@@ -601,7 +602,7 @@ export const es: Dictionary = {
     statement: {
       title: "Empezamos por tu proceso, no por la tecnología.",
       text: "ProcessSpark nace de la experiencia directa en fabricación, ingeniería de procesos e informática. Conocemos los retrasos, el papeleo y las preguntas que solo una persona sabe responder. Hoy trabajamos con fabricantes, empresas de mantenimiento de equipos y asesorías.",
-      cta: "Reserva una llamada de descubrimiento de 15 minutos",
+      cta: "Reserva una llamada sin compromiso de 15 minutos",
     },
   },
   problemsPage: {

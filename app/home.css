@@ -350,12 +350,74 @@ html body main.home .home-hero-landing .home-hero-subhead {
 html body main.home .home-hero-landing .home-hero-actions {
   margin-top: 20px;
 }
+/* Headline group (left): h1, the orange line tight beneath it, then the
+   buttons after a wider break. Supporting group (right): the question leads
+   straight into the paragraph that answers it, and the
+   group's last line sits level with the buttons. */
+html body main.home .home-hero-landing .home-hero-kicker {
+  max-width: none;
+  margin: -6px 0 0;
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--orange);
+  text-wrap: balance;
+}
+html body main.home .home-hero-landing .home-hero-aside {
+  max-width: 30rem;
+}
+html body main.home .home-hero-landing .home-hero-aside .home-hero-subhead {
+  max-width: none;
+  margin: 0 0 10px;
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--on-dark);
+  text-wrap: balance;
+}
 html body main.home .home-hero-landing .home-hero-sub {
-  max-width: 36ch;
+  max-width: none;
   margin: 0;
-  padding-top: 20px;
-  border-top: 1px solid rgb(255 255 255 / 0.28);
+  font-size: 1.1rem;
+  color: rgb(255 255 255 / 0.8);
   text-wrap: pretty;
+}
+@media (min-width: 1001px) {
+  /* Desktop: the hero fills the window under the header. The content is
+     centred in the space below the tags rather than pushed to the bottom, so
+     the headline stays above the consent banner on a first visit. */
+  html body main.home .home-hero.home-hero-landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: max(640px, calc(100svh - 76px));
+  }
+  html body main.home .home-hero-landing .home-hero-inner {
+    width: 100%;
+  }
+  html body main.home .home-hero-landing .home-hero-kicker {
+    grid-area: kicker;
+  }
+  html body main.home .home-hero-landing .home-hero-aside {
+    grid-area: aside;
+    align-self: end;
+  }
+  html body main.home .home-hero-landing .home-hero-actions {
+    margin-top: 28px;
+  }
+}
+@media (max-width: 1000px) {
+  html body main.home .home-hero-landing .home-hero-aside {
+    margin-top: 16px;
+    max-width: 52ch;
+  }
+}
+@media (max-width: 700px) {
+  html body main.home .home-hero-landing .home-hero-kicker {
+    margin-top: -4px;
+    font-size: 1.15rem;
+  }
 }
 html body main.home .home-hero-landing .home-hero-actions .pill-ghost:hover {
   background: rgb(255 255 255 / 0.1);
@@ -363,10 +425,6 @@ html body main.home .home-hero-landing .home-hero-actions .pill-ghost:hover {
 @media (max-width: 1000px) {
   html body main.home .home-hero.home-hero-landing {
     --tag-zone: 260px;
-  }
-  html body main.home .home-hero-landing .home-hero-sub {
-    margin-top: 12px;
-    max-width: 44ch;
   }
 }
 @media (max-width: 850px) {

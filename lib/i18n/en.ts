@@ -104,6 +104,7 @@ export const en = {
   },
   hero: {
     title: "Transform the way your business operates.",
+    kicker: "Protect your margins. Don’t let opportunities slip away.",
     subtitle: "Still running the business on Excel, Word and paper?",
     description:
       "We make AI and automation accessible to small and medium-sized businesses, with solutions that adapt to the way you work—not the other way round.",

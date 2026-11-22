@@ -448,7 +448,7 @@ html body .home-hero-landing .home-hero-actions {
     grid-template-rows: auto auto 1fr;
     grid-template-areas:
       "title aside"
-      "subhead aside"
+      "kicker aside"
       "actions aside";
     column-gap: 56px;
   }

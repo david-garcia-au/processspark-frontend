@@ -97,7 +97,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <div className="home-hero-glow" aria-hidden="true" />
           <div className="shell home-hero-inner">
             <h1 id="hero-title">{hero.title}</h1>
-            <p className="home-hero-subhead">{hero.subtitle}</p>
+            <p className="home-hero-kicker">{hero.kicker}</p>
             <div className="home-hero-actions">
               <Button asChild className="pill pill-light">
                 <a href="#problems">
@@ -109,7 +109,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 {hero.ctaSecondary}
               </a>
             </div>
-            <p className="home-hero-sub">{hero.description}</p>
+            <div className="home-hero-aside">
+              <p className="home-hero-subhead">{hero.subtitle}</p>
+              <p className="home-hero-sub">{hero.description}</p>
+            </div>
           </div>
           <HeroTasks lang={lang} />
         </section>
