@@ -260,6 +260,7 @@ export const media = {
     kind: "image",
     ratio: R32,
     brief: "An RFQ email beside a draft quote built from the price list.",
+    src: "/images/automate-quotes.webp",
   },
   "product-sensors-iot": {
     kind: "image",
