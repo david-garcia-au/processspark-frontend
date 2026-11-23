@@ -4,6 +4,7 @@
    content moves through scenes that crossfade in place. Tokens only. --------- */
 .demo-section {
   padding-block: clamp(56px, 6vw, 88px);
+  scroll-margin-top: 76px;
 }
 .demo-head {
   margin-bottom: 24px;

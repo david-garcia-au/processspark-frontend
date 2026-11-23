@@ -808,13 +808,9 @@ export const enCatalogue: CatalogueCopy = {
       "machine-stops": "Alerts before it stops",
     },
     cards: {
-      "first-project": {
-        title: "How a first project works",
-        text: "One process, one pilot. Your people decide.",
-      },
-      guides: {
-        title: "Practical guides to download",
-        text: "Short guides on paperwork, records and shop-floor know-how.",
+      demo: {
+        title: "See it in action",
+        text: "A short interactive demo: a new manual goes in, a technician gets the fix.",
       },
     },
   },

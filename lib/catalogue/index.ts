@@ -487,15 +487,14 @@ export function menus(
   return [solve, solutions];
 }
 
-export function navCards(lang: Locale, homeApproachHref: string): NavCard[] {
+export function navCards(lang: Locale): NavCard[] {
   const c = copies[lang].menu.cards;
   return structure.navCardIds.map((id) => ({
     id,
     media: navCardMedia[id],
     title: c[id].title,
     text: c[id].text,
-    href:
-      id === "first-project" ? homeApproachHref : localePath(lang, "/resources"),
+    href: localePath(lang, structure.demoPath),
   }));
 }
 

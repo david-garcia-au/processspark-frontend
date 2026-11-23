@@ -296,18 +296,11 @@ export const media = {
     src: "/images/problems-monitor.webp",
   },
   // Menu cards --------------------------------------------------------------
-  "nav-first-project": {
+  "nav-demo": {
     kind: "image",
     ratio: R32,
-    brief:
-      "One printed process map on a table, two people pointing at one step. No screens, no figures.",
-    src: "/images/process-mapped.webp",
-  },
-  "nav-guides": {
-    kind: "image",
-    ratio: R32,
-    brief: "Printed guide pages on a desk.",
-    src: "/images/copy-by-hand.webp",
+    brief: "Anna, the service admin from the Talk to Your Documents demo, at her desk.",
+    src: "/images/demo-anna.webp",
   },
 } as const satisfies Record<string, MediaItem>;
 

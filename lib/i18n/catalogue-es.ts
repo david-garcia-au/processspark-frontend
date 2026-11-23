@@ -814,13 +814,9 @@ export const esCatalogue: CatalogueCopy = {
       "machine-stops": "Avisos antes de que pare",
     },
     cards: {
-      "first-project": {
-        title: "Cómo funciona un primer proyecto",
-        text: "Un proceso, un piloto. Tu gente decide.",
-      },
-      guides: {
-        title: "Guías prácticas para descargar",
-        text: "Guías breves sobre papeleo, registros y conocimiento de planta.",
+      demo: {
+        title: "Míralo en acción",
+        text: "Una demo interactiva corta: entra un manual nuevo y un técnico obtiene la solución.",
       },
     },
   },

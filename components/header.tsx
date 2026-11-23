@@ -4,7 +4,6 @@ import { Media } from "@/components/media";
 import {
   SiteLink,
   pagePath,
-  sectionHref,
   type PageId,
 } from "@/components/site-link";
 import { menus, navCards } from "@/lib/catalogue";
@@ -50,10 +49,12 @@ export function Header({
     },
     contactHref,
   );
+  // One "See it in action" card, shown at the bottom of both menus.
   const cards = Object.fromEntries(
-    navCards(lang, sectionHref(lang, page, "#approach")).map((card) => [
-      card.id === "first-project" ? "solve" : "solutions",
-      <SiteLink key={card.id} href={card.href} className="nav-card">
+    (["solve", "solutions"] as const).flatMap((menuId) =>
+      navCards(lang).map((card) => [
+        menuId,
+        <SiteLink key={card.id} href={card.href} className="nav-card">
         <Media
           slot={card.media}
           text={mediaCopy[card.media]}
@@ -65,7 +66,8 @@ export function Header({
           <small>{card.text}</small>
         </span>
       </SiteLink>,
-    ]),
+      ]),
+    ),
   );
   return (
     <HeaderBar

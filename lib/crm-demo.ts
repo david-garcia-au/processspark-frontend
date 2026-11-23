@@ -15,7 +15,6 @@ export type Person = { name: string; role: string; initials: string; tint: strin
 /** One turn of the typed/played timeline, interpreted by the component. */
 export type DocsDemo = {
   heading: string;
-  intro: string;
   admin: Person;
   tech: Person;
   /** Intro cards for the two people. */
@@ -23,6 +22,8 @@ export type DocsDemo = {
   techIntro: { photo: string; alt: string; line: string };
   /** The shop-floor fault photo (the PLC screen). */
   faultPhoto: { src: string; alt: string };
+  /** Closing photo: the same panel, all green, back in production. */
+  resolvedPhoto: { src: string; alt: string };
   /** Documents screen. */
   docs: {
     tabLabel: string;
@@ -51,19 +52,34 @@ export type DocsDemo = {
     cancel: string;
     open: string;
   };
-  /** The three-dots permissions menu on the uploaded row. */
+  /** The spinner shown while the upload is read. */
+  uploading: string;
+  /** The three-dots menu on the uploaded row (permissions + supersede). */
   permissions: {
     menuLabel: string;
     heading: string;
     /** Teams, with the one the admin grants marked. */
     teams: { label: string; granted: boolean }[];
+    /** The "this version supersedes v1" toggle in the same menu. */
+    supersedeLabel: string;
     confirm: string;
   };
-  /** The transition caption shown with the shop-floor fault photo. */
-  fault: { caption: string };
+  /** Larger square "situation" cards: on Anna's intro, and before her upload starts. */
+  briefs: {
+    /** Shown on the start screen, with the play button. */
+    start: { label: string; text: string };
+    introAdmin: { label: string; text: string };
+    upload: { label: string; text: string };
+    introTech: { label: string; text: string };
+    fixed: { label: string; text: string };
+    resolved: { label: string; text: string };
+  };
   /** The AI Chat screen. */
   chat: {
     tabLabel: string;
+    newChat: string;
+    chatsLabel: string;
+    threadTitle: string;
     empty: string;
     placeholder: string;
     question: string;
@@ -77,9 +93,7 @@ export type DocsDemo = {
 };
 
 export type CrmDemoUi = {
-  illustrative: string;
   run: string;
-  runHint: string;
   replay: string;
   granted: string;
   meet: string;
@@ -88,16 +102,12 @@ export type CrmDemoUi = {
   resume: string;
   back: string;
   forward: string;
-  ctaLead: string;
-  ctaButton: string;
   regionLabel: string;
 };
 
 export const crmDemoUi: Record<Locale, CrmDemoUi> = {
   en: {
-    illustrative: "Illustrative example. Names and figures are invented.",
     run: "Run the demo",
-    runHint: "Upload a new version, set who can ask, get the answer.",
     replay: "Run it again",
     granted: "Granted",
     meet: "Meet",
@@ -106,14 +116,10 @@ export const crmDemoUi: Record<Locale, CrmDemoUi> = {
     resume: "Resume",
     back: "Step back",
     forward: "Step forward",
-    ctaLead: "Want to see this on your own documents?",
-    ctaButton: "Request a personalised demo",
     regionLabel: "Interactive demo",
   },
   es: {
-    illustrative: "Ejemplo ilustrativo. Los nombres y las cifras son inventados.",
     run: "Ver la demo",
-    runHint: "Sube una nueva versión, define quién puede preguntar y obtén la respuesta.",
     replay: "Verla otra vez",
     granted: "Concedido",
     meet: "Te presentamos a",
@@ -122,17 +128,13 @@ export const crmDemoUi: Record<Locale, CrmDemoUi> = {
     resume: "Reanudar",
     back: "Paso atrás",
     forward: "Paso adelante",
-    ctaLead: "¿Quieres verlo con tus propios documentos?",
-    ctaButton: "Solicita una demo personalizada",
     regionLabel: "Demo interactiva",
   },
 };
 
 export const docsDemo: Record<Locale, DocsDemo> = {
   en: {
-    heading: "Upload a manual, set who can ask, get the answer",
-    intro:
-      "A new machine manual goes in, the maintenance team is allowed to query it, and a technician gets the fix with its source.",
+    heading: "Upload a manual, define permissions, get the answers",
     admin: { name: "Anna", role: "Service admin", initials: "A", tint: "blue" },
     tech: { name: "John", role: "Service technician", initials: "J", tint: "amber" },
     adminIntro: {
@@ -148,6 +150,10 @@ export const docsDemo: Record<Locale, DocsDemo> = {
     faultPhoto: {
       src: "/images/demo-plc.webp",
       alt: "Press control panel showing an E530 clutch position fault",
+    },
+    resolvedPhoto: {
+      src: "/images/demo-plc-green.webp",
+      alt: "Press control panel with every status back to green",
     },
     docs: {
       tabLabel: "Documents",
@@ -185,6 +191,7 @@ export const docsDemo: Record<Locale, DocsDemo> = {
       cancel: "Cancel",
       open: "Open",
     },
+    uploading: "Uploading and extracting context…",
     permissions: {
       menuLabel: "More",
       heading: "Who can query this",
@@ -193,13 +200,40 @@ export const docsDemo: Record<Locale, DocsDemo> = {
         { label: "Quality team", granted: false },
         { label: "Operations", granted: false },
       ],
+      supersedeLabel: "Supersedes v1",
       confirm: "Maintenance team can now query this manual",
     },
-    fault: {
-      caption: "The press stops with an E530 fault. John needs the fix, now.",
+    briefs: {
+      start: {
+        label: "Talk to Your Documents",
+        text: "Use everyday language to find answers to your questions in the company documents, with full access control.",
+      },
+      introAdmin: {
+        label: "New manual version",
+        text: "The vendor has just published a new version of the manual for one of the presses. Anna needs to update the company records.",
+      },
+      upload: {
+        label: "Anna's task",
+        text: "She needs to upload the new manual, mark it as the current version and set who can access it.",
+      },
+      introTech: {
+        label: "Alarm: press out of service",
+        text: "John gets an alarm: the TR-200 press is out of service. It has to be back in production, urgently.",
+      },
+      fixed: {
+        label: "Fault fixed",
+        text: "John has fixed the fault. He also knows it keeps coming back, so it needs corrective maintenance.",
+      },
+      resolved: {
+        label: "Back in production",
+        text: "The plant is back to normal, and John has all the information to investigate and propose a long-term fix.",
+      },
     },
     chat: {
       tabLabel: "AI Chat",
+      newChat: "New chat",
+      chatsLabel: "Chats",
+      threadTitle: "TR-200 press fault",
       empty: "What can I help with?",
       placeholder: "Ask anything about your manuals and past jobs",
       question:
@@ -224,9 +258,7 @@ export const docsDemo: Record<Locale, DocsDemo> = {
     },
   },
   es: {
-    heading: "Sube un manual, define quién puede preguntar y obtén la respuesta",
-    intro:
-      "Entra el manual de una máquina nueva, el equipo de mantenimiento puede consultarlo y un técnico obtiene la solución con su fuente.",
+    heading: "Sube un manual, define permisos y obtén las respuestas",
     admin: { name: "Anna", role: "Admin de servicio", initials: "A", tint: "blue" },
     tech: { name: "John", role: "Técnico de servicio", initials: "J", tint: "amber" },
     adminIntro: {
@@ -242,6 +274,10 @@ export const docsDemo: Record<Locale, DocsDemo> = {
     faultPhoto: {
       src: "/images/demo-plc.webp",
       alt: "Panel de control de la prensa con un fallo E530 de posición del embrague",
+    },
+    resolvedPhoto: {
+      src: "/images/demo-plc-green.webp",
+      alt: "Panel de control de la prensa con todos los estados de nuevo en verde",
     },
     docs: {
       tabLabel: "Documentos",
@@ -279,6 +315,7 @@ export const docsDemo: Record<Locale, DocsDemo> = {
       cancel: "Cancelar",
       open: "Abrir",
     },
+    uploading: "Subiendo y extrayendo el contexto…",
     permissions: {
       menuLabel: "Más",
       heading: "Quién puede consultarlo",
@@ -287,13 +324,40 @@ export const docsDemo: Record<Locale, DocsDemo> = {
         { label: "Equipo de calidad", granted: false },
         { label: "Operaciones", granted: false },
       ],
+      supersedeLabel: "Sustituye a la v1",
       confirm: "El equipo de mantenimiento ya puede consultar este manual",
     },
-    fault: {
-      caption: "La prensa se detiene con un fallo E530. John necesita la solución, ya.",
+    briefs: {
+      start: {
+        label: "Habla con tus documentos",
+        text: "Usa tu lenguaje de siempre para encontrar respuestas a tus preguntas en los documentos de la empresa, con control total de accesos.",
+      },
+      introAdmin: {
+        label: "Nueva versión del manual",
+        text: "El fabricante acaba de publicar una nueva versión del manual de una de las prensas. Anna tiene que actualizar los registros de la empresa.",
+      },
+      upload: {
+        label: "La tarea de Anna",
+        text: "Tiene que subir el nuevo manual, marcarlo como la versión vigente y decidir quién puede acceder a él.",
+      },
+      introTech: {
+        label: "Alarma: prensa fuera de servicio",
+        text: "John recibe una alarma: la prensa TR-200 está fuera de servicio. Tiene que volver a producción con urgencia.",
+      },
+      fixed: {
+        label: "Fallo resuelto",
+        text: "John ha resuelto el fallo. Además sabe que se repite, así que hace falta un mantenimiento correctivo.",
+      },
+      resolved: {
+        label: "De nuevo en producción",
+        text: "La planta vuelve a la normalidad, y John tiene toda la información para investigar y proponer una solución definitiva.",
+      },
     },
     chat: {
       tabLabel: "Chat IA",
+      newChat: "Nuevo chat",
+      chatsLabel: "Chats",
+      threadTitle: "Fallo de la prensa TR-200",
       empty: "¿En qué puedo ayudarte?",
       placeholder: "Pregunta lo que quieras sobre tus manuales y trabajos anteriores",
       question:

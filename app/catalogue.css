@@ -1153,6 +1153,33 @@ html body .solutions-index .cat-section[id] {
 html body .product-page .team-hero h1 {
   max-width: 24ch;
 }
+/* Solution pages: a short hero, so the demo and content come up sooner. */
+html body .product-page .team-hero {
+  min-height: 0;
+  padding: 64px 0 48px;
+}
+html body .product-page .team-hero .hero-breadcrumb {
+  margin-bottom: 8px;
+}
+html body .product-page .team-hero .home-hero-inner {
+  row-gap: 14px;
+}
+@media (min-width: 1001px) {
+  /* Problem line and title on the left, the lead beside them on the right. */
+  html body .product-page .team-hero .product-lead-problem {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  html body .product-page .team-hero h1 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  html body .product-page .team-hero .home-hero-side {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-self: end;
+  }
+}
 html body .product-page .sol-team {
   padding: 72px 0 0;
 }

@@ -19,7 +19,7 @@ import {
   productIds,
   productsByGroup,
 } from "@/lib/catalogue";
-import { getDictionary, hasLocale, locales, localePath } from "@/lib/i18n";
+import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 import { crmDemoUi, docsDemo } from "@/lib/crm-demo";
 
@@ -97,6 +97,18 @@ export default async function ProductPage({
           </div>
         </section>
 
+        {id === "talk-to-your-documents" ? (
+          <section className="demo-section" id="demo" aria-labelledby="demo-title">
+            <div className="shell">
+              <div className="demo-head">
+                <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
+                <h2 id="demo-title">{docsDemo[lang].heading}</h2>
+              </div>
+              <DocsDemo demo={docsDemo[lang]} ui={crmDemoUi[lang]} />
+            </div>
+          </section>
+        ) : null}
+
         <section className="shell sol-team sol-team-solo cat-section">
           <div className="sol-team-grid">
             <div className="sol-team-photo">
@@ -130,28 +142,6 @@ export default async function ProductPage({
             </div>
           </div>
         </section>
-        {id === "talk-to-your-documents" ? (
-          <section className="shell demo-section" aria-labelledby="demo-title">
-            <div className="demo-head">
-              <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
-              <h2 id="demo-title">{docsDemo[lang].heading}</h2>
-              <p className="demo-lead">{docsDemo[lang].intro}</p>
-            </div>
-            <DocsDemo demo={docsDemo[lang]} ui={crmDemoUi[lang]} />
-            <p className="demo-foot">{crmDemoUi[lang].illustrative}</p>
-            <div className="demo-cta">
-              <p>{crmDemoUi[lang].ctaLead}</p>
-              <SiteLink
-                className="demo-cta-link"
-                href={`${localePath(lang)}#contact`}
-              >
-                {crmDemoUi[lang].ctaButton}
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </SiteLink>
-            </div>
-          </section>
-        ) : null}
-
         <section className="shell cat-section" aria-labelledby="familiar-title">
           <h2 id="familiar-title" className="cat-heading">
             {copy.familiarHeading}

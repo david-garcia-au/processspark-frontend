@@ -26,7 +26,8 @@ import {
   type FilterId,
   type ProductId,
 } from "@/lib/catalogue";
-import { getDictionary, hasLocale, locales } from "@/lib/i18n";
+import { getDictionary, hasLocale, localePath, locales } from "@/lib/i18n";
+import { demoPath } from "@/lib/catalogue/structure";
 import { site } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -105,7 +106,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </a>
               </Button>
-              <a className="pill pill-ghost" href={site.demoUrl}>
+              <a className="pill pill-ghost" href={localePath(lang, demoPath)}>
                 {hero.ctaSecondary}
               </a>
             </div>

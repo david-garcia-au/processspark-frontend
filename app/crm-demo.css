@@ -47,7 +47,8 @@
 .crm-stage[data-beat="intro-admin"] .crm-win,
 .crm-stage[data-beat="intro-tech"] .crm-win,
 .crm-stage[data-beat="upload"] .crm-win,
-.crm-stage[data-beat="fault"] .crm-win {
+.crm-stage[data-beat="fault"] .crm-win,
+.crm-stage[data-beat="resolved"] .crm-win {
   animation: crm-cross 1.4s ease;
 }
 /* Leave room at the bottom for the playback bar. */
@@ -396,13 +397,20 @@
   font-size: 0.82rem;
   color: var(--crm-muted);
 }
+/* The new version lands with a brief tint that fades by itself. */
 .crm-tr-new {
-  animation: crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  background: var(--crm-blue-soft);
+  animation:
+    crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    crm-rowflash 2.4s ease-out;
 }
-.crm-tr-new[data-grant="true"] {
-  background: transparent;
-  transition: background-color 0.6s ease;
+@keyframes crm-rowflash {
+  0%,
+  35% {
+    background-color: var(--crm-blue-soft);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 @keyframes crm-rowin {
   from {
@@ -450,6 +458,38 @@
   font-size: 0.72rem;
   font-weight: 600;
 }
+.crm-super-pill {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--crm-blue-soft);
+  color: var(--crm-blue);
+  font-size: 0.72rem;
+  font-weight: 600;
+  animation: crm-rowin 0.3s ease;
+}
+.crm-menu-sep {
+  display: block;
+  height: 1px;
+  margin: 6px 4px;
+  background: var(--crm-line);
+}
+/* Uploading spinner (between picker close and the row landing) */
+.crm-uploading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: var(--crm-blue-soft);
+  color: var(--crm-blue);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: crm-rowin 0.3s ease;
+}
 .crm-rowaction {
   position: relative;
   display: flex;
@@ -472,7 +512,7 @@
 }
 .crm-menu {
   position: absolute;
-  bottom: 38px;
+  top: 38px;
   right: 0;
   z-index: 30;
   width: 230px;
@@ -487,7 +527,7 @@
 @keyframes crm-menuin {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(-4px);
   }
 }
 .crm-menu-head {
@@ -626,19 +666,49 @@
 .crm-fault-img {
   object-fit: cover;
 }
-.crm-fault-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  margin: 0;
-  padding: 40px 28px 22px;
-  text-align: center;
-  font-size: 1.02rem;
+/* Full chat window: conversation list + the chat */
+.crm-chatwin {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  height: 100%;
+}
+.crm-chat-side {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 10px;
+  border-right: 1px solid var(--crm-line);
+  background: #fafbfc;
+}
+.crm-chat-new {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: #fff;
-  background: linear-gradient(0deg, rgb(8 18 38 / 0.9) 0%, rgb(8 18 38 / 0) 100%);
+  color: var(--crm-ink-2);
+}
+.crm-chat-new svg {
+  color: var(--crm-muted);
+}
+.crm-chat-sidelabel {
+  margin: 12px 0 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--crm-muted);
+}
+.crm-chat-thread-item {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--crm-ink);
+  background: #eef0f3;
+}
+.crm-chat-thread-item[data-active="true"] {
+  background: #e4e8ee;
+  font-weight: 500;
 }
 /* Chat screen */
 .crm-chat {
@@ -824,6 +894,7 @@
   gap: 14px;
   background: rgb(17 24 39 / 0.18);
   backdrop-filter: blur(1.5px);
+  animation: crm-fade 1s ease;
 }
 .crm-run {
   display: inline-flex;
@@ -843,13 +914,95 @@
 .crm-run:hover {
   background: #2149e6;
 }
-.crm-run-hint {
+/* Start screen: the play button sits inside the story card. */
+.crm-brief-start {
+  position: relative;
+  width: min(380px, calc(100% - 48px));
+}
+.crm-brief-start .crm-run {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+/* Square narration card: the only narration in the demo. White at 70%
+   (30% transparent) over a blur, with a coloured label so it reads as a
+   story beat rather than a dialog. */
+.crm-brief {
+  position: absolute;
+  z-index: 14;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  width: min(340px, calc(100% - 48px));
+  aspect-ratio: 1;
+  padding: 32px;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 0.7);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow:
+    0 24px 60px -20px rgb(15 23 42 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.8);
+  animation: crm-brief 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.crm-brief::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  top: 0;
+  width: 44px;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: #2f5bff;
+}
+.crm-brief-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.9);
-  font-size: 0.8rem;
-  color: var(--crm-ink-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2447d6;
+}
+.crm-brief-text {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: -0.015em;
+  color: #0b1120;
+  text-wrap: pretty;
+}
+/* On Anna's photo: the right side, clear of her intro text and face. */
+.crm-brief[data-at="intro"] {
+  right: 48px;
+  top: calc(50% - 27px);
+  translate: 0 -50%;
+}
+/* Closing photo: low on the right, so the green status banner stays clear. */
+.crm-brief[data-at="corner"] {
+  right: 40px;
+  bottom: 78px;
+}
+.crm-brief-scrim {
+  position: absolute;
+  inset: 0 0 54px;
+  z-index: 14;
+  display: grid;
+  place-items: center;
+  background: rgb(15 23 42 / 0.18);
+  animation: crm-fade 0.6s ease;
+}
+.crm-brief[data-at="center"] {
+  position: relative;
+}
+@keyframes crm-brief {
+  from {
+    opacity: 0;
+    scale: 0.96;
+  }
 }
 /* Animated cursor */
 .crm-cursor {

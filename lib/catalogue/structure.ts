@@ -471,12 +471,13 @@ export const comparisons: Record<ComparisonId, readonly ProductId[]> = {
 };
 
 /** Menu cards (3.4). */
-export const navCardIds = ["first-project", "guides"] as const;
+export const navCardIds = ["demo"] as const;
 export type NavCardId = (typeof navCardIds)[number];
 export const navCardMedia: Record<NavCardId, MediaSlot> = {
-  "first-project": "nav-first-project",
-  guides: "nav-guides",
+  demo: "nav-demo",
 };
+/** Where "See it in action" goes: the Talk to Your Documents demo. */
+export const demoPath = "/solutions/talk-to-your-documents#demo";
 
 /**
  * Products hidden from the header's Solutions panel and the footer column

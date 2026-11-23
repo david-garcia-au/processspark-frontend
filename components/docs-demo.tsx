@@ -11,17 +11,24 @@ import {
 } from "react";
 import {
   ArrowUp,
+  BellRing,
   Check,
   ChevronLeft,
   ChevronRight,
+  CircleCheck,
   FileText,
   FolderClosed,
+  ListChecks,
+  MessageSquareText,
   MoreVertical,
   MousePointer2,
   Pause,
   Play,
   RotateCcw,
+  SquarePen,
+  TriangleAlert,
   Upload,
+  Wrench,
 } from "lucide-react";
 import {
   prefersReducedMotion,
@@ -48,7 +55,8 @@ type Beat =
   | "intro-tech"
   | "fault"
   | "question"
-  | "answer";
+  | "answer"
+  | "resolved";
 
 const BEATS: Beat[] = [
   "intro-admin",
@@ -58,16 +66,18 @@ const BEATS: Beat[] = [
   "fault",
   "question",
   "answer",
+  "resolved",
 ];
 /** How long each beat plays before auto-advancing (ms). Last beat holds. */
 const BEAT_MS: Record<Beat, number> = {
-  "intro-admin": 5200,
-  upload: 8400,
-  permissions: 7200,
-  "intro-tech": 5200,
+  "intro-admin": 8000,
+  upload: 17000,
+  permissions: 9600,
+  "intro-tech": 8000,
   fault: 5600,
   question: 8000,
-  answer: 11000,
+  answer: 14500,
+  resolved: 9000,
 };
 
 type DocsDemoProps = { demo: DocsDemo; ui: CrmDemoUi };
@@ -101,6 +111,8 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
   // Sub-steps inside a beat (cursor moves, typing). Reset when the beat changes.
   const [micro, setMicro] = useState(0);
   const [typed, setTyped] = useState("");
+  // The square narration card (Anna's intro after 2s; start of the upload beat).
+  const [brief, setBrief] = useState(false);
   const timers = useRef<number[]>([]);
   const stageRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLSpanElement>(null);
@@ -108,7 +120,12 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
   const openRef = useRef<HTMLSpanElement>(null);
   const dotsRef = useRef<HTMLButtonElement>(null);
   const menuItemRef = useRef<HTMLSpanElement>(null);
+  const supersedeRef = useRef<HTMLSpanElement>(null);
   const [cursor, setCursor] = useState<{ x: number; y: number; click: boolean } | null>(null);
+  const cursorRef = useRef(cursor);
+  useEffect(() => {
+    cursorRef.current = cursor;
+  }, [cursor]);
 
   const beat = BEATS[index];
 
@@ -129,11 +146,19 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       if (!stage || !el) return;
       const s = stage.getBoundingClientRect();
       const r = el.getBoundingClientRect();
-      setCursor({
+      const target = {
         x: r.left + r.width / 2 - s.left,
         y: r.top + r.height / 2 - s.top,
         click,
-      });
+      };
+      if (cursorRef.current) {
+        setCursor(target);
+        return;
+      }
+      // No cursor on screen yet: enter from the middle, then travel, so it
+      // never just pops up on its target.
+      setCursor({ x: s.width * 0.5, y: s.height * 0.55, click: false });
+      requestAnimationFrame(() => requestAnimationFrame(() => setCursor(target)));
     },
     [],
   );
@@ -143,26 +168,46 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     if (!started) return;
     clearTimers();
     setMicro(0);
+    setBrief(beat === "upload");
     if (beat !== "question") setTyped("");
 
-    if (beat === "upload") {
+    if (beat === "intro-admin") {
+      // Her intro first, then the "new manual" card 2s later.
+      at(2000, () => setBrief(true));
+    } else if (beat === "intro-tech") {
+      // John's intro first, then the alarm card 2s later.
+      at(2000, () => setBrief(true));
+    } else if (beat === "upload") {
+      // Square brief first; the cursor only starts once it has gone.
+      const B = 6000;
+      at(B - 600, () => setBrief(false));
       // cursor -> Upload (click) -> picker opens -> cursor to file (select)
-      // -> cursor to Open (click) -> row lands as v2
-      at(700, () => pointAt(uploadRef, false));
-      at(2200, () => setCursor((c) => (c ? { ...c, click: true } : c)));
-      at(2800, () => setMicro(1)); // picker open
-      at(3800, () => pointAt(pickerFileRef, false));
-      at(5000, () => setMicro(2)); // file selected
-      at(5800, () => pointAt(openRef, false));
-      at(6800, () => setCursor((c) => (c ? { ...c, click: true } : c)));
-      at(7400, () => setMicro(3)); // picker closes, row lands
+      // -> cursor to Open (click) -> spinner (uploading) -> row lands as v2
+      at(B + 700, () => pointAt(uploadRef, false));
+      at(B + 2200, () => setCursor((c) => (c ? { ...c, click: true } : c)));
+      at(B + 2800, () => setMicro(1)); // picker open
+      at(B + 3800, () => pointAt(pickerFileRef, false));
+      at(B + 5000, () => setMicro(2)); // file selected
+      at(B + 5800, () => pointAt(openRef, false));
+      at(B + 6800, () => setCursor((c) => (c ? { ...c, click: true } : c)));
+      at(B + 7100, () => {
+        setCursor(null);
+        setMicro(3); // picker closes, spinner "uploading and extracting context"
+      });
+      at(B + 9300, () => setMicro(4)); // row lands as v2
     } else if (beat === "permissions") {
       at(800, () => pointAt(dotsRef, false));
       at(2200, () => setCursor((c) => (c ? { ...c, click: true } : c)));
       at(2800, () => setMicro(1)); // menu open
       at(3800, () => pointAt(menuItemRef, false));
       at(5000, () => setCursor((c) => (c ? { ...c, click: true } : c)));
-      at(5600, () => setMicro(2)); // granted
+      at(5600, () => setMicro(2)); // team granted
+      at(6400, () => pointAt(supersedeRef, false));
+      at(7400, () => setCursor((c) => (c ? { ...c, click: true } : c)));
+      at(8000, () => {
+        setCursor(null);
+        setMicro(3); // supersede ticked, menu closes
+      });
     } else if (beat === "question") {
       setCursor(null);
       const q = demo.chat.question;
@@ -172,22 +217,42 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       for (let i = 1; i <= q.length; i++) {
         at(start + i * perChar, () => setTyped(q.slice(0, i)));
       }
+    } else if (beat === "answer") {
+      setCursor(null);
+      setMicro(0); // thinking
+      at(2600, () => setMicro(1)); // answer arrives
+      at(4200, () => setMicro(2)); // source opens
+      at(7500, () => setBrief(true)); // "fault fixed" card
+    } else if (beat === "resolved") {
+      setCursor(null);
+      at(1800, () => setBrief(true)); // "back in production" card
     } else {
       setCursor(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [beat, started]);
 
-  // The auto-play timer: advance to the next beat when playing.
+  // The auto-play timer: advance to the next beat when playing. After the
+  // last beat, go back to the start screen (story card + Run the demo).
   useEffect(() => {
     if (!started || !playing) return;
-    if (index >= BEATS.length - 1) return;
-    const id = window.setTimeout(
-      () => setIndex((i) => Math.min(i + 1, BEATS.length - 1)),
-      BEAT_MS[beat],
-    );
+    const last = index >= BEATS.length - 1;
+    const id = window.setTimeout(() => {
+      if (!last) {
+        setIndex((i) => Math.min(i + 1, BEATS.length - 1));
+        return;
+      }
+      clearTimers();
+      setStarted(false);
+      setIndex(0);
+      setPlaying(false);
+      setTyped("");
+      setCursor(null);
+      setMicro(0);
+      setBrief(false);
+    }, BEAT_MS[beat]);
     return () => window.clearTimeout(id);
-  }, [started, playing, index, beat]);
+  }, [started, playing, index, beat, clearTimers]);
 
   const start = useCallback(() => {
     if (reduce) {
@@ -210,6 +275,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     setTyped("");
     setCursor(null);
     setMicro(0);
+    setBrief(false);
   }, [clearTimers]);
 
   const goTo = useCallback((i: number) => {
@@ -224,17 +290,25 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
   const introAdmin = beat === "intro-admin";
   const introTech = beat === "intro-tech";
   const onFault = beat === "fault";
+  const onResolved = beat === "resolved";
+  // One window per screen: steps on the same screen (upload -> permissions,
+  // question -> answer) keep it mounted, so it doesn't blink or replay rows.
+  const screenKey = onDocs ? "docs" : onChat ? "chat" : beat;
   const who = onChat || introTech ? demo.tech : demo.admin;
   const person = introAdmin ? demo.admin : introTech ? demo.tech : who;
   const intro = introAdmin ? demo.adminIntro : demo.techIntro;
 
   const uploadDone =
-    beat === "permissions" || (beat === "upload" && micro >= 3);
+    beat === "permissions" || (beat === "upload" && micro >= 4);
   const pickerOpen = beat === "upload" && micro >= 1 && micro < 3;
   const fileSelected = beat === "upload" && micro >= 2 && micro < 3;
-  const menuOpen = beat === "permissions" && micro >= 1;
+  const uploadingSpinner = beat === "upload" && micro === 3;
+  const menuOpen = beat === "permissions" && micro >= 1 && micro < 3;
   const granted = beat === "permissions" && micro >= 2;
-  const answered = beat === "answer";
+  const superseded = beat === "permissions" && micro >= 3;
+  const thinking = beat === "answer" && micro < 1;
+  const answered = beat === "answer" && micro >= 1;
+  const sourceOpen = beat === "answer" && micro >= 2;
   const grantedTeam = demo.permissions.teams.find((t) => t.granted)?.label;
 
   // Keep the cursor glued to a moving target after layout settles.
@@ -245,8 +319,8 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
 
   return (
     <div className="crm-stage" data-beat={beat} ref={stageRef}>
-      {/* Crossfade key: a new wrapper per beat fades in over the previous. */}
-      <div className="crm-win" key={beat}>
+      {/* Crossfade key: a new wrapper per screen fades in over the previous. */}
+      <div className="crm-win" key={`win-${screenKey}`}>
         {onDocs || onChat ? (
           <>
             <div className="crm-tabs" aria-hidden="true">
@@ -273,7 +347,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
         <div
           className="crm-body"
           data-variant={
-            introAdmin || introTech ? "intro" : onFault ? "fault" : onChat ? "chat" : "docs"
+            introAdmin || introTech ? "intro" : onFault || onResolved ? "fault" : onChat ? "chat" : "docs"
           }
         >
           {/* Intro cards — keyed to the beat so John never shows Anna. */}
@@ -338,7 +412,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                       <FileText className="size-4 text-gray-500" />
                       {demo.docs.existing.name}
                       <span className="crm-ver" data-old={uploadDone ? "true" : undefined}>
-                        {uploadDone ? demo.docs.versionOld : demo.docs.versionNew}
+                        {demo.docs.versionOld}
                       </span>
                     </span>
                     <span className="crm-dim">{demo.docs.existing.size}</span>
@@ -351,6 +425,9 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                         <FileText className="size-4 text-blue-600" />
                         {demo.docs.uploaded.name}
                         <span className="crm-ver crm-ver-new">{demo.docs.versionNew}</span>
+                        {superseded ? (
+                          <span className="crm-super-pill">{demo.permissions.supersedeLabel}</span>
+                        ) : null}
                         {granted ? (
                           <span className="crm-grant-pill">
                             <Check className="size-3" />
@@ -388,6 +465,19 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                                 {team.label}
                               </span>
                             ))}
+                            <span className="crm-menu-sep" />
+                            <span
+                              ref={supersedeRef}
+                              className="crm-menu-item"
+                              data-on={superseded ? "true" : undefined}
+                              role="menuitemcheckbox"
+                              aria-checked={superseded}
+                            >
+                              <span className="crm-menu-box" aria-hidden="true">
+                                {superseded ? <Check className="size-3" /> : null}
+                              </span>
+                              {demo.permissions.supersedeLabel}
+                            </span>
                           </div>
                         ) : null}
                       </span>
@@ -444,6 +534,13 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                   </div>
                 </div>
               ) : null}
+
+              {uploadingSpinner ? (
+                <div className="crm-uploading">
+                  <span className="crm-spin" aria-hidden="true" />
+                  {demo.uploading}
+                </div>
+              ) : null}
             </div>
           ) : null}
 
@@ -457,56 +554,140 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                 sizes="(max-width: 1000px) 100vw, 900px"
                 className="crm-fault-img"
               />
-              <p className="crm-fault-caption">{demo.fault.caption}</p>
             </div>
           ) : null}
 
-          {/* AI Chat screen */}
+          {/* Closing photo: the panel all green again */}
+          {onResolved ? (
+            <div className="crm-fault">
+              <Image
+                src={demo.resolvedPhoto.src}
+                alt={demo.resolvedPhoto.alt}
+                fill
+                sizes="(max-width: 1000px) 100vw, 900px"
+                className="crm-fault-img"
+              />
+            </div>
+          ) : null}
+          {/* AI Chat screen — the full window: conversation list + the chat. */}
           {onChat ? (
-            <div className="crm-chat">
-              {beat === "question" ? (
-                <div className="crm-chat-empty">
-                  <h3>{demo.chat.empty}</h3>
-                  <div className="crm-composer" data-typing={micro >= 1 ? "true" : undefined}>
-                    <span className="crm-composer-text" data-filled={typed ? "true" : undefined}>
-                      {typed || demo.chat.placeholder}
-                      <i className="crm-caret" aria-hidden="true" />
-                    </span>
-                    <span className="crm-send" aria-hidden="true">
-                      <ArrowUp className="size-4" />
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div className="crm-chat-thread">
-                  <div className="crm-turn-user">
-                    <p>{demo.chat.question}</p>
-                  </div>
-                  <div className="crm-turn-ai">
-                    <p className="crm-answer">{demo.chat.answer}</p>
-                    <ul className="crm-sources">
-                      {demo.chat.sources.map((s) => (
-                        <li key={s}>{s}</li>
-                      ))}
-                    </ul>
-                    <div className="crm-source">
-                      <p className="crm-source-head">{demo.chat.source.title}</p>
-                      <ul>
-                        {demo.chat.source.lines.map((line, i) => (
-                          <li key={line} data-mark={demo.chat.source.mark === i ? "true" : undefined}>
-                            {line}
-                          </li>
-                        ))}
-                      </ul>
+            <div className="crm-chatwin">
+              <aside className="crm-chat-side">
+                <span className="crm-chat-new">
+                  <SquarePen className="size-4" />
+                  {demo.chat.newChat}
+                </span>
+                <p className="crm-chat-sidelabel">{demo.chat.chatsLabel}</p>
+                <span className="crm-chat-thread-item" data-active="true">
+                  {beat === "answer" ? demo.chat.threadTitle : demo.chat.empty}
+                </span>
+              </aside>
+              <div className="crm-chat">
+                {beat === "question" ? (
+                  <div className="crm-chat-empty">
+                    <h3>{demo.chat.empty}</h3>
+                    <div className="crm-composer" data-typing={micro >= 1 ? "true" : undefined}>
+                      <span className="crm-composer-text" data-filled={typed ? "true" : undefined}>
+                        {typed || demo.chat.placeholder}
+                        <i className="crm-caret" aria-hidden="true" />
+                      </span>
+                      <span className="crm-send" aria-hidden="true">
+                        <ArrowUp className="size-4" />
+                      </span>
                     </div>
                   </div>
-                  <p className="crm-chat-foot">{demo.chat.footnote}</p>
-                </div>
-              )}
+                ) : (
+                  <div className="crm-chat-thread">
+                    <div className="crm-turn-user">
+                      <p>{demo.chat.question}</p>
+                    </div>
+                    <div className="crm-turn-ai">
+                      {thinking ? (
+                        <p className="crm-activity">
+                          <span className="crm-spin" aria-hidden="true" />
+                          {demo.chat.activity}
+                        </p>
+                      ) : (
+                        <>
+                          <p className="crm-answer">{demo.chat.answer}</p>
+                          <ul className="crm-sources">
+                            {demo.chat.sources.map((s) => (
+                              <li key={s}>{s}</li>
+                            ))}
+                          </ul>
+                          {sourceOpen ? (
+                            <div className="crm-source">
+                              <p className="crm-source-head">{demo.chat.source.title}</p>
+                              <ul>
+                                {demo.chat.source.lines.map((line, i) => (
+                                  <li key={line} data-mark={demo.chat.source.mark === i ? "true" : undefined}>
+                                    {line}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ) : null}
         </div>
       </div>
+
+      {/* Narration: square cards are the only way the story is told. */}
+      {started && beat === "intro-admin" && brief ? (
+        <div className="crm-brief" data-at="intro" key="brief-intro">
+          <p className="crm-brief-label">
+            <BellRing className="size-4" />
+            {demo.briefs.introAdmin.label}
+          </p>
+          <p className="crm-brief-text">{demo.briefs.introAdmin.text}</p>
+        </div>
+      ) : null}
+      {started && beat === "intro-tech" && brief ? (
+        <div className="crm-brief" data-at="intro" key="brief-tech">
+          <p className="crm-brief-label">
+            <TriangleAlert className="size-4" />
+            {demo.briefs.introTech.label}
+          </p>
+          <p className="crm-brief-text">{demo.briefs.introTech.text}</p>
+        </div>
+      ) : null}
+      {started && beat === "answer" && brief ? (
+        <div className="crm-brief-scrim" key="brief-fixed">
+          <div className="crm-brief" data-at="center">
+            <p className="crm-brief-label">
+              <Wrench className="size-4" />
+              {demo.briefs.fixed.label}
+            </p>
+            <p className="crm-brief-text">{demo.briefs.fixed.text}</p>
+          </div>
+        </div>
+      ) : null}
+      {started && beat === "resolved" && brief ? (
+        <div className="crm-brief" data-at="corner" key="brief-resolved">
+          <p className="crm-brief-label">
+            <CircleCheck className="size-4" />
+            {demo.briefs.resolved.label}
+          </p>
+          <p className="crm-brief-text">{demo.briefs.resolved.text}</p>
+        </div>
+      ) : null}
+      {started && beat === "upload" && brief ? (
+        <div className="crm-brief-scrim" key="brief-upload">
+          <div className="crm-brief" data-at="center">
+            <p className="crm-brief-label">
+              <ListChecks className="size-4" />
+              {demo.briefs.upload.label}
+            </p>
+            <p className="crm-brief-text">{demo.briefs.upload.text}</p>
+          </div>
+        </div>
+      ) : null}
 
       {/* Scripted cursor */}
       {cursor ? (
@@ -523,11 +704,17 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       {/* Start overlay */}
       {!started ? (
         <div className="crm-overlay">
-          <button type="button" className="crm-run" onClick={start}>
-            <Play className="size-4" />
-            {ui.run}
-          </button>
-          <p className="crm-run-hint">{ui.runHint}</p>
+          <div className="crm-brief crm-brief-start">
+            <p className="crm-brief-label">
+              <MessageSquareText className="size-4" />
+              {demo.briefs.start.label}
+            </p>
+            <p className="crm-brief-text">{demo.briefs.start.text}</p>
+            <button type="button" className="crm-run" onClick={start}>
+              <Play className="size-4" />
+              {ui.run}
+            </button>
+          </div>
         </div>
       ) : null}
 

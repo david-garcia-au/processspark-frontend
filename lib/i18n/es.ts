@@ -123,7 +123,7 @@ export const es: Dictionary = {
     description:
       "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
     ctaPrimary: "Encuentra tu problema",
-    ctaSecondary: "Ver una demo",
+    ctaSecondary: "Míralo en acción",
   },
   band: {
     ariaLabel: "Sectores con los que trabajamos",
@@ -844,9 +844,9 @@ export const es: Dictionary = {
       label: "Sensor en una bomba y lectura en directo en el móvil",
       alt: "Un sensor instalado en una bomba y una lectura en directo en un móvil",
     },
-    "nav-first-project": {
-      label: "Un mapa de proceso impreso sobre una mesa",
-      alt: "Dos personas señalan un paso de un mapa de proceso impreso",
+    "nav-demo": {
+      label: "La demo de Habla con tus documentos",
+      alt: "Anna, administradora de servicio, en su mesa en la demo",
     },
     "problems-capture": {
       label: "Copiar cifras del papel a una hoja de cálculo",
@@ -863,10 +863,6 @@ export const es: Dictionary = {
     "problems-monitor": {
       label: "Comprobar la lectura de una bomba en planta",
       alt: "Un técnico comprueba la lectura de una bomba en una tableta en una sala de máquinas",
-    },
-    "nav-guides": {
-      label: "Páginas de guías impresas sobre una mesa",
-      alt: "Páginas de guías impresas sobre una mesa",
     },
     "pain-operations": {
       label: "Equipo bajo presión en una planta con mucha actividad",

@@ -109,7 +109,7 @@ export const en = {
     description:
       "We make AI and automation accessible to small and medium-sized businesses, with solutions that adapt to the way you work—not the other way round.",
     ctaPrimary: "Find your problem",
-    ctaSecondary: "See a demo",
+    ctaSecondary: "See it in action",
   },
   band: {
     ariaLabel: "Industries we work with",
@@ -834,9 +834,9 @@ export const en = {
       label: "Sensor on a pump and a live reading on a phone",
       alt: "A sensor fitted to a pump and a live reading on a phone",
     },
-    "nav-first-project": {
-      label: "A printed process map on a table",
-      alt: "Two people pointing at one step on a printed process map",
+    "nav-demo": {
+      label: "The Talk to Your Documents demo",
+      alt: "Anna, a service admin, at her desk in the demo",
     },
     "problems-capture": {
       label: "Copying figures from paper into a spreadsheet",
@@ -853,10 +853,6 @@ export const en = {
     "problems-monitor": {
       label: "Checking a pump reading on site",
       alt: "A technician checking a pump reading on a tablet in a plant room",
-    },
-    "nav-guides": {
-      label: "Printed guide pages on a desk",
-      alt: "Printed guide pages on a desk",
     },
     "pain-operations": {
       label: "Team under pressure on a busy floor",
