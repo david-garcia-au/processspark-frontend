@@ -334,9 +334,12 @@ html body main.home .home-hero .hero-tasks li {
   max-width: 30ch;
 }
 @media (min-width: 1280px) {
+  /* One line when it fits; a long tag (e.g. the Spanish web forms one) wraps
+     before the right edge instead of running off the screen. The list is the
+     size container, so 1cqw is 1% of the tag zone, the unit --sx uses. */
   html body main.home .home-hero .hero-tasks li {
-    max-width: none;
-    white-space: nowrap;
+    max-width: calc((100 - var(--sx)) * 1cqw - 24px);
+    white-space: normal;
   }
 }
 html body main.home .home-hero-landing h1 {
