@@ -195,3 +195,53 @@ html body .product-page .cat-rows p {
 html body .product-page .pp-band .cat-heading {
   margin-bottom: 32px;
 }
+
+/* What it does: the photo gets depth. A blue backplate sits behind it, the
+   frame carries a layered shadow, and the chat bubbles hang over its lower
+   edge instead of sitting flat inside it. */
+@media (min-width: 1001px) {
+  html body .product-page .pp-what .sol-team-grid {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+}
+.product-page .pp-visual {
+  position: relative;
+  isolation: isolate;
+  padding-bottom: 72px;
+}
+html body .product-page .pp-what .sol-team-photo {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  /* Tailwind shadow-xl at 80% */
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.8),
+    0 8px 10px -6px rgb(0 0 0 / 0.8);
+}
+html body .product-page .pp-visual .sol-chat {
+  position: absolute;
+  left: -16px;
+  right: 8%;
+  bottom: 0;
+  z-index: 2;
+  gap: 10px;
+}
+html body .product-page .pp-visual .sol-chat p {
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.8),
+    0 8px 10px -6px rgb(0 0 0 / 0.8);
+}
+html body .product-page .pp-visual .sol-chat p:last-of-type {
+  margin-left: 40px;
+}
+@media (max-width: 1000px) {
+  html body .product-page .pp-visual .sol-chat {
+    left: 0;
+    right: 0;
+  }
+  html body .product-page .pp-visual .sol-chat p:last-of-type {
+    margin-left: 16px;
+  }
+}

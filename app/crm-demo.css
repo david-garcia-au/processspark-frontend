@@ -1114,15 +1114,133 @@
   background: var(--crm-blue);
 }
 @media (max-width: 760px) {
+  /* A fixed, phone-sized stage: the scenes fill it with absolutely placed
+     photos, so an auto height collapses them to a few lines. */
   .crm-stage {
-    height: auto;
-    min-height: 0;
+    height: min(600px, calc(100svh - 170px));
+    min-height: 460px;
   }
   .crm-docs-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .crm-folders {
     display: none;
+  }
+  /* The account pill shares the tab row, so keep it to avatar and name. */
+  .crm-user-text small {
+    display: none;
+  }
+  .crm-tab {
+    padding: 8px 10px;
+  }
+  /* Files table: drop the size column and let long names and pills wrap. */
+  .crm-tr {
+    grid-template-columns: minmax(0, 1fr) 84px 32px;
+    gap: 8px;
+    padding: 12px;
+  }
+  .crm-tr > :nth-child(2) {
+    display: none;
+  }
+  .crm-file {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    overflow-wrap: anywhere;
+  }
+  /* Opens upward: the row sits at the bottom of the card, where a menu
+     opening downward would be cut off. */
+  /* Chat: one column, the conversation list is dropped. */
+  .crm-chatwin {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .crm-chat-side {
+    display: none;
+  }
+  .crm-chat {
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .crm-menu {
+    top: auto;
+    bottom: 38px;
+    width: min(230px, 70vw);
+  }
+  .crm-docs {
+    padding: 18px 16px;
+  }
+  .crm-file > svg {
+    display: none;
+  }
+  /* Less chrome so the table, menu and confirmation fit without overlap. */
+  .crm-docs > * {
+    flex-shrink: 0;
+  }
+  .crm-docs-head {
+    margin-bottom: 14px;
+  }
+  .crm-docs-head p,
+  .crm-vernote,
+  .crm-grant-pill,
+  .crm-super-pill {
+    display: none;
+  }
+  .crm-file {
+    font-size: 0.82rem;
+    overflow-wrap: normal;
+  }
+  /* File picker: names only, on one line. */
+  .crm-picker {
+    width: calc(100% - 28px);
+  }
+  .crm-picker-body {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .crm-picker-side,
+  .crm-picker-kind {
+    display: none;
+  }
+  .crm-picker-file {
+    grid-template-columns: 20px minmax(0, 1fr);
+  }
+  .crm-picker-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Narration card: centred in the stage, sized to the phone. */
+  .crm-brief,
+  .crm-brief[data-at="intro"],
+  .crm-brief[data-at="corner"] {
+    right: auto;
+    left: 50%;
+    translate: -50% 0;
+    width: calc(100% - 40px);
+    aspect-ratio: auto;
+    padding: 26px 24px;
+    gap: 12px;
+  }
+  .crm-brief[data-at="intro"],
+  .crm-brief[data-at="corner"] {
+    top: auto;
+    bottom: 70px;
+  }
+  /* The centred card sits in the scrim's grid, not absolutely. */
+  .crm-brief[data-at="center"] {
+    left: auto;
+    translate: none;
+  }
+  /* Keep the person's name and role above the narration card. */
+  .crm-intro-text {
+    justify-content: flex-start;
+    padding: 36px 24px 0;
+    max-width: none;
+  }
+  .crm-brief::before {
+    left: 24px;
+  }
+  .crm-brief-text {
+    font-size: 1.15rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -112,13 +112,15 @@ export default async function ProductPage({
 
         <section className="shell sol-team sol-team-solo cat-section pp-what">
           <div className="sol-team-grid">
-            <div className="sol-team-photo">
-              <Media
-                slot={item.media}
-                text={dict.media[item.media]}
-                sizes="(max-width: 1000px) 100vw, 520px"
-                className="cat-media"
-              />
+            <div className="pp-visual">
+              <div className="sol-team-photo">
+                <Media
+                  slot={item.media}
+                  text={dict.media[item.media]}
+                  sizes="(max-width: 1000px) 100vw, 640px"
+                  className="cat-media"
+                />
+              </div>
               <div className="sol-chat" aria-label={copy.illustrative}>
                 <p>
                   <Sparkles size={16} aria-hidden="true" />
@@ -128,7 +130,6 @@ export default async function ProductPage({
                   <Check size={14} aria-hidden="true" />
                   {item.prompt.reply}
                 </p>
-                <small>{copy.illustrative}</small>
               </div>
             </div>
             <div className="sol-team-body">
