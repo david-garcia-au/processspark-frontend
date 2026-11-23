@@ -189,7 +189,7 @@ export function validateCatalogue(
       const c = copy.products[id];
       const at = `${lang} product ${id}`;
       max(`${at} shortName`, c.shortName, 30);
-      max(`${at} menuHint`, c.menuHint, 60);
+      max(`${at} menuHint`, c.menuHint, 90);
       max(`${at} seo.title`, c.seo.title, 45);
       range(`${at} seo.description`, c.seo.description, 70, 160);
       if (c.covers.length < 3 || c.covers.length > 6) {

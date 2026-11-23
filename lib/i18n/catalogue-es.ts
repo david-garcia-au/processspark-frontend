@@ -326,8 +326,8 @@ export const esCatalogue: CatalogueCopy = {
     },
     "invoice-bookkeeping": {
       name: "Automatización de facturas y contabilidad",
-      shortName: "Facturas y contabilidad",
-      menuHint: "Facturas revisadas antes de contabilizar",
+      shortName: "Comprueba tus facturas",
+      menuHint: "Coteja facturas con pedidos y entregas. Detecta diferencias antes de aprobarlas.",
       oneLine:
         "Comprueba las facturas de proveedores con pedidos y entregas antes de que lleguen a la contabilidad.",
       lead: "Lee las facturas de proveedores, comprueba totales y líneas con los pedidos de compra y las recepciones, marca las diferencias y prepara la imputación y los asientos para tu programa de contabilidad. Una persona aprueba.",
@@ -399,8 +399,8 @@ export const esCatalogue: CatalogueCopy = {
     },
     "quotes-rfqs": {
       name: "Automatización de ofertas y solicitudes de oferta (RFQ)",
-      shortName: "Ofertas y RFQ",
-      menuHint: "RFQ convertidas en ofertas con precio",
+      shortName: "Convierte consultas en ofertas",
+      menuHint: "Borradores con precios de tus tarifas y descuentos por cliente.",
       oneLine:
         "Convierte consultas y RFQ en ofertas borrador con tu tarifa y tus descuentos.",
       lead: "Para trabajos que se calculan con una tarifa más descuentos por cliente. Convierte consultas y RFQ en ofertas borrador con tu lista de precios, los descuentos de cada cliente, la disponibilidad y los datos de producto. Cada precio se puede rastrear.",

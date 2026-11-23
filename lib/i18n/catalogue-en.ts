@@ -326,7 +326,7 @@ export const enCatalogue: CatalogueCopy = {
     },
     "invoice-bookkeeping": {
       name: "Invoice & Bookkeeping Automation",
-      shortName: "Invoice & Bookkeeping",
+      shortName: "Check Your Invoices",
       menuHint: "Invoices checked before the books",
       oneLine:
         "Check supplier invoices against orders and deliveries before they reach the books.",
@@ -398,7 +398,7 @@ export const enCatalogue: CatalogueCopy = {
     },
     "quotes-rfqs": {
       name: "Quote & RFQ Automation",
-      shortName: "Quotes & RFQs",
+      shortName: "Turn Enquiries into Quotes",
       menuHint: "RFQs turned into priced draft quotes",
       oneLine:
         "Turn enquiries and RFQs into draft quotes from your price list and discounts.",
