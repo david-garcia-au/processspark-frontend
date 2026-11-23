@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
-import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Media } from "@/components/media";
@@ -75,7 +74,6 @@ export default async function ProductPage({
         mediaCopy={dict.media}
         page="solutions"
         path={`/solutions/${id}`}
-        hasContact
       />
       <main id="main" className="sol-page product-page">
         <section
@@ -265,13 +263,6 @@ export default async function ProductPage({
             ))}
           </div>
         </section>
-        <ContactSection
-          lang={lang}
-          contact={dict.contact}
-          heading={copy.contactHeading.replace("{name}", item.shortName)}
-          text={copy.contactText}
-          defaultCategory={item.contactCategory}
-        />
 
         {siblings.length > 0 ? (
           <nav className="shell sol-others" aria-labelledby="others-title">
