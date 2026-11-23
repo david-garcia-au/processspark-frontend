@@ -399,7 +399,7 @@ export const esCatalogue: CatalogueCopy = {
     },
     "quotes-rfqs": {
       name: "Automatización de ofertas y solicitudes de oferta (RFQ)",
-      shortName: "Convierte consultas en ofertas",
+      shortName: "Automatiza tus ofertas",
       menuHint: "Borradores con precios de tus tarifas y descuentos por cliente.",
       oneLine:
         "Convierte consultas y RFQ en ofertas borrador con tu tarifa y tus descuentos.",
