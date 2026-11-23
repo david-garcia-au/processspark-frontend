@@ -1,0 +1,329 @@
+/* Quote & RFQ Automation demo. Builds on app/crm-demo.css (same stage, cards,
+   cursor and controls); only the RFQ dashboard, email and draft are new. --- */
+
+/* Photo beats get the longer crossfade, as in the docs demo. */
+.qd-stage[data-beat="intro-rep"] .crm-win,
+.qd-stage[data-beat="intro-customer"] .crm-win,
+.qd-stage[data-beat="result"] .crm-win {
+  animation: crm-cross 1.4s ease;
+}
+.qd-screen {
+  position: relative;
+  height: 100%;
+  animation: crm-fade 0.5s ease;
+}
+
+/* RFQ dashboard */
+.qd-inbox-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.82rem;
+  color: var(--crm-ink-2);
+  white-space: nowrap;
+}
+.qd-table {
+  align-self: stretch;
+}
+.qd-table .crm-tr {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) 110px 150px;
+  padding: 13px 18px;
+}
+.qd-cust {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 0.88rem;
+}
+.qd-cust strong {
+  display: block;
+  font-weight: 600;
+}
+.qd-cust .crm-avatar {
+  flex: none;
+}
+.qd-cust-dot {
+  display: inline-flex;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #eef0f3;
+  color: var(--crm-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+.qd-key {
+  display: inline-flex;
+  margin-top: 2px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #fff4e5;
+  color: var(--crm-amber);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.qd-req {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 0.85rem;
+  color: var(--crm-ink-2);
+}
+.qd-tr-new {
+  animation:
+    crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    crm-rowflash 2.4s ease-out;
+}
+.qd-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #eef0f3;
+  color: var(--crm-ink-2);
+  animation: crm-rowin 0.35s ease;
+}
+.qd-status .crm-spin {
+  width: 11px;
+  height: 11px;
+}
+.qd-status[data-s="new"] {
+  background: var(--crm-blue-soft);
+  color: var(--crm-blue);
+}
+.qd-status[data-s="ready"] {
+  background: #fff4e5;
+  color: var(--crm-amber);
+}
+.qd-status[data-s="order"] {
+  background: #ecfdf3;
+  color: #047857;
+}
+
+/* Email + draft */
+.qd-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 22px;
+}
+.qd-detail-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.qd-detail-head h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.qd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.8rem;
+  color: var(--crm-ink-2);
+  white-space: nowrap;
+}
+.qd-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr);
+  gap: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.qd-mail,
+.qd-draft {
+  min-height: 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.qd-mail p,
+.qd-draft p {
+  margin: 0 0 9px;
+}
+.qd-from {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 12px !important;
+  border-bottom: 1px solid var(--crm-line-soft);
+}
+.qd-from strong {
+  display: block;
+  font-size: 0.85rem;
+}
+.qd-from small {
+  font-size: 0.74rem;
+  color: var(--crm-muted);
+}
+.qd-draft {
+  display: flex;
+  flex-direction: column;
+  background: #fbfcff;
+  border-color: #d9e2fb;
+  transition: opacity 0.5s ease;
+}
+.qd-draft[data-sent="true"] {
+  opacity: 0.75;
+}
+.qd-draft-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.74rem !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--crm-blue);
+}
+.qd-quote {
+  margin: 4px 0 10px;
+  border: 1px solid var(--crm-line);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+.qd-qrow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) 44px 86px 62px 92px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+}
+.qd-qrow span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.qd-qrow span:not(:first-child) {
+  text-align: right;
+}
+.qd-qhead {
+  background: #fafbfc;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--crm-muted);
+}
+.qd-disc {
+  color: #047857;
+  font-weight: 600;
+}
+.qd-totals {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--crm-line-soft);
+  font-size: 0.78rem;
+  color: var(--crm-muted);
+}
+.qd-totals strong {
+  color: var(--crm-ink);
+  font-weight: 600;
+}
+.qd-totals span:last-child strong {
+  font-size: 0.9rem;
+}
+.qd-note {
+  margin-top: 10px;
+  padding: 10px 12px;
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px dashed #c7d2fe;
+  font-size: 0.85rem;
+  color: var(--crm-muted);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+.qd-note[data-active="true"] {
+  border-style: solid;
+  border-color: var(--crm-blue);
+  background: #fff;
+}
+.qd-note[data-filled="true"] {
+  color: var(--crm-ink);
+}
+.qd-sign {
+  display: block;
+  margin-top: 4px;
+  color: var(--crm-ink-2);
+}
+.qd-draft-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.qd-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: var(--crm-ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition:
+    transform 0.15s ease,
+    background-color 0.3s ease;
+}
+.qd-send[data-sent="true"] {
+  background: #047857;
+}
+.qd-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #ecfdf3;
+  color: #047857;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px -12px rgb(17 24 39 / 0.3);
+  animation: crm-fade 0.4s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .qd-screen,
+  .qd-tr-new,
+  .qd-status,
+  .qd-toast {
+    animation: none;
+  }
+}

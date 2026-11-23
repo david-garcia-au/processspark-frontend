@@ -6,6 +6,8 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Media } from "@/components/media";
 import { DocsDemo } from "@/components/docs-demo";
+import { QuotesDemo } from "@/components/quotes-demo";
+import { quotesDemo } from "@/lib/quotes-demo";
 import { ProblemCard } from "@/components/problem-card";
 import { SiteLink } from "@/components/site-link";
 import { ProductStructuredData } from "@/components/structured-data";
@@ -106,6 +108,17 @@ export default async function ProductPage({
                 <h2 id="demo-title">{docsDemo[lang].heading}</h2>
               </div>
               <DocsDemo demo={docsDemo[lang]} ui={crmDemoUi[lang]} />
+            </div>
+          </section>
+        ) : null}
+        {id === "quotes-rfqs" ? (
+          <section className="demo-section" id="demo" aria-labelledby="demo-title">
+            <div className="shell">
+              <div className="demo-head">
+                <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
+                <h2 id="demo-title">{quotesDemo[lang].heading}</h2>
+              </div>
+              <QuotesDemo demo={quotesDemo[lang]} ui={crmDemoUi[lang]} />
             </div>
           </section>
         ) : null}

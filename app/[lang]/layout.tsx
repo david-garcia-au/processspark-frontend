@@ -37,6 +37,7 @@ import "../catalogue.css";
 import "../problem-explorer.css";
 import "../solution-demo.css";
 import "../crm-demo.css";
+import "../quotes-demo.css";
 import "../problems-hub.css";
 import "../home-type.css";
 import "../product-page.css";
