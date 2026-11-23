@@ -696,7 +696,7 @@ export const es: Dictionary = {
     whoForHeading: "Para quién es",
     goodToKnowHeading: "Conviene saber",
     worksWithHeading: "Funciona con",
-    contactHeading: "Habla con nosotros sobre {name}",
+    contactHeading: "¿Quieres verlo con tu propio trabajo?",
     contactText:
       "Cuéntanos el proceso con el que empezarías. Te sugeriremos un primer paso.",
     othersHeading: "Otras soluciones de este grupo",

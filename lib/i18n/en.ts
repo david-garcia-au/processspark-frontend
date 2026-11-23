@@ -686,7 +686,7 @@ export const en = {
     whoForHeading: "Who it is for",
     goodToKnowHeading: "Good to know",
     worksWithHeading: "Works with",
-    contactHeading: "Talk to us about {name}",
+    contactHeading: "Want to see this on your own work?",
     contactText:
       "Tell us about the process you would start with. We will suggest a first step.",
     othersHeading: "Other solutions in this group",

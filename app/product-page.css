@@ -1,0 +1,197 @@
+/* /solutions/[product]: the content under the demo. One idea per band so the
+   page reads as a sequence, not as one long run of same-weight headings.
+   Loaded last; scoped to .product-page. ------------------------------------ */
+
+/* What it does: the old rule zeroed the side padding of .shell, so the photo
+   and list escaped the gutter. Restore it and give the pair a clear shape. */
+html body .product-page .sol-team.pp-what {
+  padding: clamp(64px, 7vw, 96px) 48px 0;
+}
+@media (max-width: 1100px) {
+  html body .product-page .sol-team.pp-what {
+    padding-inline: 30px;
+  }
+}
+@media (max-width: 540px) {
+  html body .product-page .sol-team.pp-what {
+    padding-inline: 22px;
+  }
+}
+html body .product-page .pp-what .sol-team-grid {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+html body .product-page .pp-what .sol-team-photo {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px -36px rgb(8 18 38 / 0.55);
+}
+html body .product-page .pp-what .cat-heading {
+  margin-bottom: 28px;
+}
+html body .product-page .pp-what .cat-checks {
+  gap: 0;
+}
+html body .product-page .pp-what .cat-checks li {
+  padding: 16px 0 16px 34px;
+  border-top: 1px solid var(--line);
+  font-size: 1.05rem;
+}
+html body .product-page .pp-what .cat-checks li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+html body .product-page .pp-what .cat-checks li::before {
+  left: 6px;
+  top: 1.45em;
+}
+
+/* Problems: a pale band separates the "sounds familiar" cards from the
+   white sections around them. */
+html body .product-page .pp-band {
+  margin-top: clamp(64px, 7vw, 96px);
+  padding-bottom: clamp(64px, 7vw, 96px);
+  background: var(--accent-wash);
+}
+html body .product-page .pp-band .cat-section {
+  padding-top: clamp(64px, 7vw, 96px);
+}
+
+/* Who decides / who it is for: two panels, the control story in navy. */
+html body .product-page .pp-facts {
+  gap: 20px;
+  padding-top: clamp(64px, 7vw, 96px);
+}
+html body .product-page .pp-panel {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 3.4vw, 48px);
+  border-radius: var(--radius-lg);
+}
+html body .product-page .pp-panel .cat-heading {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  margin-bottom: 18px;
+}
+html body .product-page .pp-panel-dark {
+  background: var(--forest-deep);
+  color: var(--on-dark);
+}
+html body .product-page .pp-panel-dark .cat-heading {
+  color: var(--on-dark);
+}
+html body .product-page .pp-panel-dark .cat-lede {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: var(--accent-bright);
+}
+html body .product-page .pp-panel-dark p:not(.cat-lede) {
+  color: var(--on-dark-soft);
+}
+html body .product-page .pp-panel-light {
+  background: var(--tint, #f4f6fa);
+}
+
+/* Industries: fixed columns so the examples line up row to row. */
+html body .product-page .cat-rows > li {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr) minmax(150px, auto);
+  align-items: baseline;
+  padding: 24px 0;
+}
+html body .product-page .cat-rows > li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+html body .product-page .cat-rows .text-link {
+  justify-self: end;
+}
+
+/* First step / good to know. */
+html body .product-page .pp-next {
+  gap: 20px;
+}
+html body .product-page .pp-next > div:first-child p {
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+html body .product-page .pp-next .cat-plain li {
+  padding: 4px 0 4px 20px;
+  border-left-width: 3px;
+  border-left-color: var(--accent);
+}
+
+/* FAQ: heading on the left, answers on the right, markers inside the gutter. */
+html body .product-page .pp-faq {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: start;
+}
+html body .product-page .pp-faq .cat-heading {
+  position: sticky;
+  top: 120px;
+}
+html body .product-page .cat-faq {
+  max-width: none;
+}
+html body .product-page .cat-faq summary {
+  position: relative;
+  padding: 20px 44px 20px 0;
+  list-style: none;
+}
+html body .product-page .cat-faq summary::-webkit-details-marker {
+  display: none;
+}
+html body .product-page .cat-faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-wash);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--accent-deep);
+}
+html body .product-page .cat-faq details[open] summary::after {
+  content: "\2212";
+  background: var(--accent);
+  color: var(--on-dark);
+}
+
+/* Other solutions sit apart from the closing band. */
+html body .product-page .sol-others {
+  padding-top: clamp(64px, 7vw, 96px);
+}
+html body .product-page .about-cta {
+  margin-top: clamp(64px, 7vw, 96px);
+}
+
+@media (max-width: 1000px) {
+  html body .product-page .pp-what .sol-team-grid,
+  html body .product-page .pp-faq {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  html body .product-page .pp-faq .cat-heading {
+    position: static;
+  }
+  html body .product-page .cat-rows > li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  html body .product-page .cat-rows .text-link {
+    justify-self: start;
+  }
+}
+
+html body .product-page .cat-rows p {
+  margin: 0;
+  max-width: none;
+  text-align: left;
+}
+html body .product-page .pp-band .cat-heading {
+  margin-bottom: 32px;
+}

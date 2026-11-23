@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Media } from "@/components/media";
@@ -19,7 +20,7 @@ import {
   productIds,
   productsByGroup,
 } from "@/lib/catalogue";
-import { getDictionary, hasLocale, locales } from "@/lib/i18n";
+import { getDictionary, hasLocale, locales, localePath } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 import { crmDemoUi, docsDemo } from "@/lib/crm-demo";
 
@@ -109,7 +110,7 @@ export default async function ProductPage({
           </section>
         ) : null}
 
-        <section className="shell sol-team sol-team-solo cat-section">
+        <section className="shell sol-team sol-team-solo cat-section pp-what">
           <div className="sol-team-grid">
             <div className="sol-team-photo">
               <Media
@@ -142,33 +143,35 @@ export default async function ProductPage({
             </div>
           </div>
         </section>
-        <section className="shell cat-section" aria-labelledby="familiar-title">
-          <h2 id="familiar-title" className="cat-heading">
-            {copy.familiarHeading}
-          </h2>
-          <div className="problem-grid">
-            {problems.map((problem) => (
-              <div className="problem-slot" key={problem.id}>
-                <ProblemCard
-                  lang={lang}
-                  problem={problem}
-                  copy={dict.problemCard}
-                  showIndustries
-                />
-              </div>
-            ))}
+        <section className="pp-band" aria-labelledby="familiar-title">
+          <div className="shell cat-section">
+            <h2 id="familiar-title" className="cat-heading">
+              {copy.familiarHeading}
+            </h2>
+            <div className="problem-grid">
+              {problems.map((problem) => (
+                <div className="problem-slot" key={problem.id}>
+                  <ProblemCard
+                    lang={lang}
+                    problem={problem}
+                    copy={dict.problemCard}
+                    showIndustries
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="shell cat-section cat-two" aria-labelledby="who-title">
-          <div>
+        <section className="shell cat-section cat-two pp-facts" aria-labelledby="who-title">
+          <div className="pp-panel pp-panel-dark">
             <h2 id="who-title" className="cat-heading">
               {copy.controlHeading}
             </h2>
             <p className="cat-lede">{pattern.title}</p>
             <p>{item.controlText}</p>
           </div>
-          <div>
+          <div className="pp-panel pp-panel-light">
             <h2 className="cat-heading">{copy.whoForHeading}</h2>
             <p>{item.whoFor}</p>
           </div>
@@ -201,7 +204,7 @@ export default async function ProductPage({
           </section>
         ) : null}
 
-        <section className="shell cat-section cat-two" aria-labelledby="first-title">
+        <section className="shell cat-section cat-two pp-next" aria-labelledby="first-title">
           <div>
             <h2 id="first-title" className="cat-heading">
               {copy.firstStepHeading}
@@ -220,7 +223,7 @@ export default async function ProductPage({
           ) : null}
         </section>
 
-        <section className="shell cat-section" aria-labelledby="works-title">
+        <section className="shell cat-section pp-works" aria-labelledby="works-title">
           <h2 id="works-title" className="cat-heading">
             {copy.worksWithHeading}
           </h2>
@@ -240,7 +243,7 @@ export default async function ProductPage({
           </ul>
         </section>
 
-        <section className="shell cat-section" aria-labelledby="faq-title">
+        <section className="shell cat-section pp-faq" aria-labelledby="faq-title">
           <h2 id="faq-title" className="cat-heading">
             {copy.faq.heading}
           </h2>
@@ -266,6 +269,12 @@ export default async function ProductPage({
             </ul>
           </nav>
         ) : null}
+        <CtaBand
+          heading={copy.contactHeading}
+          text={copy.contactText}
+          button={dict.contact.discoveryButton}
+          href={`${localePath(lang)}#contact`}
+        />
       </main>
       <Footer
         lang={lang}
