@@ -51,7 +51,7 @@ export const esCatalogue: CatalogueCopy = {
   comparisons: {
     questions: {
       heading: "¿Cuál responde mi pregunta?",
-      text: "Habla con tus datos responde preguntas sobre cifras, con exactitud, desde tus hojas de cálculo y sistemas. Habla con tus documentos responde preguntas sobre conocimiento, desde manuales, procedimientos y trabajos anteriores, e indica la página. La mesa de servicio para empleados responde preguntas del personal y deriva solicitudes, con el mismo motor que Habla con tus documentos, pensado para otro comprador.",
+      text: "Habla con tus datos responde preguntas sobre cifras, con exactitud, desde tus hojas de cálculo y sistemas. Habla con tus documentos responde preguntas sobre conocimiento, desde manuales, procedimientos y trabajos anteriores, e indica la página. El Portal del Empleado responde preguntas del personal y deriva solicitudes, con el mismo motor que Habla con tus documentos, pensado para otro comprador.",
     },
     portals: {
       heading: "¿Qué portal necesito?",
@@ -164,7 +164,7 @@ export const esCatalogue: CatalogueCopy = {
         "Solo funciona con lo que está escrito. Si el conocimiento solo está en la cabeza de alguien, capturarlo es un primer trabajo aparte, más cercano a la formación y la consultoría que a un producto.",
       ],
       worksWith:
-        "Lo alimenta Digitaliza tu papeleo: el papel y los formularios se convierten en historial consultable. La mesa de servicio para empleados usa el mismo motor, pensado para preguntas del personal.",
+        "Lo alimenta Digitaliza tu papeleo: el papel y los formularios se convierten en historial consultable. El Portal del Empleado usa el mismo motor, pensado para preguntas del personal.",
       prompt: {
         question:
           "¿Qué es un error E530 en la prensa mecánica y cómo se soluciona?",
@@ -178,8 +178,8 @@ export const esCatalogue: CatalogueCopy = {
       },
     },
     "employee-service-desk": {
-      name: "Mesa de servicio para empleados",
-      shortName: "Mesa de servicio",
+      name: "Portal del Empleado",
+      shortName: "Portal del Empleado",
       menuHint: "Preguntas del personal, con tus políticas",
       oneLine:
         "Haz una pregunta y recibe la respuesta de tus propias políticas y procedimientos.",
@@ -207,7 +207,7 @@ export const esCatalogue: CatalogueCopy = {
           "Pídelas en el formulario de RR. HH. antes de irte y tu responsable las aprueba. Fuente: la política de vacaciones, actualizada en la fecha indicada.",
       },
       seo: {
-        title: "Mesa de servicio para preguntas del personal",
+        title: "Portal del Empleado: preguntas del personal",
         description:
           "Un único lugar para que el personal pregunte sobre RR. HH., TI y cómo se hace cada cosa. Las respuestas salen de tus políticas y lo dudoso pasa a una persona.",
       },
@@ -459,7 +459,7 @@ export const esCatalogue: CatalogueCopy = {
         "Partimos de lo que ya tienes, como PLC, SCADA o un histórico de datos, antes de añadir sensores nuevos.",
       ],
       worksWith:
-        "Habla con tus datos puede responder preguntas sobre las lecturas, y los avisos pueden llegar a una persona a través de la mesa de servicio para empleados.",
+        "Habla con tus datos puede responder preguntas sobre las lecturas, y los avisos pueden llegar a una persona a través del Portal del Empleado.",
       prompt: {
         question: "¿Qué bomba ha funcionado hoy fuera de su rango acordado?",
         reply:

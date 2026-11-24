@@ -249,7 +249,7 @@ export const media = {
     kind: "image",
     ratio: R32,
     brief: "Supplier invoice beside the purchase order it is checked against.",
-    src: "/images/document-processing.webp",
+    src: "/images/marta-finds-wrong-invoice.webp",
   },
   "product-estimating-bids": {
     kind: "image",
