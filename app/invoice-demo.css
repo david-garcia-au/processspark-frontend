@@ -1,0 +1,316 @@
+/* Check Your Invoices demo. Builds on app/crm-demo.css (stage, cards, cursor,
+   controls) and borrows quotes and desk pieces (back pill, toast, cards,
+   buttons). New: the invoice list, the line-by-line check against the PO,
+   and Matt's request for advice with the credit-note email. ---------------- */
+.iv-stage[data-beat="intro-ap"] .crm-win,
+.iv-stage[data-beat="intro-pm"] .crm-win,
+.iv-stage[data-beat="result"] .crm-win {
+  animation: crm-cross 1.4s ease;
+}
+.iv-screen {
+  position: relative;
+  height: 100%;
+  animation: crm-fade 0.5s ease;
+}
+/* Status pills: reading (grey), matches (green), on hold (red), waiting for
+   credit note (amber). */
+.iv-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #eef0f3;
+  color: var(--crm-ink-2);
+  animation: crm-rowin 0.35s ease;
+}
+.iv-status[data-s="matched"] {
+  background: #ecfdf3;
+  color: #047857;
+}
+.iv-status[data-s="held"] {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+.iv-status[data-s="rejected"] {
+  background: #fff4e5;
+  color: var(--crm-amber);
+}
+/* Invoice list */
+.iv-table {
+  align-self: stretch;
+}
+.iv-table .crm-tr {
+  grid-template-columns: minmax(0, 1.4fr) 100px 90px 120px 150px;
+}
+.iv-amount {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.88rem;
+}
+.iv-table .crm-tr[data-held="true"] {
+  background: #fff7f7;
+}
+.iv-sumpill {
+  animation: crm-fade 0.4s ease;
+}
+.iv-toast {
+  background: #fff4e5;
+  color: var(--crm-amber);
+}
+/* Invoice next to its PO */
+.iv-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 22px;
+}
+.iv-project {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: -6px 0 14px;
+  font-size: 0.85rem;
+  color: var(--crm-muted);
+}
+.iv-compare {
+  border: 1px solid var(--crm-line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.iv-crow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--crm-line);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.5s ease;
+}
+.iv-chead {
+  border-top: 0;
+  background: #fafbfc;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--crm-muted);
+}
+.iv-crow[data-flag="true"] {
+  background: #fff7f7;
+}
+.iv-item {
+  font-weight: 500;
+}
+.iv-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
+  font-weight: 500;
+  animation: crm-fade 0.4s ease;
+}
+.iv-check svg {
+  flex: none;
+}
+.iv-check[data-ok="true"] {
+  color: #047857;
+}
+.iv-check[data-ok="false"] {
+  color: #b91c1c;
+}
+.iv-summary {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  animation: crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.iv-totals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 22px;
+  font-size: 0.85rem;
+  color: var(--crm-muted);
+  font-variant-numeric: tabular-nums;
+}
+.iv-totals strong {
+  color: var(--crm-ink);
+  font-weight: 600;
+}
+.iv-diff {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-weight: 600;
+}
+.iv-hold,
+.iv-notified {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.86rem;
+}
+.iv-hold {
+  background: #fef2f2;
+  color: #b91c1c;
+  font-weight: 600;
+}
+.iv-notified {
+  background: var(--crm-blue-soft);
+  color: #2447d6;
+}
+.iv-hold svg,
+.iv-notified svg {
+  flex: none;
+}
+/* Matt's inbox: request for advice and the email */
+.iv-advice-screen {
+  padding: 22px 24px;
+}
+.iv-advice-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 16px;
+  align-items: start;
+}
+.iv-from {
+  margin: -6px 0 0;
+  font-size: 0.8rem;
+  color: var(--crm-muted);
+}
+.iv-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--crm-ink);
+}
+.iv-sublabel {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--crm-ink-2);
+}
+.iv-diffs {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.iv-diffs li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--crm-ink-2);
+}
+.iv-diffs svg {
+  flex: none;
+  margin-top: 1px;
+  color: #b91c1c;
+}
+.iv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.iv-reject {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--crm-ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition:
+    transform 0.15s ease,
+    background-color 0.3s ease;
+}
+.iv-reject[data-press="true"] {
+  transform: scale(0.96);
+}
+.iv-reject[data-done="true"] {
+  background: #b91c1c;
+}
+.iv-side {
+  display: grid;
+  gap: 12px;
+}
+.iv-mini {
+  gap: 10px;
+  padding: 14px 18px;
+}
+.iv-mini-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.88rem;
+}
+.iv-mini-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+.iv-email {
+  gap: 10px;
+  animation: crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.iv-email .dd-card-label {
+  width: 100%;
+}
+.iv-email-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #eef0f3;
+  color: var(--crm-ink-2);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.iv-email-state[data-sent="true"] {
+  background: #ecfdf3;
+  color: #047857;
+}
+.iv-email-meta {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--crm-muted);
+}
+.iv-email-meta strong {
+  font-size: 0.9rem;
+  color: var(--crm-ink);
+}
+.iv-email-body {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--crm-ink-2);
+}

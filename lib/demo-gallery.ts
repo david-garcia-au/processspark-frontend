@@ -12,7 +12,7 @@ export const demoTeamIds = ["service", "contracts", "projects", "finance", "peop
 export type DemoTeamId = (typeof demoTeamIds)[number];
 
 /** Which player renders the demo, and with which script. */
-export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk";
+export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk" | "invoices";
 
 export type DemoEntry = {
   id: string;
@@ -46,6 +46,12 @@ export const demoEntries: readonly DemoEntry[] = [
     kind: "desk",
     products: ["employee-service-desk"],
     teams: ["people"],
+  },
+  {
+    id: "invoices",
+    kind: "invoices",
+    products: ["invoice-bookkeeping"],
+    teams: ["finance", "projects"],
   },
 ];
 

@@ -4,11 +4,13 @@ import { useState } from "react";
 import { AccentHeading } from "@/components/accent-heading";
 import { DeskDemo } from "@/components/desk-demo";
 import { DocsDemo } from "@/components/docs-demo";
+import { InvoiceDemo } from "@/components/invoice-demo";
 import { QuotesDemo } from "@/components/quotes-demo";
 import type { ProductId } from "@/lib/catalogue";
 import type { CrmDemoUi, DocsDemo as DocsDemoData } from "@/lib/crm-demo";
 import type { DemoEntry, DemoGalleryCopy, DemoKind, DemoTeamId } from "@/lib/demo-gallery";
 import type { DeskDemo as DeskDemoData } from "@/lib/desk-demo";
+import type { InvoiceDemo as InvoiceDemoData } from "@/lib/invoice-demo";
 import type { QuotesDemo as QuotesDemoData } from "@/lib/quotes-demo";
 
 type Scripts = {
@@ -16,6 +18,7 @@ type Scripts = {
   "docs-contracts": DocsDemoData;
   quotes: QuotesDemoData;
   desk: DeskDemoData;
+  invoices: InvoiceDemoData;
 };
 
 type DemoGalleryProps = {
@@ -143,6 +146,8 @@ export function DemoGallery({ copy, ui, entries, scripts, products, teams }: Dem
               <QuotesDemo demo={scripts.quotes} ui={ui} />
             ) : e.kind === "desk" ? (
               <DeskDemo demo={scripts.desk} ui={ui} />
+            ) : e.kind === "invoices" ? (
+              <InvoiceDemo demo={scripts.invoices} ui={ui} />
             ) : (
               <DocsDemo demo={scripts[e.kind]} ui={ui} />
             )}

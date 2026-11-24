@@ -10,6 +10,8 @@ import { DocsDemo } from "@/components/docs-demo";
 import { QuotesDemo } from "@/components/quotes-demo";
 import { DeskDemo } from "@/components/desk-demo";
 import { deskDemo } from "@/lib/desk-demo";
+import { InvoiceDemo } from "@/components/invoice-demo";
+import { invoiceDemo } from "@/lib/invoice-demo";
 import { quotesDemo } from "@/lib/quotes-demo";
 import { ProblemCard } from "@/components/problem-card";
 import { SiteLink } from "@/components/site-link";
@@ -148,6 +150,22 @@ export default async function ProductPage({
                 </h2>
               </div>
               <DeskDemo demo={deskDemo[lang]} ui={crmDemoUi[lang]} />
+            </div>
+          </section>
+        ) : null}
+        {id === "invoice-bookkeeping" ? (
+          <section className="demo-section" id="demo" aria-labelledby="demo-title">
+            <div className="shell">
+              <div className="demo-head">
+                <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
+                <h2 id="demo-title">
+                  <AccentHeading
+                    text={invoiceDemo[lang].heading}
+                    accent={invoiceDemo[lang].headingAccent}
+                  />
+                </h2>
+              </div>
+              <InvoiceDemo demo={invoiceDemo[lang]} ui={crmDemoUi[lang]} />
             </div>
           </section>
         ) : null}

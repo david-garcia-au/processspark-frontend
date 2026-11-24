@@ -39,6 +39,7 @@ import "../solution-demo.css";
 import "../crm-demo.css";
 import "../quotes-demo.css";
 import "../desk-demo.css";
+import "../invoice-demo.css";
 import "../demo-gallery.css";
 import "../problems-hub.css";
 import "../home-type.css";
