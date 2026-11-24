@@ -10,6 +10,7 @@ export type PageId =
   | "solutions"
   | "industries"
   | "problems"
+  | "demos"
   | "privacy";
 
 /**

@@ -10,19 +10,11 @@ const config: NextConfig = {
   // The six team pages were retired. Each old address goes to the product that
   // replaced it, keeping the language. Config redirects run before the proxy.
   async redirects() {
-    return [
-      ...Object.entries(teamRedirects).map(([team, productId]) => ({
-        source: `/:lang(${locales.join("|")})/solutions/${team}`,
-        destination: `/:lang/solutions/${productId}`,
-        permanent: true,
-      })),
-      // The demos page was briefly published as /demo-preview.
-      {
-        source: `/:lang(${locales.join("|")})/demo-preview`,
-        destination: "/:lang/demos",
-        permanent: true,
-      },
-    ];
+    return Object.entries(teamRedirects).map(([team, productId]) => ({
+      source: `/:lang(${locales.join("|")})/solutions/${team}`,
+      destination: `/:lang/solutions/${productId}`,
+      permanent: true,
+    }));
   },
 };
 export default config;

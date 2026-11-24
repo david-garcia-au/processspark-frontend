@@ -54,6 +54,7 @@ export default async function DemosPage({ params }: PageProps<"/[lang]/demos">) 
         switcherCopy={dict.languageSwitcher}
         brandLabel={dict.common.brandLabel}
         mediaCopy={dict.media}
+        page="demos"
         path={demosPath}
       />
       <main id="main" className="sol-page product-page demos-page">
@@ -90,6 +91,7 @@ export default async function DemosPage({ params }: PageProps<"/[lang]/demos">) 
         copy={dict.footer}
         switcherCopy={dict.languageSwitcher}
         brandLabel={dict.common.brandLabel}
+        page="demos"
       />
     </>
   );
