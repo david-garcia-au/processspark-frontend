@@ -476,8 +476,8 @@ export type NavCardId = (typeof navCardIds)[number];
 export const navCardMedia: Record<NavCardId, MediaSlot> = {
   demo: "nav-demo",
 };
-/** Where "See it in action" goes: the Talk to Your Documents demo. */
-export const demoPath = "/solutions/talk-to-your-documents#demo";
+/** Where "See it in action" goes: the page with every demo. */
+export const demoPath = "/demo-preview";
 
 /**
  * Products hidden from the header's Solutions panel and the footer column

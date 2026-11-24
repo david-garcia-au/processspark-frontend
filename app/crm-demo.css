@@ -524,6 +524,12 @@
   text-align: left;
   animation: crm-menuin 0.2s ease;
 }
+/* A row low in a longer table opens its menu upward, so the card edge
+   never clips it. The button itself stays clear. */
+.crm-menu[data-up="true"] {
+  top: auto;
+  bottom: 38px;
+}
 @keyframes crm-menuin {
   from {
     opacity: 0;
@@ -738,7 +744,7 @@
   gap: 12px;
   width: min(560px, 100%);
   padding: 12px 10px 12px 20px;
-  border-radius: 999px;
+  border-radius: 28px;
   border: 1px solid var(--crm-line);
   background: #fff;
   box-shadow: 0 1px 2px rgb(17 24 39 / 0.05);
@@ -769,6 +775,7 @@
 }
 .crm-send {
   display: grid;
+  flex: none;
   place-items: center;
   width: 36px;
   height: 36px;
@@ -985,6 +992,12 @@
 .crm-brief[data-at="corner"] {
   right: 40px;
   bottom: 78px;
+}
+/* Closing photo with the person on the right: the card takes the left. */
+.crm-brief[data-at="left"] {
+  left: 48px;
+  top: calc(50% - 27px);
+  translate: 0 -50%;
 }
 .crm-brief-scrim {
   position: absolute;
@@ -1211,7 +1224,8 @@
   /* Narration card: centred in the stage, sized to the phone. */
   .crm-brief,
   .crm-brief[data-at="intro"],
-  .crm-brief[data-at="corner"] {
+  .crm-brief[data-at="corner"],
+  .crm-brief[data-at="left"] {
     right: auto;
     left: 50%;
     translate: -50% 0;
@@ -1221,7 +1235,8 @@
     gap: 12px;
   }
   .crm-brief[data-at="intro"],
-  .crm-brief[data-at="corner"] {
+  .crm-brief[data-at="corner"],
+  .crm-brief[data-at="left"] {
     top: auto;
     bottom: 70px;
   }

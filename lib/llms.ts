@@ -7,6 +7,7 @@ import {
   productsByGroup,
   industriesForProduct,
 } from "@/lib/catalogue";
+import { demoGalleryCopy } from "@/lib/demo-gallery";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { absoluteUrl, readyPhones, site } from "@/lib/site";
 
@@ -75,6 +76,7 @@ export function buildLlmsTxt(locale: Locale): string {
     `- [${dict.problemsPage.heading}](${url("/problems")}): ${dict.problemsPage.seo.description}`,
     `- [${dict.industriesPage.heading}](${url("/industries")}): ${dict.industriesPage.seo.description}`,
     `- [${dict.header.solutions}](${url("/solutions")}): ${dict.solutionsPage.seo.description}`,
+    `- [${demoGalleryCopy[locale].title}](${url("/demo-preview")}): ${demoGalleryCopy[locale].description}`,
     `- [${dict.aboutPage.title}](${url("/about")}): ${dict.aboutPage.description}`,
     `- [${dict.resourcesPage.title}](${url("/resources")}): ${dict.resourcesPage.description}`,
     `- [${dict.privacyPage.title}](${url("/privacy")}): ${dict.privacyPage.intro}`,

@@ -33,6 +33,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
+import { useBeatClock } from "@/components/demo-clock";
 import type { CrmDemoUi, Person } from "@/lib/crm-demo";
 import type { QuotesDemo as QuotesDemoData, RfqStatus } from "@/lib/quotes-demo";
 
@@ -46,10 +47,10 @@ type Beat = "intro-rep" | "inbox" | "review" | "intro-customer" | "order" | "res
 const BEATS: Beat[] = ["intro-rep", "inbox", "review", "intro-customer", "order", "result"];
 /** How long each beat plays before auto-advancing (ms). */
 const BEAT_MS: Record<Beat, number> = {
-  "intro-rep": 8000,
+  "intro-rep": 10000,
   inbox: 13000,
   review: 24000,
-  "intro-customer": 8000,
+  "intro-customer": 10000,
   order: 7500,
   result: 9000,
 };
@@ -114,21 +115,16 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
   useEffect(() => {
     cursorRef.current = cursor;
   }, [cursor]);
-  const timers = useRef<number[]>([]);
+  // Pausable clock: Pause freezes every step of the beat, Play resumes it.
+  const clock = useBeatClock(playing);
+  const at = clock.at;
+  const clearTimers = clock.reset;
   const stageRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const noteRef = useRef<HTMLDivElement>(null);
   const sendRef = useRef<HTMLSpanElement>(null);
   const beat = BEATS[index];
 
-  const clearTimers = useCallback(() => {
-    timers.current.forEach((t) => window.clearTimeout(t));
-    timers.current = [];
-  }, []);
-  const at = useCallback((ms: number, fn: () => void) => {
-    timers.current.push(window.setTimeout(fn, ms));
-  }, []);
-  useEffect(() => () => clearTimers(), [clearTimers]);
 
   // Point the cursor at a real element; enter from the middle the first time.
   const pointAt = useCallback((ref: React.RefObject<HTMLElement | null>) => {
@@ -147,6 +143,16 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
   }, []);
   const click = useCallback(() => setCursor((c) => (c ? { ...c, click: true } : c)), []);
 
+  const reset = useCallback(() => {
+    clearTimers();
+    setStarted(false);
+    setIndex(0);
+    setPlaying(false);
+    setTyped("");
+    setCursor(null);
+    setMicro(0);
+    setBrief(false);
+  }, [clearTimers]);
   // Schedule each beat's micro-steps.
   useEffect(() => {
     if (!started) return;
@@ -156,7 +162,8 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
     setBrief(beat === "review");
     if (beat !== "review") setTyped("");
     if (beat === "intro-rep" || beat === "intro-customer") {
-      at(2000, () => setBrief(true));
+      // The person shows alone for 4s, then the card stays about 6s.
+      at(4000, () => setBrief(true));
     } else if (beat === "inbox") {
       at(1500, () => setMicro(1)); // new RFQ row lands
       at(2900, () => setMicro(2)); // drafting
@@ -195,30 +202,21 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
     } else if (beat === "result") {
       at(1800, () => setBrief(true));
     }
+    if (reduce) {
+      // Reduced motion: show the beat's end state at once, no timers.
+      clock.flush();
+      return;
+    }
+    // The advance is a step like any other, so it pauses too. After the last
+    // beat, back to the start card.
+    at(BEAT_MS[beat], () => {
+      if (index >= BEATS.length - 1) reset();
+      else setIndex((i) => i + 1);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [beat, started]);
 
-  const reset = useCallback(() => {
-    clearTimers();
-    setStarted(false);
-    setIndex(0);
-    setPlaying(false);
-    setTyped("");
-    setCursor(null);
-    setMicro(0);
-    setBrief(false);
-  }, [clearTimers]);
 
-  // Auto-advance; after the last beat, back to the start card.
-  useEffect(() => {
-    if (!started || !playing) return;
-    const last = index >= BEATS.length - 1;
-    const id = window.setTimeout(() => {
-      if (last) reset();
-      else setIndex((i) => i + 1);
-    }, BEAT_MS[beat]);
-    return () => window.clearTimeout(id);
-  }, [started, playing, index, beat, reset]);
 
   const start = useCallback(() => {
     setStarted(true);
@@ -230,8 +228,10 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
     setIndex(0);
     setPlaying(true);
   }, [reduce]);
+  // Back/Forward jump to the start of that beat and play from there.
   const goTo = useCallback((i: number) => {
     setIndex(Math.max(0, Math.min(i, BEATS.length - 1)));
+    setPlaying(true);
   }, []);
   const atEnd = index === BEATS.length - 1;
 

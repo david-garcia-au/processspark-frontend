@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   CircleCheck,
+  FilePlus2,
   FileText,
   FolderClosed,
   ListChecks,
@@ -23,9 +24,12 @@ import {
   MoreVertical,
   MousePointer2,
   Pause,
+  PhoneCall,
   Play,
   RotateCcw,
+  ShieldCheck,
   SquarePen,
+  Timer,
   TriangleAlert,
   Upload,
   Wrench,
@@ -35,6 +39,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
+import { useBeatClock } from "@/components/demo-clock";
 import type { CrmDemoUi, DocsDemo, Person } from "@/lib/crm-demo";
 
 /**
@@ -58,7 +63,7 @@ type Beat =
   | "answer"
   | "resolved";
 
-const BEATS: Beat[] = [
+const ALL_BEATS: Beat[] = [
   "intro-admin",
   "upload",
   "permissions",
@@ -78,6 +83,12 @@ const BEAT_MS: Record<Beat, number> = {
   question: 8000,
   answer: 14500,
   resolved: 9000,
+};
+
+/** Card icons per story: the service story (manuals) and the contracts one. */
+const ICONS = {
+  service: { introAdmin: BellRing, introTech: TriangleAlert, fixed: Wrench, resolved: CircleCheck },
+  contracts: { introAdmin: FilePlus2, introTech: PhoneCall, fixed: Timer, resolved: ShieldCheck },
 };
 
 type DocsDemoProps = { demo: DocsDemo; ui: CrmDemoUi };
@@ -113,7 +124,9 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
   const [typed, setTyped] = useState("");
   // The square narration card (Anna's intro after 2s; start of the upload beat).
   const [brief, setBrief] = useState(false);
-  const timers = useRef<number[]>([]);
+  // Pausable clock: Pause freezes every step of the beat, Play resumes it.
+  const clock = useBeatClock(playing);
+  const at = clock.at;
   const stageRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLSpanElement>(null);
   const pickerFileRef = useRef<HTMLSpanElement>(null);
@@ -127,16 +140,26 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     cursorRef.current = cursor;
   }, [cursor]);
 
+  // A story without a fault photo skips that beat.
+  const BEATS = demo.faultPhoto ? ALL_BEATS : ALL_BEATS.filter((b) => b !== "fault");
+  const icons = ICONS[demo.story ?? "service"];
+  const IntroAdminIcon = icons.introAdmin;
+  const IntroTechIcon = icons.introTech;
+  const FixedIcon = icons.fixed;
+  const ResolvedIcon = icons.resolved;
   const beat = BEATS[index];
+  // Long questions type a little faster, and the beat waits for the typing.
+  const perChar = Math.min(110, Math.round(9000 / demo.chat.question.length));
+  // How long each person's intro shows alone before its card; the beat grows to match.
+  const introDelay = demo.introDelayMs ?? 2000;
+  const beatMs = (b: Beat) =>
+    b === "question"
+      ? Math.max(BEAT_MS.question, 1500 + demo.chat.question.length * perChar + 1800)
+      : b === "intro-admin" || b === "intro-tech"
+        ? BEAT_MS[b] + introDelay - 2000
+        : BEAT_MS[b];
 
-  const clearTimers = useCallback(() => {
-    timers.current.forEach((t) => window.clearTimeout(t));
-    timers.current = [];
-  }, []);
-  const at = useCallback((ms: number, fn: () => void) => {
-    timers.current.push(window.setTimeout(fn, ms));
-  }, []);
-  useEffect(() => () => clearTimers(), [clearTimers]);
+  const clearTimers = clock.reset;
 
   // Point the cursor at a real element, in stage coordinates.
   const pointAt = useCallback(
@@ -172,11 +195,11 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     if (beat !== "question") setTyped("");
 
     if (beat === "intro-admin") {
-      // Her intro first, then the "new manual" card 2s later.
-      at(2000, () => setBrief(true));
+      // Her intro first, then the situation card (2s later by default).
+      at(introDelay, () => setBrief(true));
     } else if (beat === "intro-tech") {
-      // John's intro first, then the alarm card 2s later.
-      at(2000, () => setBrief(true));
+      // John's (or Matt's) intro first, then the card.
+      at(introDelay, () => setBrief(true));
     } else if (beat === "upload") {
       // Square brief first; the cursor only starts once it has gone.
       const B = 6000;
@@ -212,7 +235,6 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       setCursor(null);
       const q = demo.chat.question;
       at(700, () => setMicro(1)); // show composer
-      const perChar = 110;
       const start = 1500;
       for (let i = 1; i <= q.length; i++) {
         at(start + i * perChar, () => setTyped(q.slice(0, i)));
@@ -229,16 +251,15 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     } else {
       setCursor(null);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [beat, started]);
-
-  // The auto-play timer: advance to the next beat when playing. After the
-  // last beat, go back to the start screen (story card + Run the demo).
-  useEffect(() => {
-    if (!started || !playing) return;
-    const last = index >= BEATS.length - 1;
-    const id = window.setTimeout(() => {
-      if (!last) {
+    if (reduce) {
+      // Reduced motion: show the beat's end state at once, no timers.
+      clock.flush();
+      return;
+    }
+    // The advance to the next beat is a step like any other, so it pauses
+    // too. After the last beat, go back to the start screen.
+    at(beatMs(beat), () => {
+      if (index < BEATS.length - 1) {
         setIndex((i) => Math.min(i + 1, BEATS.length - 1));
         return;
       }
@@ -250,9 +271,9 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       setCursor(null);
       setMicro(0);
       setBrief(false);
-    }, BEAT_MS[beat]);
-    return () => window.clearTimeout(id);
-  }, [started, playing, index, beat, clearTimers]);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [beat, started]);
 
   const start = useCallback(() => {
     if (reduce) {
@@ -265,7 +286,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     setStarted(true);
     setIndex(0);
     setPlaying(true);
-  }, [reduce, demo.chat.question]);
+  }, [reduce, demo.chat.question, BEATS.length]);
 
   const replay = useCallback(() => {
     clearTimers();
@@ -278,9 +299,14 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     setBrief(false);
   }, [clearTimers]);
 
-  const goTo = useCallback((i: number) => {
-    setIndex(Math.max(0, Math.min(i, BEATS.length - 1)));
-  }, []);
+  // Back/Forward jump to the start of that beat and play from there.
+  const goTo = useCallback(
+    (i: number) => {
+      setIndex(Math.max(0, Math.min(i, BEATS.length - 1)));
+      setPlaying(true);
+    },
+    [BEATS.length],
+  );
 
   const atEnd = index === BEATS.length - 1;
 
@@ -294,7 +320,9 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
   // One window per screen: steps on the same screen (upload -> permissions,
   // question -> answer) keep it mounted, so it doesn't blink or replay rows.
   const screenKey = onDocs ? "docs" : onChat ? "chat" : beat;
-  const who = onChat || introTech ? demo.tech : demo.admin;
+  // Who is at the keyboard in AI Chat: the technician, or (contracts) Anna.
+  const chatUser = demo.chatBy === "admin" ? demo.admin : demo.tech;
+  const who = onChat ? chatUser : introTech ? demo.tech : demo.admin;
   const person = introAdmin ? demo.admin : introTech ? demo.tech : who;
   const intro = introAdmin ? demo.adminIntro : demo.techIntro;
 
@@ -411,7 +439,10 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                     <span className="crm-file">
                       <FileText className="size-4 text-gray-500" />
                       {demo.docs.existing.name}
-                      <span className="crm-ver" data-old={uploadDone ? "true" : undefined}>
+                      <span
+                        className="crm-ver"
+                        data-old={uploadDone && !demo.docs.keepOld ? "true" : undefined}
+                      >
                         {demo.docs.versionOld}
                       </span>
                     </span>
@@ -419,6 +450,18 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                     <span className="crm-dim">{demo.docs.existing.date}</span>
                     <span />
                   </div>
+                  {(demo.docs.others ?? []).map((row) => (
+                    <div className="crm-tr" key={row.name}>
+                      <span className="crm-file">
+                        <FileText className="size-4 text-gray-500" />
+                        {row.name}
+                        {row.tag ? <span className="crm-ver">{row.tag}</span> : null}
+                      </span>
+                      <span className="crm-dim">{row.size}</span>
+                      <span className="crm-dim">{row.date}</span>
+                      <span />
+                    </div>
+                  ))}
                   {uploadDone ? (
                     <div className="crm-tr crm-tr-new" data-grant={granted ? "true" : undefined}>
                       <span className="crm-file">
@@ -448,7 +491,11 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                           <MoreVertical className="size-4" />
                         </button>
                         {menuOpen ? (
-                          <div className="crm-menu" role="menu">
+                          <div
+                            className="crm-menu"
+                            role="menu"
+                            data-up={(demo.docs.others?.length ?? 0) > 1 ? "true" : undefined}
+                          >
                             <p className="crm-menu-head">{demo.permissions.heading}</p>
                             {demo.permissions.teams.map((team, i) => (
                               <span
@@ -545,7 +592,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
           ) : null}
 
           {/* Shop-floor fault photo */}
-          {onFault ? (
+          {onFault && demo.faultPhoto ? (
             <div className="crm-fault">
               <Image
                 src={demo.faultPhoto.src}
@@ -609,7 +656,11 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                         </p>
                       ) : (
                         <>
-                          <p className="crm-answer">{demo.chat.answer}</p>
+                          {demo.chat.answer.split("\n\n").map((part) => (
+                            <p className="crm-answer" key={part}>
+                              {part}
+                            </p>
+                          ))}
                           <ul className="crm-sources">
                             {demo.chat.sources.map((s) => (
                               <li key={s}>{s}</li>
@@ -642,7 +693,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       {started && beat === "intro-admin" && brief ? (
         <div className="crm-brief" data-at="intro" key="brief-intro">
           <p className="crm-brief-label">
-            <BellRing className="size-4" />
+            <IntroAdminIcon className="size-4" />
             {demo.briefs.introAdmin.label}
           </p>
           <p className="crm-brief-text">{demo.briefs.introAdmin.text}</p>
@@ -651,7 +702,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
       {started && beat === "intro-tech" && brief ? (
         <div className="crm-brief" data-at="intro" key="brief-tech">
           <p className="crm-brief-label">
-            <TriangleAlert className="size-4" />
+            <IntroTechIcon className="size-4" />
             {demo.briefs.introTech.label}
           </p>
           <p className="crm-brief-text">{demo.briefs.introTech.text}</p>
@@ -661,7 +712,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
         <div className="crm-brief-scrim" key="brief-fixed">
           <div className="crm-brief" data-at="center">
             <p className="crm-brief-label">
-              <Wrench className="size-4" />
+              <FixedIcon className="size-4" />
               {demo.briefs.fixed.label}
             </p>
             <p className="crm-brief-text">{demo.briefs.fixed.text}</p>
@@ -669,9 +720,9 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
         </div>
       ) : null}
       {started && beat === "resolved" && brief ? (
-        <div className="crm-brief" data-at="corner" key="brief-resolved">
+        <div className="crm-brief" data-at={demo.resolvedCardAt ?? "corner"} key="brief-resolved">
           <p className="crm-brief-label">
-            <CircleCheck className="size-4" />
+            <ResolvedIcon className="size-4" />
             {demo.briefs.resolved.label}
           </p>
           <p className="crm-brief-text">{demo.briefs.resolved.text}</p>

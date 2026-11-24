@@ -30,6 +30,7 @@ const pages: Entry[] = [
     priority: 0.7,
     changeFrequency: "monthly" as const,
   })),
+  { path: "/demo-preview", priority: 0.7, changeFrequency: "monthly" },
   { path: "/about", priority: 0.6, changeFrequency: "monthly" },
   { path: "/resources", priority: 0.5, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },

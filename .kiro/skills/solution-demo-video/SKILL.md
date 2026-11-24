@@ -20,13 +20,15 @@ Reference files (in the `site-restructure` worktree, `/Users/david.garcia.au/Pro
 
 A second, finished demo follows the same pattern: **Quote & RFQ Automation** (`/solutions/quotes-rfqs`). It has its own player `components/quotes-demo.tsx`, data `lib/quotes-demo.ts` (EN with A$ and GST, ES with euros and IVA 21%) and `app/quotes-demo.css` (`qd-*` classes, also imported in `app/[lang]/layout.tsx`), and reuses the `crm-demo.css` stage, cards, cursor and controls. Give each new demo its own component and data file like this, rather than generalising `docs-demo.tsx`.
 
+A third demo reuses `DocsDemo` with a different script: **Talk to Your Documents for contract managers** (`contractsDemo` in `lib/crm-demo.ts`). Anna is a contracts manager and Matt a project manager, and Anna asks the documents for him. Optional data fields switch the player's behaviour: no `faultPhoto` skips that beat, `chatBy: "admin"` puts Anna at the keyboard, `docs.others` adds rows, `story: "contracts"` picks the card icons, and `resolvedCardAt: "left"` keeps the closing card off Matt. A row low in a longer table opens its menu upward. It is shown on the demos page (below), not on a solution page yet.
+
 Older groundwork (`components/solution-demo.tsx`, `lib/demos.ts`, generic timed engine) is not the pattern. Don't build on it.
 
 ## Rules David has set
 
 - **The square cards are the only narration.** No caption strip at the bottom, no white text on the photos.
 - **Each card stays on screen for about 6 seconds.** 2 seconds was far too short to read.
-- **A person intro shows alone for 2 seconds** before its card fades in.
+- **A person intro shows alone for 4 seconds** before its card fades in, then the card stays about 6 seconds: every intro beat is 10 seconds. David asked for this on the contracts demo. Use it for every person in every demo.
 - **On an app screen, the task card shows before the cursor moves.** The screen is dimmed behind it; the card goes, then the cursor starts.
 - **The cursor hits real elements.** Positions are measured from element refs, never guessed percentages.
 - **Pace:** slow and calm. Transitions crossfade, and nothing changes in under ~2 seconds.
@@ -42,9 +44,9 @@ Older groundwork (`components/solution-demo.tsx`, `lib/demos.ts`, generic timed 
 A demo tells one short story with two or three people, in this order:
 
 1. **Start screen.** The first photo, blurred and dimmed, with a square card: the product name as the label, one sentence on what it does, and the **Run the demo** button inside the card.
-2. **Person A intro (photo).** "Meet Anna, Service admin" plus one line. After 2 seconds, the situation card ("New manual version …").
+2. **Person A intro (photo).** "Meet Anna, Service admin" plus one line. After 4 seconds, the situation card ("New manual version …").
 3. **Person A's app screen.** First a task card ("Anna's task: upload, mark as current, set access"), then the cursor does the work: clicks, picker, spinner, new row, three-dots menu.
-4. **Person B intro (photo).** "Meet John, Service technician". After 2 seconds, the trigger card ("Alarm: press out of service …").
+4. **Person B intro (photo).** "Meet John, Service technician". After 4 seconds, the trigger card ("Alarm: press out of service …").
 5. **The problem (photo).** The fault screen photo, no text.
 6. **Person B's app screen.** He types the question in AI Chat, sees "thinking", then the answer with its source. Then the result card ("Fault fixed …").
 7. **Resolution (photo).** The all-green panel, then the closing card ("Back in production …").
@@ -58,18 +60,33 @@ The beats are listed in `BEATS`, and `BEAT_MS` sets how long each one runs befor
 
 | Beat | Screen | Length | What happens inside (ms from beat start) |
 |---|---|---|---|
-| `intro-admin` | Photo | 8000 | Card at 2000 |
+| `intro-admin` | Photo | 10000 | Card at 4000 |
 | `upload` | Docs | 17000 | Task card 0–5400 (screen dimmed); cursor to Upload at 6700, click at 8200; picker at 8800; file at 9800, selected at 11000; Open at 11800, click at 12800; spinner at 13100 ("Uploading and extracting context…", about 2.2 s); v2 row lands at 15300 |
 | `permissions` | Docs (same window) | 9600 | Cursor to ⋮ at 800, click at 2200; menu at 2800; team at 3800, click at 5000; granted at 5600; "Supersedes v1" at 6400, click at 7400; menu closes and cursor hides at 8000 |
-| `intro-tech` | Photo | 8000 | Card at 2000 |
+| `intro-tech` | Photo | 10000 | Card at 4000 |
 | `fault` | Photo | 5600 | Photo only |
 | `question` | Chat | 8000 | Composer at 700; typing starts at 1500, 110 ms per character |
 | `answer` | Chat (same window) | 14500 | "Thinking" 0–2600; answer at 2600; source panel at 4200; result card at 7500 (screen dimmed) |
 | `resolved` | Photo | 9000 | Card at 1800; then reset to the start screen |
 
-Total run time is about 80 seconds. When you add a card, give it about 6 seconds before the next change.
+Total run time is about 85 seconds. When you add a card, give it about 6 seconds before the next change.
 
-Pattern for a micro-step: `at(ms, () => setMicro(n))` or `pointAt(ref)`. Every timer is cleared when the beat changes (`clearTimers`).
+Pattern for a micro-step: `at(ms, () => setMicro(n))` or `pointAt(ref)`, with `ms` counted from the start of the beat.
+
+In `DocsDemo` the intro delay comes from the data (`introDelayMs`, default 2000; all three demos set 4000), and the intro beat grows by the same amount so the card keeps its 6 seconds. In `QuotesDemo` it is set in the component.
+
+### Playback: how Pause, Play, Back and Forward must work
+
+Every timed step goes through the pausable beat clock, `useBeatClock(playing)` in `components/demo-clock.ts`. Never call `setTimeout` for a step directly.
+
+- **Every step is registered with `at(ms, fn)`.** This includes cursor moves, clicks, each typed character, cards, and the advance to the next beat (`at(beatMs, advance)`). There is no separate auto-advance timer.
+- **Pause freezes the beat.** No step fires while paused: the cursor, typing and cards stop where they are, and the clock keeps the time already played.
+- **Play resumes where it stopped.** Only the time that was left is waited. The bug this fixed: Pause only stopped the advance timer while the steps kept playing, and Play restarted the whole beat length (up to 24 s of nothing).
+- **Back and Forward jump to the start of that beat and play from there,** even if the demo was paused. A paused beat at 0 ms is often an empty screen.
+- **A new beat calls `clock.reset()`** (aliased `clearTimers`), and the end of the demo resets to the start screen.
+- **Reduced motion:** register the steps, then call `clock.flush()` so the beat's end state shows at once with no timers.
+
+To QA it, start the demo, pause 3 seconds into a beat, and wait 6 seconds. Nothing should change. Press Play and check the next step comes after the remaining time. Check the DOM (`.crm-stage[data-beat]`, number of `.crm-brief`) as well as screenshots.
 
 ## Narration cards (`.crm-brief`)
 
@@ -127,16 +144,26 @@ Pattern for a micro-step: `at(ms, () => setMicro(n))` or `pointAt(ref)`. Every t
 - **Demo section:** `<section className="demo-section" id="demo">` with a full-width grey band and an inner `.shell`. It holds only the "Interactive demo" label, the heading and the stage: no intro paragraph, no "illustrative" note, no CTA row. The heading follows the "Upload a manual, define permissions, get the answers" pattern.
 - **Anchor:** `#demo` with `scroll-margin-top: 76px`. `demoPath` lives in `lib/catalogue/structure.ts`, which the menu "See it in action" card and the home hero button use.
 
+## The demos page (`/[lang]/demo-preview`)
+
+Every demo is also listed on one page, with filter chips for product and team (one of each, or All, combined). All "See it in action" links (`demoPath` in `lib/catalogue/structure.ts`: menu card, home hero) point here. A demo can also stay on its solution page.
+
+- **Registry:** `lib/demo-gallery.ts`. `demoEntries` (order on the page) gives each demo an `id` (its anchor), a `kind` (which player and script), its `products` and its `teams`, and a demo can have several of each. `demoTeamIds` plus the EN/ES `teams` labels are the team list, separate from the catalogue.
+- **Component:** `components/demo-gallery.tsx` (client) renders the chips and the matching demos. Each has its heading, product tag (blue) and team tags. When nothing matches, it shows a message and a "Show all demos" button. Styles are in `app/demo-gallery.css`.
+- **Chips:** only products and teams that have a demo get a chip. They use the product's `shortName`, because the full Spanish names wrap.
+- **To add a demo:** add its script, add a `kind` and render branch in the gallery, pass the script from `app/[lang]/demo-preview/page.tsx`, and add an entry with its products and teams.
+- **Listings:** the page is in the sitemap and llms.txt.
+
 ## Accessibility and behaviour
 
-- **Reduced motion:** play jumps to the last beat with no timer.
+- **Reduced motion:** play jumps to the last beat and `clock.flush()` shows its end state, with no timer.
 - **Decoration:** the cursor, tabs and decorative parts are `aria-hidden`. Controls have labels from `crmDemoUi`.
 - **Mobile:** not designed yet. Ask David before shipping a new demo to phones.
 
 ## QA without Playwright
 
 - Drive headless Chrome over CDP with a small Node script. Launch with `--headless=new --remote-debugging-port=97xx` and a fresh `--user-data-dir`, wait about 7 seconds, navigate, then remove `.consent`.
-- Click `.crm-run` to start. Pause with `.crm-ctl[1]`, step with `.crm-ctl[2]`, then wait N ms and screenshot at 1280×860.
+- Click `.crm-run` to start. Step with `.crm-ctl[2]` (Forward), which jumps to the start of the next beat and plays it, then wait N ms and screenshot at 1280×860. Pause (`.crm-ctl[1]`) now freezes the beat, so don't pause before waiting for a step to appear.
 - Check the DOM as well as the picture: the beat in `.crm-stage[data-beat]`, a single `.crm-win`, and console errors (`Runtime.consoleAPICalled` type error).
 - Kill stale `remote-debugging-port=97` Chrome processes before each run. The `read_file` image cache can show an old screenshot under the same name, so use a new file name per shot.
 - Check both `/en/` and `/es/`, every card, the spinner, the open menu and the end reset.
