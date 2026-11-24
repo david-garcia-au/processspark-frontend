@@ -8,11 +8,11 @@
 import type { ProductId } from "@/lib/catalogue";
 import type { Locale } from "@/lib/i18n/config";
 
-export const demoTeamIds = ["service", "contracts", "projects", "finance", "sales"] as const;
+export const demoTeamIds = ["service", "contracts", "projects", "finance", "people", "sales"] as const;
 export type DemoTeamId = (typeof demoTeamIds)[number];
 
 /** Which player renders the demo, and with which script. */
-export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes";
+export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk";
 
 export type DemoEntry = {
   id: string;
@@ -41,6 +41,12 @@ export const demoEntries: readonly DemoEntry[] = [
     products: ["quotes-rfqs"],
     teams: ["sales"],
   },
+  {
+    id: "service-desk",
+    kind: "desk",
+    products: ["employee-service-desk"],
+    teams: ["people"],
+  },
 ];
 
 export type DemoGalleryCopy = {
@@ -63,7 +69,7 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
   en: {
     title: "See it in action: interactive demos",
     description:
-      "Short interactive demos of ProcessSpark solutions: talk to your manuals and contracts, and answer requests for quote with a priced draft.",
+      "Short interactive demos of ProcessSpark solutions: talk to your manuals and contracts, answer requests for quote with a priced draft, and answer staff questions and requests.",
     heading: { line1: "See it", line2: "in action" },
     lead: "Short scripted demos of real tasks. Pick a product or a team, then press Run the demo.",
     filters: {
@@ -79,13 +85,14 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
       contracts: "Contracts",
       projects: "Project management",
       finance: "Finance",
+      people: "People & HR",
       sales: "Sales",
     },
   },
   es: {
     title: "Míralo en acción: demos interactivas",
     description:
-      "Demos interactivas y breves de las soluciones de ProcessSpark: habla con tus manuales y contratos, y responde solicitudes de oferta con un borrador con precios.",
+      "Demos interactivas y breves de las soluciones de ProcessSpark: habla con tus manuales y contratos, responde solicitudes de oferta con un borrador con precios y atiende las preguntas y solicitudes de la plantilla.",
     heading: { line1: "Míralo", line2: "en acción" },
     lead: "Demos breves de tareas reales. Elige un producto o un equipo y pulsa Ver la demo.",
     filters: {
@@ -101,6 +108,7 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
       contracts: "Contratos",
       projects: "Gestión de proyectos",
       finance: "Finanzas",
+      people: "Personas y RR. HH.",
       sales: "Ventas",
     },
   },

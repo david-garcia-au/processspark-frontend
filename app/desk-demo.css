@@ -1,0 +1,340 @@
+/* Employee Service Desk demo. Builds on app/crm-demo.css (stage, chat, cards,
+   cursor, controls) and borrows a few quotes-demo pieces (send button, toast,
+   back pill, status pill shape). Only the leave form, approvals detail and HR
+   desk are new. ------------------------------------------------------------ */
+.dd-stage[data-beat="intro-employee"] .crm-win,
+.dd-stage[data-beat="intro-manager"] .crm-win,
+.dd-stage[data-beat="intro-hr"] .crm-win,
+.dd-stage[data-beat="result"] .crm-win {
+  animation: crm-cross 1.4s ease;
+}
+.dd-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 22px 24px;
+  animation: crm-fade 0.5s ease;
+}
+.dd-screen > .crm-docs,
+.dd-screen > .dd-detail {
+  margin: -22px -24px;
+  height: calc(100% + 44px);
+}
+/* Status pills: waiting (amber), approved (green). */
+.dd-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #fff4e5;
+  color: var(--crm-amber);
+  animation: crm-rowin 0.35s ease;
+}
+.dd-status[data-s="approved"] {
+  background: #ecfdf3;
+  color: #047857;
+}
+/* Chat: the button that opens the leave form. */
+.dd-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--crm-ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  animation: crm-rowin 0.4s ease;
+  transition: transform 0.15s ease;
+}
+.dd-action[data-press="true"],
+.dd-approve[data-press="true"] {
+  transform: scale(0.96);
+}
+/* Leave form: the employee record on the left, the fields on the right. */
+.dd-form {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 20px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.dd-record {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: start;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--crm-bg);
+  border: 1px solid var(--crm-line);
+}
+.dd-record p,
+.dd-kv {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+.dd-record small,
+.dd-kv small {
+  font-size: 0.75rem;
+  color: var(--crm-muted);
+}
+.dd-record strong,
+.dd-kv strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--crm-ink);
+}
+.dd-kv span {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--crm-ink-2);
+}
+.dd-prefilled {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--crm-blue-soft);
+  color: #2447d6;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.dd-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dd-field {
+  display: grid;
+  gap: 6px;
+}
+.dd-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--crm-ink-2);
+}
+.dd-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--crm-line);
+  background: #fff;
+  font-size: 0.9rem;
+  color: var(--crm-muted);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.dd-input svg {
+  flex: none;
+  color: var(--crm-muted);
+}
+.dd-input[data-filled="true"] {
+  color: var(--crm-ink);
+}
+.dd-input[data-active="true"] {
+  border-color: var(--crm-blue);
+  box-shadow: 0 0 0 3px rgb(47 91 255 / 0.12);
+}
+.dd-select {
+  justify-content: space-between;
+}
+.dd-options {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: grid;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--crm-line);
+  background: #fff;
+  box-shadow: 0 16px 40px -12px rgb(17 24 39 / 0.3);
+  animation: crm-menuin 0.2s ease;
+}
+.dd-option {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--crm-ink);
+}
+.dd-option:nth-child(3) {
+  background: var(--crm-blue-soft);
+}
+.dd-balance {
+  font-size: 0.8rem;
+  color: var(--crm-muted);
+}
+.dd-balance[data-after="true"] {
+  color: #047857;
+  animation: crm-fade 0.4s ease;
+}
+.dd-textarea {
+  align-items: flex-start;
+  min-height: 72px;
+}
+.dd-foot {
+  display: flex;
+  justify-content: flex-end;
+}
+/* Approvals */
+.dd-table .crm-tr {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) 120px 130px;
+}
+.dd-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 22px;
+}
+.dd-detail .qd-detail-head {
+  margin-bottom: 18px;
+}
+.dd-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.dd-card {
+  display: grid;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--crm-line);
+  background: #fff;
+}
+.dd-checks {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dd-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--crm-ink-2);
+}
+.dd-checks svg {
+  flex: none;
+  margin-top: 1px;
+  color: #059669;
+}
+.dd-decide {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.dd-decline,
+.dd-approve,
+.dd-reply {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.dd-decline {
+  border: 1px solid var(--crm-line);
+  color: var(--crm-ink-2);
+}
+.dd-approve {
+  background: var(--crm-ink);
+  color: #fff;
+  transition:
+    transform 0.15s ease,
+    background-color 0.3s ease;
+}
+.dd-approve[data-done="true"] {
+  background: #047857;
+}
+/* HR desk */
+.dd-hr {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.dd-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2447d6;
+}
+.dd-rec {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: 10px;
+}
+.dd-rec span strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.dd-rec span small {
+  font-size: 0.8rem;
+  color: var(--crm-muted);
+}
+.dd-handoff {
+  border-color: #c7d2fe;
+  box-shadow: 0 12px 30px -18px rgb(47 91 255 / 0.5);
+  animation:
+    crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    crm-rowflash 2.4s ease-out;
+}
+.dd-from {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.88rem;
+}
+.dd-question {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--crm-ink);
+}
+.dd-reason {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--crm-muted);
+}
+.dd-reply {
+  justify-self: start;
+  background: var(--crm-blue);
+  color: #fff;
+}

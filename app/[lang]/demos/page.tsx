@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { product as getProduct, productIds } from "@/lib/catalogue";
 import { contractsDemo, crmDemoUi, docsDemo } from "@/lib/crm-demo";
 import { demoEntries, demoGalleryCopy, demoTeamIds } from "@/lib/demo-gallery";
+import { deskDemo } from "@/lib/desk-demo";
 import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 import { quotesDemo } from "@/lib/quotes-demo";
@@ -79,6 +80,7 @@ export default async function DemosPage({ params }: PageProps<"/[lang]/demos">) 
                 "docs-manuals": docsDemo[lang],
                 "docs-contracts": contractsDemo[lang],
                 quotes: quotesDemo[lang],
+                desk: deskDemo[lang],
               }}
               products={products}
               teams={teams}
