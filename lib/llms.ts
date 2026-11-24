@@ -9,7 +9,7 @@ import {
 } from "@/lib/catalogue";
 import { demoGalleryCopy } from "@/lib/demo-gallery";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
-import { absoluteUrl, readyPhones, site } from "@/lib/site";
+import { absoluteUrl, readyPhones, site, socialLinks } from "@/lib/site";
 
 /**
  * Plain-text summary for AI assistants and answer engines (llms.txt
@@ -90,6 +90,7 @@ export function buildLlmsTxt(locale: Locale): string {
       (phone) =>
         `- ${seo.llms.phone} (${phone.label[locale]}): ${phone.display}`,
     ),
+    ...socialLinks.map((link) => `- ${link.label}: ${link.url}`),
     "",
   ];
   return lines.join("\n");

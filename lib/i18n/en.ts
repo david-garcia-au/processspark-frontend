@@ -9,14 +9,14 @@
  */
 export const en = {
   seo: {
-    title: "ProcessSpark | Practical fixes for Excel, Word and paper",
+    title: "ProcessSpark | AI and automation for Excel, Word and paper",
     description:
-      "Practical tools for medium-sized businesses that still run on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
-    tagline: "Start with the problem. Fix one process at a time.",
+      "AI and automation for small and medium-sized businesses still on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
+    tagline: "Protect your margins. Don’t let opportunities slip away.",
     socialTitle:
-      "Excel, Word and paper holding you back? Start with the problem.",
+      "Still on Excel, Word and paper? Protect your margins.",
     socialDescription:
-      "Practical tools for medium-sized businesses that still run on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
+      "AI and automation for small and medium-sized businesses still on Excel, Word and paper: manufacturers, maintenance contractors and accounting firms.",
     keywords: [
       "software for manufacturers on Excel and paper",
       "web forms for technicians",
@@ -31,12 +31,14 @@ export const en = {
       "quote and RFQ automation",
       "sensor monitoring and alerts",
       "document digitisation",
+      "AI and automation for small and medium-sized businesses",
+      "business process automation",
     ],
     socialImage: {
-      alt: "Start with the problem. Fix it one process at a time. For businesses still on Excel, Word and paper.",
-      line1: "Start with the problem.",
-      line2: "Fix it one process at a time.",
-      sub: "For businesses still on Excel, Word and paper.",
+      alt: "Protect your margins. Don’t let opportunities slip away. AI and automation for businesses still on Excel, Word and paper.",
+      line1: "Protect your margins.",
+      line2: "Don’t let opportunities slip away.",
+      sub: "AI and automation for businesses still on Excel, Word and paper.",
       tagline: "MANUFACTURING. MAINTENANCE. ACCOUNTING.",
     },
     jsonLd: {
@@ -45,7 +47,7 @@ export const en = {
     },
     llms: {
       intro:
-        "ProcessSpark helps medium-sized businesses that still run important work on Excel, Word and paper. We start from the customer's problem, in their own words, and match it to one solution. Every project starts with one process as a pilot, is built around the customer's existing systems and hands anything uncertain to a person.",
+        "ProcessSpark makes AI and automation accessible to small and medium-sized businesses that still run important work on Excel, Word and paper. We start from the customer's problem, in their own words, and match it to one solution. Every project starts with one process as a pilot, is built around the customer's existing systems and hands anything uncertain to a person.",
       whoFor: "Who it is for",
       problems: "Problems we solve",
       solutions: "Solutions",
