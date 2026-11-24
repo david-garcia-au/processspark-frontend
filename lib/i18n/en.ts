@@ -446,7 +446,9 @@ export const en = {
     navLabel: "Footer",
     lead: "Practical fixes for manufacturers, equipment maintenance companies and accounting firms.",
     /** Line under the logo in the footer. `lead` stays for the About page description. */
-    slogan: "Less Paperwork. Clearer Processes. Better Business.",
+    slogan: "Transform the way your business operates.",
+    /** Orange line under the slogan, as in the home hero. */
+    sloganKicker: "Protect your margins. Don’t let opportunities slip away.",
     tagline: "Less paper. Connected information. Clearer operations.",
     exploreHeading: "Explore",
     industriesHeading: "Industries",
@@ -460,10 +462,12 @@ export const en = {
       solutions: "Solutions",
       resources: "Downloads",
       demo: "Demo",
+      seeItInAction: "See it in action",
       privacy: "Privacy Policy",
     },
     talkHeading: "Let’s talk",
     copyright: "© 2026 ProcessSpark",
+    followLabel: "Follow us",
     backToTop: "Back to top",
     cookieSettings: "Cookie settings",
   },

@@ -11,7 +11,7 @@ import {
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { productFaq } from "@/lib/faq";
 import { hreflang, localePath, socialImagePath } from "@/lib/i18n";
-import { absoluteUrl, defaultPhone, readyPhones, site } from "@/lib/site";
+import { absoluteUrl, defaultPhone, readyPhones, site, socialLinks } from "@/lib/site";
 
 const organizationId = absoluteUrl("/#organization");
 
@@ -72,6 +72,7 @@ function buildGraph(lang: Locale, dict: Dictionary) {
         description: seo.description,
         slogan: seo.tagline,
         email: site.email,
+        sameAs: socialLinks.map((link) => link.url),
         telephone: defaultPhone().e164Dashed,
         logo: {
           "@type": "ImageObject",

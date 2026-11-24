@@ -226,7 +226,7 @@ export const media = {
     kind: "image",
     ratio: R32,
     brief: "Staff member asking a policy question and getting the answer.",
-    src: "/images/workflow.webp",
+    src: "/images/employee-service-desk.webp",
   },
   "product-customer-portal": {
     kind: "image",

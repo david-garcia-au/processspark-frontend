@@ -1,4 +1,4 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Instagram, Linkedin } from "lucide-react";
 import { Brand } from "@/components/header";
 import { CookieSettingsButton } from "@/components/cookie-settings-button";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -12,7 +12,9 @@ import type { Dictionary } from "@/lib/i18n";
 import { localePath, type Locale } from "@/lib/i18n/config";
 import { PhoneCards } from "@/components/phone-cards";
 import { footerProducts, industries } from "@/lib/catalogue";
-import { site } from "@/lib/site";
+import { site, socialLinks } from "@/lib/site";
+
+const socialIcons = { linkedin: Linkedin, instagram: Instagram } as const;
 
 type FooterProps = {
   lang: Locale;
@@ -46,11 +48,41 @@ export function Footer({
             href={page === "home" ? "#" : localePath(lang)}
           />
           <p className="site-footer-lead">{copy.slogan}</p>
+          <p className="site-footer-kicker">{copy.sloganKicker}</p>
+          <div className="site-footer-follow">
+            <h2 className="site-footer-follow-title">{copy.followLabel}</h2>
+            <ul className="site-footer-social">
+              {socialLinks.map(({ id, label, url }) => {
+                const Icon = socialIcons[id];
+                return (
+                  <li key={id}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      title={label}
+                    >
+                      <Icon size={20} aria-hidden="true" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
         <nav aria-label={copy.navLabel} className="site-footer-nav">
           <div>
             <h2 className="site-footer-title">{copy.exploreHeading}</h2>
             <ul className="site-footer-links">
+              <li>
+                <SiteLink
+                  href={localePath(lang, "/demos")}
+                  aria-current={current(localePath(lang, "/demos"))}
+                >
+                  {copy.links.seeItInAction}
+                </SiteLink>
+              </li>
               <li>
                 <SiteLink
                   href={localePath(lang, "/problems")}

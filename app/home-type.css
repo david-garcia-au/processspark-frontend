@@ -109,8 +109,32 @@ html body main.home .home-contact-panel {
 }
 /* The statement's button is the end of that block; keep it close to the
    paragraph, not floating. */
-html body main.home .home-statement-cta {
+html body main.home .home-statement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
   margin-top: 32px;
+}
+/* Secondary pill for light backgrounds (the ghost pill is for dark ones). */
+html body .pill-outline {
+  color: var(--ink);
+  border: 1.5px solid var(--line-strong);
+  background: transparent;
+}
+html body .pill-outline:hover {
+  border-color: var(--ink);
+  background: var(--tint);
+}
+/* Blue band: the two buttons stack on the right at one width. */
+html body .about-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+html body .about-cta-actions .pill {
+  justify-content: center;
 }
 /* The hero ends in a hard dark edge against the white, so the first section
    under it needs more breathing room on top than the gap between two white
@@ -231,5 +255,14 @@ html body main.home .pe-list {
 @media (min-width: 901px) {
   html body main.home .pe-heading {
     margin-bottom: var(--loose);
+  }
+}
+@media (max-width: 700px) {
+  html body main.home .home-statement-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  html body main.home .home-statement-actions .pill {
+    justify-content: center;
   }
 }

@@ -28,6 +28,19 @@ export const site = {
   /** Invite-only demo platform (a separate app on its own subdomain). */
   demoUrl: "https://demo.processspark.com",
 } as const;
+/** Company profiles, shown in the footer and as `sameAs` in structured data. */
+export const socialLinks = [
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/company/processspark-automation",
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    url: "https://www.instagram.com/processspark",
+  },
+] as const;
 
 /**
  * Phone numbers by region, shown as a simple list in the footer (components/phone-cards.tsx),

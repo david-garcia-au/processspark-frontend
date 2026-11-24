@@ -144,10 +144,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <span className="statement-line spark-text">{homePage.statement.title.line2}</span>
           </h2>
           <p>{homePage.statement.text}</p>
-          <a className="pill button-primary home-statement-cta" href="#contact">
-            {homePage.statement.cta}{" "}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
+          <div className="home-statement-actions">
+            <a className="pill button-primary" href="#contact">
+              {homePage.statement.cta}{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a className="pill pill-outline" href={localePath(lang, demoPath)}>
+              {hero.ctaSecondary}
+            </a>
+          </div>
         </section>
         <section
           className="home-section shell"
@@ -166,10 +171,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <h2 id="assure-cta-title">{homePage.assureCta.heading}</h2>
                 <p>{homePage.assureCta.text}</p>
               </div>
-              <a className="pill pill-light" href="#contact">
-                {contact.discoveryButton}{" "}
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </a>
+              <div className="about-cta-actions">
+                <a className="pill pill-light" href="#contact">
+                  {contact.discoveryButton}{" "}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+                <a className="pill pill-ghost" href={localePath(lang, demoPath)}>
+                  {hero.ctaSecondary}
+                </a>
+              </div>
             </div>
           </section>
           <TrustPanel lang={lang} />
