@@ -477,7 +477,7 @@ export const navCardMedia: Record<NavCardId, MediaSlot> = {
   demo: "nav-demo",
 };
 /** Where "See it in action" goes: the page with every demo. */
-export const demoPath = "/demo-preview";
+export const demoPath = "/demos";
 
 /**
  * Products hidden from the header's Solutions panel and the footer column

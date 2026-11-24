@@ -15,12 +15,12 @@ import { quotesDemo } from "@/lib/quotes-demo";
  * "See it in action" links (menu card, home hero) point here.
  */
 export const dynamicParams = false;
-const demosPath = "/demo-preview";
+const demosPath = "/demos";
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 export async function generateMetadata(
-  { params }: PageProps<"/[lang]/demo-preview">,
+  { params }: PageProps<"/[lang]/demos">,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { lang } = await params;
@@ -33,7 +33,7 @@ export async function generateMetadata(
     description: copy.description,
   });
 }
-export default async function DemosPage({ params }: PageProps<"/[lang]/demo-preview">) {
+export default async function DemosPage({ params }: PageProps<"/[lang]/demos">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = getDictionary(lang);

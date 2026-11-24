@@ -144,14 +144,14 @@ To QA it, start the demo, pause 3 seconds into a beat, and wait 6 seconds. Nothi
 - **Demo section:** `<section className="demo-section" id="demo">` with a full-width grey band and an inner `.shell`. It holds only the "Interactive demo" label, the heading and the stage: no intro paragraph, no "illustrative" note, no CTA row. The heading follows the "Upload a manual, define permissions, get the answers" pattern.
 - **Anchor:** `#demo` with `scroll-margin-top: 76px`. `demoPath` lives in `lib/catalogue/structure.ts`, which the menu "See it in action" card and the home hero button use.
 
-## The demos page (`/[lang]/demo-preview`)
+## The demos page (`/[lang]/demos`)
 
 Every demo is also listed on one page, with filter chips for product and team (one of each, or All, combined). All "See it in action" links (`demoPath` in `lib/catalogue/structure.ts`: menu card, home hero) point here. A demo can also stay on its solution page.
 
 - **Registry:** `lib/demo-gallery.ts`. `demoEntries` (order on the page) gives each demo an `id` (its anchor), a `kind` (which player and script), its `products` and its `teams`, and a demo can have several of each. `demoTeamIds` plus the EN/ES `teams` labels are the team list, separate from the catalogue.
 - **Component:** `components/demo-gallery.tsx` (client) renders the chips and the matching demos. Each has its heading, product tag (blue) and team tags. When nothing matches, it shows a message and a "Show all demos" button. Styles are in `app/demo-gallery.css`.
 - **Chips:** only products and teams that have a demo get a chip. They use the product's `shortName`, because the full Spanish names wrap.
-- **To add a demo:** add its script, add a `kind` and render branch in the gallery, pass the script from `app/[lang]/demo-preview/page.tsx`, and add an entry with its products and teams.
+- **To add a demo:** add its script, add a `kind` and render branch in the gallery, pass the script from `app/[lang]/demos/page.tsx`, and add an entry with its products and teams.
 - **Listings:** the page is in the sitemap and llms.txt.
 
 ## Accessibility and behaviour
