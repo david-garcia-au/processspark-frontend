@@ -23,15 +23,19 @@ import type { Dictionary } from "./en";
  */
 export const es: Dictionary = {
   seo: {
-    title: "ProcessSpark | IA y automatización para Excel, Word y papel",
+    title: "ProcessSpark | Transformación digital con IA y automatización de procesos",
     description:
-      "IA y automatización para pymes que siguen con Excel, Word y papel: fabricantes, empresas de mantenimiento y asesorías.",
+      "Transformación digital con IA y automatización de procesos para pymes que siguen con Excel, Word y papel: fabricantes, constructoras, mantenimiento y asesorías.",
     tagline: "Protege tus márgenes. No dejes escapar oportunidades.",
     socialTitle:
       "¿Sigues con Excel, Word y papel? Protege tus márgenes.",
     socialDescription:
-      "IA y automatización para pymes que siguen con Excel, Word y papel: fabricantes, empresas de mantenimiento y asesorías.",
+      "Transformación digital con IA y automatización de procesos para pymes que siguen con Excel, Word y papel: fabricantes, constructoras, mantenimiento y asesorías.",
     keywords: [
+      "transformación digital",
+      "transformación empresarial",
+      "IA",
+      "automatización de procesos",
       "software para fabricantes con Excel y papel",
       "formularios web para técnicos",
       "formularios electrónicos para técnicos",
@@ -45,14 +49,15 @@ export const es: Dictionary = {
       "automatización de ofertas y RFQ",
       "monitorización con sensores y avisos",
       "digitalización de documentos",
-      "IA y automatización para pymes",
+      "transformación digital para pymes",
+      "IA y automatización de procesos para pymes",
       "automatización de procesos empresariales",
     ],
     socialImage: {
-      alt: "Protege tus márgenes. No dejes escapar oportunidades. IA y automatización para empresas con Excel, Word y papel.",
+      alt: "Protege tus márgenes. No dejes escapar oportunidades. IA y automatización de procesos para Excel, Word y papel.",
       line1: "Protege tus márgenes.",
       line2: "No dejes escapar oportunidades.",
-      sub: "IA y automatización para empresas con Excel, Word y papel.",
+      sub: "IA y automatización de procesos para Excel, Word y papel.",
       tagline: "FABRICACIÓN. MANTENIMIENTO. CONTABILIDAD.",
     },
     jsonLd: {
@@ -61,7 +66,7 @@ export const es: Dictionary = {
     },
     llms: {
       intro:
-        "ProcessSpark acerca la IA y la automatización a las pymes que siguen haciendo trabajo importante con Excel, Word y papel. Partimos del problema del cliente, con sus propias palabras, y lo asociamos a una solución. Cada proyecto empieza con un proceso como piloto, se construye alrededor de los sistemas que el cliente ya tiene y deriva a una persona todo lo que no está claro.",
+        "ProcessSpark acerca la IA y la automatización de procesos a las pymes que siguen haciendo trabajo importante con Excel, Word y papel. Partimos del problema del cliente, con sus propias palabras, y lo asociamos a una solución. Cada proyecto empieza con un proceso como piloto, se construye alrededor de los sistemas que el cliente ya tiene y deriva a una persona todo lo que no está claro.",
       whoFor: "Para quién es",
       problems: "Problemas que resolvemos",
       solutions: "Soluciones",
@@ -123,7 +128,7 @@ export const es: Dictionary = {
     kicker: "Protege tus márgenes. No dejes escapar oportunidades.",
     subtitle: "¿Tu empresa sigue funcionando con Excel, Word y papel?",
     description:
-      "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
+      "Acercamos la inteligencia artificial y la automatización de procesos a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
     ctaPrimary: "Reserva una llamada",
     ctaSecondary: "Míralo en acción",
   },

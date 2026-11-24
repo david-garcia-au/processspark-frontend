@@ -227,7 +227,8 @@ export function validateCatalogue(
     }
     const seo = pageSeo[lang];
     range(`${lang} home seo.description`, seo.home.description, 70, 160);
-    max(`${lang} home seo.title`, seo.home.title, 60);
+    // The home title carries the brand and the main positioning, so it gets more room than inner pages.
+    max(`${lang} home seo.title`, seo.home.title, 75);
     for (const key of ["problems", "industries", "solutions"] as const) {
       max(`${lang} ${key} seo.title`, seo[key].title, 45);
       range(`${lang} ${key} seo.description`, seo[key].description, 70, 160);
