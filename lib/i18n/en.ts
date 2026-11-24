@@ -108,7 +108,7 @@ export const en = {
     subtitle: "Still running the business on Excel, Word and paper?",
     description:
       "We make AI and automation accessible to small and medium-sized businesses, with solutions that adapt to the way you work—not the other way round.",
-    ctaPrimary: "Find your problem",
+    ctaPrimary: "Book a discovery call",
     ctaSecondary: "See it in action",
   },
   band: {

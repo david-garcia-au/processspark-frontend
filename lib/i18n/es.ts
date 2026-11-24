@@ -69,7 +69,7 @@ export const es: Dictionary = {
       links: "Enlaces",
       home: "Inicio",
       homeDescription: "Empieza por tu problema o por tu sector",
-      contactLink: "Reservar una llamada",
+      contactLink: "Reserva una llamada",
       contactDescription: "Empieza con un proceso",
       sitemap: "Mapa del sitio",
       contact: "Contacto",
@@ -102,7 +102,7 @@ export const es: Dictionary = {
     solutions: "Soluciones",
     resources: "Descargas",
     cta: "Encuentra tu primera mejora",
-    demo: "Reservar una llamada",
+    demo: "Reserva una llamada",
     menu: {
       solve: "Problemas que resolvemos",
       solveToggle: "Mostrar problemas que resolvemos",
@@ -122,7 +122,7 @@ export const es: Dictionary = {
     subtitle: "¿Tu empresa sigue funcionando con Excel, Word y papel?",
     description:
       "Acercamos la inteligencia artificial y la automatización a las pymes con soluciones que se adaptan a vuestra forma de trabajar, y no al revés.",
-    ctaPrimary: "Encuentra tu problema",
+    ctaPrimary: "Reserva una llamada",
     ctaSecondary: "Míralo en acción",
   },
   band: {

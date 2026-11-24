@@ -101,7 +101,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <p className="home-hero-kicker">{hero.kicker}</p>
             <div className="home-hero-actions">
               <Button asChild className="pill pill-light">
-                <a href="#problems">
+                <a href="#contact">
                   {hero.ctaPrimary}{" "}
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </a>
