@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { AccentHeading } from "@/components/accent-heading";
 import { CtaBand } from "@/components/cta-band";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -26,18 +27,6 @@ import { getDictionary, hasLocale, locales, localePath } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 import { crmDemoUi, docsDemo } from "@/lib/crm-demo";
 
-/** Heading text with its closing phrase in the logo orange. */
-function AccentHeading({ text, accent }: { text: string; accent?: string }) {
-  const at = accent ? text.lastIndexOf(accent) : -1;
-  if (!accent || at < 0) return text;
-  return (
-    <>
-      {text.slice(0, at)}
-      <span className="spark-text">{accent}</span>
-      {text.slice(at + accent.length)}
-    </>
-  );
-}
 export const dynamicParams = false;
 
 export function generateStaticParams() {

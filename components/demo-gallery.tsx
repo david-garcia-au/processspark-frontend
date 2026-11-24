@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AccentHeading } from "@/components/accent-heading";
 import { DocsDemo } from "@/components/docs-demo";
 import { QuotesDemo } from "@/components/quotes-demo";
 import type { ProductId } from "@/lib/catalogue";
@@ -25,7 +26,12 @@ type DemoGalleryProps = {
 };
 
 function headingOf(kind: DemoKind, scripts: Scripts) {
-  return scripts[kind].heading;
+  return (
+    <AccentHeading
+      text={scripts[kind].heading}
+      accent={scripts[kind].headingAccent}
+    />
+  );
 }
 
 /**
