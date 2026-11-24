@@ -266,6 +266,7 @@ export const media = {
     kind: "image",
     ratio: R32,
     brief: "Sensor on a pump or motor and a simple live reading on a phone.",
+    src: "/images/industrial-pump.webp",
   },
   // Problems page: one photo per group ------------------------------------
   "problems-capture": {
