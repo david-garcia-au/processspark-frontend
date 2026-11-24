@@ -26,6 +26,18 @@ import { getDictionary, hasLocale, locales, localePath } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 import { crmDemoUi, docsDemo } from "@/lib/crm-demo";
 
+/** Heading text with its closing phrase in the logo orange. */
+function AccentHeading({ text, accent }: { text: string; accent?: string }) {
+  const at = accent ? text.lastIndexOf(accent) : -1;
+  if (!accent || at < 0) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <span className="spark-text">{accent}</span>
+      {text.slice(at + accent.length)}
+    </>
+  );
+}
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -105,7 +117,12 @@ export default async function ProductPage({
             <div className="shell">
               <div className="demo-head">
                 <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
-                <h2 id="demo-title">{docsDemo[lang].heading}</h2>
+                <h2 id="demo-title">
+                  <AccentHeading
+                    text={docsDemo[lang].heading}
+                    accent={docsDemo[lang].headingAccent}
+                  />
+                </h2>
               </div>
               <DocsDemo demo={docsDemo[lang]} ui={crmDemoUi[lang]} />
             </div>
@@ -116,7 +133,12 @@ export default async function ProductPage({
             <div className="shell">
               <div className="demo-head">
                 <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
-                <h2 id="demo-title">{quotesDemo[lang].heading}</h2>
+                <h2 id="demo-title">
+                  <AccentHeading
+                    text={quotesDemo[lang].heading}
+                    accent={quotesDemo[lang].headingAccent}
+                  />
+                </h2>
               </div>
               <QuotesDemo demo={quotesDemo[lang]} ui={crmDemoUi[lang]} />
             </div>

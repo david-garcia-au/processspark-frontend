@@ -12,6 +12,8 @@ type Brief = { label: string; text: string };
 
 export type QuotesDemo = {
   heading: string;
+  /** Closing phrase of `heading`, shown in the logo orange. */
+  headingAccent?: string;
   rep: Person;
   customer: Person;
   company: string;
@@ -60,6 +62,7 @@ export type QuotesDemo = {
 export const quotesDemo: Record<Locale, QuotesDemo> = {
   en: {
     heading: "Receive an RFQ, review the draft quote, win the order",
+    headingAccent: "win the order",
     rep: { name: "Matt", role: "Account manager", initials: "M", tint: "emerald" },
     customer: { name: "Anna", role: "Purchasing manager", initials: "A", tint: "blue" },
     company: "Tandrel Packaging",
@@ -168,6 +171,7 @@ export const quotesDemo: Record<Locale, QuotesDemo> = {
   },
   es: {
     heading: "Recibe una solicitud de oferta, revisa el borrador y gana el pedido",
+    headingAccent: "gana el pedido",
     rep: { name: "Matt", role: "Gestor de cuentas", initials: "M", tint: "emerald" },
     customer: { name: "Anna", role: "Responsable de compras", initials: "A", tint: "blue" },
     company: "Tandrel Packaging",

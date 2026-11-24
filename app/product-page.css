@@ -245,3 +245,18 @@ html body .product-page .pp-visual .sol-chat p:last-of-type {
     margin-left: 16px;
   }
 }
+
+/* Demo heading: the payoff phrase takes the logo orange (large text, so the
+   3:1 contrast holds on the pale band). */
+html body .product-page .demo-head h2 .spark-text {
+  color: var(--spark);
+}
+
+/* Demo heading uses the same size and tracking as the section headings below. */
+html body .product-page .demo-section h2#demo-title {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}

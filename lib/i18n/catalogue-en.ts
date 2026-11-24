@@ -397,7 +397,7 @@ export const enCatalogue: CatalogueCopy = {
       },
     },
     "quotes-rfqs": {
-      name: "Quote & RFQ Automation",
+      name: "Automate Your Quotes",
       shortName: "Automate Your Quotes",
       menuHint: "RFQs turned into priced draft quotes",
       oneLine:

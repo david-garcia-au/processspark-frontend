@@ -398,7 +398,7 @@ export const esCatalogue: CatalogueCopy = {
       },
     },
     "quotes-rfqs": {
-      name: "Automatización de ofertas y solicitudes de oferta (RFQ)",
+      name: "Automatización de ofertas",
       shortName: "Automatiza tus ofertas",
       menuHint: "Borradores con precios de tus tarifas y descuentos por cliente.",
       oneLine:

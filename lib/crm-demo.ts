@@ -15,6 +15,8 @@ export type Person = { name: string; role: string; initials: string; tint: strin
 /** One turn of the typed/played timeline, interpreted by the component. */
 export type DocsDemo = {
   heading: string;
+  /** Closing phrase of `heading`, shown in the logo orange. */
+  headingAccent?: string;
   /** Which card icons to use. Defaults to the service (manuals) story. */
   story?: "service" | "contracts";
   /** How long each person's intro shows alone before its card. Defaults to 2000ms. */
@@ -147,6 +149,7 @@ export const crmDemoUi: Record<Locale, CrmDemoUi> = {
 export const docsDemo: Record<Locale, DocsDemo> = {
   en: {
     heading: "Upload a manual, define permissions, get the answers",
+    headingAccent: "get the answers",
     introDelayMs: 4000,
     admin: { name: "Anna", role: "Service admin", initials: "A", tint: "blue" },
     tech: { name: "John", role: "Service technician", initials: "J", tint: "amber" },
@@ -272,6 +275,7 @@ export const docsDemo: Record<Locale, DocsDemo> = {
   },
   es: {
     heading: "Sube un manual, define permisos y obtén las respuestas",
+    headingAccent: "obtén las respuestas",
     introDelayMs: 4000,
     admin: { name: "Anna", role: "Admin de servicio", initials: "A", tint: "blue" },
     tech: { name: "John", role: "Técnico de servicio", initials: "J", tint: "amber" },
@@ -405,6 +409,7 @@ export const docsDemo: Record<Locale, DocsDemo> = {
 export const contractsDemo: Record<Locale, DocsDemo> = {
   en: {
     heading: "Upload a contract, set access, get the answers",
+    headingAccent: "get the answers",
     story: "contracts",
     chatBy: "admin",
     introDelayMs: 4000,
@@ -531,6 +536,7 @@ export const contractsDemo: Record<Locale, DocsDemo> = {
   },
   es: {
     heading: "Sube un contrato, define accesos y obtén las respuestas",
+    headingAccent: "obtén las respuestas",
     story: "contracts",
     chatBy: "admin",
     introDelayMs: 4000,
