@@ -42,6 +42,7 @@ import "../desk-demo.css";
 import "../invoice-demo.css";
 import "../forms-demo.css";
 import "../ncr-demo.css";
+import "../data-demo.css";
 import "../demo-gallery.css";
 import "../problems-hub.css";
 import "../home-type.css";

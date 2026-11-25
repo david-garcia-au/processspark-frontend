@@ -12,7 +12,7 @@ export const demoTeamIds = ["service", "quality", "contracts", "projects", "fina
 export type DemoTeamId = (typeof demoTeamIds)[number];
 
 /** Which player renders the demo, and with which script. */
-export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk" | "invoices" | "forms" | "ncr";
+export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk" | "invoices" | "forms" | "ncr" | "data";
 
 export type DemoEntry = {
   id: string;
@@ -34,6 +34,12 @@ export const demoEntries: readonly DemoEntry[] = [
     kind: "docs-contracts",
     products: ["talk-to-your-documents"],
     teams: ["contracts", "projects", "finance"],
+  },
+  {
+    id: "maintenance-data",
+    kind: "data",
+    products: ["talk-to-your-data"],
+    teams: ["service"],
   },
   {
     id: "quotes",
@@ -74,12 +80,10 @@ export type DemoGalleryCopy = {
   lead: string;
   filters: {
     label: string;
-    product: string;
-    team: string;
+    byProduct: string;
+    byTeam: string;
     all: string;
   };
-  empty: string;
-  showAll: string;
   teams: Record<DemoTeamId, string>;
 };
 
@@ -92,12 +96,10 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
     lead: "Short scripted demos of real tasks. Pick a product or a team, then press Run the demo.",
     filters: {
       label: "Filter the demos",
-      product: "Product",
-      team: "Team",
+      byProduct: "By product",
+      byTeam: "By team",
       all: "All",
     },
-    empty: "There is no demo for this combination yet.",
-    showAll: "Show all demos",
     teams: {
       service: "Service & maintenance",
       quality: "Quality",
@@ -116,12 +118,10 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
     lead: "Demos breves de tareas reales. Elige un producto o un equipo y pulsa Ver la demo.",
     filters: {
       label: "Filtrar las demos",
-      product: "Producto",
-      team: "Equipo",
+      byProduct: "Por producto",
+      byTeam: "Por equipo",
       all: "Todas",
     },
-    empty: "Todavía no hay una demo para esta combinación.",
-    showAll: "Ver todas las demos",
     teams: {
       service: "Servicio y mantenimiento",
       quality: "Calidad",

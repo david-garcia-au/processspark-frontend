@@ -10,6 +10,7 @@ import { deskDemo } from "@/lib/desk-demo";
 import { invoiceDemo } from "@/lib/invoice-demo";
 import { formsDemo } from "@/lib/forms-demo";
 import { ncrDemo } from "@/lib/ncr-demo";
+import { dataDemo } from "@/lib/data-demo";
 import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-metadata";
 import { quotesDemo } from "@/lib/quotes-demo";
@@ -87,6 +88,7 @@ export default async function DemosPage({ params }: PageProps<"/[lang]/demos">) 
                 invoices: invoiceDemo[lang],
                 forms: formsDemo[lang],
                 ncr: ncrDemo[lang],
+                data: dataDemo[lang],
               }}
               products={products}
               teams={teams}

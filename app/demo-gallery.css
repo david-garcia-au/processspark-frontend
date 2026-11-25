@@ -4,39 +4,71 @@
 .demos-band {
   padding-block: clamp(40px, 5vw, 64px) clamp(64px, 7vw, 104px);
 }
+/* Filters: a small "by product / by team" switch, then one row of chips with
+   their demo counts. No card around it; it sits on the grey band. */
 .demos-filters {
-  display: grid;
-  gap: 14px;
-  padding: 20px 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-}
-.demos-filter {
-  display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
-  align-items: center;
-  gap: 16px;
-}
-.demos-filter-name {
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-.demos-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 14px 20px;
+}
+.demos-mode {
+  display: inline-flex;
+  flex: none;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.demos-mode-btn {
+  padding: 7px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.demos-mode-btn:hover {
+  color: var(--ink);
+}
+.demos-mode-btn[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--on-dark);
+}
+/* One line, always: if the chips ever outgrow the width they scroll
+   sideways instead of wrapping onto a second row. */
+.demos-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.demos-chips::-webkit-scrollbar {
+  display: none;
 }
 .demos-chip {
-  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 6px;
+  padding: 7px 12px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--surface);
   color: var(--ink);
   font: inherit;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   line-height: 1.2;
+  white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -46,37 +78,23 @@
 .demos-chip:hover {
   border-color: var(--ink);
 }
+.demos-chip-n {
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--faint);
+}
 .demos-chip[aria-pressed="true"] {
   border-color: var(--ink);
   background: var(--ink);
   color: var(--on-dark);
 }
+.demos-chip[aria-pressed="true"] .demos-chip-n {
+  color: var(--on-dark-muted);
+}
 .demos-chip:focus-visible,
-.demos-reset:focus-visible {
+.demos-mode-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-}
-.demos-count {
-  margin: 0;
-}
-.demos-count:not(:empty) {
-  margin-top: 40px;
-  font-size: 1.1rem;
-  color: var(--muted);
-}
-.demos-reset {
-  margin-top: 14px;
-  padding: 10px 18px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-.demos-reset:hover {
-  background: var(--accent-hover);
 }
 .demos-list {
   display: grid;
@@ -127,11 +145,9 @@ html body .demos-item-head h2 {
   font-weight: 600;
 }
 @media (max-width: 700px) {
-  .demos-filters {
-    padding: 16px;
-  }
-  .demos-filter {
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .demos-chips {
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+    padding: 2px 20px 6px;
   }
 }

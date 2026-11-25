@@ -14,6 +14,8 @@ import { InvoiceDemo } from "@/components/invoice-demo";
 import { invoiceDemo } from "@/lib/invoice-demo";
 import { NcrDemo } from "@/components/ncr-demo";
 import { ncrDemo } from "@/lib/ncr-demo";
+import { DataDemo } from "@/components/data-demo";
+import { dataDemo } from "@/lib/data-demo";
 import { quotesDemo } from "@/lib/quotes-demo";
 import { ProblemCard } from "@/components/problem-card";
 import { SiteLink } from "@/components/site-link";
@@ -186,6 +188,22 @@ export default async function ProductPage({
               {/* The NCR demo is the main one here (plant managers); the
                   inspection demo stays on the demos page. */}
               <NcrDemo demo={ncrDemo[lang]} ui={crmDemoUi[lang]} />
+            </div>
+          </section>
+        ) : null}
+        {id === "talk-to-your-data" ? (
+          <section className="demo-section" id="demo" aria-labelledby="demo-title">
+            <div className="shell">
+              <div className="demo-head">
+                <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
+                <h2 id="demo-title">
+                  <AccentHeading
+                    text={dataDemo[lang].heading}
+                    accent={dataDemo[lang].headingAccent}
+                  />
+                </h2>
+              </div>
+              <DataDemo demo={dataDemo[lang]} ui={crmDemoUi[lang]} />
             </div>
           </section>
         ) : null}

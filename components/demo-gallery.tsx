@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AccentHeading } from "@/components/accent-heading";
+import { DataDemo } from "@/components/data-demo";
 import { DeskDemo } from "@/components/desk-demo";
 import { DocsDemo } from "@/components/docs-demo";
 import { FormsDemo } from "@/components/forms-demo";
@@ -11,6 +12,7 @@ import { QuotesDemo } from "@/components/quotes-demo";
 import type { ProductId } from "@/lib/catalogue";
 import type { CrmDemoUi, DocsDemo as DocsDemoData } from "@/lib/crm-demo";
 import type { DemoEntry, DemoGalleryCopy, DemoKind, DemoTeamId } from "@/lib/demo-gallery";
+import type { DataDemo as DataDemoData } from "@/lib/data-demo";
 import type { DeskDemo as DeskDemoData } from "@/lib/desk-demo";
 import type { FormsDemo as FormsDemoData } from "@/lib/forms-demo";
 import type { InvoiceDemo as InvoiceDemoData } from "@/lib/invoice-demo";
@@ -25,6 +27,7 @@ type Scripts = {
   invoices: InvoiceDemoData;
   forms: FormsDemoData;
   ncr: NcrDemoData;
+  data: DataDemoData;
 };
 
 type DemoGalleryProps = {
@@ -47,90 +50,73 @@ function headingOf(kind: DemoKind, scripts: Scripts) {
 }
 
 /**
- * Filter chips (one product, one team, or all) and the matching demos below.
+ * One filter at a time: a small switch picks "by product" or "by team", and a
+ * single row of chips (each with its demo count) narrows the list below.
  * Each demo keeps its own player; filtering only shows or hides them.
  */
 export function DemoGallery({ copy, ui, entries, scripts, products, teams }: DemoGalleryProps) {
-  const [product, setProduct] = useState<ProductId | null>(null);
-  const [team, setTeam] = useState<DemoTeamId | null>(null);
+  const [mode, setMode] = useState<"product" | "team">("product");
+  const [pick, setPick] = useState<string | null>(null);
   const productName = new Map(products.map((p) => [p.id, p.name]));
 
-  const shown = entries.filter(
-    (e) => (!product || e.products.includes(product)) && (!team || e.teams.includes(team)),
+  const shown = entries.filter((e) =>
+    !pick
+      ? true
+      : mode === "product"
+        ? e.products.includes(pick as ProductId)
+        : e.teams.includes(pick as DemoTeamId),
   );
+  const options =
+    mode === "product"
+      ? products.map((p) => ({
+          id: p.id as string,
+          label: p.name,
+          count: entries.filter((e) => e.products.includes(p.id)).length,
+        }))
+      : teams.map((t) => ({
+          id: t as string,
+          label: copy.teams[t],
+          count: entries.filter((e) => e.teams.includes(t)).length,
+        }));
 
   return (
     <>
       <div className="demos-filters" role="group" aria-label={copy.filters.label}>
-        <div className="demos-filter">
-          <span className="demos-filter-name" id="demos-filter-product">
-            {copy.filters.product}
-          </span>
-          <div className="demos-chips" role="group" aria-labelledby="demos-filter-product">
+        <div className="demos-mode" role="tablist" aria-label={copy.filters.label}>
+          {(["product", "team"] as const).map((m) => (
             <button
+              key={m}
               type="button"
-              className="demos-chip"
-              aria-pressed={product === null}
-              onClick={() => setProduct(null)}
+              role="tab"
+              className="demos-mode-btn"
+              aria-selected={mode === m}
+              onClick={() => {
+                setMode(m);
+                setPick(null);
+              }}
             >
-              {copy.filters.all}
+              {m === "product" ? copy.filters.byProduct : copy.filters.byTeam}
             </button>
-            {products.map((p) => (
-              <button
-                key={p.id}
-                type="button"
-                className="demos-chip"
-                aria-pressed={product === p.id}
-                onClick={() => setProduct(product === p.id ? null : p.id)}
-              >
-                {p.name}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
-        <div className="demos-filter">
-          <span className="demos-filter-name" id="demos-filter-team">
-            {copy.filters.team}
-          </span>
-          <div className="demos-chips" role="group" aria-labelledby="demos-filter-team">
+        <div className="demos-chips" role="group" aria-label={mode === "product" ? copy.filters.byProduct : copy.filters.byTeam}>
+          <button type="button" className="demos-chip" aria-pressed={pick === null} onClick={() => setPick(null)}>
+            {copy.filters.all}
+          </button>
+          {options.map((o) => (
             <button
+              key={o.id}
               type="button"
               className="demos-chip"
-              aria-pressed={team === null}
-              onClick={() => setTeam(null)}
+              aria-pressed={pick === o.id}
+              onClick={() => setPick(pick === o.id ? null : o.id)}
             >
-              {copy.filters.all}
+              {o.label}
+              <span className="demos-chip-n">{o.count}</span>
             </button>
-            {teams.map((t) => (
-              <button
-                key={t}
-                type="button"
-                className="demos-chip"
-                aria-pressed={team === t}
-                onClick={() => setTeam(team === t ? null : t)}
-              >
-                {copy.teams[t]}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-
-      <p className="demos-count" aria-live="polite">
-        {shown.length === 0 ? copy.empty : null}
-      </p>
-      {shown.length === 0 ? (
-        <button
-          type="button"
-          className="demos-reset"
-          onClick={() => {
-            setProduct(null);
-            setTeam(null);
-          }}
-        >
-          {copy.showAll}
-        </button>
-      ) : null}
 
       <div className="demos-list">
         {shown.map((e) => (
@@ -158,6 +144,8 @@ export function DemoGallery({ copy, ui, entries, scripts, products, teams }: Dem
               <FormsDemo demo={scripts.forms} ui={ui} />
             ) : e.kind === "ncr" ? (
               <NcrDemo demo={scripts.ncr} ui={ui} />
+            ) : e.kind === "data" ? (
+              <DataDemo demo={scripts.data} ui={ui} />
             ) : (
               <DocsDemo demo={scripts[e.kind]} ui={ui} />
             )}
