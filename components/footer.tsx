@@ -1,4 +1,4 @@
-import { ArrowUp, Instagram, Linkedin } from "lucide-react";
+import { ArrowUp, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Brand } from "@/components/header";
 import { CookieSettingsButton } from "@/components/cookie-settings-button";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -14,7 +14,11 @@ import { PhoneCards } from "@/components/phone-cards";
 import { footerProducts, industries } from "@/lib/catalogue";
 import { site, socialLinks } from "@/lib/site";
 
-const socialIcons = { linkedin: Linkedin, instagram: Instagram } as const;
+const socialIcons = {
+  linkedin: Linkedin,
+  instagram: Instagram,
+  youtube: Youtube,
+} as const;
 
 type FooterProps = {
   lang: Locale;

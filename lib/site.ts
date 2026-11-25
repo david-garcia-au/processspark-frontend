@@ -40,6 +40,11 @@ export const socialLinks = [
     label: "Instagram",
     url: "https://www.instagram.com/processspark",
   },
+  {
+    id: "youtube",
+    label: "YouTube",
+    url: "https://www.youtube.com/@ProcessSparkYoutubeChannel",
+  },
 ] as const;
 
 /**
