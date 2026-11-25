@@ -12,6 +12,8 @@ import { DeskDemo } from "@/components/desk-demo";
 import { deskDemo } from "@/lib/desk-demo";
 import { InvoiceDemo } from "@/components/invoice-demo";
 import { invoiceDemo } from "@/lib/invoice-demo";
+import { NcrDemo } from "@/components/ncr-demo";
+import { ncrDemo } from "@/lib/ncr-demo";
 import { quotesDemo } from "@/lib/quotes-demo";
 import { ProblemCard } from "@/components/problem-card";
 import { SiteLink } from "@/components/site-link";
@@ -166,6 +168,24 @@ export default async function ProductPage({
                 </h2>
               </div>
               <InvoiceDemo demo={invoiceDemo[lang]} ui={crmDemoUi[lang]} />
+            </div>
+          </section>
+        ) : null}
+        {id === "digitise-paperwork" ? (
+          <section className="demo-section" id="demo" aria-labelledby="demo-title">
+            <div className="shell">
+              <div className="demo-head">
+                <p className="demo-eyebrow">{crmDemoUi[lang].regionLabel}</p>
+                <h2 id="demo-title">
+                  <AccentHeading
+                    text={ncrDemo[lang].heading}
+                    accent={ncrDemo[lang].headingAccent}
+                  />
+                </h2>
+              </div>
+              {/* The NCR demo is the main one here (plant managers); the
+                  inspection demo stays on the demos page. */}
+              <NcrDemo demo={ncrDemo[lang]} ui={crmDemoUi[lang]} />
             </div>
           </section>
         ) : null}

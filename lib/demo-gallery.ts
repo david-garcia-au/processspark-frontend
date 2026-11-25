@@ -8,11 +8,11 @@
 import type { ProductId } from "@/lib/catalogue";
 import type { Locale } from "@/lib/i18n/config";
 
-export const demoTeamIds = ["service", "contracts", "projects", "finance", "people", "sales"] as const;
+export const demoTeamIds = ["service", "quality", "contracts", "projects", "finance", "people", "sales"] as const;
 export type DemoTeamId = (typeof demoTeamIds)[number];
 
 /** Which player renders the demo, and with which script. */
-export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk" | "invoices";
+export type DemoKind = "docs-manuals" | "docs-contracts" | "quotes" | "desk" | "invoices" | "forms" | "ncr";
 
 export type DemoEntry = {
   id: string;
@@ -53,6 +53,18 @@ export const demoEntries: readonly DemoEntry[] = [
     products: ["invoice-bookkeeping"],
     teams: ["finance", "projects"],
   },
+  {
+    id: "non-conformance",
+    kind: "ncr",
+    products: ["digitise-paperwork"],
+    teams: ["quality"],
+  },
+  {
+    id: "inspection-form",
+    kind: "forms",
+    products: ["digitise-paperwork"],
+    teams: ["service"],
+  },
 ];
 
 export type DemoGalleryCopy = {
@@ -88,6 +100,7 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
     showAll: "Show all demos",
     teams: {
       service: "Service & maintenance",
+      quality: "Quality",
       contracts: "Contracts",
       projects: "Project management",
       finance: "Finance",
@@ -111,6 +124,7 @@ export const demoGalleryCopy: Record<Locale, DemoGalleryCopy> = {
     showAll: "Ver todas las demos",
     teams: {
       service: "Servicio y mantenimiento",
+      quality: "Calidad",
       contracts: "Contratos",
       projects: "Gestión de proyectos",
       finance: "Finanzas",

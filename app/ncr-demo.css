@@ -1,0 +1,391 @@
+/* Digitise Your Paperwork, NCR version. Reuses the tablet and scan from
+   app/forms-demo.css (fd-*) and the form inputs from app/desk-demo.css
+   (dd-*). New: the three-column NCR form with past issues, and the NCR
+   register with status counts and search. ---------------------------------- */
+.nc-stage-root[data-beat="intro-qe"] .crm-win,
+.nc-stage-root[data-beat="intro-manager"] .crm-win,
+.nc-stage-root[data-beat="result"] .crm-win {
+  animation: crm-cross 1.4s ease;
+}
+/* The NCR form needs a taller tablet than the inspection checklist. */
+.nc-stage-root .fd-tablet {
+  height: min(580px, 100%);
+}
+/* The "raised" message sits in the space above the photo and button. */
+.nc-stage-root .fd-toast {
+  bottom: 92px;
+}
+.nc-stage-root .fd-device-wrap {
+  padding: 12px 18px;
+}
+/* Barcode scan: a wider camera view with a red scan line across the bars. */
+.nc-camera {
+  width: 300px;
+  height: 170px;
+}
+.nc-camera::before {
+  inset: 34px 26px;
+}
+.nc-barcode {
+  width: 230px;
+  height: auto;
+  color: #111827;
+}
+.nc-camera .fd-scanline {
+  left: 30px;
+  right: 30px;
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: nc-scan 1.2s ease-in-out infinite;
+}
+@keyframes nc-scan {
+  0%,
+  100% {
+    top: 66px;
+  }
+  50% {
+    top: 96px;
+  }
+}
+/* Form: filled-in details | the report | similar past issues */
+.nc-form {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 250px;
+  border-radius: 0 0 18px 18px;
+  animation: crm-fade 0.5s ease;
+}
+.nc-form .fd-fields {
+  gap: 8px;
+  padding: 12px 14px;
+}
+.nc-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  min-width: 0;
+}
+.nc-main .dd-field {
+  gap: 4px;
+}
+.nc-main .dd-input {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 0.86rem;
+}
+.nc-option[data-pick="true"] {
+  background: var(--crm-blue-soft);
+}
+.dd-option.nc-option:nth-child(3) {
+  background: transparent;
+}
+.dd-option.nc-option[data-pick="true"] {
+  background: var(--crm-blue-soft);
+}
+.nc-risk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.74rem;
+  font-weight: 600;
+  animation: crm-fade 0.4s ease;
+}
+.nc-seg {
+  display: inline-flex;
+  justify-self: start;
+  border: 1px solid var(--crm-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.nc-seg-btn {
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--crm-muted);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+.nc-seg-btn + .nc-seg-btn {
+  border-left: 1px solid var(--crm-line);
+}
+.nc-seg-btn[data-on="true"] {
+  background: #b45309;
+  color: #fff;
+}
+.nc-contain {
+  display: grid;
+  gap: 6px;
+}
+.nc-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--crm-ink-2);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+.nc-dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--crm-line);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.nc-radio[data-on="true"] {
+  border-color: var(--crm-blue);
+  background: var(--crm-blue-soft);
+  color: var(--crm-ink);
+}
+.nc-radio[data-on="true"] .nc-dot {
+  border-color: var(--crm-blue);
+  box-shadow: inset 0 0 0 3px #fff;
+  background: var(--crm-blue);
+}
+.nc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+.nc-photo {
+  width: 96px;
+  height: 56px;
+}
+/* Similar past issues */
+.nc-similar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-left: 1px solid var(--crm-line);
+  background: var(--crm-bg);
+  border-radius: 0 0 18px 0;
+}
+.nc-similar[data-on="true"] {
+  animation: crm-fade 0.5s ease;
+}
+.nc-hint {
+  margin: -4px 0 2px;
+  font-size: 0.74rem;
+  color: var(--crm-muted);
+}
+.nc-past {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--crm-line);
+  background: #fff;
+  animation: crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.nc-past + .nc-past {
+  animation-delay: 0.2s;
+}
+.nc-past[data-linked="true"] {
+  border-color: var(--crm-blue);
+  box-shadow: 0 0 0 3px rgb(47 91 255 / 0.12);
+}
+.nc-past-head {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 0.8rem;
+}
+.nc-past-title {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--crm-ink);
+}
+.nc-past-cause {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--crm-muted);
+}
+.nc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  justify-self: start;
+  margin-top: 2px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--crm-ink-2);
+}
+.nc-link[data-on="true"] {
+  border-color: var(--crm-blue);
+  background: var(--crm-blue);
+  color: #fff;
+}
+/* Register */
+.nc-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 280px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.85rem;
+  color: var(--crm-muted);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.nc-search svg {
+  flex: none;
+}
+.nc-search [data-filled="true"] {
+  color: var(--crm-ink);
+}
+.nc-search[data-active="true"] {
+  border-color: var(--crm-blue);
+  box-shadow: 0 0 0 3px rgb(47 91 255 / 0.12);
+}
+.nc-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.nc-count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.8rem;
+  color: var(--crm-ink-2);
+}
+.nc-count strong {
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--crm-ink);
+}
+.nc-count[data-s="overdue"] {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+.nc-count[data-s="overdue"] strong {
+  color: #b91c1c;
+}
+.nc-table {
+  align-self: stretch;
+}
+.nc-table .crm-tr {
+  grid-template-columns: 90px minmax(0, 1.8fr) 80px 110px 90px 140px;
+}
+.nc-id {
+  font-size: 0.86rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.nc-issue {
+  font-size: 0.86rem;
+  color: var(--crm-ink);
+}
+.nc-sev {
+  font-size: 0.8rem;
+  color: var(--crm-muted);
+}
+.nc-sev[data-major="true"] {
+  color: #b45309;
+  font-weight: 600;
+}
+.nc-due {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--crm-muted);
+}
+.nc-due[data-overdue="true"] {
+  color: #b91c1c;
+  font-weight: 600;
+}
+.nc-stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.nc-stage[data-s="containment"] {
+  background: #fff4e5;
+  color: #b45309;
+}
+.nc-stage[data-s="root"] {
+  background: var(--crm-blue-soft);
+  color: #2447d6;
+}
+.nc-stage[data-s="action"] {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+.nc-stage[data-s="closed"] {
+  background: #ecfdf3;
+  color: #047857;
+}
+.nc-results {
+  display: grid;
+  gap: 10px;
+  animation: crm-fade 0.5s ease;
+}
+.nc-result {
+  display: grid;
+  grid-template-columns: 90px 80px minmax(0, 1.4fr) minmax(0, 1.2fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--crm-line);
+  animation: crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.nc-result:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.nc-result:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.nc-cause {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--crm-muted);
+}
+.nc-cause svg {
+  flex: none;
+}

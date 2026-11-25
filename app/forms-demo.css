@@ -1,0 +1,432 @@
+/* Digitise Your Paperwork demo. Builds on app/crm-demo.css (stage, cards,
+   cursor, controls) and borrows quotes, desk and invoice pieces (send button,
+   toast, back pill, cards). New: the tablet with the QR scan and checklist,
+   and the office inspections screen. -------------------------------------- */
+.fd-stage[data-beat="intro-tech"] .crm-win,
+.fd-stage[data-beat="intro-manager"] .crm-win,
+.fd-stage[data-beat="result"] .crm-win {
+  animation: crm-cross 1.4s ease;
+}
+/* The tablet sits on a soft surface, centred, instead of the CRM window. */
+.crm-body[data-variant="device"] {
+  border: 0;
+  background:
+    radial-gradient(120% 90% at 50% 0%, #eef2f8 0%, #dfe5ee 100%);
+  display: grid;
+  place-items: center;
+}
+.fd-device-wrap {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+}
+.fd-tablet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(860px, 100%);
+  height: min(500px, 100%);
+  padding: 12px;
+  border-radius: 28px;
+  background: #1f2430;
+  box-shadow:
+    0 2px 4px rgb(17 24 39 / 0.2),
+    0 30px 60px -28px rgb(17 24 39 / 0.55);
+}
+.fd-tablet > * {
+  background: #fff;
+}
+.fd-tablet-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-radius: 18px 18px 0 0;
+  border-bottom: 1px solid var(--crm-line);
+  font-size: 0.9rem;
+}
+.fd-tablet-bar > strong {
+  font-weight: 600;
+  color: var(--crm-ink);
+}
+.fd-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--crm-blue-soft);
+  color: #2447d6;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.fd-user {
+  margin-left: auto;
+  padding: 3px 10px 3px 4px;
+}
+/* QR scan */
+.fd-scan {
+  flex: 1 1 auto;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  border-radius: 0 0 18px 18px;
+  text-align: center;
+  animation: crm-fade 0.4s ease;
+}
+.fd-scan p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--crm-ink-2);
+}
+.fd-camera {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 210px;
+  height: 170px;
+  border-radius: 16px;
+  background: #2a2f3a;
+  overflow: hidden;
+}
+.fd-camera::before {
+  content: "";
+  position: absolute;
+  inset: 22px 48px;
+  border: 2px solid rgb(255 255 255 / 0.7);
+  border-radius: 10px;
+}
+.fd-qr {
+  width: 104px;
+  height: 104px;
+  color: #111827;
+  border-radius: 4px;
+}
+.fd-scanline {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background: #4ade80;
+  box-shadow: 0 0 12px #4ade80;
+  animation: fd-scan 1.6s ease-in-out infinite;
+}
+@keyframes fd-scan {
+  0%,
+  100% {
+    top: 28px;
+  }
+  50% {
+    top: 140px;
+  }
+}
+.fd-scan-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--crm-ink);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: transform 0.15s ease;
+}
+.fd-scan-btn[data-press="true"],
+.fd-yn:active {
+  transform: scale(0.96);
+}
+/* The form: filled-in details on the left, the checklist on the right. */
+.fd-form {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  border-radius: 0 0 18px 18px;
+  animation: crm-fade 0.5s ease;
+}
+.fd-fields {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  border-right: 1px solid var(--crm-line);
+  background: var(--crm-bg);
+  border-radius: 0 0 0 18px;
+}
+.fd-fieldrow {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  animation: crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.fd-fieldrow:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.fd-fieldrow:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.fd-fieldrow:nth-child(4) {
+  animation-delay: 0.45s;
+}
+.fd-fieldrow small {
+  font-size: 0.72rem;
+  color: var(--crm-muted);
+}
+.fd-fieldrow strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--crm-ink);
+}
+.fd-from {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-self: start;
+  margin-top: 2px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--crm-blue-soft);
+  color: #2447d6;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+.fd-check {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  min-height: 0;
+}
+.fd-item {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--crm-line);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+.fd-item[data-failed="true"] {
+  border-color: #fecaca;
+  background: #fff7f7;
+}
+.fd-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.fd-item-text {
+  font-size: 0.9rem;
+  color: var(--crm-ink);
+}
+.fd-yesno {
+  display: inline-flex;
+  flex: none;
+  gap: 6px;
+}
+.fd-yn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--crm-line);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--crm-muted);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+.fd-yn[data-on="yes"] {
+  border-color: #047857;
+  background: #047857;
+  color: #fff;
+}
+.fd-yn[data-on="no"] {
+  border-color: #b91c1c;
+  background: #b91c1c;
+  color: #fff;
+}
+.fd-evidence {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+  animation: crm-rowin 0.4s ease;
+}
+.fd-photo {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  height: 64px;
+  border-radius: 10px;
+  border: 1px dashed #fca5a5;
+  background: #fff;
+  color: #b91c1c;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: center;
+  overflow: hidden;
+}
+.fd-photo[data-added="true"] {
+  border: 0;
+  animation: crm-fade 0.4s ease;
+}
+/* The picture John takes: a close crop of the press in his intro photo, so
+   he isn't in his own evidence shot. */
+.fd-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(2.6);
+  transform-origin: 88% 52%;
+}
+.fd-note {
+  min-height: 64px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--crm-line);
+  background: #fff;
+  font-size: 0.85rem;
+  color: var(--crm-muted);
+}
+.fd-note[data-active="true"] {
+  border-color: var(--crm-blue);
+  box-shadow: 0 0 0 3px rgb(47 91 255 / 0.12);
+}
+.fd-note[data-filled="true"] {
+  color: var(--crm-ink);
+}
+.fd-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+.fd-toast {
+  bottom: 22px;
+  background: #ecfdf3;
+}
+/* Office: inspections list and the detail */
+.fd-screen {
+  position: relative;
+  height: 100%;
+  animation: crm-fade 0.5s ease;
+}
+.fd-table {
+  align-self: stretch;
+}
+.fd-table .crm-tr {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) 120px 110px 120px;
+}
+.fd-result {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #ecfdf3;
+  color: #047857;
+}
+.fd-result[data-issue="true"] {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+.fd-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 22px;
+}
+.fd-detail .qd-detail-head {
+  margin-bottom: 16px;
+}
+.fd-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.fd-answers {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fd-answers li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--crm-ink-2);
+}
+.fd-answers li svg {
+  color: #047857;
+}
+.fd-answers li strong {
+  font-size: 0.8rem;
+  color: #047857;
+}
+.fd-answers li[data-failed="true"] svg,
+.fd-answers li[data-failed="true"] strong {
+  color: #b91c1c;
+}
+.fd-evidence-office {
+  margin-top: 0;
+}
+.fd-note-read {
+  margin: 0;
+  align-self: center;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--crm-ink);
+}
+.fd-side {
+  display: grid;
+  gap: 12px;
+}
+.fd-job {
+  border-color: #c7d2fe;
+  box-shadow: 0 12px 30px -18px rgb(47 91 255 / 0.5);
+  animation:
+    crm-rowin 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    crm-rowflash 2.4s ease-out;
+}
+.fd-job-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--crm-ink);
+}
+.fd-job-meta {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--crm-muted);
+}
+.fd-synced {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--crm-blue-soft);
+  color: #2447d6;
+  font-size: 0.86rem;
+  animation: crm-fade 0.5s ease;
+}
+.fd-synced svg {
+  flex: none;
+}
