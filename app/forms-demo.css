@@ -430,3 +430,169 @@
 .fd-synced svg {
   flex: none;
 }
+/* Phones: the tablet becomes a device in portrait that fills the stage.
+   The scanned details sit in a compact two-column block above the
+   checklist; the office list stacks and the detail is one column. */
+@media (max-width: 760px) {
+  /* One row the height of the body, so the device can't grow past it. */
+  .crm-body[data-variant="device"] {
+    grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+    place-items: stretch;
+  }
+  .fd-device-wrap {
+    grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+    min-height: 0;
+    padding: 10px;
+  }
+  .fd-tablet {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 8px;
+    border-radius: 24px;
+  }
+  .fd-tablet-bar {
+    gap: 8px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    line-height: 1.25;
+  }
+  .fd-tablet-bar .crm-user-text {
+    display: none;
+  }
+  .fd-user {
+    padding: 3px;
+  }
+  .fd-form {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .fd-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+    padding: 10px 12px;
+    border-right: 0;
+    border-bottom: 1px solid var(--crm-line);
+    border-radius: 0;
+  }
+  .fd-fieldrow small {
+    font-size: 0.66rem;
+  }
+  .fd-fieldrow strong {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  .fd-from {
+    font-size: 0.62rem;
+    padding: 0 6px;
+  }
+  .fd-check {
+    gap: 6px;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .fd-item {
+    padding: 7px 10px;
+  }
+  .fd-item-row {
+    gap: 8px;
+  }
+  .fd-item-text {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  .fd-yn {
+    padding: 4px 9px;
+    font-size: 0.74rem;
+  }
+  .fd-evidence {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .fd-photo,
+  .fd-note {
+    height: 58px;
+    min-height: 58px;
+  }
+  .fd-note {
+    font-size: 0.76rem;
+    line-height: 1.35;
+    overflow: hidden;
+  }
+  .fd-toast {
+    bottom: 16px;
+  }
+  .fd-table .crm-th {
+    display: none;
+  }
+  .fd-table .crm-tr {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "asset result"
+      "what what"
+      "by when";
+    gap: 3px 10px;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+  .fd-table .crm-tr > :nth-child(1) {
+    grid-area: asset;
+  }
+  .fd-table .crm-tr > :nth-child(2) {
+    display: block;
+    grid-area: what;
+    padding-left: 24px;
+  }
+  .fd-table .crm-tr > :nth-child(3) {
+    display: block;
+    grid-area: by;
+    padding-left: 24px;
+    font-size: 0.75rem;
+  }
+  .fd-table .crm-tr > :nth-child(4) {
+    grid-area: when;
+    justify-self: end;
+    font-size: 0.75rem;
+  }
+  .fd-table .crm-tr > :nth-child(5) {
+    grid-area: result;
+    justify-self: end;
+  }
+  .fd-result {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  .fd-detail {
+    padding: 12px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .fd-detail::-webkit-scrollbar {
+    display: none;
+  }
+  .fd-detail .qd-detail-head {
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .fd-detail .qd-detail-head h3 {
+    flex: 1 1 0;
+    font-size: 0.95rem;
+  }
+  .fd-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .fd-answers li {
+    font-size: 0.8rem;
+  }
+  .fd-note-read {
+    font-size: 0.8rem;
+  }
+  .fd-job-title {
+    font-size: 0.9rem;
+  }
+  .fd-job-meta,
+  .fd-synced {
+    font-size: 0.78rem;
+  }
+}

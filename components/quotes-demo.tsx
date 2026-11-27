@@ -33,7 +33,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { revealForCursor, useBeatClock } from "@/components/demo-clock";
 import type { CrmDemoUi, Person } from "@/lib/crm-demo";
 import type { QuotesDemo as QuotesDemoData, RfqStatus } from "@/lib/quotes-demo";
 
@@ -131,9 +131,11 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
     const stage = stageRef.current;
     const el = ref.current;
     if (!stage || !el) return;
+    // On phones some screens scroll: bring the target into view first.
+    const dy = revealForCursor(el);
     const s = stage.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top, click: false };
+    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top - dy, click: false };
     if (cursorRef.current) {
       setCursor(target);
       return;
@@ -349,7 +351,7 @@ export function QuotesDemo({ demo, ui }: QuotesDemoProps) {
                         <p key={p}>{p}</p>
                       ))}
                     </article>
-                    <article className="qd-draft" data-sent={sent ? "true" : undefined}>
+                    <article className="qd-draft" data-scroll-follow="" data-sent={sent ? "true" : undefined}>
                       <p className="qd-draft-label">
                         <Sparkles className="size-4" />
                         {demo.draft.label}

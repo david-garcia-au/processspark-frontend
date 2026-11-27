@@ -338,3 +338,103 @@
   background: var(--crm-blue);
   color: #fff;
 }
+/* Phones: every screen is one column. The employee record on the leave form
+   becomes a compact two-by-two block above the fields; the approval and the
+   HR desk stack their cards. */
+@media (max-width: 760px) {
+  .dd-screen {
+    padding: 14px 12px;
+  }
+  .dd-screen > .crm-docs,
+  .dd-screen > .dd-detail {
+    margin: -14px -12px;
+    height: calc(100% + 28px);
+  }
+  .dd-table .crm-tr {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .dd-form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    align-content: start;
+  }
+  .dd-record {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 12px;
+    padding: 11px 13px;
+  }
+  .dd-record small,
+  .dd-kv small {
+    font-size: 0.7rem;
+  }
+  .dd-record strong {
+    font-size: 0.84rem;
+  }
+  .dd-prefilled {
+    grid-column: 1 / -1;
+  }
+  .dd-fields {
+    gap: 10px;
+  }
+  .dd-input {
+    min-height: 38px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  .dd-textarea {
+    min-height: 58px;
+  }
+  .dd-detail {
+    padding: 12px;
+  }
+  .dd-detail .qd-detail-head {
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .dd-detail .qd-detail-head h3 {
+    flex: 1 1 0;
+  }
+  .dd-detail-grid,
+  .dd-hr {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .dd-card {
+    gap: 10px;
+    padding: 13px 14px;
+  }
+  .dd-kv strong {
+    font-size: 0.86rem;
+  }
+  .dd-kv span,
+  .dd-checks li {
+    font-size: 0.82rem;
+  }
+  .dd-rec {
+    gap: 10px;
+    padding: 6px 12px;
+  }
+  .dd-rec span strong {
+    font-size: 0.84rem;
+  }
+  .dd-rec span small {
+    font-size: 0.75rem;
+  }
+  .dd-question {
+    font-size: 0.95rem;
+  }
+  .dd-reason {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 760px) {
+  /* Recorded rows: the approval pill goes under the name and dates. */
+  .dd-rec {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: 4px;
+  }
+  .dd-rec > .dd-status {
+    grid-column: 2;
+  }
+}

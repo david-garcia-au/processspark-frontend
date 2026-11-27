@@ -21,7 +21,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { useBeatClock, useFollowLatest } from "@/components/demo-clock";
 import type { CrmDemoUi } from "@/lib/crm-demo";
 import type { DataDemo as DataDemoData } from "@/lib/data-demo";
 
@@ -57,6 +57,7 @@ export function DataDemo({ demo, ui }: DataDemoProps) {
   const [brief, setBrief] = useState(false);
   // Pausable clock: Pause freezes every step of the beat, Play resumes it.
   const clock = useBeatClock(playing);
+  const followChat = useFollowLatest();
   const at = clock.at;
 
   const beat = BEATS[index];
@@ -221,7 +222,7 @@ export function DataDemo({ demo, ui }: DataDemoProps) {
                   </div>
                 ) : (
                   <>
-                    <div className="crm-chat-thread">
+                    <div className="crm-chat-thread" ref={followChat}>
                       <div className="crm-turn-user">
                         <p>{q1}</p>
                       </div>

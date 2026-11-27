@@ -389,3 +389,180 @@
 .nc-cause svg {
   flex: none;
 }
+/* Phones: the tablet fills the stage and the report is one column that
+   scrolls (no bar) as Maria works down it: scanned details, the report,
+   then similar past issues. The cursor scrolls each field into view before
+   it moves (revealForCursor). The register's rows stack. */
+@media (max-width: 760px) {
+  .nc-stage-root .fd-tablet {
+    height: 100%;
+  }
+  .nc-stage-root .fd-device-wrap {
+    padding: 10px;
+  }
+  .nc-camera {
+    width: min(260px, 100%);
+    height: 150px;
+  }
+  .nc-camera::before {
+    inset: 28px 20px;
+  }
+  .nc-barcode {
+    width: 200px;
+  }
+  @keyframes nc-scan {
+    0%,
+    100% {
+      top: 56px;
+    }
+    50% {
+      top: 86px;
+    }
+  }
+  .nc-form {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .nc-form::-webkit-scrollbar {
+    display: none;
+  }
+  .nc-form > * {
+    flex: none;
+  }
+  .nc-form .fd-fields {
+    padding: 10px 12px;
+  }
+  .nc-main {
+    gap: 8px;
+    padding: 10px 12px 12px;
+  }
+  .nc-main .dd-input {
+    min-height: 34px;
+    font-size: 0.8rem;
+  }
+  .nc-main .dd-label {
+    font-size: 0.74rem;
+  }
+  .nc-seg-btn {
+    padding: 4px 12px;
+    font-size: 0.76rem;
+  }
+  .nc-radio {
+    padding: 6px 9px;
+    font-size: 0.76rem;
+  }
+  .nc-photo {
+    width: 84px;
+    height: 50px;
+  }
+  .nc-similar {
+    padding: 12px;
+    border-left: 0;
+    border-top: 1px solid var(--crm-line);
+    border-radius: 0 0 18px 18px;
+  }
+  .nc-similar:not([data-on="true"]) {
+    display: none;
+  }
+  .nc-stage-root .fd-toast {
+    bottom: 16px;
+  }
+  /* Register */
+  .nc-register .crm-docs-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .nc-search {
+    width: 100%;
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+  .nc-counts {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .nc-count {
+    gap: 5px;
+    padding: 5px 9px;
+    font-size: 0.72rem;
+  }
+  .nc-count strong {
+    font-size: 0.88rem;
+  }
+  .nc-table .crm-th {
+    display: none;
+  }
+  .nc-table .crm-tr {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "id status"
+      "issue issue"
+      "sev due";
+    gap: 3px 10px;
+    padding: 9px 12px;
+  }
+  .nc-table .crm-tr > :nth-child(1) {
+    grid-area: id;
+  }
+  .nc-table .crm-tr > :nth-child(2) {
+    display: block;
+    grid-area: issue;
+    font-size: 0.8rem;
+  }
+  .nc-table .crm-tr > :nth-child(3) {
+    grid-area: sev;
+    font-size: 0.74rem;
+  }
+  .nc-table .crm-tr > :nth-child(4) {
+    display: none;
+  }
+  .nc-table .crm-tr > :nth-child(5) {
+    grid-area: due;
+    justify-self: end;
+    font-size: 0.76rem;
+  }
+  .nc-table .crm-tr > :nth-child(6) {
+    grid-area: status;
+    justify-self: end;
+  }
+  .nc-id {
+    font-size: 0.8rem;
+  }
+  .nc-stage {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  .nc-results {
+    gap: 8px;
+  }
+  .nc-result {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "id status"
+      "issue issue"
+      "cause cause";
+    gap: 3px 10px;
+    padding: 10px 12px;
+  }
+  .nc-result > :nth-child(1) {
+    grid-area: id;
+  }
+  .nc-result > :nth-child(2) {
+    display: none;
+  }
+  .nc-result > :nth-child(3) {
+    grid-area: issue;
+    font-size: 0.8rem;
+  }
+  .nc-result > :nth-child(4) {
+    grid-area: cause;
+    font-size: 0.76rem;
+  }
+  .nc-result > :nth-child(5) {
+    grid-area: status;
+    justify-self: end;
+  }
+}

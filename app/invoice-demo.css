@@ -314,3 +314,205 @@
   line-height: 1.5;
   color: var(--crm-ink-2);
 }
+/* Phones: invoice rows stack (supplier and status, then number and amount);
+   each checked line is item and result, with ordered and invoiced under it;
+   Matt's screen is one column. */
+@media (max-width: 760px) {
+  .iv-table .crm-th {
+    display: none;
+  }
+  .iv-table .crm-tr {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "cust status"
+      "inv amount";
+    gap: 4px 10px;
+    padding: 10px 12px;
+  }
+  .iv-table .crm-tr > :nth-child(1) {
+    grid-area: cust;
+  }
+  .iv-table .crm-tr > :nth-child(2) {
+    display: block;
+    grid-area: inv;
+    padding-left: 38px;
+    font-size: 0.78rem;
+  }
+  .iv-table .crm-tr > :nth-child(3) {
+    display: none;
+  }
+  .iv-table .crm-tr > :nth-child(4) {
+    grid-area: amount;
+    justify-self: end;
+    font-size: 0.8rem;
+  }
+  .iv-table .crm-tr > :nth-child(5) {
+    grid-area: status;
+    justify-self: end;
+  }
+  .iv-status {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  .crm-docs-head:has(.iv-sumpill) {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .iv-sumpill {
+    display: inline-flex;
+    white-space: normal;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+  /* The checked invoice scrolls (no bar) to bring the summary in. */
+  .iv-detail {
+    padding: 12px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .iv-detail::-webkit-scrollbar {
+    display: none;
+  }
+  .iv-detail > * {
+    flex-shrink: 0;
+  }
+  .iv-detail .qd-detail-head {
+    margin-bottom: 10px;
+  }
+  .iv-detail .qd-detail-head h3 {
+    flex: 1 1 0;
+    font-size: 0.95rem;
+  }
+  .iv-project {
+    margin: -2px 0 10px;
+    font-size: 0.78rem;
+  }
+  /* Each line: the item, then ordered and invoiced side by side (under
+     the header's two labels), then the result. */
+  .iv-crow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "item item"
+      "order invoice"
+      "check check";
+    gap: 3px 10px;
+    padding: 9px 12px;
+    font-size: 0.8rem;
+  }
+  .iv-crow > :nth-child(1) {
+    grid-area: item;
+  }
+  .iv-crow > :nth-child(2) {
+    grid-area: order;
+  }
+  .iv-crow > :nth-child(3) {
+    grid-area: invoice;
+  }
+  .iv-crow > :nth-child(4) {
+    grid-area: check;
+    font-size: 0.78rem;
+  }
+  .iv-chead {
+    grid-template-areas: "order invoice";
+    padding-block: 7px;
+  }
+  .iv-chead > :nth-child(1),
+  .iv-chead > :nth-child(4) {
+    display: none;
+  }
+  .iv-chead {
+    font-size: 0.62rem;
+  }
+  .iv-summary {
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .iv-totals {
+    justify-content: flex-start;
+    gap: 4px 14px;
+    font-size: 0.78rem;
+  }
+  .iv-diff {
+    font-size: 0.76rem;
+    padding: 3px 10px;
+  }
+  .iv-hold,
+  .iv-notified {
+    padding: 8px 11px;
+    font-size: 0.78rem;
+  }
+  /* Matt's screen scrolls (no bar) to bring the credit-note email in. */
+  .iv-advice-screen {
+    padding: 12px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .iv-advice-screen::-webkit-scrollbar {
+    display: none;
+  }
+  .iv-advice-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .iv-text {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+  .iv-diffs li {
+    font-size: 0.78rem;
+  }
+  .iv-actions .dd-decline,
+  .iv-reject {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+  .iv-mini {
+    padding: 10px 13px;
+  }
+  .iv-mini-head,
+  .iv-mini-row {
+    font-size: 0.8rem;
+  }
+  .iv-email-body {
+    font-size: 0.78rem;
+  }
+}
+@media (max-width: 760px) {
+  /* In Matt's scrolling screen the toast stays pinned to the bottom. */
+  .iv-advice-screen .qd-toast {
+    position: sticky;
+    left: auto;
+    bottom: 0;
+    translate: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+/* Phones: the invoice list and its "held" message share the screen. The
+   message sits under the list, never over a row, and the rows are a little
+   tighter so all five still fit. */
+@media (max-width: 760px) {
+  .iv-screen:has(> .crm-docs) {
+    display: flex;
+    flex-direction: column;
+  }
+  .iv-screen > .crm-docs {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .iv-screen > .crm-docs .crm-docs-head {
+    margin-bottom: 10px;
+  }
+  .iv-table .crm-tr {
+    padding: 8px 12px;
+  }
+  .iv-screen > .iv-toast {
+    position: static;
+    translate: none;
+    flex: none;
+    width: auto;
+    margin: 0 14px 12px;
+    white-space: normal;
+  }
+}

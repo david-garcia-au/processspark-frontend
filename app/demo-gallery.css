@@ -98,6 +98,7 @@
 }
 .demos-list {
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* a wide screen inside a demo must not widen the column */
   gap: clamp(64px, 7vw, 96px);
   margin-top: clamp(40px, 5vw, 64px);
 }

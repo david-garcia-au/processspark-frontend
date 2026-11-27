@@ -35,7 +35,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { revealForCursor, useBeatClock, useFollowLatest } from "@/components/demo-clock";
 import type { CrmDemoUi, Person } from "@/lib/crm-demo";
 import type { ApprovalStatus, DeskDemo as DeskDemoData } from "@/lib/desk-demo";
 
@@ -137,6 +137,7 @@ export function DeskDemo({ demo, ui }: DeskDemoProps) {
   }, [cursor]);
   // Pausable clock: Pause freezes every step of the beat, Play resumes it.
   const clock = useBeatClock(playing);
+  const followChat = useFollowLatest();
   const at = clock.at;
   const stageRef = useRef<HTMLDivElement>(null);
   const actionRef = useRef<HTMLSpanElement>(null);
@@ -161,9 +162,11 @@ export function DeskDemo({ demo, ui }: DeskDemoProps) {
     const stage = stageRef.current;
     const el = ref.current;
     if (!stage || !el) return;
+    // On phones some screens scroll: bring the target into view first.
+    const dy = revealForCursor(el);
     const s = stage.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top, click: false };
+    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top - dy, click: false };
     if (cursorRef.current) {
       setCursor(target);
       return;
@@ -408,7 +411,7 @@ export function DeskDemo({ demo, ui }: DeskDemoProps) {
                     </div>
                   </div>
                 ) : (
-                  <div className="crm-chat-thread">
+                  <div className="crm-chat-thread" ref={followChat}>
                     <div className="crm-turn-user">
                       <p>{question}</p>
                     </div>

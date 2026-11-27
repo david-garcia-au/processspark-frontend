@@ -33,7 +33,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { revealForCursor, useBeatClock } from "@/components/demo-clock";
 import type { CrmDemoUi, Person } from "@/lib/crm-demo";
 import type { NcrDemo as NcrDemoData, NcrStage } from "@/lib/ncr-demo";
 
@@ -154,9 +154,11 @@ export function NcrDemo({ demo, ui }: NcrDemoProps) {
     const stage = stageRef.current;
     const el = ref.current;
     if (!stage || !el) return;
+    // On phones the report scrolls: bring the target into view first.
+    const dy = revealForCursor(el);
     const s = stage.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top, click: false };
+    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top - dy, click: false };
     if (cursorRef.current) {
       setCursor(target);
       return;
@@ -391,7 +393,7 @@ export function NcrDemo({ demo, ui }: NcrDemoProps) {
                     </span>
                   </div>
                 ) : (
-                  <div className="nc-form">
+                  <div className="nc-form" data-scroll-follow="">
                     <aside className="fd-fields">
                       {t.fields.map((f) => (
                         <p key={f.label} className="fd-fieldrow">

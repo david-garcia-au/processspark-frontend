@@ -33,7 +33,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { revealForCursor, useBeatClock, useFollowLatest } from "@/components/demo-clock";
 import type { CrmDemoUi, Person } from "@/lib/crm-demo";
 import type { InvoiceDemo as InvoiceDemoData, InvoiceStatus } from "@/lib/invoice-demo";
 
@@ -109,6 +109,8 @@ export function InvoiceDemo({ demo, ui }: InvoiceDemoProps) {
   }, [cursor]);
   // Pausable clock: Pause freezes every step of the beat, Play resumes it.
   const clock = useBeatClock(playing);
+  const followScreen = useFollowLatest(".iv-email");
+  const followDetail = useFollowLatest(".iv-summary");
   const at = clock.at;
   const stageRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
@@ -121,9 +123,11 @@ export function InvoiceDemo({ demo, ui }: InvoiceDemoProps) {
     const stage = stageRef.current;
     const el = ref.current;
     if (!stage || !el) return;
+    // On phones some screens scroll: bring the target into view first.
+    const dy = revealForCursor(el);
     const s = stage.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top, click: false };
+    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top - dy, click: false };
     if (cursorRef.current) {
       setCursor(target);
       return;
@@ -307,7 +311,7 @@ export function InvoiceDemo({ demo, ui }: InvoiceDemoProps) {
           {onInvoices ? (
             <div className="iv-screen" key={detail ? "detail" : "list"}>
               {detail ? (
-                <div className="iv-detail">
+                <div className="iv-detail" ref={followDetail}>
                   <div className="qd-detail-head">
                     <span className="qd-back">
                       <ArrowLeft className="size-4" />
@@ -429,7 +433,7 @@ export function InvoiceDemo({ demo, ui }: InvoiceDemoProps) {
 
           {/* Matt's inbox: the request for advice, then the credit-note email. */}
           {beat === "decide" ? (
-            <div className="iv-screen iv-advice-screen">
+            <div className="iv-screen iv-advice-screen" ref={followScreen}>
               <div className="iv-advice-grid">
                 <article className="dd-card iv-advice">
                   <p className="dd-card-label">

@@ -31,7 +31,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { revealForCursor, useBeatClock, useFollowLatest } from "@/components/demo-clock";
 import type { CrmDemoUi, Person } from "@/lib/crm-demo";
 import type { FormsDemo as FormsDemoData } from "@/lib/forms-demo";
 
@@ -128,6 +128,7 @@ export function FormsDemo({ demo, ui }: FormsDemoProps) {
   }, [cursor]);
   // Pausable clock: Pause freezes every step of the beat, Play resumes it.
   const clock = useBeatClock(playing);
+  const followDetail = useFollowLatest(".fd-job, .fd-synced");
   const at = clock.at;
   const stageRef = useRef<HTMLDivElement>(null);
   const scanRef = useRef<HTMLSpanElement>(null);
@@ -145,9 +146,11 @@ export function FormsDemo({ demo, ui }: FormsDemoProps) {
   const pointAtEl = useCallback((el: HTMLElement | null) => {
     const stage = stageRef.current;
     if (!stage || !el) return;
+    // On phones some screens scroll: bring the target into view first.
+    const dy = revealForCursor(el);
     const s = stage.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top, click: false };
+    const target = { x: r.left + r.width / 2 - s.left, y: r.top + r.height / 2 - s.top - dy, click: false };
     if (cursorRef.current) {
       setCursor(target);
       return;
@@ -494,7 +497,7 @@ export function FormsDemo({ demo, ui }: FormsDemoProps) {
           {beat === "office" ? (
             <div className="fd-screen" key={detail ? "detail" : "list"}>
               {detail ? (
-                <div className="fd-detail">
+                <div className="fd-detail" ref={followDetail}>
                   <div className="qd-detail-head">
                     <span className="qd-back">
                       <ArrowLeft className="size-4" />

@@ -39,7 +39,7 @@ import {
   reducedOnServer,
   subscribeMotion,
 } from "@/components/team-explorer";
-import { useBeatClock } from "@/components/demo-clock";
+import { useBeatClock, useFollowLatest } from "@/components/demo-clock";
 import type { CrmDemoUi, DocsDemo, Person } from "@/lib/crm-demo";
 
 /**
@@ -126,6 +126,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
   const [brief, setBrief] = useState(false);
   // Pausable clock: Pause freezes every step of the beat, Play resumes it.
   const clock = useBeatClock(playing);
+  const followChat = useFollowLatest();
   const at = clock.at;
   const stageRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLSpanElement>(null);
@@ -345,6 +346,77 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
     // no-op: cursor is set from measured rects at each step
   }, [cursor, micro]);
 
+  // The uploaded file: last in a short list (manuals), first in a long one
+  // (contracts) so it and its menu are in view without scrolling.
+  const newRowFirst = (demo.docs.others?.length ?? 0) > 0;
+  const newRow = (
+                  <div className="crm-tr crm-tr-new" data-grant={granted ? "true" : undefined}>
+                    <span className="crm-file">
+                      <FileText className="size-4 text-blue-600" />
+                      {demo.docs.uploaded.name}
+                      <span className="crm-ver crm-ver-new">{demo.docs.versionNew}</span>
+                      {superseded ? (
+                        <span className="crm-super-pill">{demo.permissions.supersedeLabel}</span>
+                      ) : null}
+                      {granted ? (
+                        <span className="crm-grant-pill">
+                          <Check className="size-3" />
+                          {grantedTeam}
+                        </span>
+                      ) : null}
+                    </span>
+                    <span className="crm-dim">{demo.docs.uploaded.size}</span>
+                    <span className="crm-dim">{demo.docs.uploaded.date}</span>
+                    <span className="crm-rowaction">
+                      <button
+                        type="button"
+                        className="crm-dots"
+                        ref={dotsRef}
+                        aria-label={demo.permissions.menuLabel}
+                        data-open={menuOpen ? "true" : undefined}
+                      >
+                        <MoreVertical className="size-4" />
+                      </button>
+                      {menuOpen ? (
+                        <div
+                          className="crm-menu"
+                          role="menu"
+                          data-down={newRowFirst ? "true" : undefined}
+                        >
+                          <p className="crm-menu-head">{demo.permissions.heading}</p>
+                          {demo.permissions.teams.map((team, i) => (
+                            <span
+                              key={team.label}
+                              ref={i === 0 ? menuItemRef : undefined}
+                              className="crm-menu-item"
+                              data-on={team.granted && granted ? "true" : undefined}
+                              role="menuitemcheckbox"
+                              aria-checked={team.granted && granted}
+                            >
+                              <span className="crm-menu-box" aria-hidden="true">
+                                {team.granted && granted ? <Check className="size-3" /> : null}
+                              </span>
+                              {team.label}
+                            </span>
+                          ))}
+                          <span className="crm-menu-sep" />
+                          <span
+                            ref={supersedeRef}
+                            className="crm-menu-item"
+                            data-on={superseded ? "true" : undefined}
+                            role="menuitemcheckbox"
+                            aria-checked={superseded}
+                          >
+                            <span className="crm-menu-box" aria-hidden="true">
+                              {superseded ? <Check className="size-3" /> : null}
+                            </span>
+                            {demo.permissions.supersedeLabel}
+                          </span>
+                        </div>
+                      ) : null}
+                    </span>
+                  </div>
+  );
   return (
     <div className="crm-stage" data-beat={beat} ref={stageRef}>
       {/* Crossfade key: a new wrapper per screen fades in over the previous. */}
@@ -435,6 +507,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                     <span>{demo.docs.cols.date}</span>
                     <span />
                   </div>
+                  {uploadDone && newRowFirst ? newRow : null}
                   <div className="crm-tr">
                     <span className="crm-file">
                       <FileText className="size-4 text-gray-500" />
@@ -462,74 +535,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                       <span />
                     </div>
                   ))}
-                  {uploadDone ? (
-                    <div className="crm-tr crm-tr-new" data-grant={granted ? "true" : undefined}>
-                      <span className="crm-file">
-                        <FileText className="size-4 text-blue-600" />
-                        {demo.docs.uploaded.name}
-                        <span className="crm-ver crm-ver-new">{demo.docs.versionNew}</span>
-                        {superseded ? (
-                          <span className="crm-super-pill">{demo.permissions.supersedeLabel}</span>
-                        ) : null}
-                        {granted ? (
-                          <span className="crm-grant-pill">
-                            <Check className="size-3" />
-                            {grantedTeam}
-                          </span>
-                        ) : null}
-                      </span>
-                      <span className="crm-dim">{demo.docs.uploaded.size}</span>
-                      <span className="crm-dim">{demo.docs.uploaded.date}</span>
-                      <span className="crm-rowaction">
-                        <button
-                          type="button"
-                          className="crm-dots"
-                          ref={dotsRef}
-                          aria-label={demo.permissions.menuLabel}
-                          data-open={menuOpen ? "true" : undefined}
-                        >
-                          <MoreVertical className="size-4" />
-                        </button>
-                        {menuOpen ? (
-                          <div
-                            className="crm-menu"
-                            role="menu"
-                            data-up={(demo.docs.others?.length ?? 0) > 1 ? "true" : undefined}
-                          >
-                            <p className="crm-menu-head">{demo.permissions.heading}</p>
-                            {demo.permissions.teams.map((team, i) => (
-                              <span
-                                key={team.label}
-                                ref={i === 0 ? menuItemRef : undefined}
-                                className="crm-menu-item"
-                                data-on={team.granted && granted ? "true" : undefined}
-                                role="menuitemcheckbox"
-                                aria-checked={team.granted && granted}
-                              >
-                                <span className="crm-menu-box" aria-hidden="true">
-                                  {team.granted && granted ? <Check className="size-3" /> : null}
-                                </span>
-                                {team.label}
-                              </span>
-                            ))}
-                            <span className="crm-menu-sep" />
-                            <span
-                              ref={supersedeRef}
-                              className="crm-menu-item"
-                              data-on={superseded ? "true" : undefined}
-                              role="menuitemcheckbox"
-                              aria-checked={superseded}
-                            >
-                              <span className="crm-menu-box" aria-hidden="true">
-                                {superseded ? <Check className="size-3" /> : null}
-                              </span>
-                              {demo.permissions.supersedeLabel}
-                            </span>
-                          </div>
-                        ) : null}
-                      </span>
-                    </div>
-                  ) : null}
+                  {uploadDone && !newRowFirst ? newRow : null}
                 </div>
               </div>
               {uploadDone ? <p className="crm-vernote">{demo.docs.versionNote}</p> : null}
@@ -644,7 +650,7 @@ export function DocsDemo({ demo, ui }: DocsDemoProps) {
                     </div>
                   </div>
                 ) : (
-                  <div className="crm-chat-thread">
+                  <div className="crm-chat-thread" ref={followChat}>
                     <div className="crm-turn-user">
                       <p>{demo.chat.question}</p>
                     </div>

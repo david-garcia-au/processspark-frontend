@@ -1146,8 +1146,12 @@
   /* A fixed, phone-sized stage: the scenes fill it with absolutely placed
      photos, so an auto height collapses them to a few lines. */
   .crm-stage {
-    height: min(600px, calc(100svh - 170px));
-    min-height: 460px;
+    height: min(720px, calc(100svh - 110px));
+    min-height: 560px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 18px;
   }
   .crm-docs-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1274,6 +1278,169 @@
     font-size: 1.15rem;
   }
 }
+/* Phones: the stage is a tall, vertical frame. Photos are recomposed for it
+   (the person kept in frame, the shade from the top so the name reads), and
+   machine-screen photos are shown whole instead of cropped. */
+@media (max-width: 760px) {
+  .crm-body[data-variant="intro"],
+  .crm-body[data-variant="fault"] {
+    margin: 8px 10px 10px;
+    border-radius: 14px;
+  }
+  .crm-intro::after,
+  .crm-intro[data-side="right"]::after {
+    background: linear-gradient(
+      180deg,
+      rgb(8 18 38 / 0.88) 0%,
+      rgb(8 18 38 / 0.55) 30%,
+      rgb(8 18 38 / 0) 52%
+    );
+  }
+  .crm-intro[data-side="right"] .crm-intro-text {
+    width: auto;
+    left: 0;
+    padding-top: 30px;
+  }
+  .crm-intro-text {
+    gap: 6px;
+    padding: 30px 22px 0;
+  }
+  .crm-intro-text h3 {
+    font-size: 1.75rem;
+  }
+  .crm-intro-line {
+    font-size: 0.96rem;
+    line-height: 1.45;
+  }
+  /* The photo starts below a dark band that holds the name, so the text
+     never sits on the person's face; the narration card covers the bottom of
+     the photo, which is the part a tall crop can spare. */
+  .crm-intro {
+    background: #0d1626;
+  }
+  .crm-intro-photo {
+    top: 118px;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 90px);
+    mask-image: linear-gradient(180deg, transparent 0, #000 90px);
+  }
+  /* Focal points: each person stays in the middle of the tall crop. */
+  .crm-intro-photo img {
+    object-position: 50% 30%;
+  }
+  .crm-intro-photo img[src*="demo-john"] {
+    object-position: 34% 30%;
+  }
+  .crm-intro-photo img[src*="demo-matt"] {
+    object-position: 74% 30%;
+  }
+  .crm-intro-photo img[src*="demo-maria"] {
+    object-position: 30% 30%;
+  }
+  .crm-intro-photo img[src*="demo-anna"] {
+    object-position: 40% 30%;
+  }
+  .crm-intro-photo img[src*="demo-marta"] {
+    object-position: 50% 30%;
+  }
+  /* Machine-screen photos carry text (the panel readout), so they are shown
+     whole, near the top, on a dark field the narration card sits on. */
+  .crm-fault:has(.crm-fault-img[src*="demo-plc"]) {
+    background: #0d1626;
+  }
+  /* Shown whole, then enlarged from the top centre: the sides it loses are
+     bare machine, and the readout grows to a size that reads. */
+  .crm-fault-img[src*="demo-plc"] {
+    object-fit: contain;
+    object-position: 50% 10%;
+    transform: scale(1.45);
+    transform-origin: 50% 0;
+  }
+  .crm-fault-img {
+    object-position: 50% 40%;
+  }
+  /* Marta, and John with his son, sit on the right of their photos. */
+  .crm-fault-img[src*="marta-done"] {
+    object-position: 82% 40%;
+  }
+  /* (John and his son) */
+  .crm-fault-img[src*="john-home"] {
+    object-position: 88% 40%;
+  }
+  /* Start screen: the first photo sits well back behind the card. */
+  .crm-overlay {
+    backdrop-filter: blur(10px);
+    background: rgb(17 24 39 / 0.32);
+  }
+  .crm-brief-start {
+    width: calc(100% - 32px);
+  }
+  .crm-brief {
+    padding: 22px 20px;
+  }
+  .crm-brief::before {
+    left: 20px;
+  }
+  .crm-brief[data-at="intro"],
+  .crm-brief[data-at="corner"],
+  .crm-brief[data-at="left"] {
+    width: calc(100% - 28px);
+    bottom: 68px;
+  }
+  .crm-brief[data-at="center"] {
+    width: calc(100% - 28px);
+  }
+  /* Task and result cards sit low, where the intro cards sit (68px from the
+     stage bottom; the scrim already stops 54px above it). */
+  .crm-brief-scrim {
+    place-items: end center;
+    padding-bottom: 14px;
+  }
+  .crm-brief-text {
+    font-size: 1.08rem;
+    line-height: 1.42;
+  }
+  /* Chat: the thread scrolls (without a bar) and follows the newest line. */
+  .crm-chat-thread {
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .crm-chat-thread::-webkit-scrollbar {
+    display: none;
+  }
+  .crm-chat {
+    overflow: hidden;
+  }
+  .crm-turn-user p {
+    max-width: 88%;
+    border-radius: 20px;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+  }
+  .crm-answer {
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .crm-chat-empty h3 {
+    font-size: 1.4rem;
+  }
+  .crm-composer {
+    padding: 10px 8px 10px 16px;
+    border-radius: 22px;
+  }
+  .crm-composer-text {
+    font-size: 0.9rem;
+  }
+  /* Tabs and the account pill share one row. */
+  .crm-tabs {
+    padding: 8px 10px 0;
+    gap: 2px;
+    overflow: hidden;
+  }
+  .crm-tab {
+    white-space: nowrap;
+    font-size: 0.78rem;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .crm-body,
   .crm-tr-new,
@@ -1292,4 +1459,25 @@
 @media (prefers-reduced-motion: reduce) {
   .crm-cursor { transition: none; animation: none; }
   .crm-intro, .crm-intro-text, .crm-fault { animation: none; }
+}
+/* A menu on the first row of the table opens downward, on every screen. */
+.crm-stage .crm-menu[data-down="true"] {
+  top: 38px;
+  bottom: auto;
+}
+/* Phones: on a long file list the "can now query" confirmation would fall
+   below the card, so it floats at the card's bottom edge instead. */
+@media (max-width: 760px) {
+  .crm-docs {
+    position: relative;
+  }
+  .crm-docs > .crm-toast {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    margin: 0;
+    z-index: 5;
+    box-shadow: 0 8px 24px -12px rgb(17 24 39 / 0.3);
+  }
 }
