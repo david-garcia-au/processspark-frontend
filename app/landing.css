@@ -1,0 +1,222 @@
+/* /[lang]/lp/[product]: ad landing pages. One goal: get the visitor to the
+   form (first screen) or the demo (right below). Loaded last; scoped to .lp-*. */
+
+/* Top bar: logo, language, one button. No menu on purpose. */
+.lp-bar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.lp-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 68px;
+}
+.lp-bar-end {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+html body .lp-bar .lp-bar-cta {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hero: problem as the headline on the left, the form on the right. */
+html body .lp-page .lp-hero {
+  display: block;
+  min-height: 0;
+  padding: clamp(40px, 5vw, 72px) 0 clamp(48px, 6vw, 80px);
+}
+.lp-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.9fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+html body .lp-page .lp-hero h1 {
+  max-width: 21ch;
+  margin: 0;
+  font-size: clamp(2.1rem, 3.8vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--on-dark);
+  text-wrap: balance;
+}
+.lp-product {
+  margin: 28px 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+}
+.lp-lead {
+  max-width: 52ch;
+  margin: 10px 0 0;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.88);
+}
+html body .lp-demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgb(255 255 255 / 0.5);
+}
+html body .lp-demo-link:hover {
+  text-decoration-color: #fff;
+}
+
+/* The form panel. */
+.lp-form {
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 30px 60px -24px rgb(2 8 30 / 0.7);
+  scroll-margin-top: 92px;
+}
+.lp-form h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+html body .lp-form .lp-note {
+  margin: 6px 0 18px;
+  font-size: 0.95rem;
+  color: var(--muted, #4a5568);
+}
+html body .lp-form .brief-form {
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+html body .lp-form .brief-form label {
+  font-size: 0.85rem;
+}
+html body .lp-form .brief-form input,
+html body .lp-form .brief-form textarea {
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+}
+html body .lp-form .brief-form .button-primary {
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-dark);
+  font-size: 15px;
+}
+html body .lp-form .brief-form .button-primary:hover {
+  background: var(--accent-hover);
+}
+
+/* Products without a demo show the example under the hero. */
+html body .lp-page .shell.lp-visual {
+  position: relative;
+  max-width: 760px;
+  padding: clamp(40px, 5vw, 72px) 48px 0;
+}
+.lp-visual .sol-team-photo {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px -36px rgb(8 18 38 / 0.55);
+}
+
+/* Closing band: three points, one button. */
+.lp-close {
+  margin-top: clamp(56px, 7vw, 96px);
+  color: var(--on-dark);
+  background: linear-gradient(150deg, #2346e0 0%, #1631a8 55%, #0d1b33 100%);
+}
+.lp-close-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 64px;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: clamp(48px, 6vw, 80px);
+}
+html body .lp-close h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--on-dark);
+}
+.lp-close .lp-points {
+  display: grid;
+  gap: 12px;
+  max-width: 62ch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lp-close .lp-points li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+.lp-close .lp-points svg {
+  flex: none;
+  margin-top: 3px;
+  color: #bcd0ff;
+}
+
+/* Footer: three quiet items. */
+.lp-foot {
+  background: #081226;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 0.9rem;
+}
+.lp-foot-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+}
+.lp-foot a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1000px) {
+  .lp-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  html body .lp-page .shell.lp-visual {
+    padding-inline: 30px;
+  }
+}
+@media (max-width: 540px) {
+  html body .lp-page .shell.lp-visual {
+    padding-inline: 22px;
+  }
+  .lp-bar-end {
+    gap: 10px;
+  }
+  .lp-close .pill {
+    width: 100%;
+  }
+}
+
+/* Company sits alone in its row (the category is a hidden field here). */
+html body .lp-form .brief-form .form-row:has(input[name="company"]) {
+  grid-template-columns: minmax(0, 1fr);
+}

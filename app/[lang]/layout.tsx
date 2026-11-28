@@ -47,6 +47,7 @@ import "../demo-gallery.css";
 import "../problems-hub.css";
 import "../home-type.css";
 import "../product-page.css";
+import "../landing.css";
 
 // Self-hosted at build time by next/font, no runtime request to Google.
 const sans = Manrope({

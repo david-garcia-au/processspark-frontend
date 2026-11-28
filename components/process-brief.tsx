@@ -19,6 +19,8 @@ type ProcessBriefProps = {
   email: string;
   /** Preselects this category (a product page passes its own). */
   defaultCategory?: CategoryId;
+  /** Landing-page form: name, email, company and one line. The category is sent as a hidden field. */
+  compact?: boolean;
 };
 
 export function ProcessBrief({
@@ -26,6 +28,7 @@ export function ProcessBrief({
   copy,
   email,
   defaultCategory,
+  compact = false,
 }: ProcessBriefProps) {
   const defaultValue =
     categories.find((item) => item.id === defaultCategory)?.value ??
@@ -64,10 +67,12 @@ export function ProcessBrief({
       onSubmit={submitBrief}
       onChange={() => setStatus((x) => (x === "sending" ? x : "idle"))}
     >
-      <div className="form-heading">
-        <span className="eyebrow">{copy.eyebrow}</span>
-        <ArrowUpRight size={23} />
-      </div>
+      {compact ? null : (
+        <div className="form-heading">
+          <span className="eyebrow">{copy.eyebrow}</span>
+          <ArrowUpRight size={23} />
+        </div>
+      )}
       <div className="form-row">
         <label>
           {copy.name.label}
@@ -102,23 +107,27 @@ export function ProcessBrief({
             maxLength={160}
           />
         </label>
-        <label>
-          {copy.category.label}
-          <select name="category" defaultValue={defaultValue}>
-            {categories.map(({ id, value }) => (
-              <option key={id} value={value}>
-                {copy.category.options[id]}
-              </option>
-            ))}
-          </select>
-        </label>
+        {compact ? (
+          <input type="hidden" name="category" value={defaultValue} />
+        ) : (
+          <label>
+            {copy.category.label}
+            <select name="category" defaultValue={defaultValue}>
+              {categories.map(({ id, value }) => (
+                <option key={id} value={value}>
+                  {copy.category.options[id]}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
       </div>
       <label>
         {copy.process.label}
         <textarea
           name="process"
           required
-          rows={4}
+          rows={compact ? 3 : 4}
           maxLength={1200}
           placeholder={copy.process.placeholder}
         />
@@ -147,13 +156,15 @@ export function ProcessBrief({
         {status === "sending" ? copy.sending : copy.submit}{" "}
         <ArrowUpRight size={17} />
       </Button>
-      <a
-        href="/downloads/processspark-overview.pdf"
-        download="ProcessSpark-overview.pdf"
-        className="download-brief"
-      >
-        <Download size={14} /> {copy.pdf}
-      </a>
+      {compact ? null : (
+        <a
+          href="/downloads/processspark-overview.pdf"
+          download="ProcessSpark-overview.pdf"
+          className="download-brief"
+        >
+          <Download size={14} /> {copy.pdf}
+        </a>
+      )}
       <p className="form-status" role="status" aria-live="polite">
         {status === "sending" && copy.statusSending}
         {status === "sent" && (
